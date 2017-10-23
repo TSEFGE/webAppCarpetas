@@ -161,13 +161,25 @@
 	<h6>Tipo de involucrado</h6>
 	<div class="row">
 		<div class="col-6">
-			<div class="form-group">
-				{!! Form::label('denunciante', 'Denunciante') !!}
-				{!! Form::radio('denunciante', null) !!}
-				{!! Form::label('denunciado', 'Denunciado') !!}
-				{!! Form::radio('denunciado', null) !!}
-				{!! Form::label('autoridad', 'Autoridad') !!}
-				{!! Form::radio('autoridad', null) !!}
+			<div class="form-group ml-3">
+				<div class="form-check form-check-inline">
+					<label class="form-check-label">
+						<input class="form-check-input" type="radio" name="tipoinv" id="denunciante" value="1" checked>
+						Denunciante
+					</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<label class="form-check-label">
+						<input class="form-check-input" type="radio" name="tipoinv" id="denunciado" value="2">
+						Denunciado
+					</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<label class="form-check-label">
+						<input class="form-check-input" type="radio" name="tipoinv" id="autoridad" value="3">
+						Autoridad
+					</label>
+				</div>
 			</div>
 		</div>
 	</div>

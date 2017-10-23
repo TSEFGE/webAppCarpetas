@@ -23,7 +23,7 @@
 		<div class="col-6">
 			<div class="form-group">
 				{!! Form::label('nombrefiscal', 'Nombre del Fiscal') !!}
-				{!! Form::text('nombrefiscal', null, ['class' => 'form-control', 'placeholder' => 'Nain Lobato', 'required']) !!}
+				{!! Form::text('nombrefiscal', "Nain Lobato", ['class' => 'form-control', 'placeholder' => 'Ingrese el nombre del fiscal', 'readonly', 'required']) !!}
 			</div>
 		</div>
 		<div class="col-6">
@@ -40,15 +40,25 @@
 		<div class="col-6">
 			<div class="form-group">
 				{!! Form::label('numfiscal', 'Número del Fiscal') !!}
-				{!! Form::number('numfiscal', 22, ['class' => 'form-control', 'placeholder' => '22', 'required']) !!}
+				{!! Form::number('numfiscal', 22, ['class' => 'form-control', 'placeholder' => 'Ingrese el número de fiscal', 'readonly', 'required']) !!}
 			</div>
 		</div>
-		<div class="col-6">
+		<div class="col-3 ml-3">
 			<div class="form-group">
-				{!! Form::label('condetenido', 'Con detenido') !!}
-				{!! Form::checkbox('condetenido', null, ['class' => 'form-control', 'required']) !!}
-				{!! Form::label('relevante', 'Es Relevante') !!}
-				{!! Form::checkbox('relevante', null, ['class' => 'form-control', 'required']) !!}
+				<div class="form-check">
+					<label class="form-check-label">
+						<input class="form-check-input" type="checkbox" id="condetenido" name="condetenido"> Con detenido
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="form-group">
+				<div class="form-check">
+					<label class="form-check-label">
+						<input class="form-check-input" type="checkbox" id="esrelevante" name="esrelevante"> Es Relevante
+					</label>
+				</div>
 			</div>
 		</div>
 		<div class="col-12">

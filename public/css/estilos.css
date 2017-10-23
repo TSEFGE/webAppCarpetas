@@ -2,8 +2,23 @@ header{
 	margin-bottom: 10px;
 }
 
+.navbar{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	background-color: #222222;
+}
+
+.nav-tabs .nav-item > a{
+	color: #A5A5A5;
+}
+
+.nav-tabs .nav-item .active{
+	color: #000000;
+	background-color: #D6D6D6;
+	border-color: #ddd #ddd #ddd;
+}
+
 .logofge{
-	width: 40px;
 	height: 40px;
 }
 
@@ -18,4 +33,14 @@ header{
 	border: solid 1px #BFBFBF;
 	margin: 8px;
 	padding: 7px;
+}
+
+textarea {
+	resize: none;
+}
+
+html{
+  	font-family: 'neosanspro-regular';
+  	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }

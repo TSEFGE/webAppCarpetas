@@ -71,39 +71,36 @@
                 });
             });
 
-            $('#camposdenunciante').hide();
+            $('#camposdenunciante').show();
             $('#camposdenunciado').hide();
             $('#camposautoridad').hide();
 
             $("#denunciante").click(function () {
-            	if( $('#denunciante').is(':checked')) {
-            		$('#camposdenunciante').show();
-            		$('#camposdenunciado').hide();
-            		$('#camposautoridad').hide();
-            	}else{
-            		$('#camposdenunciante').hide();
-            	}
+            	$('#camposdenunciante').show();
+            	$('#camposdenunciado').hide();
+            	$('#camposautoridad').hide();
             });
 
             $("#denunciado").click(function () {
-            	if( $('#denunciado').is(':checked')) {
-            		$('#camposdenunciante').hide();
-            		$('#camposdenunciado').show();
-            		$('#camposautoridad').hide();
-            	}else{
-            		$('#camposdenunciado').hide();
-            	}
+            	$('#camposdenunciante').hide();
+            	$('#camposdenunciado').show();
+            	$('#camposautoridad').hide();
             });
 
             $("#autoridad").click(function () {
-            	if( $('#autoridad').is(':checked')) {
-            		$('#camposdenunciante').hide();
-            		$('#camposdenunciado').hide();
-            		$('#camposautoridad').show();
-            	}else{
-            		$('#camposautoridad').hide();
-            	}
+            	$('#camposdenunciante').hide();
+            	$('#camposdenunciado').hide();
+            	$('#camposautoridad').show();
             });
+
+            $('#horadelito').timepicker();
+
+            $(".chosen-select").chosen({
+				placeholder_text_siple: 'Seleccione una categoría...',
+				max_selected_options: 3,
+				no_results_text: 'No se han encontrado la categoría'
+			});
+
         });
     </script>
 @endsection

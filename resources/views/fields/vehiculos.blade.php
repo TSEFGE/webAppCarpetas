@@ -34,7 +34,7 @@
 					{!! Form::text('modelo', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el modelo', 'required']) !!}
 				</div>
 			</div>
-			<div class="col-6">
+			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('color', 'Color') !!}
 					{!! Form::text('color', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el color', 'required']) !!}
@@ -70,10 +70,10 @@
 					{!! Form::select('tipouso', ['1' => 'Uno', '2' => 'Dos'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione un tipo de uso', 'required']) !!}
 				</div>
 			</div>
-			<div class="col-6">
+			<div class="col-12">
 				<div class="form-group">
 					{!! Form::label('senaspartic', 'Señas particulares') !!}
-					{!! Form::text('senaspartic', null, ['class' => 'form-control', 'placeholder' => 'Ingrese las señas particulares', 'required']) !!}
+					{!! Form::textarea('senaspartic', null, ['class' => 'form-control', 'placeholder' => 'Ingrese las señas particulares','rows' => '3', 'required']) !!}
 				</div>
 			</div>
 			{{--{!! Form::close() !!}--}}

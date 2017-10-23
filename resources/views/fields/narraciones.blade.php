@@ -13,7 +13,7 @@
 			<div class="col-12">
 				<div class="form-group">
 					{!! Form::label('narracion', 'Narración') !!}
-					{!! Form::textarea('narracion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la narración de los hechos', 'required']) !!}
+					{!! Form::textarea('narracion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la narración de los hechos', 'rows' => '5', 'required']) !!}
 				</div>
 			</div>
 			{{--{!! Form::close() !!}--}}

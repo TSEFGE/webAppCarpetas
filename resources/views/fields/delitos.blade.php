@@ -17,12 +17,20 @@
 				</div>
 			</div>
 			<div class="col-6">
-				<div class="form-group">
-					{!! Form::label('condetenido', '¿Con violencia?') !!}
-					{!! Form::label('condetenido', 'Si') !!}
-					{!! Form::radio('condetenido', null) !!}
-					{!! Form::label('relevante', 'No') !!}
-					{!! Form::radio('relevante', null) !!}
+				<p>¿Con violencia?</p>
+				<div class="form-group ml-3">
+					<div class="form-check form-check-inline">
+						<label class="form-check-label">
+							<input class="form-check-input" type="radio" name="conviolencia" id="si" value="1" checked>
+							Sí
+						</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<label class="form-check-label">
+							<input class="form-check-input" type="radio" name="conviolencia" id="no" value="0">
+							No
+						</label>
+					</div>
 				</div>
 			</div>
 			<div class="col-6">
@@ -40,7 +48,7 @@
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('consumacion', 'Consumación') !!}
-					{!! Form::text('consumacion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la consumacion', 'required']) !!}
+					{!! Form::text('consumacion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la consumación', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-6">
@@ -57,12 +65,10 @@
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('horadelito', 'Hora') !!}
-					<div class='input-group date calendarioCompleto'>
-	                    {!! Form::text('horadelito', null, ['class' => 'form-control','required'=>'', 'placeholder' => '00:00']) !!}
-	                    <span class="input-group-addon">
-	                        <i class="fa fa-calendar" aria-hidden="true"></i>
-	                    </span>
-	                </div>
+					<div class="input-group bootstrap-timepicker timepicker">
+						{!! Form::text('horadelito', null, ['class' => 'form-control','required'=>'', 'placeholder' => '00:00']) !!}
+						<span class="input-group-addon"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+					</div>
 				</div>
 			</div>
 			{{--{!! Form::close() !!}--}}

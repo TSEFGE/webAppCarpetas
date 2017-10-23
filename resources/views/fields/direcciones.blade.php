@@ -1,8 +1,8 @@
 <div class="row">
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('estado', 'Estado') !!}
-			{!! Form::select('estado', ['1' => 'Veracruz', '2' => 'Jalisco'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione un estado', 'required']) !!}
+			{!! Form::label('entidadfed', 'Entidad federativa') !!}
+			{!! Form::select('entidadfed', ['1' => 'Veracruz', '2' => 'Jalisco'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">
