@@ -28,133 +28,173 @@
 					{!! Form::text('rfc', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
 				</div>
 			</div>
-			<div class="col-6">
-				<div class="form-group">
-					{!! Form::label('fechanacinv', 'Fecha de nacimiento') !!}
-					<div class='input-group date calendarioCompleto'>
-	                    {!! Form::text('fechanacinv', null, ['class' => 'form-control','required'=>'', 'placeholder' => 'DD/MM/AAAA']) !!}
-	                    <span class="input-group-addon">
-	                        <i class="fa fa-calendar" aria-hidden="true"></i>
-	                    </span>
-	                </div>
-				</div>
-			</div>
-			<div class="col-6">
-				<div class="form-group">
-					{!! Form::label('edadinv', 'Edad') !!}
-					{!! Form::text('edadinv', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la edad', 'required']) !!}
-				</div>
-			</div>
-			<div class="col-6">
-				<div class="form-group">
-					{!! Form::label('curp', 'C.U.R.P.') !!}
-					{!! Form::text('curp', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el C.U.R.P.', 'required']) !!}
-				</div>
-			</div>
-			<div class="col-6">
-				<div class="form-group">
-					{!! Form::label('sexo', 'Sexo') !!}
-					{!! Form::select('sexo', ['1' => 'Hombre', '2' => 'Mujer'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione el sexo', 'required']) !!}
-				</div>
-			</div>
-			<div class="col-6">
-				<div class="form-group">
-					{!! Form::label('nacionalidad', 'Nacionalidad') !!}
-					{!! Form::select('nacionalidad', ['1' => 'Mexicana', '2' => 'Colombiana'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione la nacionalidad', 'required']) !!}
-				</div>
-			</div>
-			<div class="col-6">
-				<div class="form-group">
-					{!! Form::label('ocupacioon', 'Ocupación') !!}
-					{!! Form::select('ocupacion', ['1' => 'ING.', '2' => 'Lic.'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione la ocupación', 'required']) !!}
-				</div>
-			</div>
-			<div class="col-6">
-				<div class="form-group">
-					{!! Form::label('estadociv', 'Estado civil') !!}
-					{!! Form::select('estadociv', ['1' => 'Soltero', '2' => 'Casado'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione el estado civil', 'required']) !!}
-				</div>
-			</div>
-			<div class="col-6">
-				<div class="form-group">
-					{!! Form::label('escolaridad', 'Escolaridad') !!}
-					{!! Form::select('escolaridad', ['1' => 'Primaria', '2' => 'Secundaria'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione la escoalridad', 'required']) !!}
-				</div>
-			</div>
-			<div class="col-3">
-				<div class="form-group">
-					{!! Form::label('etnia', 'Etnia') !!}
-					{!! Form::select('etnia', ['1' => 'Indígena', '2' => 'Totonaca'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione la etnia', 'required']) !!}
-				</div>
-			</div>
-			<div class="col-3">
-				<div class="form-group">
-					{!! Form::label('lengua', 'Lengua') !!}
-					{!! Form::select('lengua', ['1' => 'Indígena', '2' => 'Totonaca'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione la lengua', 'required']) !!}
-				</div>
-			</div>
-			<div class="col-6">
-				<div class="form-group">
-					{!! Form::label('religion', 'Religión') !!}
-					{!! Form::select('religion', ['1' => 'Católica', '2' => 'Budista'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione la religión', 'required']) !!}
-				</div>
-			</div>
-			<div class="col-6">
-				<div class="form-group">
-					{!! Form::label('entidadfedorigen', 'Entidad federativa de origen') !!}
-					{!! Form::select('entidadfedorigen', ['1' => 'Veracruz', '2' => 'CDMX'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
-				</div>
-			</div>
-			<div class="col-6">
-				<div class="form-group">
-					{!! Form::label('municipioorigen', 'Municipio de origen') !!}
-					{!! Form::select('municipioorigen', ['1' => '>Xalapa', '2' => 'Altotonga'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione un municipio', 'required']) !!}
-				</div>
-			</div>
-			<div class="col-6">
-				<div class="form-group">
-					{!! Form::label('doctoidentif', 'Documento de identificación') !!}
-					{!! Form::text('doctoidentif', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el docto. de identificacion', 'required']) !!}
-				</div>
-			</div>
-			<div class="col-6">
-				<div class="form-group">
-					{!! Form::label('numdocto', 'Núm. de documento de identificación') !!}
-					{!! Form::text('numdocto', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el núm. del docto. de identificación', 'required']) !!}
-				</div>
-			</div>
-			{{--{!! Form::close() !!}--}}
 			</div>
 		</div>
 	</div>
-
+	
 	<div class="col-2">
 		@include('fields.botones')
 	</div>
 </div>
 
-<div class="boxtwo">
-	<h6>Dirección del involucrado</h6>
-	@include('fields.direcciones')
-</div>
-
-<div class="boxtwo">
-	<h6>Datos del trabajo del involucrado</h6>
-	<div class="row">
-		<div class="col-8">
-			<div class="form-group">
-				{!! Form::label('lugartrabajo', 'Lugar de trabajo') !!}
-				{!! Form::text('lugartrabajo', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el lugar de trabajo', 'required']) !!}
-			</div>
+<div id="accordion" role="tablist">
+	<div class="card">
+		<div class="card-header" role="tab" id="headingGenerales">
+			<h5 class="mb-0">
+				<a data-toggle="collapse" href="#collapseGen" aria-expanded="true" aria-controls="collapseGen">
+					Datos generales
+				</a>
+			</h5>
 		</div>
-		<div class="col-4">
-			<div class="form-group">
-				{!! Form::label('teltrabajo', 'Teléfono del trabajo') !!}
-				{!! Form::text('teltrabajo', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el teléfono del trabajo', 'required']) !!}
+		<div id="collapseGen" class="collapse show boxcollapse" role="tabpanel" aria-labelledby="headingGenerales" data-parent="#accordion">
+			<div class="boxtwo">
+				<h6>Datos generales</h6>
+				<div class="row">
+					{{--{!! Form::open(['route' => 'users.store', 'method' => 'POST'])  !!}--}}
+					<div class="col-4">
+						<div class="form-group">
+							{!! Form::label('fechanacinv', 'Fecha de nacimiento') !!}
+							<div class='input-group date calendarioCompleto'>
+								{!! Form::text('fechanacinv', null, ['class' => 'form-control','required'=>'', 'placeholder' => 'DD/MM/AAAA']) !!}
+								<span class="input-group-addon">
+									<i class="fa fa-calendar" aria-hidden="true"></i>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							{!! Form::label('edadinv', 'Edad') !!}
+							{!! Form::text('edadinv', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la edad', 'required']) !!}
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							{!! Form::label('curp', 'C.U.R.P.') !!}
+							{!! Form::text('curp', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el C.U.R.P.', 'required']) !!}
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							{!! Form::label('sexo', 'Sexo') !!}
+							{!! Form::select('sexo', ['1' => 'Hombre', '2' => 'Mujer'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione el sexo', 'required']) !!}
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							{!! Form::label('nacionalidad', 'Nacionalidad') !!}
+							{!! Form::select('nacionalidad', ['1' => 'Mexicana', '2' => 'Colombiana'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione la nacionalidad', 'required']) !!}
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							{!! Form::label('ocupacioon', 'Ocupación') !!}
+							{!! Form::select('ocupacion', ['1' => 'ING.', '2' => 'Lic.'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione la ocupación', 'required']) !!}
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							{!! Form::label('estadociv', 'Estado civil') !!}
+							{!! Form::select('estadociv', ['1' => 'Soltero', '2' => 'Casado'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione el estado civil', 'required']) !!}
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							{!! Form::label('escolaridad', 'Escolaridad') !!}
+							{!! Form::select('escolaridad', ['1' => 'Primaria', '2' => 'Secundaria'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione la escoalridad', 'required']) !!}
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							{!! Form::label('etnia', 'Etnia') !!}
+							{!! Form::select('etnia', ['1' => 'Indígena', '2' => 'Totonaca'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione la etnia', 'required']) !!}
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							{!! Form::label('lengua', 'Lengua') !!}
+							{!! Form::select('lengua', ['1' => 'Indígena', '2' => 'Totonaca'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione la lengua', 'required']) !!}
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							{!! Form::label('religion', 'Religión') !!}
+							{!! Form::select('religion', ['1' => 'Católica', '2' => 'Budista'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione la religión', 'required']) !!}
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							{!! Form::label('entidadfedorigen', 'Entidad federativa de origen') !!}
+							{!! Form::select('entidadfedorigen', ['1' => 'Veracruz', '2' => 'CDMX'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							{!! Form::label('municipioorigen', 'Municipio de origen') !!}
+							{!! Form::select('municipioorigen', ['1' => '>Xalapa', '2' => 'Altotonga'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione un municipio', 'required']) !!}
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							{!! Form::label('doctoidentif', 'Documento de identificación') !!}
+							{!! Form::text('doctoidentif', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el docto. de identificacion', 'required']) !!}
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							{!! Form::label('numdocto', 'Núm. de documento de identificación') !!}
+							{!! Form::text('numdocto', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el núm. del docto. de identificación', 'required']) !!}
+						</div>
+					</div>
+					{{--{!! Form::close() !!}--}}
+				</div>
 			</div>
 		</div>
 	</div>
-	@include('fields.direcciones')
+</div>
+
+<div class="card">
+	<div class="card-header">
+		<h5 class="mb-0">
+			<a data-toggle="collapse" href="#collapseDir" aria-expanded="false" aria-controls="collapseDir">
+				Dirección del involucrado
+			</a>
+		</h5>
+	</div>
+	<div id="collapseDir" class="collapse show boxcollapse">
+		<div class="boxtwo">
+			@include('fields.direcciones')
+		</div>
+	</div>
+</div>
+
+<div class="card">
+	<div class="card-header">
+		<h5 class="mb-0">
+			<a data-toggle="collapse" href="#collapseTrab" aria-expanded="false" aria-controls="collapseTrab">
+				<h6>Datos del trabajo del involucrado</h6>
+			</a>
+		</h5>
+	</div>
+	<div id="collapseTrab" class="collapse show boxcollapse">
+		<div class="boxtwo">
+			<div class="row">
+				<div class="col-8">
+					<div class="form-group">
+						{!! Form::label('lugartrabajo', 'Lugar de trabajo') !!}
+						{!! Form::text('lugartrabajo', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el lugar de trabajo', 'required']) !!}
+					</div>
+				</div>
+				<div class="col-4">
+					<div class="form-group">
+						{!! Form::label('teltrabajo', 'Teléfono del trabajo') !!}
+						{!! Form::text('teltrabajo', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el teléfono del trabajo', 'required']) !!}
+					</div>
+				</div>
+			</div>
+			@include('fields.direcciones')
+		</div>
+	</div>
 </div>
 
 <div class="boxtwo">
@@ -181,6 +221,21 @@
 					</label>
 				</div>
 			</div>
+		</div>
+	</div>
+</div>
+
+<div class="card">
+	<div class="card-header">
+		<h5 class="mb-0">
+			<a data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+				Tipo de involucrado
+			</a>
+		</h5>
+	</div>
+	<div id="collapseOne" class="collapse show boxcollapse">
+		<div class="boxtwo">
+			@include('fields.direcciones')
 		</div>
 	</div>
 </div>

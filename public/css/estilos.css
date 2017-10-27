@@ -39,6 +39,9 @@ textarea {
 	resize: none;
 }
 
+.boxcollapse{
+	background-color: #D6D6D6;
+}
 html{
   	font-family: 'neosanspro-regular';
   	-webkit-font-smoothing: antialiased;
