@@ -4,71 +4,71 @@
 			<h6>Información sobre la comisión del delito</h6>
 			<div class="row">
 			{{--{!! Form::open(['route' => 'users.store', 'method' => 'POST'])  !!}--}}
-			<div class="col-6">
+			<div class="col-3">
 				<div class="form-group">
-					{!! Form::label('delito', 'Delito') !!}
-					{!! Form::select('delito', ['1' => 'Homicidio', '2' => 'Robo'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione un delito', 'required']) !!}
+					{!! Form::label('delito', 'Delito', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('delito', ['1' => 'Homicidio', '2' => 'Robo'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un delito', 'required']) !!}
 				</div>
 			</div>
-			<div class="col-6">
+			<div class="col-3">
 				<div class="form-group">
-					{!! Form::label('arma|', 'Arma') !!}
-					{!! Form::text('arma|', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el arma', 'required']) !!}
-				</div>
-			</div>
-			<div class="col-6">
-				<p>¿Con violencia?</p>
-				<div class="form-group ml-3">
-					<div class="form-check form-check-inline">
-						<label class="form-check-label">
-							<input class="form-check-input" type="radio" name="conviolencia" id="si" value="1" checked>
-							Sí
-						</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<label class="form-check-label">
-							<input class="form-check-input" type="radio" name="conviolencia" id="no" value="0">
-							No
-						</label>
-					</div>
-				</div>
-			</div>
-			<div class="col-6">
-				<div class="form-group">
-					{!! Form::label('modalidad', 'Modalidad') !!}
-					{!! Form::select('modalidad', ['1' => 'Uno', '2' => 'Dos'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione una modalidad', 'required']) !!}
-				</div>
-			</div>
-			<div class="col-6">
-				<div class="form-group">
-					{!! Form::label('formacomision', 'Forma de comisión') !!}
-					{!! Form::select('formacomision', ['1' => 'Uno', '2' => 'Dos'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione una forma de comisión', 'required']) !!}
-				</div>
-			</div>
-			<div class="col-6">
-				<div class="form-group">
-					{!! Form::label('consumacion', 'Consumación') !!}
-					{!! Form::text('consumacion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la consumación', 'required']) !!}
-				</div>
-			</div>
-			<div class="col-6">
-				<div class="form-group">
-					{!! Form::label('fechadelito', 'Fecha') !!}
+					{!! Form::label('fechadelito', 'Fecha', ['class' => 'col-form-label-sm']) !!}
 					<div class='input-group date calendarioCompleto'>
-	                    {!! Form::text('fechadelito', null, ['class' => 'form-control','required'=>'', 'placeholder' => 'DD/MM/AAAA']) !!}
+	                    {!! Form::text('fechadelito', null, ['class' => 'form-control form-control-sm','required'=>'', 'placeholder' => 'DD/MM/AAAA']) !!}
 	                    <span class="input-group-addon">
 	                        <i class="fa fa-calendar" aria-hidden="true"></i>
 	                    </span>
 	                </div>
 				</div>
 			</div>
-			<div class="col-6">
+			<div class="col-3">
 				<div class="form-group">
-					{!! Form::label('horadelito', 'Hora') !!}
+					{!! Form::label('horadelito', 'Hora', ['class' => 'col-form-label-sm']) !!}
 					<div class="input-group bootstrap-timepicker timepicker">
-						{!! Form::text('horadelito', null, ['class' => 'form-control','required'=>'', 'placeholder' => '00:00']) !!}
+						{!! Form::text('horadelito', null, ['class' => 'form-control form-control-sm','required'=>'', 'placeholder' => '00:00']) !!}
 						<span class="input-group-addon"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
 					</div>
+				</div>
+			</div>
+			<div class="col-3">
+				<p class="col-form-label-sm">¿Con violencia?</p>
+				<div class="form-group">
+					<div class="form-check form-check-inline">
+						<label class="form-check-label col-form-label-sm">
+							<input class="form-check-input" type="radio" name="conviolencia" id="si" value="1" checked>
+							Sí
+						</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<label class="form-check-label col-form-label-sm">
+							<input class="form-check-input" type="radio" name="conviolencia" id="no" value="0">
+							No
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="form-group">
+					{!! Form::label('arma|', 'Arma', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('arma|', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el arma', 'required']) !!}
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="form-group">
+					{!! Form::label('modalidad', 'Modalidad', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('modalidad', ['1' => 'Uno', '2' => 'Dos'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una modalidad', 'required']) !!}
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="form-group">
+					{!! Form::label('formacomision', 'Forma de comisión', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('formacomision', ['1' => 'Uno', '2' => 'Dos'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una forma de comisión', 'required']) !!}
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="form-group">
+					{!! Form::label('consumacion', 'Consumación', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('consumacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la consumación', 'required']) !!}
 				</div>
 			</div>
 			{{--{!! Form::close() !!}--}}
@@ -88,38 +88,38 @@
 	<div class="row">
 		<div class="col-4">
 			<div class="form-group">
-				{!! Form::label('entrecalle', 'Entre calle') !!}
-				{!! Form::text('entrecalle', null, ['class' => 'form-control', 'placeholder' => 'Ingrese una calle perpendicular', 'required']) !!}
+				{!! Form::label('entrecalle', 'Entre calle', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::text('entrecalle', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese una calle perpendicular', 'required']) !!}
 			</div>
 		</div>
 		<div class="col-4">
 			<div class="form-group">
-				{!! Form::label('ycalle', 'Y calle') !!}
-				{!! Form::text('ycalle', null, ['class' => 'form-control', 'placeholder' => 'Ingrese otra calle perpendicular', 'required']) !!}
+				{!! Form::label('ycalle', 'Y calle', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::text('ycalle', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese otra calle perpendicular', 'required']) !!}
 			</div>
 		</div>
 		<div class="col-4">
 			<div class="form-group">
-				{!! Form::label('calletrasera', 'Calle trasera') !!}
-				{!! Form::text('calletrasera', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la calle trasera', 'required']) !!}
+				{!! Form::label('calletrasera', 'Calle trasera', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::text('calletrasera', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la calle trasera', 'required']) !!}
 			</div>
 		</div>
 		<div class="col-4">
 			<div class="form-group">
-				{!! Form::label('lugar', 'Lugar') !!}
-				{!! Form::select('lugar', ['1' => 'Uno', '2' => 'Dos'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione un lugar', 'required']) !!}
+				{!! Form::label('lugar', 'Lugar', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('lugar', ['1' => 'Uno', '2' => 'Dos'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un lugar', 'required']) !!}
 			</div>
 		</div>
 		<div class="col-4">
 			<div class="form-group">
-				{!! Form::label('zonaubic', 'Zona de ubicación') !!}
-				{!! Form::select('zonaubic', ['1' => 'Uno', '2' => 'Dos'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione una zona de ubicación', 'required']) !!}
+				{!! Form::label('zonaubic', 'Zona de ubicación', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('zonaubic', ['1' => 'Uno', '2' => 'Dos'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una zona de ubicación', 'required']) !!}
 			</div>
 		</div>
 		<div class="col-4">
 			<div class="form-group">
-				{!! Form::label('puntoref', 'Punto de referencia') !!}
-				{!! Form::text('puntoref', null, ['class' => 'form-control', 'placeholder' => 'Ingrese un punto de referencia', 'required']) !!}
+				{!! Form::label('puntoref', 'Punto de referencia', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::text('puntoref', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese un punto de referencia', 'required']) !!}
 			</div>
 		</div>
 	</div>

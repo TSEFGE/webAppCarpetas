@@ -6,14 +6,14 @@
 			{{--{!! Form::open(['route' => 'users.store', 'method' => 'POST'])  !!}--}}
 			<div class="col-12">
 				<div class="form-group">
-					{!! Form::label('involucrado', 'Involucrado') !!}
-					{!! Form::select('involucrado', ['1' => 'Román', '2' => 'José'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione un involucrado', 'required']) !!}
+					{!! Form::label('involucrado', 'Involucrado', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('involucrado', ['1' => 'Román', '2' => 'José'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un involucrado', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-12">
 				<div class="form-group">
-					{!! Form::label('narracion', 'Narración') !!}
-					{!! Form::textarea('narracion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese la narración de los hechos', 'rows' => '5', 'required']) !!}
+					{!! Form::label('narracion', 'Narración', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración de los hechos', 'rows' => '5', 'required']) !!}
 				</div>
 			</div>
 			{{--{!! Form::close() !!}--}}

@@ -4,40 +4,40 @@
 			<h6>Datos del familiar (Denunciante/Denunciado)</h6>
 			<div class="row">
 			{{--{!! Form::open(['route' => 'users.store', 'method' => 'POST'])  !!}--}}
-			<div class="col-6">
+			<div class="col-4">
 				<div class="form-group">
-					{!! Form::label('nombrefam', 'Nombre') !!}
-					{!! Form::text('nombrefam', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el nombre del familiar', 'required']) !!}
+					{!! Form::label('famde', 'Familiar de', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('famde', ['1' => 'Román', '2' => 'José'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un involucrado', 'required']) !!}
 				</div>
 			</div>
-			<div class="col-6">
+			<div class="col-4">
 				<div class="form-group">
-					{!! Form::label('primerapfam', 'Primer apellido') !!}
-					{!! Form::text('primerapfam', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el primer apellido', 'required']) !!}
+					{!! Form::label('parentesco', 'Parentesco', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('parentesco', ['1' => 'Hijo(a)', '2' => 'Padre/Madre', '3' => 'Cónyuge'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un parentesco', 'required']) !!}
 				</div>
 			</div>
-			<div class="col-6">
+			<div class="col-4">
 				<div class="form-group">
-					{!! Form::label('segundoapfam', 'Segundo apellido') !!}
-					{!! Form::text('segundoapfam', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el segundo apellido', 'required']) !!}
+					{!! Form::label('ocupacion', 'Ocupación', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('ocupacion', ['1' => 'Lic.', '2' => 'Ing.'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una ocupación', 'required']) !!}
 				</div>
 			</div>
-			<div class="col-6">
+			<div class="col-4">
 				<div class="form-group">
-					{!! Form::label('famde', 'Familiar de') !!}
-					{!! Form::select('famde', ['1' => 'Román', '2' => 'José'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione un involucrado', 'required']) !!}
+					{!! Form::label('nombrefam', 'Nombre', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('nombrefam', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del familiar', 'required']) !!}
 				</div>
 			</div>
-			<div class="col-6">
+			<div class="col-4">
 				<div class="form-group">
-					{!! Form::label('parentesco', 'Parentesco') !!}
-					{!! Form::select('parentesco', ['1' => 'Hijo(a)', '2' => 'Padre/Madre', '3' => 'Cónyuge'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione un parentesco', 'required']) !!}
+					{!! Form::label('primerapfam', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('primerapfam', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido', 'required']) !!}
 				</div>
 			</div>
-			<div class="col-6">
+			<div class="col-4">
 				<div class="form-group">
-					{!! Form::label('ocupacion', 'Ocupación') !!}
-					{!! Form::select('ocupacion', ['1' => 'Lic.', '2' => 'Ing.'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione una ocupación', 'required']) !!}
+					{!! Form::label('segundoapfam', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('segundoapfam', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'required']) !!}
 				</div>
 			</div>
 			{{--{!! Form::close() !!}--}}

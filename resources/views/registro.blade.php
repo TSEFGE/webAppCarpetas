@@ -10,7 +10,13 @@
 		<a class="nav-link active" id="gencar-tab" data-toggle="tab" href="#gencar" role="tab" aria-controls="gencar" aria-selected="true">Generales carpeta</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" id="involucrados-tab" data-toggle="tab" href="#involucrados" role="tab" aria-controls="involucrados" aria-selected="false">Involucrados</a>
+		<a class="nav-link" id="denunciantes-tab" data-toggle="tab" href="#denunciantes" role="tab" aria-controls="denunciantes" aria-selected="false">Denunciantes</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" id="denunciados-tab" data-toggle="tab" href="#denunciados" role="tab" aria-controls="denunciados" aria-selected="false">Denunciados</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" id="autoridades-tab" data-toggle="tab" href="#autoridades" role="tab" aria-controls="autoridades" aria-selected="false">Autoridades</a>
 	</li>
 	<li class="nav-item">
 		<a class="nav-link" id="familiares-tab" data-toggle="tab" href="#familiares" role="tab" aria-controls="familiares" aria-selected="false">Familiares</a>
@@ -31,8 +37,14 @@
 		<div class="tab-pane fade show active" id="gencar" role="tabpanel" aria-labelledby="gencar-tab">
 			@include('fields.gencarpeta')
 		</div>
-		<div class="tab-pane fade" id="involucrados" role="tabpanel" aria-labelledby="involucrados-tab">
-			@include('fields.involucrados')
+		<div class="tab-pane fade" id="denunciantes" role="tabpanel" aria-labelledby="denunciantes-tab">
+			@include('fields.denunciantes')
+		</div>
+		<div class="tab-pane fade" id="denunciados" role="tabpanel" aria-labelledby="denunciados-tab">
+			@include('fields.denunciados')
+		</div>
+		<div class="tab-pane fade" id="autoridades" role="tabpanel" aria-labelledby="autoridades-tab">
+			@include('fields.autoridades')
 		</div>
 		<div class="tab-pane fade" id="familiares" role="tabpanel" aria-labelledby="familiares-tab">
 			@include('fields.familiares')
