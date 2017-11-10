@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCatReligionTable extends Migration
+class CreateCatOcupacionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateCatReligionTable extends Migration
      */
     public function up()
     {
-        Schema::create('cat_religion', function (Blueprint $table) {
+        Schema::create('cat_ocupacion', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre', 20);
-
+            $table->string('nombre',50);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -29,6 +27,6 @@ class CreateCatReligionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cat_religion');
+        Schema::dropIfExists('cat_ocupacion');
     }
 }

@@ -20,7 +20,7 @@ class CreateFiscalesTable extends Migration
             $table->string('primerAp', 50);
             $table->string('segundoAp', 50);
             $table->integer('numFiscal');
-            $table->enum('nivel', ['1', '2', '3'])->default('1');
+            $table->enum('nivel', ['1', '2', '3', '4', '5'])->default('1');
 
             $table->foreign('idUnidad')->references('id')->on('unidad')->onDelete('cascade');
 

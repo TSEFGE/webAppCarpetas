@@ -15,11 +15,11 @@ class CreateFamiliaresTable extends Migration
     {
         Schema::create('familiar', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('persona')->unsigned();
+            $table->integer('idPersona')->unsigned();
             $table->string('nombres', 50);
-            $table->string('primerAp', 30);
-            $table->string('segundoAp', 30);
-            $table->string('parentesco', 20);
+            $table->string('primerAp', 50);
+            $table->string('segundoAp', 50);
+            $table->string('parentesco', 50);
             $table->integer('idOcupacion')->unsigned();
 
             $table->foreign('idPersona')->references('id')->on('persona')->onDelete('cascade');

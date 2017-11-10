@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCatZonaTable extends Migration
+class CreateCatColorTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateCatZonaTable extends Migration
      */
     public function up()
     {
-        Schema::create('cat_zona', function (Blueprint $table) {
+        Schema::create('cat_color', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre', 20);
-
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -29,6 +26,6 @@ class CreateCatZonaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cat_zona');
+        Schema::dropIfExists('cat_color');
     }
 }

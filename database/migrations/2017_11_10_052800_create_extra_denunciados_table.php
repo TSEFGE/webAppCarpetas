@@ -17,16 +17,21 @@ class CreateExtraDenunciadosTable extends Migration
             $table->increments('id');
             $table->integer('idVariablesPersona')->unsigned();
             $table->integer('idNotificacion')->unsigned();
+            $table->integer('idPuesto')->unsigned();
             $table->string('alias', 30);
             $table->string('senasPartic', 100);
             $table->integer('ingreso');
-            $table->enum('sexo', ['Semanal', 'Quincenal', 'Mensual'])->default('Mensual');
+            $table->enum('periodoIngreso', ['Semanal', 'Quincenal', 'Mensual'])->default('Mensual');
             $table->string('residenciaAnterior', 100);
+            $table->integer('idAbogado')->unsigned();
             $table->integer('personasBajoSuGuarda');
             $table->boolean('perseguidoPenalmente');
+            $table->string('vestimenta', 150);
 
             $table->foreign('idVariablesPersona')->references('id')->on('variables_persona')->onDelete('cascade');
             $table->foreign('idNotificacion')->references('id')->on('notificacion')->onDelete('cascade');
+            $table->foreign('idPuesto')->references('id')->on('cat_puesto')->onDelete('cascade');
+            $table->foreign('idAbogado')->references('id')->on('extra_abogado')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes();

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCatEstadoTable extends Migration
+class CreateCatLocalidadTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateCatEstadoTable extends Migration
      */
     public function up()
     {
-        Schema::create('cat_estado', function (Blueprint $table) {
+        Schema::create('cat_localidad', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre', 40);
-            $table->string('abreviatura', 10);
+            $table->integer('idMunicipio')->unsigned();
+            $table->string('nombre', 50);
+
+            $table->foreign('idMunicipio')->references('id')->on('cat_municipio')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes();
@@ -30,6 +32,6 @@ class CreateCatEstadoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cat_estado');
+        Schema::dropIfExists('cat_localidad');
     }
 }
