@@ -20,7 +20,7 @@ class CreatePersonasTable extends Migration
              $table->string('segundoAp', 50);
              $table->dateTime('fechaNacimiento');
              $table->string('rfc', 20);
-             $table->string('curp', 30);
+             $table->string('curp', 20)->unique();
              $table->enum('sexo', ['Se desconoce', 'Hombre', 'Mujer'])->default('Se desconoce');
              $table->integer('idNacionalidad')->unsigned();
              $table->integer('idEtnia')->unsigned();

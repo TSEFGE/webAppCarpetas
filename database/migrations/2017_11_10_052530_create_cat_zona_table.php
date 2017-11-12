@@ -15,7 +15,7 @@ class CreateCatZonaTable extends Migration
     {
         Schema::create('cat_zona', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre', 50);
+            $table->string('nombre', 50)->unique();
 
             $table->timestamps();
             $table->softDeletes();

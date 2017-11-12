@@ -16,7 +16,7 @@ class CreateCatSubmarcaTable extends Migration
         Schema::create('cat_submarca', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idMarca')->unsigned();
-            $table->string('nombre', 50);
+            $table->string('nombre', 50)->unique();
 
             $table->foreign('idMarca')->references('id')->on('cat_marca')->onDelete('cascade');
 

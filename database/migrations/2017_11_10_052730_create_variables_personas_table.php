@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVariablesPersonaTable extends Migration
+class CreateVariablesPersonasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,7 +18,7 @@ class CreateVariablesPersonaTable extends Migration
             $table->integer('idPersona')->unsigned()->index()->nullable();
             $table->foreign('idPersona')->references('id')->on('persona');
             $table->integer('edad');
-            $table->integer('telefono',10);
+            $table->integer('telefono');
             $table->string('motivoEstancia',200);
             $table->integer('idOcupacion')->unsigned()->index()->nullable();
             $table->foreign('idOcupacion')->references('id')->on('cat_ocupacion')->ondelete('cascade');
@@ -26,8 +26,8 @@ class CreateVariablesPersonaTable extends Migration
             $table->foreign('idEstadoCivil')->references('id')->on('cat_estado_civil')->ondelete('cascade');
             $table->integer('idEscolaridad')->unsigned()->index()->nullable();
             $table->foreign('idEscolaridad')->references('id')->on('cat_escolaridad')->ondelete('cascade');
-            $table->integer('idRegion')->unsigned()->index()->nullable();
-            $table->foreign('idRegion')->references('id')->on('cat_region')->ondelete('cascade');
+            $table->integer('idReligion')->unsigned()->index()->nullable();
+            $table->foreign('idReligion')->references('id')->on('cat_religion')->ondelete('cascade');
             $table->integer('idDomicilio')->unsigned()->index()->nullable();
             $table->foreign('idDomicilio')->references('id')->on('domicilio')->ondelete('cascade');
             $table->string('docIdentificacion',50);

@@ -18,8 +18,8 @@ class CreateExtraDenunciadosTable extends Migration
             $table->integer('idVariablesPersona')->unsigned();
             $table->integer('idNotificacion')->unsigned();
             $table->integer('idPuesto')->unsigned();
-            $table->string('alias', 30);
-            $table->string('senasPartic', 100);
+            $table->string('alias', 50);
+            $table->string('senasPartic', 150);
             $table->integer('ingreso');
             $table->enum('periodoIngreso', ['Semanal', 'Quincenal', 'Mensual'])->default('Mensual');
             $table->string('residenciaAnterior', 100);

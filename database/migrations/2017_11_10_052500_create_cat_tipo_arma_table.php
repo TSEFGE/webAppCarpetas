@@ -15,7 +15,7 @@ class CreateCatTipoArmaTable extends Migration
     {
         Schema::create('cat_tipo_arma', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre', 50);
+            $table->string('nombre', 50)->unique();
 
             $table->timestamps();
             $table->softDeletes();

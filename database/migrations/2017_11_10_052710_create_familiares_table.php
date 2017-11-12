@@ -19,7 +19,7 @@ class CreateFamiliaresTable extends Migration
             $table->string('nombres', 50);
             $table->string('primerAp', 50);
             $table->string('segundoAp', 50);
-            $table->string('parentesco', 50);
+            $table->enum('parentesco', ['Padre', 'Madre', 'Conyuge', 'Hijo(a)'])->default('Hijo(a)');
             $table->integer('idOcupacion')->unsigned();
 
             $table->foreign('idPersona')->references('id')->on('persona')->onDelete('cascade');

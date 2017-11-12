@@ -34,7 +34,7 @@ class CreateVehiculosTable extends Migration
             $table->integer('idProcedencia')->unsigned();
             $table->integer('idAseguradora')->unsigned();
 
-            $table->foreign('idTipifDlito')->references('id')->on('tipif_delito')->onDelete('cascade');
+            $table->foreign('idTipifDelito')->references('id')->on('tipif_delito')->onDelete('cascade');
             $table->foreign('idEstado')->references('id')->on('cat_estado')->onDelete('cascade');
             $table->foreign('idMarca')->references('id')->on('cat_marca')->onDelete('cascade');
             $table->foreign('idSubmarca')->references('id')->on('cat_submarca')->onDelete('cascade');

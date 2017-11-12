@@ -15,7 +15,15 @@ class CreateNotificacionesTable extends Migration
     {
         Schema::create('notificacion', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('idDomicilio')->unsigned();
+            $table->string('correo', 100);
+            $table->string('telefono', 10);
+            $table->string('fax', 20);
+
+            $table->foreign('idDomicilio')->references('id')->on('domicilio')->onDelete('cascade');
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

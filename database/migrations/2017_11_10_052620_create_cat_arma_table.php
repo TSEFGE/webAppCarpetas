@@ -16,7 +16,7 @@ class CreateCatArmaTable extends Migration
         Schema::create('cat_arma', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idTipoArma')->unsigned();
-            $table->string('nombre', 50);
+            $table->string('nombre', 50)->unique();
 
             $table->foreign('idTipoArma')->references('id')->on('cat_tipo_arma')->onDelete('cascade');
 
