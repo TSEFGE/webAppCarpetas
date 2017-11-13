@@ -15,7 +15,12 @@ class CreateAcumulacionesTable extends Migration
     {
         Schema::create('acumulacion', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('idCarpetaP')->unsigned();
+            $table->integer('idCarpetaS')->unsigned();
             $table->timestamps();
+            
+            $table->foreign('idCarpetaP')->references('id')->on('carpeta')->onDelete('cascade');
+            $table->foreign('idCarpetaS')->references('id')->on('carpeta')->onDelete('cascade');
         });
     }
 

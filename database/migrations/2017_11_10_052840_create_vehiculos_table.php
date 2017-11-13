@@ -42,8 +42,8 @@ class CreateVehiculosTable extends Migration
             $table->foreign('idClaseVehiculo')->references('id')->on('cat_clase_vehiculo')->onDelete('cascade');
             $table->foreign('idTipoVehiculo')->references('id')->on('cat_tipo_vehiculo')->onDelete('cascade');
             $table->foreign('idTipoUso')->references('id')->on('cat_tipo_uso')->onDelete('cascade');
-            $table->foreign('idProcedencia')->references('id')->on('procedencia')->onDelete('cascade');
-            $table->foreign('idAseguradora')->references('id')->on('aseguradora')->onDelete('cascade');
+            $table->foreign('idProcedencia')->references('id')->on('cat_procedencia')->onDelete('cascade');
+            $table->foreign('idAseguradora')->references('id')->on('cat_aseguradora')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes();

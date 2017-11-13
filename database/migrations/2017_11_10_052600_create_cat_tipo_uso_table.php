@@ -16,9 +16,7 @@ class CreateCatTipoUsoTable extends Migration
         Schema::create('cat_tipo_uso', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre', 50);
-
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

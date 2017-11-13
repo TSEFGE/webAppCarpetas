@@ -16,9 +16,10 @@ class CreateNarracionesTable extends Migration
         Schema::create('narracion', function (Blueprint $table) {
             $table->increments('id');
             $table->string('narracion',2000);
-            $table->integer('idVatiablesPersona')->unsigned()->index()->nullable();
-            $table->foreign('idVatiablesPersona')->references('id')->on('variables_persona')->ondelete('cascade');
+            $table->integer('idVatiablesPersona')->unsigned();
             $table->timestamps();
+            
+            $table->foreign('idVatiablesPersona')->references('id')->on('variables_persona')->onDelete('cascade');
         });
     }
 

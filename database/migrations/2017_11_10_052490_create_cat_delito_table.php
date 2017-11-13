@@ -16,6 +16,7 @@ class CreateCatDelitoTable extends Migration
         Schema::create('cat_delito', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre',50);
+            $table->boolean('snVeh')->default(false);
             $table->timestamps();
         });
     }

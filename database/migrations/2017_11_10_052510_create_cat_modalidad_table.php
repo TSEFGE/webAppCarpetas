@@ -15,6 +15,7 @@ class CreateCatModalidadTable extends Migration
     {
         Schema::create('cat_modalidad', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre',50);
             $table->timestamps();
         });
     }

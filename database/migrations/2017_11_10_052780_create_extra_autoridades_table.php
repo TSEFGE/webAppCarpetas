@@ -18,6 +18,7 @@ class CreateExtraAutoridadesTable extends Migration
             $table->integer('idCarpeta')->unsigned();
             $table->integer('idVariablesPersona')->unsigned();
             $table->string('antiguedad', 50);
+            $table->string('rango', 50);
             $table->string('horarioLaboral', 50);
 
             $table->foreign('idCarpeta')->references('id')->on('carpeta')->onDelete('cascade');
