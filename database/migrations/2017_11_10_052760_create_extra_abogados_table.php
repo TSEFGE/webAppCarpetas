@@ -15,12 +15,13 @@ class CreateExtraAbogadosTable extends Migration
     {
         Schema::create('extra_abogado', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('idVatiablesPersona')->unsigned()->index()->nullable();
-            $table->foreign('idVatiablesPersona')->references('id')->on('variables_persona')->ondelete('cascade');
+            $table->integer('idVatiablesPersona')->unsigned();
             $table->string('cedulaProf',50);
             $table->string('sector',50);
             $table->string('correo',50);
             $table->timestamps();
+            
+            $table->foreign('idVatiablesPersona')->references('id')->on('variables_persona')->onDelete('cascade');
         });
     }
 

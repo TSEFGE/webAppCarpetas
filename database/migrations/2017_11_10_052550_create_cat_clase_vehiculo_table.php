@@ -15,6 +15,7 @@ class CreateCatClaseVehiculoTable extends Migration
     {
         Schema::create('cat_clase_vehiculo', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre', 50);
             $table->timestamps();
         });
     }

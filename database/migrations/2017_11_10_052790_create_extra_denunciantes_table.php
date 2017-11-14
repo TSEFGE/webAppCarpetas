@@ -15,14 +15,15 @@ class CreateExtraDenunciantesTable extends Migration
     {
         Schema::create('extra_denunciante', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('idVatiablesPersona')->unsigned()->index()->nullable();
-            $table->foreign('idVatiablesPersona')->references('id')->on('variables_persona')->ondelete('cascade');
+            $table->integer('idVatiablesPersona')->unsigned();
             $table->integer('idNotificacion')->unsigned()->index()->nullable();
-            $table->foreign('idNotificacion')->references('id')->on('notificaciones')->ondelete('cascade');
             $table->integer('idAbogado')->unsigned()->index()->nullable();
-            $table->foreign('idAbogado')->references('id')->on('extra_abogado')->ondelete('cascade');
             $table->boolean('conoceAlDenuncuado')->default(false);
             $table->timestamps();
+            
+            $table->foreign('idVatiablesPersona')->references('id')->on('variables_persona')->onDelete('cascade');
+            $table->foreign('idNotificacion')->references('id')->on('notificacion')->onDelete('cascade');
+            $table->foreign('idAbogado')->references('id')->on('extra_abogado')->onDelete('cascade');
         });
     }
 
