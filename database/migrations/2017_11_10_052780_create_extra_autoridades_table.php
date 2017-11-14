@@ -8,7 +8,7 @@ class CreateExtraAutoridadesTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     *o
      * @return void
      */
     public function up()
