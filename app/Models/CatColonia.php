@@ -11,4 +11,14 @@ class CatColonia extends Model
     protected $fillable = [
         'id', 'idCodigoPostal', 'nombre',
     ];
+
+    public function domicilios()
+    {
+        return $this->hasMany('App\Models\Domicilio');
+    }
+
+    public function codigoPostal()
+    {
+        return $this->belongsTo('App\Models\Carpeta');
+    }
 }
