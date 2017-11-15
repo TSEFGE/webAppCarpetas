@@ -11,4 +11,9 @@ class CatEstadoCivil extends Model
     protected $fillable = [
         'id', 'idMunicipio', 'nombre',
     ];
+
+    public function variablesPersonas()
+    {
+        return $this->hasMany('App\Models\VariablesPersona');
+    }
 }

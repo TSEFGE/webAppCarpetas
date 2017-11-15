@@ -33,7 +33,7 @@ class CreateCarpetasTable extends Migration
             $table->timestamps();
             
             $table->foreign('idUnidad')->references('id')->on('unidad')->onDelete('cascade');
-            $table->foreign('idFiscal')->references('id')->on('fiscal')->onDelete('cascade');
+            $table->foreign('idFiscal')->references('id')->on('users')->onDelete('cascade');//Cambiar de users a fiscal
             $table->foreign('idTipoDeterminacion')->references('id')->on('cat_tipo_determinacion')->onDelete('cascade');
         });
     }

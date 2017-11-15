@@ -11,4 +11,9 @@ class CatZona extends Model
     protected $fillable = [
         'id', 'nombre',
     ];
+
+    public function tipifDelitos()
+    {
+        return $this->hasMany('App\Models\TipifDelito');
+    }
 }

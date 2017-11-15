@@ -11,4 +11,9 @@ class Notificacion extends Model
     protected $fillable = [
         'id', 'idDomicilio', 'correo', 'telefono', 'fax',
     ];
+
+    public function extraDenunciante()
+    {
+        return $this->belongsTo('App\Models\ExtraDenunciante');
+    }
 }

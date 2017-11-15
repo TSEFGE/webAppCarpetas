@@ -11,4 +11,9 @@ class CatReligion extends Model
     protected $fillable = [
         'id', 'nombre',
     ];
+
+    public function variablesPersonas()
+    {
+        return $this->hasMany('App\Models\VariablesPersona');
+    }
 }

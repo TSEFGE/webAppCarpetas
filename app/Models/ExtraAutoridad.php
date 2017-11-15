@@ -11,4 +11,14 @@ class ExtraAutoridad extends Model
     protected $fillable = [
         'id', 'idCarpeta', 'idVariablesPersona', 'antiguedad', 'rango', 'horarioLaboral',
     ];
+
+    public function carpeta()
+    {
+        return $this->belongsTo('App\Models\Carpeta');
+    }
+
+    public function variablesPersona()
+    {
+        return $this->belongsTo('App\Models\VariablesPersona');
+    }
 }

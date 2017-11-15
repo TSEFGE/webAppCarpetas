@@ -11,4 +11,9 @@ class CatTipoDeterminacion extends Model
     protected $fillable = [
         'id', 'nombre',
     ];
+
+    public function carpetas()
+    {
+        return $this->hasMany('App\Models\Carpeta');
+    }
 }
