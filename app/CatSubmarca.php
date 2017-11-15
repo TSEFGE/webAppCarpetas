@@ -11,4 +11,12 @@ class CatSubmarca extends Model
     protected $fillable = [
         'id', 'idMarca', 'nombre',
     ];
+
+    public function vehiculos(){
+        return $this->hasMany('App\Models\Vehiculo'):
+    }
+
+    public function marca(){
+        return $this->belongsTo('App\Models\CatMarca'):
+    }
 }

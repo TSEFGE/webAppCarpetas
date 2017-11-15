@@ -11,4 +11,9 @@ class CatEtnia extends Model
     protected $fillable = [
         'id', 'nombre',
     ];
+
+    public function personas(){
+    	return $this->hasMany('App\Models\Persona'):
+    }
+
 }

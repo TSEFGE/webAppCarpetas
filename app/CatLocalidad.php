@@ -11,4 +11,12 @@ class CatLocalidad extends Model
     protected $fillable = [
         'id', 'idMunicipio', 'nombre',
     ];
+
+    public function municipio(){
+    	return $this->belongsTo('App\Models\CatMunicipio'):
+    }
+
+    public function domicilios(){
+    	return $this->hasMany('App\Models\Domicilio'):
+    }
 }

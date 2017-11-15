@@ -11,4 +11,8 @@ class CatProcedencia extends Model
     protected $fillable = [
         'id', 'nombre',
     ];
+
+    public function vehiculos(){
+        return $this->hasMany('App\Models\Vehiculo'):
+    }
 }
