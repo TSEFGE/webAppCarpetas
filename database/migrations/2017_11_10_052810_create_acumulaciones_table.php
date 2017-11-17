@@ -18,6 +18,7 @@ class CreateAcumulacionesTable extends Migration
             $table->integer('idCarpetaP')->unsigned();
             $table->integer('idCarpetaS')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
             
             $table->foreign('idCarpetaP')->references('id')->on('carpeta')->onDelete('cascade');
             $table->foreign('idCarpetaS')->references('id')->on('carpeta')->onDelete('cascade');

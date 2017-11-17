@@ -18,6 +18,7 @@ class CreateNarracionesTable extends Migration
             $table->string('narracion',2000);
             $table->integer('idVatiablesPersona')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
             
             $table->foreign('idVatiablesPersona')->references('id')->on('variables_persona')->onDelete('cascade');
         });

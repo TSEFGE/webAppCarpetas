@@ -33,6 +33,7 @@ class CreateTipifDelitosTable extends Migration
             $table->string('calleTrasera',100);
             $table->string('puntaReferencia',100);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('idCarpeta')->references('id')->on('carpeta')->onDelete('cascade');
             $table->foreign('idDelito')->references('id')->on('cat_delito')->onDelete('cascade');

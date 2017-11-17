@@ -18,6 +18,7 @@ class CreateCatMunicipioTable extends Migration
             $table->string('nombre',50);
             $table->integer('idEstado')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
             
             $table->foreign('idEstado')->references('id')->on('cat_estado')->onDelete('cascade');
         });

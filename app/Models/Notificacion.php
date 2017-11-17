@@ -16,4 +16,14 @@ class Notificacion extends Model
     {
         return $this->belongsTo('App\Models\ExtraDenunciante');
     }
+
+    public function extraDenunciado()
+    {
+        return $this->belongsTo('App\Models\ExtraDenunciado');
+    }
+
+    public function domicilio()
+    {
+        return $this->belongsTo('App\Models\Domicilio');
+    }
 }

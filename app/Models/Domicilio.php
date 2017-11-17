@@ -24,7 +24,7 @@ class Domicilio extends Model
 
     public function tipifDelitos()
     {
-        return $this->hasMany('App\Models\TipifDelitos');
+        return $this->hasMany('App\Models\TipifDelito');
     }
 
     public function estado()

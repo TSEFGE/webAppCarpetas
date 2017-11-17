@@ -31,6 +31,7 @@ class CreateVariablesPersonasTable extends Migration
             $table->string('telefonoTrabajo',24);
             $table->string('representanteLegal',24);
             $table->timestamps();
+            $table->softDeletes();
             
             $table->foreign('idPersona')->references('id')->on('persona')->onDelete('cascade');
             $table->foreign('idOcupacion')->references('id')->on('cat_ocupacion')->onDelete('cascade');

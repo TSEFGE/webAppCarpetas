@@ -15,8 +15,4 @@ class CatPuesto extends Model
     public function extraDenunciados(){
         return $this->hasMany('App\Models\ExtraDenunciado'):
     }
-
-    public function estado(){
-        return $this->belongsTo('App\Models\CatEstado'):
-    }
 }

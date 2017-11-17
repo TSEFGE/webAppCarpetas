@@ -15,5 +15,4 @@ class CatEtnia extends Model
     public function personas(){
     	return $this->hasMany('App\Models\Persona'):
     }
-
 }
