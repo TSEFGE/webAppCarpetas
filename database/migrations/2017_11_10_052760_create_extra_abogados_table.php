@@ -20,6 +20,7 @@ class CreateExtraAbogadosTable extends Migration
             $table->string('sector',50);
             $table->string('correo',50);
             $table->timestamps();
+            $table->softDeletes();
             
             $table->foreign('idVatiablesPersona')->references('id')->on('variables_persona')->onDelete('cascade');
         });

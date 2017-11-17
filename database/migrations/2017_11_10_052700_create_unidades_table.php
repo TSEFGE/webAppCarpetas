@@ -15,7 +15,7 @@ class CreateUnidadesTable extends Migration
     {
         Schema::create('unidad', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre',50);
+            $table->string('nombre',50)->unique();
             $table->string('direccion',100);
             $table->string('latitud', 5, 5);
             $table->float('longitud', 5, 5);
@@ -24,6 +24,7 @@ class CreateUnidadesTable extends Migration
             $table->string('region',50);
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

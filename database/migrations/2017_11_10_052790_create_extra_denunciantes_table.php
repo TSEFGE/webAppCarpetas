@@ -20,6 +20,7 @@ class CreateExtraDenunciantesTable extends Migration
             $table->integer('idAbogado')->unsigned()->index()->nullable();
             $table->boolean('conoceAlDenuncuado')->default(false);
             $table->timestamps();
+            $table->softDeletes();
             
             $table->foreign('idVatiablesPersona')->references('id')->on('variables_persona')->onDelete('cascade');
             $table->foreign('idNotificacion')->references('id')->on('notificacion')->onDelete('cascade');

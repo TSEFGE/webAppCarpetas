@@ -20,6 +20,7 @@ class CreateAcusacionesTable extends Migration
             $table->integer('idTipifDelito')->unsigned();
             $table->integer('idDenunciado')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
             
             $table->foreign('idCarpeta')->references('id')->on('carpeta')->onDelete('cascade');
             $table->foreign('idDenunciante')->references('id')->on('extra_denunciante')->onDelete('cascade');

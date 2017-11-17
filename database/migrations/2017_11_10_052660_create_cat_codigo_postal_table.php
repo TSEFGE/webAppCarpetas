@@ -16,8 +16,9 @@ class CreateCatCodigoPostalTable extends Migration
         Schema::create('cat_codigo_postal', function (Blueprint $table) {
             $table->increments('id');         
             $table->integer('idMunicipio')->unsigned();
-            $table->integer('codigo');
+            $table->integer('codigo')->unique();
             $table->timestamps();
+            $table->softDeletes();
             
             $table->foreign('idMunicipio')->references('id')->on('cat_municipio')->onDelete('cascade');
         });

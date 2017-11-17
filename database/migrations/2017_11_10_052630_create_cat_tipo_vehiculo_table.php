@@ -15,9 +15,10 @@ class CreateCatTipoVehiculoTable extends Migration
     {
         Schema::create('cat_tipo_vehiculo', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre', 50);
+            $table->string('nombre', 50)->unique();
             $table->integer('idClaseVehiculo')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
             
             $table->foreign('idClaseVehiculo')->references('id')->on('cat_clase_vehiculo')->onDelete('cascade');
         });
