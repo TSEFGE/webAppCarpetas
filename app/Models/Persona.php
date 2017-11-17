@@ -39,6 +39,4 @@ class Persona extends Model
     public function variablesPersonas(){
     	return $this->hasMany('App\Models\VariablesPersona'):
     }
-
-
 }
