@@ -12,7 +12,36 @@ class ReligionSeeder extends Seeder
     public function run()
     {
         DB::table('cat_religion')->insert([
-            'nombre' => 'Católico',
+        	[ 'id' => 0, 'nombre' => 'SIN INFORMACION'],
+            [ 'id' => 1, 'nombre' => 'CATOLICA'],
+            [ 'id' => 2, 'nombre' => 'ATEA'],
+            [ 'id' => 3, 'nombre' => 'MORMONA'],
+            [ 'id' => 4, 'nombre' => 'BAUTISTA'],
+            [ 'id' => 5, 'nombre' => 'BRAHMANISTA'],
+            [ 'id' => 6, 'nombre' => 'BUDISTA'],
+            [ 'id' => 7, 'nombre' => 'CRISLAM'],
+            [ 'id' => 8, 'nombre' => 'CRISTIANA'],
+            [ 'id' => 9, 'nombre' => 'EVANGELISTA'],
+            [ 'id' => 10, 'nombre' => 'HINDUISTA'],
+            [ 'id' => 11, 'nombre' => 'ISLAMICA'],
+            [ 'id' => 12, 'nombre' => 'JUDAICA'],
+            [ 'id' => 13, 'nombre' => 'LUTERANA'],
+            [ 'id' => 14, 'nombre' => 'LUZ DEL MUNDO'],
+            [ 'id' => 15, 'nombre' => 'MAZDEISTA'],
+            [ 'id' => 16, 'nombre' => 'METODISTA'],
+            [ 'id' => 17, 'nombre' => 'MORMONA'],
+            [ 'id' => 18, 'nombre' => 'MUSULMANA'],
+            [ 'id' => 19, 'nombre' => 'ORTODOXA GRIEGA|'],
+            [ 'id' => 20, 'nombre' => 'ORTODOXA RUSA'],
+            [ 'id' => 21, 'nombre' => 'OTRA RELIGION'],
+            [ 'id' => 22, 'nombre' => 'PAOISTA'],
+            [ 'id' => 23, 'nombre' => 'PENTECOSTESA'],
+            [ 'id' => 24, 'nombre' => 'PRESBITERIANA'],
+            [ 'id' => 25, 'nombre' => 'PROTESTANTE'],
+            [ 'id' => 26, 'nombre' => 'SIN RELIGION|'],
+            [ 'id' => 27, 'nombre' => 'SINTOISTA'],
+            [ 'id' => 28, 'nombre' => 'TESTIGOS DE JEHOVA'],
+            [ 'id' => 29, 'nombre' => 'SE DESCONOCE']
         ]);
     }
 }
