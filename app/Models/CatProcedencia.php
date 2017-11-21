@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,6 +13,6 @@ class CatProcedencia extends Model
     ];
 
     public function vehiculos(){
-        return $this->hasMany('App\Models\Vehiculo'):
+        return $this->hasMany('App\Models\Vehiculo');
     }
 }

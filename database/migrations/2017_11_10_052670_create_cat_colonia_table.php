@@ -15,10 +15,11 @@ class CreateCatColoniaTable extends Migration
     {
         Schema::create('cat_colonia', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('idCodigoPostal')->unsigned();
+            $table->integer('idMunicipio')->unsigned();
             $table->string('nombre', 50);
+            $table->integer('codigoPostal');
 
-            $table->foreign('idCodigoPostal')->references('id')->on('cat_codigo_postal')->onDelete('cascade');
+            $table->foreign('idMunicipio')->references('id')->on('cat_municipio')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes();

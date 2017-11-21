@@ -12,7 +12,7 @@ class ReligionSeeder extends Seeder
     public function run()
     {
         DB::table('cat_religion')->insert([
-        	[ 'id' => 0, 'nombre' => 'SIN INFORMACION'],
+        	[ 'id' => 30, 'nombre' => 'SIN INFORMACION'],
             [ 'id' => 1, 'nombre' => 'CATOLICA'],
             [ 'id' => 2, 'nombre' => 'ATEA'],
             [ 'id' => 3, 'nombre' => 'MORMONA'],

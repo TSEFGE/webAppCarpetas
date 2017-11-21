@@ -13,7 +13,7 @@ class PuestoSeeder extends Seeder
     public function run()
     {
         DB::table('cat_puesto')->insert([
-        	[ 'id' => 0, 'nombre' => 'SIN INFORMACION'],
+        	[ 'id' => 9, 'nombre' => 'SIN INFORMACION'],
             [ 'id' => 1, 'nombre' => 'DISCAPACITADO'],
             [ 'id' => 2, 'nombre' => 'BOTONES'],
             [ 'id' => 3, 'nombre' => 'POLICIA'],
@@ -21,7 +21,7 @@ class PuestoSeeder extends Seeder
             [ 'id' => 5, 'nombre' => 'INDIGENTE'],
             [ 'id' => 6, 'nombre' => 'SOCORRISTA'],
             [ 'id' => 7, 'nombre' => 'VALET PARKING'],
-            [ 'id' => 8, 'nombre' => 'VENDEDOR'],
+            [ 'id' => 8, 'nombre' => 'VENDEDOR']
         ]);
     }
 }

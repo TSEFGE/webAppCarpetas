@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,19 +23,19 @@ class Acusacion extends Model
     ];
 
     public function extraDenunciante(){
-        return $this->belongsTo('App\Models\ExtraDenunciante'):
+        return $this->belongsTo('App\Models\ExtraDenunciante');
     }
 
     public function extraDenunciado(){
-        return $this->belongsTo('App\Models\ExtraDenunciado'):
+        return $this->belongsTo('App\Models\ExtraDenunciado');
     }
 
     public function carpeta(){
-        return $this->belongsTo('App\Models\Carpeta'):
+        return $this->belongsTo('App\Models\Carpeta');
     }
 
     public function tipifDelito(){
-        return $this->hasOne('App\Models\TipifDelito'):
+        return $this->hasOne('App\Models\TipifDelito');
     }
 
 }

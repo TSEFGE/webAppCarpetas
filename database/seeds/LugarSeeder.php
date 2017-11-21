@@ -13,7 +13,7 @@ class LugarSeeder extends Seeder
     public function run()
     {
         DB::table('cat_lugar')->insert([
-        	[ 'id' => 0, 'nombre' => 'SIN INFORMACION'],
+        	[ 'id' => 24, 'nombre' => 'SIN INFORMACION'],
             [ 'id' => 1, 'nombre' => 'VIA PUBLICA'],
             [ 'id' => 2, 'nombre' => 'CASA HABITACION'],
             [ 'id' => 3, 'nombre' => 'ESCUELA'],

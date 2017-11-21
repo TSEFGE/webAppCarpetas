@@ -18,7 +18,6 @@ class CreateDomiciliosTable extends Migration
             $table->integer('idEstado')->unsigned();
             $table->integer('idMunicipio')->unsigned();
             $table->integer('idLocalidad')->unsigned();
-            $table->integer('idCodigoPostal')->unsigned();
             $table->integer('idColonia')->unsigned();
             $table->string('calle', 50);
             $table->integer('numExterno');
@@ -27,7 +26,6 @@ class CreateDomiciliosTable extends Migration
             $table->foreign('idEstado')->references('id')->on('cat_estado')->onDelete('cascade');
             $table->foreign('idMunicipio')->references('id')->on('cat_municipio')->onDelete('cascade');
             $table->foreign('idLocalidad')->references('id')->on('cat_localidad')->onDelete('cascade');
-            $table->foreign('idCodigoPostal')->references('id')->on('cat_codigo_postal')->onDelete('cascade');
             $table->foreign('idColonia')->references('id')->on('cat_colonia')->onDelete('cascade');
 
             $table->timestamps();

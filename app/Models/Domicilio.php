@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,7 +9,7 @@ class Domicilio extends Model
     protected $table = 'domicilio';
 
     protected $fillable = [
-        'id', 'idEstado', 'idMunicipio', 'idLocalidad', 'idCodigoPostal', 'idColonia',  'calle', 'numExterno',  'numInterno',
+        'id', 'idEstado', 'idMunicipio', 'idLocalidad', 'idColonia',  'calle', 'numExterno',  'numInterno',
     ];
 
     public function variablesPersonas()
@@ -42,10 +42,6 @@ class Domicilio extends Model
         return $this->belongsTo('App\Models\CatLocalidad');
     }
 
-    public function codigoPostal()
-    {
-        return $this->belongsTo('App\Models\CatCodigoPostal');
-    }
 
     public function colonia()
     {

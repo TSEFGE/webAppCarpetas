@@ -13,10 +13,10 @@ class TipoArmaSeeder extends Seeder
     public function run()
     {
     	DB::table('cat_tipo_arma')->insert([
-	        [ 'id' => 1, 'nombre' => 'SIN INFORMACIÓN'],
+	        [ 'id' => 4, 'nombre' => 'SIN INFORMACIÓN'],
 	        [ 'id' => 1, 'nombre' => 'ARMA DE FUEGO'],
 	        [ 'id' => 2, 'nombre' => 'ARMA BLANCA'],
-	        [ 'id' => 3, 'nombre' => 'FABRICACION RUDIMENTARIA'],
+	        [ 'id' => 3, 'nombre' => 'FABRICACION RUDIMENTARIA']
 	    ]);
     }
 }

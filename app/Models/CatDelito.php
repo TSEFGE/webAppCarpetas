@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,6 +21,6 @@ class CatDelito extends Model
     ];
 
     public function tipifDelitos(){
-        return $this->hasMany('App\Models\TipifDelito'):
+        return $this->hasMany('App\Models\TipifDelito');
     }
 }

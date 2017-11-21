@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,10 +26,10 @@ class Unidad extends Model
     ];
 
     public function carpetas(){
-        return $this->hasMany('App\Models\Carpeta'):
+        return $this->hasMany('App\Models\Carpeta');
     }
 
     public function users(){
-        return $this->hasMany('App\User'):
+        return $this->hasMany('App\User');
     }
 }

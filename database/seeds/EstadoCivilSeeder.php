@@ -12,13 +12,13 @@ class EstadoCivilSeeder extends Seeder
     public function run()
     {
         DB::table('cat_estado_civil')->insert([
-            [ 'id' => 0, 'nombre' => 'SIN INFORMACION'],
+            [ 'id' => 7, 'nombre' => 'SIN INFORMACION'],
             [ 'id' => 1, 'nombre' => 'SOLTERO'],
             [ 'id' => 2, 'nombre' => 'CASADO'],
-            [ 'id' => 3, 'nombre' => 'Viudo'],
-            [ 'id' => 4, 'nombre' => 'Divorciado'],
-            [ 'id' => 5, 'nombre' => 'Concubinato'],
-            [ 'id' => 6, 'nombre' => 'Unión libre']
+            [ 'id' => 3, 'nombre' => 'VIUDO'],
+            [ 'id' => 4, 'nombre' => 'DIVORCIADO'],
+            [ 'id' => 5, 'nombre' => 'CONCUBINATO'],
+            [ 'id' => 6, 'nombre' => 'UNION LIBRE']
         ]);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,30 +13,30 @@ class Persona extends Model
     ];
 
     public function familiares(){
-    	return $this->hasMany('App\Models\Familiar'):
+    	return $this->hasMany('App\Models\Familiar');
     }
 
     public function nacionalidad(){
-    	return $this->belongsTo('App\Models\CatNacionalidad'):
+    	return $this->belongsTo('App\Models\CatNacionalidad');
     }
 
     public function etnia(){
-    	return $this->belongsTo('App\Models\CatEtnia'):
+    	return $this->belongsTo('App\Models\CatEtnia');
     }
 
     public function lengua(){
-    	return $this->belongsTo('App\Models\CatLengua'):
+    	return $this->belongsTo('App\Models\CatLengua');
     }
 
     public function estado(){
-    	return $this->belongsTo('App\Models\CatEstado'):
+    	return $this->belongsTo('App\Models\CatEstado');
     }
 
     public function municipio(){
-    	return $this->belongsTo('App\Models\CatMunicipio'):
+    	return $this->belongsTo('App\Models\CatMunicipio');
     }
 
     public function variablesPersonas(){
-    	return $this->hasMany('App\Models\VariablesPersona'):
+    	return $this->hasMany('App\Models\VariablesPersona');
     }
 }

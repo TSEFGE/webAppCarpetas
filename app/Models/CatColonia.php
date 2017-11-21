@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,7 +9,7 @@ class CatColonia extends Model
     protected $table = 'cat_colonia';
 
     protected $fillable = [
-        'id', 'idCodigoPostal', 'nombre',
+        'id', 'idMunicipio', 'nombre','codigoPostal',
     ];
 
     public function domicilios()
@@ -17,8 +17,8 @@ class CatColonia extends Model
         return $this->hasMany('App\Models\Domicilio');
     }
 
-    public function codigoPostal()
+    public function municipio()
     {
-        return $this->belongsTo('App\Models\Carpeta');
+        return $this->belongsTo('app/Models/CatMunicipio');
     }
 }

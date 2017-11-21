@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,10 +13,10 @@ class CatLocalidad extends Model
     ];
 
     public function municipio(){
-    	return $this->belongsTo('App\Models\CatMunicipio'):
+    	return $this->belongsTo('App\Models\CatMunicipio');
     }
 
     public function domicilios(){
-    	return $this->hasMany('App\Models\Domicilio'):
+    	return $this->hasMany('App\Models\Domicilio');
     }
 }
