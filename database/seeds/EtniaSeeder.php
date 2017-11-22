@@ -12,7 +12,7 @@ class EtniaSeeder extends Seeder
     public function run()
     {
         DB::table('cat_etnia')->insert([
-        	['id' => 0,'nombre' => 'SIN INFORMACION'],
+        	['id' => 13,'nombre' => 'SIN INFORMACION'],
             ['id' => 1,'nombre' => 'NO APLICA'],
             ['id' => 2,'nombre' => 'TOTONACO'],
             ['id' => 3,'nombre' => 'HUASTECO'],

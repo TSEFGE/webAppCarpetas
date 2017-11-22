@@ -13,7 +13,7 @@ class DelitoSeeder extends Seeder
     public function run()
     {
         DB::table('cat_delito')->insert([
-        	['id' => 0,'nombre' => 'SIN INFORMACION'],
+        	['id' => 7,'nombre' => 'SIN INFORMACION'],
             ['id' => 1,'nombre' => 'SECUESTRO'],
             ['id' => 2,'nombre' => 'HOMICIDIO'],
             ['id' => 3,'nombre' => 'ROBO'],

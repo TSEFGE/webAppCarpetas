@@ -13,7 +13,7 @@ class SubmarcaSeeder extends Seeder
     public function run()
     {
         DB::table('cat_submarca')->insert([
-        	['id' =>0,'idMarca' =>0,'nombre' => 'SIN INFORMACION'],
+        	['id' =>113205,'idMarca' =>955,'nombre' => 'SIN INFORMACION'],
 			['id' =>11191,'idMarca' =>4,'nombre' => 'ECOSPORT'],
 			['id' =>11192,'idMarca' =>4,'nombre' => 'ECOSPORT R'],
 			['id' =>11201,'idMarca' =>4,'nombre' => 'F-700'],

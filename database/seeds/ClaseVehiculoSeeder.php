@@ -13,7 +13,7 @@ class ClaseVehiculoSeeder extends Seeder
     public function run()
     {
         DB::table('cat_clase_vehiculo')->insert([
-        	['id' => 0,'nombre' => 'SIN INFORMACION'],
+        	['id' => 10,'nombre' => 'SIN INFORMACION'],
             ['id' => 1,'nombre' => 'AUTOMOVIL'],
             ['id' => 2,'nombre' => 'CAMIONETA'],
             ['id' => 3,'nombre' => 'CAMION'],

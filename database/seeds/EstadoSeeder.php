@@ -13,7 +13,7 @@ class EstadoSeeder extends Seeder
     public function run()
     {
         DB::table('cat_estado')->insert([
-        	['id' => 0,'nombre' => 'SIN INFORMACION','abreviatura' => 'S/I'],
+        	['id' => 33,'nombre' => 'SIN INFORMACION','abreviatura' => 'S/I'],
             ['id' => 1,'nombre' => 'AGUASCALIENTES','abreviatura' => 'AGS'],
             ['id' => 2,'nombre' => 'BAJA CALIFORNIA','abreviatura' => 'BC'],
             ['id' => 3,'nombre' => 'BAJA CALIFORNIA SUR','abreviatura' => 'BCS'],

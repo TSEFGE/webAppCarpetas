@@ -13,7 +13,7 @@ class MunicipioSeeder extends Seeder
     public function run()
     {
         DB::table('cat_municipio')->insert([
-			['id' =>0,'nombre' => 'SIN INFORMACION','idEstado' =>0],
+			['id' =>213,'nombre' => 'SIN INFORMACION','idEstado' =>33],
 			['id' =>1,'nombre' => 'ACAJETE','idEstado' =>30],
 			['id' =>2,'nombre' => 'ACATLÁN','idEstado' =>30],
 			['id' =>3,'nombre' => 'ACAYUCAN','idEstado' =>30],
