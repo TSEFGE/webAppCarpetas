@@ -22,7 +22,8 @@ class Unidad extends Model
         'longitud',
         'telefono',
         'distrito',
-        'region'
+        'region',
+        'nomCompleto'
     ];
 
     public function carpetas(){

@@ -22,6 +22,7 @@ class CreateUnidadesTable extends Migration
             $table->integer('telefono');
             $table->string('distrito',50);
             $table->string('region',50);
+            $table->string('nomCompleto',100);
 
             $table->timestamps();
             $table->softDeletes();
