@@ -17,7 +17,7 @@ class CreateVariablesPersonasTable extends Migration
             $table->increments('id');
             $table->integer('idPersona')->unsigned();
             $table->integer('edad');
-            $table->integer('telefono');
+            $table->string('telefono',15);
             $table->string('motivoEstancia',200);
             $table->integer('idOcupacion')->unsigned();
             $table->integer('idEstadoCivil')->unsigned();
@@ -28,7 +28,7 @@ class CreateVariablesPersonasTable extends Migration
             $table->string('numDocIdentificacion',50);
             $table->string('lugarTrabajo',50);
             $table->integer('idDomicilioTrabajo')->unsigned();
-            $table->string('telefonoTrabajo',24);
+            $table->string('telefonoTrabajo',15);
             $table->string('representanteLegal',24);
             $table->timestamps();
             $table->softDeletes();

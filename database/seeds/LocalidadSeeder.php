@@ -1,6 +1,3 @@
-        ]);
-    }
-}
 <?php
 
 use Illuminate\Database\Seeder;
@@ -27607,3 +27604,6 @@ class LocalidadSeeder extends Seeder
 			['id' =>27589,'idMunicipio' =>212,'nombre' => 'CORPUS CRISTY'],
 			['id' =>27590,'idMunicipio' =>212,'nombre' => 'EL MANZANERO'],
 			['id' =>27591,'idMunicipio' =>212,'nombre' => 'EL NAZARENO']
+        ]);
+    }
+}
