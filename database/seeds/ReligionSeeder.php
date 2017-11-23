@@ -12,7 +12,7 @@ class ReligionSeeder extends Seeder
     public function run()
     {
         DB::table('cat_religion')->insert([
-        	[ 'id' => 30, 'nombre' => 'SIN INFORMACION'],
+        	[ 'id' => 29, 'nombre' => 'SIN INFORMACION'],
             [ 'id' => 1, 'nombre' => 'CATOLICA'],
             [ 'id' => 2, 'nombre' => 'ATEA'],
             [ 'id' => 3, 'nombre' => 'MORMONA'],
@@ -29,19 +29,18 @@ class ReligionSeeder extends Seeder
             [ 'id' => 14, 'nombre' => 'LUZ DEL MUNDO'],
             [ 'id' => 15, 'nombre' => 'MAZDEISTA'],
             [ 'id' => 16, 'nombre' => 'METODISTA'],
-            [ 'id' => 17, 'nombre' => 'MORMONA'],
-            [ 'id' => 18, 'nombre' => 'MUSULMANA'],
-            [ 'id' => 19, 'nombre' => 'ORTODOXA GRIEGA|'],
-            [ 'id' => 20, 'nombre' => 'ORTODOXA RUSA'],
-            [ 'id' => 21, 'nombre' => 'OTRA RELIGION'],
-            [ 'id' => 22, 'nombre' => 'PAOISTA'],
-            [ 'id' => 23, 'nombre' => 'PENTECOSTESA'],
-            [ 'id' => 24, 'nombre' => 'PRESBITERIANA'],
-            [ 'id' => 25, 'nombre' => 'PROTESTANTE'],
-            [ 'id' => 26, 'nombre' => 'SIN RELIGION|'],
-            [ 'id' => 27, 'nombre' => 'SINTOISTA'],
-            [ 'id' => 28, 'nombre' => 'TESTIGOS DE JEHOVA'],
-            [ 'id' => 29, 'nombre' => 'SE DESCONOCE']
+            [ 'id' => 17, 'nombre' => 'MUSULMANA'],
+            [ 'id' => 18, 'nombre' => 'ORTODOXA GRIEGA|'],
+            [ 'id' => 19, 'nombre' => 'ORTODOXA RUSA'],
+            [ 'id' => 20, 'nombre' => 'OTRA RELIGION'],
+            [ 'id' => 21, 'nombre' => 'PAOISTA'],
+            [ 'id' => 22, 'nombre' => 'PENTECOSTESA'],
+            [ 'id' => 23, 'nombre' => 'PRESBITERIANA'],
+            [ 'id' => 24, 'nombre' => 'PROTESTANTE'],
+            [ 'id' => 25, 'nombre' => 'SIN RELIGION|'],
+            [ 'id' => 26, 'nombre' => 'SINTOISTA'],
+            [ 'id' => 27, 'nombre' => 'TESTIGOS DE JEHOVA'],
+            [ 'id' => 28, 'nombre' => 'SE DESCONOCE']
         ]);
     }
 }

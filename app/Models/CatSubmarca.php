@@ -9,7 +9,7 @@ class CatSubmarca extends Model
     protected $table = 'cat_submarca';
 
     protected $fillable = [
-        'id', 'idMarca', 'nombre',
+        'id', 'idSubmarca', 'idMarca', 'nombre',
     ];
 
     public function vehiculos(){

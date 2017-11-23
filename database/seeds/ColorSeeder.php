@@ -37,10 +37,6 @@ class ColorSeeder extends Seeder
             ['id'=> 23,'nombre' => 'AMARILLO OBSCURO'],
             ['id'=> 24,'nombre' => 'AMARILLO OBSCURO METALICO'],
             ['id'=> 25,'nombre' => 'SIN INFORMACION']
-            
-
-
-
         ]);
     }
 }
