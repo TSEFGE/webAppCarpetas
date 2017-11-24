@@ -2,20 +2,20 @@
 	{{--{!! Form::open(['route' => 'users.store', 'method' => 'POST'])  !!}--}}
 	<div class="col-3">
 		<div class="form-group">
-			{!! Form::label('nominvolucrado', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('nominvolucrado', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'required']) !!}
+			{!! Form::label('nombres', 'Nombre', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('nombres', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
-			{!! Form::label('primerapinv', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('primerapinv', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido', 'required']) !!}
+			{!! Form::label('primerAp', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('primerAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
-			{!! Form::label('segundoapinv', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('segundoapinv', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'required']) !!}
+			{!! Form::label('segundoAp', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
@@ -26,25 +26,29 @@
 	</div>
 	<div class="col-3">
 		<div class="form-group">
-			{!! Form::label('fechanacinv', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 			<div class='input-group date calendarioCompleto'>
-				{!! Form::text('fechanacinv', null, ['class' => 'form-control form-control-sm','required'=>'', 'placeholder' => 'DD/MM/AAAA']) !!}
+				{!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm','required'=>'', 'placeholder' => 'DD/MM/AAAA']) !!}
 				<span class="input-group-addon">
 					<i class="fa fa-calendar" aria-hidden="true"></i>
 				</span>
 			</div>
 		</div>
 	</div>
-	<div class="col">
-		<div class="form-group">
-			{!! Form::label('edadinv', 'Edad', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('edadinv', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'required']) !!}
-		</div>
-	</div>
-	<div class="col">
-		<div class="form-group">
-			{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('sexo', ['1' => 'Hombre', '2' => 'Mujer'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo', 'required']) !!}
+	<div class="col-3">
+		<div class="row">
+			<div class="col-6">
+				<div class="form-group">
+					{!! Form::label('edad', 'Edad', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('edad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'required']) !!}
+				</div>
+			</div>
+			<div class="col-6">
+				<div class="form-group">
+					{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('sexo', ['1' => 'Hombre', '2' => 'Mujer'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo', 'required']) !!}
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="col-3">
@@ -55,68 +59,102 @@
 	</div>
 	<div class="col-3">
 		<div class="form-group">
-			{!! Form::label('nacionalidad', 'Nacionalidad', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('nacionalidad', ['1' => 'Mexicana', '2' => 'Colombiana'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la nacionalidad', 'required']) !!}
-		</div>
-	</div>
-	<div class="col-3">
-		<div class="form-group">
-			{!! Form::label('ocupacioon', 'Ocupación', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('ocupacion', ['1' => 'ING.', '2' => 'Lic.'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la ocupación', 'required']) !!}
+			{!! Form::label('idNacionalidad', 'Nacionalidad', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idNacionalidad', ['1' => 'Mexicana', '2' => 'Colombiana'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la nacionalidad', 'required']) !!}
 		</div>
 	</div>
 	<div class="col">
 		<div class="form-group">
-			{!! Form::label('estadociv', 'Estado civil', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('estadociv', ['1' => 'Soltero', '2' => 'Casado'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el estado civil', 'required']) !!}
+			{!! Form::label('idEtnia', 'Etnia', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idEtnia', ['1' => 'Indígena', '2' => 'Totonaca'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la etnia', 'required']) !!}
 		</div>
 	</div>
 	<div class="col">
 		<div class="form-group">
-			{!! Form::label('etnia', 'Etnia', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('etnia', ['1' => 'Indígena', '2' => 'Totonaca'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la etnia', 'required']) !!}
+			{!! Form::label('idLengua', 'Lengua', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idLengua', ['1' => 'Indígena', '2' => 'Totonaca'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la lengua', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
-			{!! Form::label('escolaridad', 'Escolaridad', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('escolaridad', ['1' => 'Primaria', '2' => 'Secundaria'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la escoalridad', 'required']) !!}
+			{!! Form::label('idEstadoOrigen', 'Entidad federativa de origen', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idEstadoOrigen', ['1' => 'Veracruz', '2' => 'CDMX'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
+		</div>
+	</div>
+	<div class="col-3">
+		<div class="form-group">
+			{!! Form::label('idMunicipioOrigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idMunicipioOrigen', ['1' => '>Xalapa', '2' => 'Altotonga'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un municipio', 'required']) !!}
+		</div>
+	</div>
+	<div class="col-3">
+		<div class="form-group">
+			{!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('telefono', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'required']) !!}
+		</div>
+	</div>
+	<div class="col-3">
+		<div class="form-group">
+			{!! Form::label('motivoEstancia', 'Motivo de estancia', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('motivoestancia', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el motico de estancia', 'required']) !!}
+		</div>
+	</div>
+	<div class="col-3">
+		<div class="form-group">
+			{!! Form::label('idOcupacion', 'Ocupación', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idOcupacion', ['1' => 'ING.', '2' => 'Lic.'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la ocupación', 'required']) !!}
 		</div>
 	</div>
 	<div class="col">
 		<div class="form-group">
-			{!! Form::label('lengua', 'Lengua', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('lengua', ['1' => 'Indígena', '2' => 'Totonaca'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la lengua', 'required']) !!}
+			{!! Form::label('idEstadoCivil', 'Estado civil', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idEstadoCivil', ['1' => 'Soltero', '2' => 'Casado'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el estado civil', 'required']) !!}
 		</div>
 	</div>
 	<div class="col">
 		<div class="form-group">
-			{!! Form::label('religion', 'Religión', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('religion', ['1' => 'Católica', '2' => 'Budista'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la religión', 'required']) !!}
+			{!! Form::label('idReligion', 'Religión', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idReligion', ['1' => 'Católica', '2' => 'Budista'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la religión', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
-			{!! Form::label('entidadfedorigen', 'Entidad federativa de origen', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('entidadfedorigen', ['1' => 'Veracruz', '2' => 'CDMX'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
+			{!! Form::label('idEscolaridad', 'Escolaridad', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idEscolaridad', ['1' => 'Primaria', '2' => 'Secundaria'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la escoalridad', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
-			{!! Form::label('municipioorigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('municipioorigen', ['1' => '>Xalapa', '2' => 'Altotonga'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un municipio', 'required']) !!}
+			{!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('docIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificacion', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
-			{!! Form::label('doctoidentif', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('doctoidentif', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificacion', 'required']) !!}
+			{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
-			{!! Form::label('numdocto', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numdocto', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación', 'required']) !!}
+			<label class="col-form-label col-form-label-sm" for="formGroupExampleInput">¿Es empresa?</label>
+			<div class="clearfix"></div>
+			<div class="form-check form-check-inline">
+				<label class="form-check-label col-form-label col-form-label-sm">
+					<input class="form-check-input" type="radio" id="esEmpresa1" name="esEmpresa"> Sí
+				</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<label class="form-check-label col-form-label col-form-label-sm">
+					<input class="form-check-input" type="radio" id="esEmpresa2" name="esEmpresa"> No
+				</label>
+			</div>
+		</div>
+	</div>
+	<div class="col-3">
+		<div class="form-group">
+			{!! Form::label('representanteLegal', 'Representante legal', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('representanteLegal', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal', 'required']) !!}
 		</div>
 	</div>
 	{{--{!! Form::close() !!}--}}

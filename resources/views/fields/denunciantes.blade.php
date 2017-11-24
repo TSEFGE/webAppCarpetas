@@ -71,8 +71,8 @@
 			<div class="row">
 				<div class="col-6">
 					<div class="form-group">
-						{!! Form::label('conocede', 'Lo conoce de:', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::text('conocede', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese si el denunciante conoce al denunciado', 'required']) !!}
+						{!! Form::label('conoceAlDenunciado', 'Lo conoce de:', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::text('conoceAlDenunciado', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese si el denunciante conoce al denunciado', 'required']) !!}
 					</div>
 				</div>
 			</div>
@@ -80,6 +80,7 @@
 	</div>
 </div>
 
+{{--
 <div class="card">
 	<div class="card-header">
 		<h5 class="mb-0 text-center">
@@ -94,6 +95,7 @@
 		</div>
 	</div>
 </div>
+--}}
 
 <div class="row">
 	<div class="col-12">

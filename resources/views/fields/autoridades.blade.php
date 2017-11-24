@@ -2,7 +2,7 @@
 	<div class="card-header">
 		<h5 class="mb-0 text-center">
 			<a data-toggle="collapse" href="#collapsePersonales3" aria-expanded="false" aria-controls="collapsePersonales3">
-				Dirección
+				Datos personales
 			</a>
 		</h5>
 	</div>
@@ -56,20 +56,20 @@
 			<div class="row">
 				<div class="col-4">
 					<div class="form-group">
-						{!! Form::label('rango', 'Rango', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::select('rango', ['1' => 'Cabo', '2' => 'Comandante'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un rango', 'required']) !!}
-					</div>
-				</div>
-				<div class="col-4">
-					<div class="form-group">
 						{!! Form::label('antiguedad', 'Antigüedad', ['class' => 'col-form-label-sm']) !!}
 						{!! Form::number('antiguedad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la antigüedad', 'required']) !!}
 					</div>
 				</div>
 				<div class="col-4">
 					<div class="form-group">
-						{!! Form::label('horariiolaboral', 'Horario laboral', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::number('horariolaboral', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el horario laboral', 'required']) !!}
+						{!! Form::label('rango', 'Rango', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::select('rango', ['1' => 'Cabo', '2' => 'Comandante'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un rango', 'required']) !!}
+					</div>
+				</div>
+				<div class="col-4">
+					<div class="form-group">
+						{!! Form::label('horarioLaboral', 'Horario laboral', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::number('horarioLaboral', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el horario laboral', 'required']) !!}
 					</div>
 				</div>
 			</div>
