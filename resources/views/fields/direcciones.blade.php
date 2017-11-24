@@ -1,20 +1,20 @@
 <div class="row">
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('entidadfed', 'Entidad federativa', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('entidadfed', ['1' => 'Veracruz', '2' => 'Jalisco'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
+			{!! Form::label('idEstado', 'Entidad federativa', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idEstado', ['1' => 'Veracruz', '2' => 'Jalisco'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('municipio', 'Municipio', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('municipio', ['1' => 'Altotonga', '2' => 'Xalapa'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un municipio', 'required']) !!}
+			{!! Form::label('idMunicipio', 'Municipio', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idMunicipio', ['1' => 'Altotonga', '2' => 'Xalapa'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un municipio', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('localidad', 'Localidad', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('localidad', ['1' => 'Atalpas', '2' => 'La palma'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una localidad', 'required']) !!}
+			{!! Form::label('idLocalidad', 'Localidad', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idLocalidad', ['1' => 'Atalpas', '2' => 'La palma'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una localidad', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-2">
@@ -25,8 +25,8 @@
 	</div>
 	<div class="col-2">
 		<div class="form-group">
-			{!! Form::label('colonia', 'Colonia', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('localidad', ['1' => 'Altotonga Centro', '2' => 'La palma'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una colonia', 'required']) !!}
+			{!! Form::label('idColonia', 'Colonia', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idColonia', ['1' => 'Altotonga Centro', '2' => 'La palma'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una colonia', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">
@@ -37,14 +37,14 @@
 	</div>
 	<div class="col-2">
 		<div class="form-group">
-			{!! Form::label('numint', 'Número interior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::number('numint', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior', 'required']) !!}
+			{!! Form::label('numExterno', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::number('numExterno', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número exterior', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-2">
 		<div class="form-group">
-			{!! Form::label('numext', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::number('numext', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número exterior', 'required']) !!}
+			{!! Form::label('numInterno', 'Número interior', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::number('numInterno', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior', 'required']) !!}
 		</div>
 	</div>
 </div>

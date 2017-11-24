@@ -19,6 +19,9 @@
 		<a class="nav-link" id="autoridades-tab" data-toggle="tab" href="#autoridades" role="tab" aria-controls="autoridades" aria-selected="false">Autoridades</a>
 	</li>
 	<li class="nav-item">
+		<a class="nav-link" id="abogados-tab" data-toggle="tab" href="#abogados" role="tab" aria-controls="abogados" aria-selected="false">Abogados</a>
+	</li>
+	<li class="nav-item">
 		<a class="nav-link" id="familiares-tab" data-toggle="tab" href="#familiares" role="tab" aria-controls="familiares" aria-selected="false">Familiares</a>
 	</li>
 	<li class="nav-item">
@@ -45,6 +48,9 @@
 		</div>
 		<div class="tab-pane fade" id="autoridades" role="tabpanel" aria-labelledby="autoridades-tab">
 			@include('fields.autoridades')
+		</div>
+		<div class="tab-pane fade" id="abogados" role="tabpanel" aria-labelledby="abogados-tab">
+			@include('fields.abogados')
 		</div>
 		<div class="tab-pane fade" id="familiares" role="tabpanel" aria-labelledby="familiares-tab">
 			@include('fields.familiares')
