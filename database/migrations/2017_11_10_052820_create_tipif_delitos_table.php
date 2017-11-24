@@ -24,7 +24,7 @@ class CreateTipifDelitosTable extends Migration
             $table->string('formaComision',50);
             $table->string('consumacion',50);
             $table->date('fecha');
-            $table->dateTime('hora');
+            $table->time('hora');
             $table->integer('idZona')->unsigned();
             $table->integer('idLugar')->unsigned();
             $table->integer('idDomicilio')->unsigned();

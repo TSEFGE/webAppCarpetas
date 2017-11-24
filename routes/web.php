@@ -19,10 +19,13 @@ Route::get('/', function () {
     return view('auth.login');
 })->middleware('guest');
 
+Route::get('/registrar-carpeta', 'RegistroController@showRegisterForm')->name('registro')->middleware('auth');
+
+/*
 Route::get('/registrar-carpeta', function () {
 	return view('registro');
 })->middleware('auth');
-
+*/
 /*
 Route::middleware(['auth'])->group(function () {
 	Route::get('/', function () {

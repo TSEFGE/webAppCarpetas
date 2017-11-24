@@ -81,7 +81,6 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        //$unidades = Unidad::lists('name','id');
         $unidades = Unidad::orderBy('id', 'ASC')->pluck('nombre', 'id');
         return view('auth.register')->with('unidades', $unidades);
     }
