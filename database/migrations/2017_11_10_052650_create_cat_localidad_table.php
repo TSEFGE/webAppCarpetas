@@ -16,7 +16,7 @@ class CreateCatLocalidadTable extends Migration
         Schema::create('cat_localidad', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idMunicipio')->unsigned();
-            $table->string('nombre', 50);
+            $table->string('nombre', 100);
 
             $table->foreign('idMunicipio')->references('id')->on('cat_municipio')->onDelete('cascade');
 
