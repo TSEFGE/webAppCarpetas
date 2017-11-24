@@ -17,10 +17,10 @@ class CreateUnidadesTable extends Migration
             $table->increments('id');
             $table->string('nombre',100)->unique();
             $table->string('direccion',100);
-            $table->string('latitud', 5, 5);
-            $table->float('longitud', 5, 5);
+            $table->string('latitud', 15);
+            $table->string('longitud', 15);
             $table->integer('telefono');
-            $table->string('distrito',50);
+            $table->string('distrito',10);
             $table->string('region',50);
             $table->string('nomCompleto',100);
 

@@ -11,6 +11,28 @@
 |
 */
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/', function () {
-    return view('registro');
+    return view('auth.login');
+})->middleware('guest');
+
+Route::get('/registrar-carpeta', function () {
+	return view('registro');
+})->middleware('auth');
+
+/*
+Route::middleware(['auth'])->group(function () {
+	Route::get('/', function () {
+	    return view('auth.login');
+	});
+
+	Route::get('articles/{id}/destroy',[
+		'uses' => 'ArticlesController@destroy',
+		'as' => 'articles.destroy'
+	]);
+	Route::get('/', 'RegistroController@index')->name('registro');
 });
+*/
