@@ -12,9 +12,10 @@
                         {{ csrf_field() }}
 
                         <div class="form-group row{{ $errors->has('idUnidad') ? ' has-error' : '' }}">
-                            <label for="idUnidad" class="col-md-4 col-form-label text-right">Unidad</label>
+                            {!! Form::label('idUnidad', 'Unidad', ['class' => 'col-md-4 col-form-label text-right']) !!}
                             <div class="col-md-6">
-                                <input id="idUnidad" type="number" class="form-control" name="idUnidad" value="{{ old('idUnidad') }}" required autofocus>
+                                {{--<input id="idUnidad" type="number" class="form-control" name="idUnidad" value="{{ old('idUnidad') }}" required autofocus>--}}
+                                {!! Form::select('idUnidad', $unidades, null, ['class' => 'form-control', 'required']) !!}
                                 @if ($errors->has('idUnidad'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('idUnidad') }}</strong>
@@ -62,7 +63,7 @@
                         <div class="form-group row{{ $errors->has('numFiscal') ? ' has-error' : '' }}">
                             <label for="numFiscal" class="col-md-4 col-form-label text-right">Número de fiscal</label>
                             <div class="col-md-6">
-                                <input id="numFiscal" type="text" class="form-control" name="numFiscal" value="{{ old('numFiscal') }}" required autofocus>
+                                <input id="numFiscal" type="number" class="form-control" name="numFiscal" value="{{ old('numFiscal') }}" required autofocus min="1" max="100">
                                 @if ($errors->has('numFiscal'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('numFiscal') }}</strong>

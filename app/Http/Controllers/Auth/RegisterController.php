@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+use App\Models\Unidad;
+
 class RegisterController extends Controller
 {
     /*
@@ -75,5 +77,12 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'numFiscal' => $data['numFiscal'],
         ]);
+    }
+
+    public function showRegistrationForm()
+    {
+        //$unidades = Unidad::lists('name','id');
+        $unidades = Unidad::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        return view('auth.register')->with('unidades', $unidades);
     }
 }
