@@ -30,13 +30,13 @@
 			</div>
 			<div class="col-4">
 				<div class="form-group">
-					{!! Form::label('primerapfam', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::label('primerapfam', 'Primer Apellido', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('primerapfam', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-4">
 				<div class="form-group">
-					{!! Form::label('segundoapfam', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::label('segundoapfam', 'Segundo Apellido', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('segundoapfam', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'required']) !!}
 				</div>
 			</div>
