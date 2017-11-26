@@ -21,15 +21,17 @@
 			</div>
 		</div>
 		<div class="col-4">
-			<div class="form-group">
+			
+            <div class="form-group">
 				{!! Form::label('fechaInicio', 'Fecha de inicio de carpeta', ['class' => 'col-form-label-sm']) !!}
-				<div class='input-group date calendarioCompleto'>
-                    {!! Form::text('fechaInicio', null, ['class' => 'form-control form-control-sm', 'readonly','required', 'placeholder' => 'DD/MM/AAAA']) !!}
-                    <span class="input-group-addon">
+				<div class="input-group date calendarioCompleto" id="fechaInicial" data-target-input="nearest">
+                    {!! Form::text('fechaInicio', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaInicial', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+                    <span class="input-group-addon" data-target="#fechaInicial" data-toggle="datetimepicker">
                         <i class="fa fa-calendar" aria-hidden="true"></i>
                     </span>
                 </div>
 			</div>
+
 		</div>
 		<div class="col-4">
 			<div class="form-group">
@@ -58,9 +60,9 @@
 		<div class="col-4">
 			<div class="form-group">
 				{!! Form::label('horaIntervencion', 'Hora de intervención', ['class' => 'col-form-label-sm']) !!}
-				<div class='input-group date calendarioCompleto'>
-                    {!! Form::text('horaIntervencion', null, ['class' => 'form-control form-control-sm','required'=>'', 'placeholder' => '00:00']) !!}
-                    <span class="input-group-addon">
+				<div class="input-group date" id="horaInter" data-target-input="nearest">
+                    {!! Form::text('horaIntervencion', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#horaInter', 'required', 'placeholder' => '00:00']) !!}
+                    <span class="input-group-addon" data-target="#horaInter" data-toggle="datetimepicker">
                         <i class="fa fa-clock-o" aria-hidden="true"></i>
                     </span>
                 </div>
@@ -81,9 +83,9 @@
 		<div class="col-2">
 			<div class="form-group">
 				{!! Form::label('fechaIph', 'Fecha IPH', ['class' => 'col-form-label-sm']) !!}
-				<div class='input-group date calendarioCompleto'>
-                    {!! Form::text('fechaIph', null, ['class' => 'form-control form-control-sm','required'=>'', 'placeholder' => 'DD/MM/AAAA']) !!}
-                    <span class="input-group-addon">
+				<div class="input-group date" id="fechaiph2" data-target-input="nearest">
+                    {!! Form::text('fechaIph', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaiph2', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+                    <span class="input-group-addon" data-target="#fechaiph2" data-toggle="datetimepicker">
                         <i class="fa fa-calendar" aria-hidden="true"></i>
                     </span>
                 </div>
@@ -106,9 +108,9 @@
 		<div class="col-4">
 			<div class="form-group">
 				{!! Form::label('fechaDeterminacion', 'Fecha determinación', ['class' => 'col-form-label-sm']) !!}
-				<div class='input-group date calendarioCompleto'>
-                    {!! Form::text('fechaDeterminacion', null, ['class' => 'form-control form-control-sm','required'=>'', 'placeholder' => 'DD/MM/AAAA']) !!}
-                    <span class="input-group-addon">
+				<div class="input-group date" id="fechadet" data-target-input="nearest">
+                    {!! Form::text('fechaDeterminacion', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechadet', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+                    <span class="input-group-addon" data-target="#fechadet" data-toggle="datetimepicker">
                         <i class="fa fa-calendar" aria-hidden="true"></i>
                     </span>
                 </div>
