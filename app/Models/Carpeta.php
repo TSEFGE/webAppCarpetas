@@ -29,7 +29,7 @@ class Carpeta extends Model
         'numIph',
         'fechaIph',
         'narracionIph',
-        'ipTipoDeterminacion',
+        'idTipoDeterminacion',
         'fechaDeterminacion'        
     ];
 

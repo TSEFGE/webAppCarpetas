@@ -40,31 +40,31 @@
 <div class="boxone">
 	<div class="tab-content" id="myTabContent">
 		<div class="tab-pane fade show active" id="gencar" role="tabpanel" aria-labelledby="gencar-tab">
-			@include('fields.gencarpeta')
+			@include('tabs.gencarpeta')
 		</div>
 		<div class="tab-pane fade" id="denunciantes" role="tabpanel" aria-labelledby="denunciantes-tab">
-			@include('fields.denunciantes')
+			@include('tabs.denunciantes')
 		</div>
 		<div class="tab-pane fade" id="denunciados" role="tabpanel" aria-labelledby="denunciados-tab">
-			@include('fields.denunciados')
+			@include('tabs.denunciados')
 		</div>
 		<div class="tab-pane fade" id="autoridades" role="tabpanel" aria-labelledby="autoridades-tab">
-			@include('fields.autoridades')
+			@include('tabs.autoridades')
 		</div>
 		<div class="tab-pane fade" id="abogados" role="tabpanel" aria-labelledby="abogados-tab">
-			@include('fields.abogados')
+			@include('tabs.abogados')
 		</div>
 		<div class="tab-pane fade" id="familiares" role="tabpanel" aria-labelledby="familiares-tab">
-			@include('fields.familiares')
+			@include('tabs.familiares')
 		</div>
 		<div class="tab-pane fade" id="narraciones" role="tabpanel" aria-labelledby="narraciones-tab">
-			@include('fields.narraciones')
+			@include('tabs.narraciones')
 		</div>
 		<div class="tab-pane fade" id="delitos" role="tabpanel" aria-labelledby="delitos-tab">
-			@include('fields.delitos')
+			@include('tabs.delitos')
 		</div>
 		<div class="tab-pane fade" id="roboauto" role="tabpanel" aria-labelledby="roboauto-tab">
-			@include('fields.vehiculos')
+			@include('tabs.vehiculos')
 		</div>
 	</div>
 </div>
@@ -90,19 +90,24 @@
 
             $(function () {
                 $('#fechaInicial').datetimepicker({
-                	format: 'L'
+                	format: 'YYYY-MM-DD',
+                    defaultDate: moment()
                 });
             });
-
             $(function () {
                 $('#horaInter').datetimepicker({
                 	format: 'LT'
                 });
             });
-
             $(function () {
                 $('#fechaiph2').datetimepicker({
-                	format: 'L'
+                	format: 'YYYY-MM-DD',
+                });
+            });
+            $(function () {
+                $('#fechadet').datetimepicker({
+                    format: 'YYYY-MM-DD',
+                    defaultDate: moment()
                 });
             });
 

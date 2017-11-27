@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Models\CatAseguradora;
 use App\Models\CatClaseVehiculo;
 use App\Models\CatColor;
@@ -28,6 +30,8 @@ use App\Models\CatZona;
 
 use App\Models\CatMunicipio;
 //use App\Models\Unidad;
+
+use App\Models\Carpeta;
 
 class RegistroController extends Controller
 {
@@ -106,7 +110,21 @@ class RegistroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $carpeta = new Carpeta($request->all());
+        if ($request->conDetenido==="on"){
+            $carpeta->conDetenido = 1;
+        }
+        if ($request->esRelevante==="on"){
+            $carpeta->esRelevante = 1;
+        }
+        $carpeta->idFiscal = Auth::user()->id;
+        $carpeta->save();
+        /*
+        Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
+        //Para mostrar modal
+        //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
+        return redirect()->route('users.index');*/
     }
 
     /**

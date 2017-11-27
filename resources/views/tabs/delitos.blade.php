@@ -4,13 +4,35 @@
 			<h6>Información sobre la comisión del delito</h6>
 			<div class="row">
 			{{--{!! Form::open(['route' => 'users.store', 'method' => 'POST'])  !!}--}}
-			<div class="col-6">
+			<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('delito', 'Delito', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::select('delito', $delitos, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un delito', 'required']) !!}
 				</div>
 			</div>
-			<div class="col-6">
+			<div class="col-4">
+				<div class="form-group">
+					{!! Form::label('fechadelito', 'Fecha', ['class' => 'col-form-label-sm']) !!}
+					<div class="input-group date" id="fechadelit" data-target-input="nearest">
+	                    {!! Form::text('fechadelito', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechadelit', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+	                    <span class="input-group-addon" data-target="#fechadelit" data-toggle="datetimepicker">
+	                        <i class="fa fa-calendar" aria-hidden="true"></i>
+	                    </span>
+	                </div>
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="form-group">
+					{!! Form::label('horadelito', 'Hora', ['class' => 'col-form-label-sm']) !!}
+					<div class="input-group date" id="horadelit" data-target-input="nearest">
+	                    {!! Form::text('horadelito', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#horadelit', 'required', 'placeholder' => '00:00']) !!}
+	                    <span class="input-group-addon" data-target="#horadelit" data-toggle="datetimepicker">
+	                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+	                    </span>
+	                </div>
+				</div>
+			</div>
+			<div class="col-4">
 				<p class="col-form-label-sm">¿Con violencia?</p>
 				<div class="form-group">
 					<div class="form-check form-check-inline">
@@ -27,57 +49,34 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-6">
+			<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('tipoArma', 'Tipo de Arma', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::select('tipoArma', $tiposarma, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un tipo de arma', 'required']) !!}
 				</div>
 			</div>
-			<div class="col-6">
+			<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('arma|', 'Arma', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::select('arma|', ['' => 'Seleccione el arma'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
 				</div>
 			</div>
-			<div class="col-6">
+			<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('modalidad', 'Modalidad', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::select('modalidad', $modalidades, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una modalidad', 'required']) !!}
 				</div>
 			</div>
-			<div class="col-6">
+			<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('formacomision', 'Forma de comisión', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::select('formacomision', ['CULPOSO' => 'CULPOSO', 'DOLOSO' => 'DOLOSO'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una forma de comisión', 'required']) !!}
 				</div>
 			</div>
-			<div class="col-6">
+			<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('consumacion', 'Consumación', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('consumacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la consumación', 'required']) !!}
 					{!! Form::select('consumacion', ['Instantánea' => 'Instantánea', 'Permanente' => 'Permanente'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una forma de consumación', 'required']) !!}
-				</div>
-			</div>
-			<div class="col-3">
-				<div class="form-group">
-					{!! Form::label('fechadelito', 'Fecha', ['class' => 'col-form-label-sm']) !!}
-					<div class="input-group date" id="fechadelit" data-target-input="nearest">
-	                    {!! Form::text('fechadelito', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechadelit', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
-	                    <span class="input-group-addon" data-target="#fechadelit" data-toggle="datetimepicker">
-	                        <i class="fa fa-calendar" aria-hidden="true"></i>
-	                    </span>
-	                </div>
-				</div>
-			</div>
-			<div class="col-3">
-				<div class="form-group">
-					{!! Form::label('horadelito', 'Hora', ['class' => 'col-form-label-sm']) !!}
-					<div class="input-group date" id="horadelit" data-target-input="nearest">
-	                    {!! Form::text('horadelito', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#horadelit', 'required', 'placeholder' => '00:00']) !!}
-	                    <span class="input-group-addon" data-target="#horadelit" data-toggle="datetimepicker">
-	                        <i class="fa fa-clock-o" aria-hidden="true"></i>
-	                    </span>
-	                </div>
 				</div>
 			</div>
 			{{--{!! Form::close() !!}--}}

@@ -1,30 +1,30 @@
 <div class="boxtwo">
 	<h6>Datos generales de la carpeta de investigación</h6>
+	{!! Form::open(['route' => 'carpeta.store', 'method' => 'POST'])  !!}
 	<div class="row">
-		{{--{!! Form::open(['route' => 'users.store', 'method' => 'POST'])  !!}--}}
 		<div class="col-4">
 			<div class="form-group">
 				{!! Form::label('idUnidad', 'Unidad', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('idUnidad', ['1' => 'Xalapa', '2' => 'Coatzacoalcos'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una unidad', 'readonly', 'required']) !!}
+				{!! Form::text('idUnidad', Auth::user()->idUnidad, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una unidad', 'readonly', 'required']) !!}
 			</div>
 		</div>
 		<div class="col-4">
 			<div class="form-group">
 				{!! Form::label('idFiscal', 'Fiscal', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('idFiscal', ['1' => 'Nain', '2' => 'Juan'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un fiscal', 'readonly', 'required']) !!}
+				{!! Form::text('idFiscal', Auth::user()->nombres." ".Auth::user()->primerAp." ".Auth::user()->segundoAp, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un fiscal', 'readonly', 'required']) !!}
 			</div>
 		</div>
 		<div class="col-4">
 			<div class="form-group">
 				{!! Form::label('numCarpeta', 'Número de carpeta', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::number('numCarpeta', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de carpeta', 'readonly', 'required']) !!}
+				{!! Form::number('numCarpeta', 22, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de carpeta', 'readonly', 'required']) !!}
 			</div>
 		</div>
 		<div class="col-4">
             <div class="form-group">
 				{!! Form::label('fechaInicio', 'Fecha de inicio de carpeta', ['class' => 'col-form-label-sm']) !!}
 				<div class="input-group date calendarioCompleto" id="fechaInicial" data-target-input="nearest">
-                    {!! Form::text('fechaInicio', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaInicial', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+                    {!! Form::text('fechaInicio', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaInicial', 'readonly', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
                     <span class="input-group-addon" data-target="#fechaInicial" data-toggle="datetimepicker">
                         <i class="fa fa-calendar" aria-hidden="true"></i>
                     </span>
@@ -34,7 +34,7 @@
 		<div class="col-4">
 			<div class="form-group">
 				{!! Form::label('estadoCarpeta', 'Estado de la Carpeta', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('estadoCarpeta', ['INICIAL' => 'INICIAL', 'FINAL' => 'FINAL'], null, ['class' => 'form-control form-control-sm select2', 'placeholder' => 'Seleccione un estado', 'readonly', 'required']) !!}
+				{!! Form::text('estadoCarpeta', "INICIAL", ['class' => 'form-control form-control-sm select2', 'placeholder' => 'Seleccione un estado', 'readonly', 'required']) !!}
 			</div>
 		</div>
 		{{--
@@ -107,7 +107,7 @@
 			<div class="form-group">
 				{!! Form::label('fechaDeterminacion', 'Fecha determinación', ['class' => 'col-form-label-sm']) !!}
 				<div class="input-group date" id="fechadet" data-target-input="nearest">
-                    {!! Form::text('fechaDeterminacion', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechadet', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+                    {!! Form::text('fechaDeterminacion', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechadet', 'readonly', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
                     <span class="input-group-addon" data-target="#fechadet" data-toggle="datetimepicker">
                         <i class="fa fa-calendar" aria-hidden="true"></i>
                     </span>
@@ -120,19 +120,13 @@
 				{!! Form::select('idTipoDeterminacion', $tiposdet, null, ['class' => 'form-control form-control-sm chosen-select', 'placeholder' => 'Seleccione un tipo de determinación', 'readonly', 'required']) !!}
 			</div>
 		</div>
-		<div class="col-4">
-			<div class="form-group">
-				{!! Form::label('idEstad', 'Entidad federativa (prueba)', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('idEstad', $estados, null, ['class' => 'form-control form-control-sm select2', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
-			</div>
-		</div>
-		{{--
 		<div class="col-12">
 			<div class="form-group">
 				{!! Form::submit('Iniciar', ['class' => 'btn btn-dark']) !!}
 			</div>
 		</div>
-		{!! Form::close() !!}
+		{{--
 		--}}
 	</div>
+	{!! Form::close() !!}
 </div>

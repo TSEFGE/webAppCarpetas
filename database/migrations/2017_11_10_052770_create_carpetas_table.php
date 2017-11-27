@@ -22,7 +22,7 @@ class CreateCarpetasTable extends Migration
             $table->boolean('conDetenido')->default(false);
             $table->boolean('esRelevante')->default(false);
             $table->string('estadoCarpeta',50);
-            $table->dateTime('horaIntervencion');
+            $table->time('horaIntervencion');
             $table->string('descripcionHechos',500);
             $table->string('npd',50);
             $table->string('numIph',50);

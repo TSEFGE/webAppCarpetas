@@ -15,7 +15,7 @@ class CreateExtraDenunciantesTable extends Migration
     {
         Schema::create('extra_denunciante', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('idVatiablesPersona')->unsigned();
+            $table->integer('idVariablesPersona')->unsigned();
             $table->integer('idNotificacion')->unsigned()->index()->nullable();
             $table->integer('idAbogado')->unsigned()->index()->nullable();
             $table->boolean('conoceAlDenunciado')->default(false);

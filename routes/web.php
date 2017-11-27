@@ -23,6 +23,8 @@ Route::get('/registrar-carpeta', 'RegistroController@showRegisterForm')->name('r
 
 Route::get('municipios/{id}', 'RegistroController@getMunicipios');
 
+Route::post('carpetastore', 'RegistroController@store')->name('carpeta.store');
+
 /*
 Route::get('/registrar-carpeta', function () {
 	return view('registro');
