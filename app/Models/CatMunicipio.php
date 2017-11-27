@@ -37,5 +37,9 @@ class CatMunicipio extends Model
         return $this->hasMany('App\Models\CatLocalidad');
     }
 
+    public static function municipios($id){
+        return CatMunicipio::where('idEstado', '=', $id)->get();
+    }
+
     
 }

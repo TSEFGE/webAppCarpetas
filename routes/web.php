@@ -21,6 +21,8 @@ Route::get('/', function () {
 
 Route::get('/registrar-carpeta', 'RegistroController@showRegisterForm')->name('registro')->middleware('auth');
 
+Route::get('municipios/{id}', 'RegistroController@getMunicipios');
+
 /*
 Route::get('/registrar-carpeta', function () {
 	return view('registro');

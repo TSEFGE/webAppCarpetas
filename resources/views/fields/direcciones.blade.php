@@ -2,31 +2,31 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('idEstado', 'Entidad federativa', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idEstado', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
+			{!! Form::select('idEstado', $estados, null, ['class' => 'form-control form-control-sm select2', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('idMunicipio', 'Municipio', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idMunicipio', $municipios, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un municipio', 'required']) !!}
+			{!! Form::select('idMunicipio', [''=>'Seleccione un municipio'], null, ['class' => 'form-control form-control-sm select2', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('idLocalidad', 'Localidad', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idLocalidad', ['1' => 'Atalpas', '2' => 'La palma'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una localidad', 'required']) !!}
+			{!! Form::select('idLocalidad', [ '' => 'Seleccione una localidad'], null, ['class' => 'form-control form-control-sm select2', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('cp', 'Código Postal', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('cp', ['1' => '93700', '2' => '91015'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un código postal', 'required']) !!}
+			{!! Form::select('cp', ['' => 'Seleccione un código postal'], null, ['class' => 'form-control form-control-sm select2', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('idColonia', 'Colonia', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idColonia', ['1' => 'Altotonga Centro', '2' => 'La palma'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una colonia', 'required']) !!}
+			{!! Form::select('idColonia', ['' => 'Seleccione una colonia'], null, ['class' => 'form-control form-control-sm select2', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">

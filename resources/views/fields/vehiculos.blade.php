@@ -97,7 +97,7 @@
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('aseguradora', 'Aseguradora', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('aseguradora', ['1' => 'ABA SEGUROS, S.A.', '2' => 'AGROASEMEX, S.A.'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una aseguradora', 'required']) !!}
+					{!! Form::select('aseguradora',$aseguradoras, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una aseguradora', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-12">

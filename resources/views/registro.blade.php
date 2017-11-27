@@ -3,6 +3,7 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/tempusdominus-bootstrap-4.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('plugins/chosen/chosen.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/select2/select2.min.css') }}">
 @endsection
 
 @section('content')
@@ -80,6 +81,8 @@
     <script src="{{ asset('js/es.js') }}"></script>
     <script src="{{ asset('js/tempusdominus-bootstrap-4.js') }}"></script>
     <script src="{{ asset('plugins/chosen/chosen.jquery.js')}}" ></script>
+    <script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
+    <script src="{{ asset('js/selects.js') }}"></script>
 
     <script>
         $(document).ready(function(){
@@ -143,13 +146,15 @@
             	$('#camposautoridad').show();
             });
 
-            $('#horadelito').timepicker();
-
             $(".chosen-select").chosen({
 				placeholder_text_siple: 'Seleccione una categoría...',
 				max_selected_options: 3,
 				no_results_text: 'No se han encontrado la categoría'
 			});
+
+            $(document).ready(function() {
+    $('.select2').select2();
+});
 
         });
     </script>
