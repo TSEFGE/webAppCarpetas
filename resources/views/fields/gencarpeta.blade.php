@@ -17,11 +17,10 @@
 		<div class="col-4">
 			<div class="form-group">
 				{!! Form::label('numCarpeta', 'Número de carpeta', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::number('numCarpeta', 22, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de carpeta', 'readonly', 'required']) !!}
+				{!! Form::number('numCarpeta', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de carpeta', 'readonly', 'required']) !!}
 			</div>
 		</div>
 		<div class="col-4">
-			
             <div class="form-group">
 				{!! Form::label('fechaInicio', 'Fecha de inicio de carpeta', ['class' => 'col-form-label-sm']) !!}
 				<div class="input-group date calendarioCompleto" id="fechaInicial" data-target-input="nearest">
@@ -31,16 +30,15 @@
                     </span>
                 </div>
 			</div>
-
 		</div>
 		<div class="col-4">
 			<div class="form-group">
 				{!! Form::label('estadoCarpeta', 'Estado de la Carpeta', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('estadoCarpeta', ['ini' => 'Inicial', 'fin' => 'Final'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un estado', 'readonly', 'required']) !!}
+				{!! Form::select('estadoCarpeta', ['INICIAL' => 'INICIAL', 'FINAL' => 'FINAL'], null, ['class' => 'form-control form-control-sm select2', 'placeholder' => 'Seleccione un estado', 'readonly', 'required']) !!}
 			</div>
 		</div>
-		{{--Los campos de arriba probablemente no se mostrarán
-		--}}
+		{{--
+		Los campos de arriba probablemente no se mostrarán--}}
 		<div class="col-4">
 			<div class="form-group">
 				<label class="col-form-label col-form-label-sm" for="formGroupExampleInput">Detalles</label>
@@ -119,7 +117,13 @@
 		<div class="col-4">
 			<div class="form-group">
 				{!! Form::label('idTipoDeterminacion', 'Tipo determinación', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('idTipoDeterminacion', ['ini' => 'Inicial', 'fin' => 'Final'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un tipo de determinación', 'readonly', 'required']) !!}
+				{!! Form::select('idTipoDeterminacion', $tiposdet, null, ['class' => 'form-control form-control-sm chosen-select', 'placeholder' => 'Seleccione un tipo de determinación', 'readonly', 'required']) !!}
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="form-group">
+				{!! Form::label('idEstad', 'Entidad federativa (prueba)', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('idEstad', $estados, null, ['class' => 'form-control form-control-sm select2', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
 			</div>
 		</div>
 		{{--

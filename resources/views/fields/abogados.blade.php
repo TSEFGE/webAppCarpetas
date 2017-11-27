@@ -22,7 +22,7 @@
 		<div class="col-2">
 			<div class="form-group">
 				{!! Form::label('sector', 'Sector', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('sector', ['1' => 'Público', '2' => 'Particular'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un sector', 'required']) !!}
+				{!! Form::select('sector', ['PÚBLICO' => 'PÚBLICO', 'PARTICULAR' => 'PARTICULAR'], null, ['class' => 'form-control form-control-sm select2', 'placeholder' => 'Seleccione un sector', 'required']) !!}
 			</div>
 		</div>
 		<div class="col-2">

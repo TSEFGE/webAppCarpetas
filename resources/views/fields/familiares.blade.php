@@ -7,19 +7,19 @@
 			<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('famde', 'Familiar de', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('famde', ['1' => 'Román', '2' => 'José'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un involucrado', 'required']) !!}
+					{!! Form::select('famde', ['1' => 'Román Pérez Escobar', '2' => 'José José'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un involucrado', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('parentesco', 'Parentesco', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('parentesco', ['1' => 'Hijo(a)', '2' => 'Padre/Madre', '3' => 'Cónyuge'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un parentesco', 'required']) !!}
+					{!! Form::select('parentesco', ['HIJO(A)' => 'HIJO(A)', 'MADRE' => 'MADRE', 'PADRE' => 'PADRE', 'CÓNYUGE' => 'CÓNYUGE'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un parentesco', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('ocupacion', 'Ocupación', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('ocupacion', ['1' => 'Lic.', '2' => 'Ing.'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una ocupación', 'required']) !!}
+					{!! Form::select('ocupacion', $ocupaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una ocupación', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-4">

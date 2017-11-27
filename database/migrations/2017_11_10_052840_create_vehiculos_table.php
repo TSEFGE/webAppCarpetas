@@ -16,7 +16,7 @@ class CreateVehiculosTable extends Migration
         Schema::create('vehiculo', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idTipifDelito')->unsigned();
-            $table->enum('status', ['Robado', 'Involucrado'])->default('Robado');
+            $table->string('status', 20);
             $table->string('placas', 50);
             $table->integer('idEstado')->unsigned();
             $table->integer('idMarca')->unsigned();

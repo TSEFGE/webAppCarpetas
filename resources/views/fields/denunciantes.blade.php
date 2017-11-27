@@ -71,8 +71,18 @@
 			<div class="row">
 				<div class="col-6">
 					<div class="form-group">
-						{!! Form::label('conoceAlDenunciado', 'Lo conoce de:', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::text('conoceAlDenunciado', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese si el denunciante conoce al denunciado', 'required']) !!}
+						<label class="col-form-label col-form-label-sm" for="conoceAlDenunciado">¿Conoce al denunciado?</label>
+						<div class="clearfix"></div>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label col-form-label col-form-label-sm">
+								<input class="form-check-input" type="radio" id="conoceAlDenunciado1" name="conoceAlDenunciado"> Sí
+							</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label col-form-label col-form-label-sm">
+								<input class="form-check-input" type="radio" id="conoceAlDenunciado2" name="conoceAlDenunciado"> No
+							</label>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -7,7 +7,7 @@
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('delito', 'Delito', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('delito', ['1' => 'Homicidio', '2' => 'Robo'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un delito', 'required']) !!}
+					{!! Form::select('delito', $delitos, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un delito', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-6">
@@ -30,31 +30,32 @@
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('tipoArma', 'Tipo de Arma', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('tipoArma', ['1' => 'ARMA DE FUEGO', '2' => 'ARMA BLANCA'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un tipo de arma', 'required']) !!}
+					{!! Form::select('tipoArma', $tiposarma, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un tipo de arma', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('arma|', 'Arma', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('arma|', ['1' => 'PISTOLA', '2' => 'ESCOPETA'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el arma', 'required']) !!}
+					{!! Form::select('arma|', ['' => 'Seleccione el arma'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('modalidad', 'Modalidad', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('modalidad', ['1' => 'Uno', '2' => 'Dos'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una modalidad', 'required']) !!}
+					{!! Form::select('modalidad', $modalidades, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una modalidad', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('formacomision', 'Forma de comisión', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('formacomision', ['1' => 'Uno', '2' => 'Dos'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una forma de comisión', 'required']) !!}
+					{!! Form::select('formacomision', ['CULPOSO' => 'CULPOSO', 'DOLOSO' => 'DOLOSO'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una forma de comisión', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('consumacion', 'Consumación', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('consumacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la consumación', 'required']) !!}
+					{!! Form::select('consumacion', ['Instantánea' => 'Instantánea', 'Permanente' => 'Permanente'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una forma de consumación', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-3">
@@ -115,13 +116,13 @@
 		<div class="col-4">
 			<div class="form-group">
 				{!! Form::label('zonaubic', 'Zona de ubicación', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('zonaubic', ['1' => 'Uno', '2' => 'Dos'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una zona de ubicación', 'required']) !!}
+				{!! Form::select('zonaubic', $zonas, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una zona de ubicación', 'required']) !!}
 			</div>
 		</div>
 		<div class="col-4">
 			<div class="form-group">
 				{!! Form::label('lugar', 'Lugar', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('lugar', ['1' => 'Uno', '2' => 'Dos'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un lugar', 'required']) !!}
+				{!! Form::select('lugar', $lugares, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un lugar', 'required']) !!}
 			</div>
 		</div>
 		<div class="col-4">

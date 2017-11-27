@@ -3,7 +3,7 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/tempusdominus-bootstrap-4.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('plugins/chosen/chosen.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/select2/select2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/select2/select2.css') }}">
 @endsection
 
 @section('content')
@@ -153,8 +153,8 @@
 			});
 
             $(document).ready(function() {
-    $('.select2').select2();
-});
+                $('.select2').select2();
+            });
 
         });
     </script>

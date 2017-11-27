@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\CatAseguradora;
 use App\Models\CatClaseVehiculo;
 use App\Models\CatColor;
-//use App\Models\CatDelito;
+use App\Models\CatDelito;
 use App\Models\CatEscolaridad;
 use App\Models\CatEstado;
 use App\Models\CatEstadoCivil;
@@ -15,8 +15,8 @@ use App\Models\CatEtnia;
 use App\Models\CatLengua;
 use App\Models\CatLugar;
 use App\Models\CatMarca;
-//use App\Models\CatModalidad;
-use App\Models\CatNcionalida;
+use App\Models\CatModalidad;
+use App\Models\CatNacionalidad;
 use App\Models\CatOcupacion;
 use App\Models\CatProcedencia;
 use App\Models\CatPuesto;
@@ -36,6 +36,7 @@ class RegistroController extends Controller
         $aseguradoras = CatAseguradora::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $clasesveh = CatClaseVehiculo::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $colores = CatColor::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $delitos = CatDelito::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $estados = CatEstado::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $estadoscivil = CatEstadoCivil::orderBy('id', 'ASC')->pluck('nombre', 'id');
@@ -43,7 +44,8 @@ class RegistroController extends Controller
         $lenguas = CatLengua::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $lugares = CatLugar::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $marcas = CatMarca::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        //$nacionalidades = CatNacionalidad::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $modalidades = CatModalidad::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $nacionalidades = CatNacionalidad::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $ocupaciones = CatOcupacion::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $procedencias = CatProcedencia::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $puestos = CatPuesto::orderBy('id', 'ASC')->pluck('nombre', 'id');
@@ -56,14 +58,16 @@ class RegistroController extends Controller
         return view('registro')->with('aseguradoras', $aseguradoras)
                                 ->with('clasesveh', $clasesveh)
                                 ->with('colores', $colores)
+                                ->with('delitos', $delitos)
                                 ->with('escolaridades', $escolaridades)
                                 ->with('estados', $estados)
                                 ->with('estadoscivil', $estadoscivil)
                                 ->with('etnias', $etnias)
-                                ->with('lebguas', $lenguas)
+                                ->with('lenguas', $lenguas)
                                 ->with('lugares', $lugares)
                                 ->with('marcas', $marcas)
-                                //->with('nacionalidades', $nacionalidades)
+                                ->with('modalidades', $modalidades)
+                                ->with('nacionalidades', $nacionalidades)
                                 ->with('ocupaciones', $ocupaciones)
                                 ->with('procedencias', $procedencias)
                                 ->with('puestos', $puestos)

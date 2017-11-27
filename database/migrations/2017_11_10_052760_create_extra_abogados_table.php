@@ -17,7 +17,7 @@ class CreateExtraAbogadosTable extends Migration
             $table->increments('id');
             $table->integer('idVatiablesPersona')->unsigned();
             $table->string('cedulaProf',50);
-            $table->string('sector',50);
+            $table->integer('sector');
             $table->string('correo',50);
             $table->timestamps();
             $table->softDeletes();

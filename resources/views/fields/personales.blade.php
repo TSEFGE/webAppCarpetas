@@ -46,7 +46,7 @@
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('sexo', ['1' => 'Hombre', '2' => 'Mujer'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo', 'required']) !!}
+					{!! Form::select('sexo', ['SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo', 'required']) !!}
 				</div>
 			</div>
 		</div>
@@ -60,31 +60,31 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idNacionalidad', 'Nacionalidad', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idNacionalidad', ['1' => 'Mexicana', '2' => 'Colombiana'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la nacionalidad', 'required']) !!}
+			{!! Form::select('idNacionalidad', $nacionalidades, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la nacionalidad', 'required']) !!}
 		</div>
 	</div>
 	<div class="col">
 		<div class="form-group">
 			{!! Form::label('idEtnia', 'Etnia', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idEtnia', ['1' => 'Indígena', '2' => 'Totonaca'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la etnia', 'required']) !!}
+			{!! Form::select('idEtnia', $etnias, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la etnia', 'required']) !!}
 		</div>
 	</div>
 	<div class="col">
 		<div class="form-group">
 			{!! Form::label('idLengua', 'Lengua', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idLengua', ['1' => 'Indígena', '2' => 'Totonaca'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la lengua', 'required']) !!}
+			{!! Form::select('idLengua', $lenguas, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la lengua', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idEstadoOrigen', 'Entidad federativa de origen', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idEstadoOrigen', ['1' => 'Veracruz', '2' => 'CDMX'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
+			{!! Form::select('idEstadoOrigen', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idMunicipioOrigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idMunicipioOrigen', ['1' => '>Xalapa', '2' => 'Altotonga'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un municipio', 'required']) !!}
+			{!! Form::select('idMunicipioOrigen', ['' => 'Seleccione un municipio'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
@@ -102,25 +102,25 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idOcupacion', 'Ocupación', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idOcupacion', ['1' => 'ING.', '2' => 'Lic.'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la ocupación', 'required']) !!}
+			{!! Form::select('idOcupacion', $ocupaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la ocupación', 'required']) !!}
 		</div>
 	</div>
 	<div class="col">
 		<div class="form-group">
 			{!! Form::label('idEstadoCivil', 'Estado civil', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idEstadoCivil', ['1' => 'Soltero', '2' => 'Casado'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el estado civil', 'required']) !!}
+			{!! Form::select('idEstadoCivil', $estadoscivil, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el estado civil', 'required']) !!}
 		</div>
 	</div>
 	<div class="col">
 		<div class="form-group">
 			{!! Form::label('idReligion', 'Religión', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idReligion', ['1' => 'Católica', '2' => 'Budista'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la religión', 'required']) !!}
+			{!! Form::select('idReligion', $religiones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la religión', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idEscolaridad', 'Escolaridad', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idEscolaridad', ['1' => 'Primaria', '2' => 'Secundaria'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la escoalridad', 'required']) !!}
+			{!! Form::select('idEscolaridad', $escolaridades, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la escoalridad', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">

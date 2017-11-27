@@ -63,7 +63,7 @@
 				<div class="col-4">
 					<div class="form-group">
 						{!! Form::label('rango', 'Rango', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::select('rango', ['1' => 'Cabo', '2' => 'Comandante'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un rango', 'required']) !!}
+						{!! Form::select('rango', ['CABO' => 'CABO', 'COMANDANTE' => 'COMANDANTE'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un rango', 'required']) !!}
 					</div>
 				</div>
 				<div class="col-4">

@@ -21,11 +21,11 @@ class CreateExtraDenunciadosTable extends Migration
             $table->string('alias', 50);
             $table->string('senasPartic', 150);
             $table->integer('ingreso');
-            $table->enum('periodoIngreso', ['Semanal', 'Quincenal', 'Mensual'])->default('Mensual');
+            $table->string('periodoIngreso', 20);
             $table->string('residenciaAnterior', 100);
             $table->integer('idAbogado')->unsigned();
             $table->integer('personasBajoSuGuarda');
-            $table->boolean('perseguidoPenalmente');
+            $table->bolean('perseguidoPenalmente')->default(false);
             $table->string('vestimenta', 150);
 
             $table->foreign('idVariablesPersona')->references('id')->on('variables_persona')->onDelete('cascade');

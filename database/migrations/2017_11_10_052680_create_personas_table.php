@@ -21,7 +21,7 @@ class CreatePersonasTable extends Migration
              $table->dateTime('fechaNacimiento');
              $table->string('rfc', 20);
              $table->string('curp', 20)->unique();
-             $table->enum('sexo', ['Se desconoce', 'Hombre', 'Mujer'])->default('Se desconoce');
+             $table->string('sexo', 20);
              $table->integer('idNacionalidad')->unsigned();
              $table->integer('idEtnia')->unsigned();
              $table->integer('idLengua')->unsigned();

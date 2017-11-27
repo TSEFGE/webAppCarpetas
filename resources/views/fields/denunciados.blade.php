@@ -72,7 +72,7 @@
 				<div class="col-3">
 					<div class="form-group">
 						{!! Form::label('idPuesto', 'Puesto', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::select('idPuesto', ['1' => 'Semanal', '2' => 'Quincenal'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un puesto', 'required']) !!}
+						{!! Form::select('idPuesto', $puestos, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un puesto', 'required']) !!}
 					</div>
 				</div>
 				<div class="col-3">
@@ -96,7 +96,7 @@
 				<div class="col-3">
 					<div class="form-group">
 						{!! Form::label('periodoIngreso', 'Periodo de ingreso', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::select('periodoIngreso', ['1' => 'Semanal', '2' => 'Quincenal'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un periodo', 'required']) !!}
+						{!! Form::select('periodoIngreso', ['DIARIO' => 'DIARIO', 'SEMANAL' => 'SEMANAL', 'QUINCENAL' => 'QUINCENAL', 'MENSUAL' => 'MENSUAL'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un periodo', 'required']) !!}
 					</div>
 				</div>
 				<div class="col-3">
@@ -107,8 +107,18 @@
 				</div>
 				<div class="col-3">
 					<div class="form-group">
-						{!! Form::label('perseguidoPenalmente', '¿Perseguido penalmente?', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::select('perseguidoPenalmente', ['1' => 'Semanal', '2' => 'Quincenal'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una opción', 'required']) !!}
+						<label class="col-form-label col-form-label-sm" for="perseguidoPenalment">¿Perseguido penalmente?</label>
+						<div class="clearfix"></div>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label col-form-label col-form-label-sm">
+								<input class="form-check-input" type="radio" id="perseguidoPenalmente1" name="perseguidoPenalmente"> Sí
+							</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label col-form-label col-form-label-sm">
+								<input class="form-check-input" type="radio" id="perseguidoPenalmente2" name="perseguidoPenalmente"> No
+							</label>
+						</div>
 					</div>
 				</div>
 				<div class="col-3">

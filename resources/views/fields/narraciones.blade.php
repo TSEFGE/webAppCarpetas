@@ -7,7 +7,7 @@
 			<div class="col-12">
 				<div class="form-group">
 					{!! Form::label('involucrado', 'Involucrado', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('involucrado', ['1' => 'Román', '2' => 'José'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un involucrado', 'required']) !!}
+					{!! Form::select('involucrado', ['1' => 'Román Pérez Escobar', '2' => 'José José'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un involucrado', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-12">
