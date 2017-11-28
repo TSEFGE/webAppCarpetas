@@ -1,5 +1,4 @@
 <div class="row">
-	{{--{!! Form::open(['route' => 'users.store', 'method' => 'POST'])  !!}--}}
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('nombres', 'Nombre', ['class' => 'col-form-label-sm']) !!}
@@ -157,7 +156,6 @@
 			{!! Form::text('representanteLegal', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal', 'required']) !!}
 		</div>
 	</div>
-	{{--{!! Form::close() !!}--}}
 </div>
 
 {{--<div id="accordion" role="tablist">

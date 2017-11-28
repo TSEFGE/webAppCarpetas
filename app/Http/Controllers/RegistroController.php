@@ -34,6 +34,11 @@ use App\Models\CatColonia;
 //use App\Models\Unidad;
 
 use App\Models\Carpeta;
+use App\Models\Persona;
+use App\Models\Domicilio;
+use App\Models\VariablesPersona;
+use App\Models\Notificacion;
+use App\Models\ExtraDenunciante;
 
 class RegistroController extends Controller
 {
@@ -52,7 +57,7 @@ class RegistroController extends Controller
         $marcas = CatMarca::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $modalidades = CatModalidad::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $nacionalidades = CatNacionalidad::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $ocupaciones = CatOcupacion::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $procedencias = CatProcedencia::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $puestos = CatPuesto::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $religiones = CatReligion::orderBy('id', 'ASC')->pluck('nombre', 'id');
@@ -121,6 +126,93 @@ class RegistroController extends Controller
             $carpeta->esRelevante = 1;
         }
         $carpeta->idFiscal = Auth::user()->id;
+        $carpeta->save();
+        /*
+        Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
+        //Para mostrar modal
+        //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
+        */
+        return redirect()->route('registro');
+    }
+
+    public function storeDenunciante(Request $request){
+        dd($request->all());
+
+        $persona = new Persona();
+        $persona->nombres = $request->nombres;
+        $persona->primerAp = $request->primerAp;
+        $persona->segundoAP = $request->segundoAP;
+        $persona->fechaNacimiento = $request->fechaNacimiento;
+        $persona->rfc = $request->rfc;
+        $persona->curp = $request->curp;
+        $persona->sexo = $request->sexo;
+        $persona->idNacionalidad = $request->idNacionalidad;
+        $persona->idEtnia = $request->idEtnia;
+        $persona->idLengua = $request->idLengua;
+        $persona->idEstadoOrigen = $request->idEstadoOrigen;
+        $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
+        if ($request->esEmpresa==="on"){
+            $persona->esEmpresa = 1;
+        }
+
+        $domicilio = new Domicilio();
+        $domicilio->idEstado = $request->idEstado;
+        $domicilio->idMunicipio = $request->idMunicipio;
+        $domicilio->idLocalidad = $request->idLocalidad;
+        $domicilio->idColonia = $request->idColonia;
+        $domicilio->calle = $request->calle;
+        $domicilio->numExterno = $request->numExterno;
+        $domicilio->numInterno = $request->numInterno;
+
+        $domicilio2 = new Domicilio();
+        $domicilio2->idEstado = $request->idEstado2;
+        $domicilio2->idMunicipio = $request->idMunicipio2;
+        $domicilio2->idLocalidad = $request->idLocalidad2;
+        $domicilio2->idColonia = $request->idColonia2;
+        $domicilio2->calle = $request->calle2;
+        $domicilio2->numExterno = $request->numExterno2;
+        $domicilio2->numInterno = $request->numInterno2;
+
+        $domicilio3 = new Domicilio();
+        $domicilio3->idEstado = $request->idEstado3;
+        $domicilio3->idMunicipio = $request->idMunicipio3;
+        $domicilio3->idLocalidad = $request->idLocalidad3;
+        $domicilio3->idColonia = $request->idColonia3;
+        $domicilio3->calle = $request->calle3;
+        $domicilio3->numExterno = $request->numExterno3;
+        $domicilio3->numInterno = $request->numInterno3;
+
+        $notificacion = new Notificacion();
+        $notificacion->idDomicilio = $idD3;
+        $notificacion->correo = $request->correo;
+        $notificacion->telefono = $request->telefono;
+        $notificacion->fax = $request->fax;
+
+        $VariablesPersona = new VariablesPersona();
+        $VariablesPersona->idPersona = $idPersona;
+        $VariablesPersona->edad = $request->edad;
+        $VariablesPersona->telefono = $request->telefono;
+        $VariablesPersona->motivoEstancia = $request->motivoEstancia;
+        $VariablesPersona->idOcupacion = $request->idOcupacion;
+        $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;
+        $VariablesPersona->idEscolaridad = $request->idEscolaridad;
+        $VariablesPersona->idReligion = $request->idReligion;
+        $VariablesPersona->idDomicilio = $idD1;
+        $VariablesPersona->docIdentificacion = $request->docIdentificacion;
+        $VariablesPersona->numDocIdentificacion = $request->numDocIdentificacion;
+        $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
+        $VariablesPersona->idDomicilioTrabajo = $idD2;
+        $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
+        $VariablesPersona->representanteLegal = $request->representanteLegal;
+
+        $ExtraDenunciante = new ExtraDenunciante();
+        $ExtraDenunciante->idVariablesPersona = $idVariablesPersona;
+        $ExtraDenunciante->idNotificacion = $idNotificacion;
+        $ExtraDenunciante->idAbogado = $idAbogado;
+        if ($request->conoceAlDenunciado==="on"){
+            $ExtraDenunciante->conoceAlDenunciado = 1;
+        }
+        
         $carpeta->save();
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();

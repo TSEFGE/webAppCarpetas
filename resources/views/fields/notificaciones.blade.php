@@ -1,4 +1,4 @@
-@include('fields.direcciones')
+@include('fields.direccionesnotif')
 <div class="row">
 	<div class="col-4">
 		<div class="form-group">

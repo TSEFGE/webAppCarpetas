@@ -22,6 +22,7 @@ Route::get('/', function () {
 Route::get('/registrar-carpeta', 'RegistroController@showRegisterForm')->name('registro')->middleware('auth');
 
 Route::post('carpetastore', 'RegistroController@store')->name('carpeta.store');
+Route::post('storedenunciante', 'RegistroController@storeDenunciante')->name('denunciante.store');
 
 
 /*---------Rutas para los selects dinámicos-------------*/
