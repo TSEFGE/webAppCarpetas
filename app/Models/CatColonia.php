@@ -21,4 +21,12 @@ class CatColonia extends Model
     {
         return $this->belongsTo('app/Models/CatMunicipio');
     }
+
+    public static function codigos($id){
+        return CatColonia::having('idMunicipio', '=', $id)->groupBy('codigoPostal')->get();
+    }
+
+    public static function colonias($cp){
+        return CatColonia::where('codigoPostal', '=', $cp)->get();
+    }
 }

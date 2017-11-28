@@ -19,4 +19,8 @@ class CatLocalidad extends Model
     public function domicilios(){
     	return $this->hasMany('App\Models\Domicilio');
     }
+
+    public static function localidades($id){
+        return CatLocalidad::where('idMunicipio', '=', $id)->get();
+    }
 }

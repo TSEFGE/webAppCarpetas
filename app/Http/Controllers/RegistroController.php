@@ -29,6 +29,8 @@ use App\Models\CatTipoUso;
 use App\Models\CatZona;
 
 use App\Models\CatMunicipio;
+use App\Models\CatLocalidad;
+use App\Models\CatColonia;
 use App\Models\CatSubmarca;
 use App\Models\CatTipoVehiculo;
 //use App\Models\Unidad;
@@ -126,7 +128,8 @@ class RegistroController extends Controller
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
-        return redirect()->route('users.index');*/
+        */
+        return redirect()->route('registro');
     }
 
     /**
@@ -181,6 +184,27 @@ class RegistroController extends Controller
         }
     }
 
+	public function getLocalidades(Request $request, $id){
+        if($request->ajax()){
+            $localidades = CatLocalidad::localidades($id);
+            return response()->json($localidades);
+        }
+    }
+
+    public function getCodigos(Request $request, $id){
+        if($request->ajax()){
+            $codigos = CatColonia::codigos($id);
+            return response()->json($codigos);
+        }
+    }
+
+    public function getColonias(Request $request, $cp){
+        if($request->ajax()){
+            $colonias = CatColonia::colonias($cp);
+            return response()->json($colonias);
+        }
+    }
+
     public function getSubmarcas(Request $request, $id){
         if($request->ajax()){
             $submarcas = CatSubmarca::submarcas($id);
@@ -188,10 +212,11 @@ class RegistroController extends Controller
         }
     }
 
-        public function getTipoVehiculos(Request $request, $id){
+    public function getTipoVehiculos(Request $request, $id){
         if($request->ajax()){
             $tipoVehiculos = CatTipoVehiculo::tipoVehiculos($id);
             return response()->json($tipoVehiculos);
-        }
-    }
+		}
+	}
+    
 }
