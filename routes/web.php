@@ -22,6 +22,9 @@ Route::get('/', function () {
 Route::get('/registrar-carpeta', 'RegistroController@showRegisterForm')->name('registro')->middleware('auth');
 
 Route::get('municipios/{id}', 'RegistroController@getMunicipios');
+Route::get('localidades/{id}', 'RegistroController@getLocalidades');
+Route::get('codigos/{id}', 'RegistroController@getCodigos');
+Route::get('colonias/{cp}', 'RegistroController@getColonias');
 
 Route::post('carpetastore', 'RegistroController@store')->name('carpeta.store');
 
