@@ -39,17 +39,10 @@ class DatabaseSeeder extends Seeder
          $this->call(SubmarcaSeeder::class);
          $this->call(SubmarcaSeeder2::class);
 
-         //$this->call(ColoniaSeeder::class);
+         $this->call(ColoniaSeeder::class);
          $this->call(LocalidadSeeder::class);
          $this->call(LocalidadSeeder2::class);
 
          $this->call(UnidadSeeder::class);
-
-         /*
-         $this->call(EstadoSeeder::class);
-         $this->call(MunicipiosPruebaSeeder::class);
-         $this->call(UnidadSeeder::class);
-         */
-
     }
 }
