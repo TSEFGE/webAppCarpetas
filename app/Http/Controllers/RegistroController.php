@@ -29,6 +29,8 @@ use App\Models\CatTipoUso;
 use App\Models\CatZona;
 
 use App\Models\CatMunicipio;
+use App\Models\CatSubmarca;
+use App\Models\CatTipoVehiculo;
 //use App\Models\Unidad;
 
 use App\Models\Carpeta;
@@ -176,6 +178,20 @@ class RegistroController extends Controller
         if($request->ajax()){
             $municipios = CatMunicipio::municipios($id);
             return response()->json($municipios);
+        }
+    }
+
+    public function getSubmarcas(Request $request, $id){
+        if($request->ajax()){
+            $submarcas = CatSubmarca::submarcas($id);
+            return response()->json($submarcas);
+        }
+    }
+
+        public function getTipoVehiculos(Request $request, $id){
+        if($request->ajax()){
+            $tipoVehiculos = CatTipoVehiculo::tipoVehiculos($id);
+            return response()->json($tipoVehiculos);
         }
     }
 }

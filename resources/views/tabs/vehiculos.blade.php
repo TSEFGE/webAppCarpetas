@@ -18,20 +18,20 @@
 			</div>
 			<div class="col-6">
 				<div class="form-group">
-					{!! Form::label('entidadfedv', 'Entidad federativa', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('entidadfedv', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
+					{!! Form::label('idEstado', 'Entidad federativa', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idEstado', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-3">
 				<div class="form-group">
-					{!! Form::label('marca', 'Marca', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('marca', $marcas, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una marca', 'required']) !!}
+					{!! Form::label('idMarca', 'Marca', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idMarca', $marcas, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una marca', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-3">
 				<div class="form-group">
-					{!! Form::label('submarca', 'Submarca', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('submarca', ['' => 'Seleccione una submarca'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
+					{!! Form::label('idSubmarca', 'Submarca', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idSubmarca', ['' => 'Seleccione una submarca'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-3">
@@ -42,8 +42,8 @@
 			</div>
 			<div class="col-3">
 				<div class="form-group">
-					{!! Form::label('color', 'Color', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('color', ['' => 'Seleccione un color'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
+					{!! Form::label('idColor', 'Color', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idColor', ['' => 'Seleccione un color'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-6">
@@ -54,14 +54,14 @@
 			</div>
 			<div class="col-6">
 				<div class="form-group">
-					{!! Form::label('nummotor', 'Núm. Motor', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('nummotor', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de motor', 'required']) !!}
+					{!! Form::label('numMotor', 'Núm. Motor', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('numMotor', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de motor', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-6">
 				<div class="form-group">
-					{!! Form::label('numserie', 'Núm. Serie', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('numserie', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de serie', 'required']) !!}
+					{!! Form::label('numSerie', 'Núm. Serie', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('numSerie', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de serie', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-6">
@@ -72,38 +72,38 @@
 			</div>
 			<div class="col-6">
 				<div class="form-group">
-					{!! Form::label('clasevehiculo', 'Clase de Vehículo', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('clasevehiculo', $clasesveh, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una clase de vehículo', 'required']) !!}
+					{!! Form::label('idClaseVehiculo', 'Clase de Vehículo', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idClaseVehiculo', $clasesveh, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una clase de vehículo', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-6">
 				<div class="form-group">
-					{!! Form::label('tipov', 'Tipo de vehículo', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('tipov', ['' => 'Seleccione un tipo de vehículo'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
+					{!! Form::label('idTipoVehiculo', 'Tipo de vehículo', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idTipoVehiculo', ['' => 'Seleccione un tipo de vehículo'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-6">
 				<div class="form-group">
-					{!! Form::label('tipouso', 'Tipo de uso', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('tipouso', $tiposuso, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un tipo de uso', 'required']) !!}
+					{!! Form::label('idTipoUso', 'Tipo de uso', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idTipoUso', $tiposuso, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un tipo de uso', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-6">
 				<div class="form-group">
-					{!! Form::label('procedencia', 'Procedencia', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('procedencia', $procedencias, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione procedencia', 'required']) !!}
+					{!! Form::label('idProcedencia', 'Procedencia', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idProcedencia', $procedencias, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione procedencia', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-6">
 				<div class="form-group">
-					{!! Form::label('aseguradora', 'Aseguradora', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('aseguradora', $aseguradoras, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una aseguradora', 'required']) !!}
+					{!! Form::label('idAseguradora', 'Aseguradora', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idAseguradora', $aseguradoras, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una aseguradora', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-12">
 				<div class="form-group">
-					{!! Form::label('senaspartic', 'Señas particulares', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::textarea('senaspartic', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3', 'required']) !!}
+					{!! Form::label('senasPartic', 'Señas particulares', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::textarea('senasPartic', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3', 'required']) !!}
 				</div>
 			</div>
 			{{--{!! Form::close() !!}--}}

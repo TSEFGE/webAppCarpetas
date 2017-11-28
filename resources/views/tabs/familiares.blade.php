@@ -24,20 +24,20 @@
 			</div>
 			<div class="col-4">
 				<div class="form-group">
-					{!! Form::label('nombrefam', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('nombrefam', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del familiar', 'required']) !!}
+					{!! Form::label('nombres', 'Nombre', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('nombres', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del familiar', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-4">
 				<div class="form-group">
-					{!! Form::label('primerapfam', 'Primer Apellido', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('primerapfam', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido', 'required']) !!}
+					{!! Form::label('primerAp', 'Primer Apellido', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('primerAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-4">
 				<div class="form-group">
-					{!! Form::label('segundoapfam', 'Segundo Apellido', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('segundoapfam', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'required']) !!}
+					{!! Form::label('segundoAp', 'Segundo Apellido', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'required']) !!}
 				</div>
 			</div>
 			{{--{!! Form::close() !!}--}}
