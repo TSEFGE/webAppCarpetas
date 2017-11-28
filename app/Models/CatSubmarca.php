@@ -19,4 +19,8 @@ class CatSubmarca extends Model
     public function marca(){
         return $this->belongsTo('App\Models\CatMarca');
     }
+
+    public static function submarcas($id){
+        return CatSubmarca::where('idMarca', '=', $id)->get();
+    }
 }

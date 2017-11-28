@@ -31,6 +31,8 @@ use App\Models\CatZona;
 use App\Models\CatMunicipio;
 use App\Models\CatLocalidad;
 use App\Models\CatColonia;
+use App\Models\CatSubmarca;
+use App\Models\CatTipoVehiculo;
 //use App\Models\Unidad;
 
 use App\Models\Carpeta;
@@ -274,7 +276,7 @@ class RegistroController extends Controller
         }
     }
 
-    public function getLocalidades(Request $request, $id){
+	public function getLocalidades(Request $request, $id){
         if($request->ajax()){
             $localidades = CatLocalidad::localidades($id);
             return response()->json($localidades);
@@ -294,4 +296,19 @@ class RegistroController extends Controller
             return response()->json($colonias);
         }
     }
+
+    public function getSubmarcas(Request $request, $id){
+        if($request->ajax()){
+            $submarcas = CatSubmarca::submarcas($id);
+            return response()->json($submarcas);
+        }
+    }
+
+    public function getTipoVehiculos(Request $request, $id){
+        if($request->ajax()){
+            $tipoVehiculos = CatTipoVehiculo::tipoVehiculos($id);
+            return response()->json($tipoVehiculos);
+		}
+	}
+    
 }
