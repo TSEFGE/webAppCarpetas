@@ -138,12 +138,14 @@ class RegistroController extends Controller
     }
 
     public function storeDenunciante(Request $request){
-        dd($request->all());
+        //dd($request->all());
+        //$user = User::create(['name'=>'Cesar','email'=>'codigojava@gmail.com']);
+        //print_r($user->id);
 
         $persona = new Persona();
         $persona->nombres = $request->nombres;
         $persona->primerAp = $request->primerAp;
-        $persona->segundoAP = $request->segundoAP;
+        $persona->segundoAp = $request->segundoAp;
         $persona->fechaNacimiento = $request->fechaNacimiento;
         $persona->rfc = $request->rfc;
         $persona->curp = $request->curp;
@@ -156,6 +158,8 @@ class RegistroController extends Controller
         if ($request->esEmpresa==="on"){
             $persona->esEmpresa = 1;
         }
+        $persona->save();
+        $idPersona = $persona->id;
 
         $domicilio = new Domicilio();
         $domicilio->idEstado = $request->idEstado;
@@ -165,6 +169,8 @@ class RegistroController extends Controller
         $domicilio->calle = $request->calle;
         $domicilio->numExterno = $request->numExterno;
         $domicilio->numInterno = $request->numInterno;
+        $domicilio->save();
+        $idD1 = $domicilio->id;
 
         $domicilio2 = new Domicilio();
         $domicilio2->idEstado = $request->idEstado2;
@@ -174,6 +180,8 @@ class RegistroController extends Controller
         $domicilio2->calle = $request->calle2;
         $domicilio2->numExterno = $request->numExterno2;
         $domicilio2->numInterno = $request->numInterno2;
+        $domicilio2->save();
+        $idD2 = $domicilio2->id;
 
         $domicilio3 = new Domicilio();
         $domicilio3->idEstado = $request->idEstado3;
@@ -183,12 +191,16 @@ class RegistroController extends Controller
         $domicilio3->calle = $request->calle3;
         $domicilio3->numExterno = $request->numExterno3;
         $domicilio3->numInterno = $request->numInterno3;
+        $domicilio3->save();
+        $idD3 = $domicilio3->id;
 
         $notificacion = new Notificacion();
         $notificacion->idDomicilio = $idD3;
         $notificacion->correo = $request->correo;
         $notificacion->telefono = $request->telefono;
         $notificacion->fax = $request->fax;
+        $notificacion->save();
+        $idNotificacion = $notificacion->id;
 
         $VariablesPersona = new VariablesPersona();
         $VariablesPersona->idPersona = $idPersona;
@@ -206,7 +218,10 @@ class RegistroController extends Controller
         $VariablesPersona->idDomicilioTrabajo = $idD2;
         $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
         $VariablesPersona->representanteLegal = $request->representanteLegal;
+        $VariablesPersona->save();
+        $idVariablesPersona = $VariablesPersona->id;
 
+        $idAbogado=null;
         $ExtraDenunciante = new ExtraDenunciante();
         $ExtraDenunciante->idVariablesPersona = $idVariablesPersona;
         $ExtraDenunciante->idNotificacion = $idNotificacion;
@@ -214,8 +229,7 @@ class RegistroController extends Controller
         if ($request->conoceAlDenunciado==="on"){
             $ExtraDenunciante->conoceAlDenunciado = 1;
         }
-        
-        $carpeta->save();
+        $ExtraDenunciante->save();
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal

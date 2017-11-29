@@ -95,7 +95,7 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('motivoEstancia', 'Motivo de estancia', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('motivoestancia', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el motico de estancia', 'required']) !!}
+			{!! Form::text('motivoEstancia', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el motico de estancia', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
@@ -153,7 +153,7 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('representanteLegal', 'Representante legal', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('representanteLegal', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal', 'required']) !!}
+			{!! Form::text('representanteLegal', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal']) !!}
 		</div>
 	</div>
 </div>

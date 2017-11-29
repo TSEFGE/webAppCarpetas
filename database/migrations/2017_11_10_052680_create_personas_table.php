@@ -27,7 +27,7 @@ class CreatePersonasTable extends Migration
              $table->integer('idLengua')->unsigned();
              $table->integer('idEstadoOrigen')->unsigned();
              $table->integer('idMunicipioOrigen')->unsigned();
-             $table->boolean('esEmpresa');
+             $table->boolean('esEmpresa')->default(false);
 
              $table->foreign('idNacionalidad')->references('id')->on('cat_nacionalidad')->onDelete('cascade');
              $table->foreign('idEtnia')->references('id')->on('cat_etnia')->onDelete('cascade');

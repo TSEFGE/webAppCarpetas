@@ -113,7 +113,7 @@
 
             $(function () {
                 $('#fechanac').datetimepicker({
-                	format: 'L'
+                	format: 'YYYY-MM-DD',
                 });
             });
 

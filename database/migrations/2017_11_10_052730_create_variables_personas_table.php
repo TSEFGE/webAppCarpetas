@@ -29,7 +29,7 @@ class CreateVariablesPersonasTable extends Migration
             $table->string('lugarTrabajo',50);
             $table->integer('idDomicilioTrabajo')->unsigned();
             $table->string('telefonoTrabajo',15);
-            $table->string('representanteLegal',24);
+            $table->string('representanteLegal',100)->default('NO APLICA');
             $table->timestamps();
             $table->softDeletes();
             

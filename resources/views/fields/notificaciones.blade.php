@@ -3,7 +3,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('correo', 'Correo electrónico', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('correo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el correo electrónico', 'required']) !!}
+			{!! Form::email('correo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el correo electrónico', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">
