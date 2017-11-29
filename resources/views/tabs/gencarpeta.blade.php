@@ -1,6 +1,6 @@
 <div class="boxtwo">
 	<h6>Datos generales de la carpeta de investigación</h6>
-	{!! Form::open(['route' => 'carpeta.store', 'method' => 'POST'])  !!}
+	{!! Form::open(['route' => 'store.carpeta', 'method' => 'POST'])  !!}
 	<div class="row">
 		<div class="col-4">
 			<div class="form-group">

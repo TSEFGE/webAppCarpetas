@@ -23,7 +23,7 @@ class CreateExtraDenunciadosTable extends Migration
             $table->integer('ingreso');
             $table->string('periodoIngreso', 20);
             $table->string('residenciaAnterior', 100);
-            $table->integer('idAbogado')->unsigned();
+            $table->integer('idAbogado')->unsigned()->nullable();
             $table->integer('personasBajoSuGuarda');
             $table->boolean('perseguidoPenalmente')->default(false);
             $table->string('vestimenta', 150);
