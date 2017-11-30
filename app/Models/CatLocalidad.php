@@ -21,6 +21,6 @@ class CatLocalidad extends Model
     }
 
     public static function localidades($id){
-        return CatLocalidad::where('idMunicipio', '=', $id)->get();
+        return CatLocalidad::select('id', 'nombre')->where('idMunicipio', '=', $id)->get();
     }
 }

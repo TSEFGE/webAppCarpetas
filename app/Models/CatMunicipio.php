@@ -38,7 +38,7 @@ class CatMunicipio extends Model
     }
 
     public static function municipios($id){
-        return CatMunicipio::where('idEstado', '=', $id)->get();
+        return CatMunicipio::select('id', 'nombre')->where('idEstado', '=', $id)->get();
     }
 
     

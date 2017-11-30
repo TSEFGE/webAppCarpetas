@@ -16,8 +16,8 @@ class CreateCatMunicipioTable extends Migration
         Schema::create('cat_municipio', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idMunicipio')->unsigned();
-            $table->string('nombre',50);
             $table->integer('idEstado')->unsigned();
+            $table->string('nombre',50);
             $table->timestamps();
             $table->softDeletes();
             

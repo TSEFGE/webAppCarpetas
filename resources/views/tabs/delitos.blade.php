@@ -52,13 +52,13 @@
 			<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('idTipoArma', 'Tipo de Arma', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idTipoArma', $tiposarma, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un tipo de arma', 'required']) !!}
+					{!! Form::select('idTipoArma', $tiposarma, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un tipo de arma']) !!}
 				</div>
 			</div>
 			<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('idArma', 'Arma', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idArma', ['' => 'Seleccione el arma', '1' => 'Pistola'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
+					{!! Form::select('idArma', ['' => 'Seleccione el arma', '1' => 'Pistola'], null, ['class' => 'form-control form-control-sm']) !!}
 				</div>
 			</div>
 			<div class="col-4">
@@ -96,19 +96,19 @@
 		<div class="col-4">
 			<div class="form-group">
 				{!! Form::label('entreCalle', 'Entre calle', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('entreCalle', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese una calle perpendicular', 'required']) !!}
+				{!! Form::text('entreCalle', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese una calle perpendicular']) !!}
 			</div>
 		</div>
 		<div class="col-4">
 			<div class="form-group">
 				{!! Form::label('yCalle', 'Y calle', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('yCalle', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese otra calle perpendicular', 'required']) !!}
+				{!! Form::text('yCalle', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese otra calle perpendicular']) !!}
 			</div>
 		</div>
 		<div class="col-4">
 			<div class="form-group">
 				{!! Form::label('calleTrasera', 'Calle trasera', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('calleTrasera', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la calle trasera', 'required']) !!}
+				{!! Form::text('calleTrasera', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la calle trasera']) !!}
 			</div>
 		</div>
 		<div class="col-4">
@@ -120,13 +120,13 @@
 		<div class="col-4">
 			<div class="form-group">
 				{!! Form::label('idLugar', 'Lugar', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('idLugar', $lugares, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un lugar', 'required']) !!}
+				{!! Form::select('idLugar', $lugares, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un lugar']) !!}
 			</div>
 		</div>
 		<div class="col-4">
 			<div class="form-group">
 				{!! Form::label('puntoReferencia', 'Punto de referencia', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('puntoReferencia', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese un punto de referencia', 'required']) !!}
+				{!! Form::text('puntoReferencia', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese un punto de referencia']) !!}
 			</div>
 		</div>
 		<div class="col-12">

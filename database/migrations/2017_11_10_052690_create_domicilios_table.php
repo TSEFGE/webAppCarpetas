@@ -15,15 +15,13 @@ class CreateDomiciliosTable extends Migration
     {
         Schema::create('domicilio', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('idEstado')->unsigned();
-            $table->integer('idMunicipio')->unsigned();
-            $table->integer('idLocalidad')->unsigned();
-            $table->integer('idColonia')->unsigned();
-            $table->string('calle', 50);
+            $table->integer('idMunicipio')->unsigned()->default(2497);
+            $table->integer('idLocalidad')->unsigned()->default(27592);
+            $table->integer('idColonia')->unsigned()->default(8982);
+            $table->string('calle', 50)->default("SIN INFORMACION");
             $table->string('numExterno')->default('S/N');
             $table->string('numInterno')->default('S/N');
 
-            $table->foreign('idEstado')->references('id')->on('cat_estado')->onDelete('cascade');
             $table->foreign('idMunicipio')->references('id')->on('cat_municipio')->onDelete('cascade');
             $table->foreign('idLocalidad')->references('id')->on('cat_localidad')->onDelete('cascade');
             $table->foreign('idColonia')->references('id')->on('cat_colonia')->onDelete('cascade');

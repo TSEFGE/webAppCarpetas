@@ -73,7 +73,7 @@ $("#idMunicipio2").change(function(event){
 });
 
 $("#cp2").change(function(event){
-	$.get("colonias/"+$('#cp option:selected').html()+"", function(response, cp){
+	$.get("colonias/"+$('#cp2 option:selected').html()+"", function(response, cp){
 		$("#idColonia2").empty();
 		$("#idColonia2").append("<option value=''>Seleccione una colonia</option>");
 		for(i=0; i<response.length; i++){
@@ -110,7 +110,7 @@ $("#idMunicipio3").change(function(event){
 });
 
 $("#cp3").change(function(event){
-	$.get("colonias/"+$('#cp option:selected').html()+"", function(response, cp){
+	$.get("colonias/"+$('#cp3 option:selected').html()+"", function(response, cp){
 		$("#idColonia3").empty();
 		$("#idColonia3").append("<option value=''>Seleccione una colonia</option>");
 		for(i=0; i<response.length; i++){

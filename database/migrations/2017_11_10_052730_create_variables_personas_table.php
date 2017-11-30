@@ -17,19 +17,19 @@ class CreateVariablesPersonasTable extends Migration
             $table->increments('id');
             $table->integer('idPersona')->unsigned();
             $table->integer('edad');
-            $table->string('telefono',15);
-            $table->string('motivoEstancia',200);
+            $table->string('telefono',15)->default("SIN INFORMACION");
+            $table->string('motivoEstancia',200)->default("SIN INFORMACION");
             $table->integer('idOcupacion')->unsigned()->default(2941);
             $table->integer('idEstadoCivil')->unsigned()->default(7);
             $table->integer('idEscolaridad')->unsigned()->default(14);
             $table->integer('idReligion')->unsigned()->default(29);
             $table->integer('idDomicilio')->unsigned()->default(1);
-            $table->string('docIdentificacion',50);
-            $table->string('numDocIdentificacion',50);
-            $table->string('lugarTrabajo',50);
+            $table->string('docIdentificacion',50)->default("SIN INFORMACION");
+            $table->string('numDocIdentificacion',50)->default("SIN INFORMACION");
+            $table->string('lugarTrabajo',50)->default("SIN INFORMACION");
             $table->integer('idDomicilioTrabajo')->unsigned()->default(1);
-            $table->string('telefonoTrabajo',15);
-            $table->string('representanteLegal',100)->default('NO APLICA');
+            $table->string('telefonoTrabajo',15)->default("SIN INFORMACION");
+            $table->string('representanteLegal',100)->default("SIN INFORMACION");
             $table->timestamps();
             $table->softDeletes();
             

@@ -21,6 +21,6 @@ class CatSubmarca extends Model
     }
 
     public static function submarcas($id){
-        return CatSubmarca::where('idMarca', '=', $id)->get();
+        return CatSubmarca::select('id', 'nombre')->where('idMarca', '=', $id)->get();
     }
 }

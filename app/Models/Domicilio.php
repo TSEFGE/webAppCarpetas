@@ -9,7 +9,7 @@ class Domicilio extends Model
     protected $table = 'domicilio';
 
     protected $fillable = [
-        'id', 'idEstado', 'idMunicipio', 'idLocalidad', 'idColonia',  'calle', 'numExterno',  'numInterno',
+        'id', 'idMunicipio', 'idLocalidad', 'idColonia',  'calle', 'numExterno',  'numInterno',
     ];
 
     public function variablesPersonas()
@@ -25,11 +25,6 @@ class Domicilio extends Model
     public function tipifDelitos()
     {
         return $this->hasMany('App\Models\TipifDelito');
-    }
-
-    public function estado()
-    {
-        return $this->belongsTo('App\Models\CatEstado');
     }
 
     public function municipio()

@@ -21,15 +21,15 @@ class CreateCarpetasTable extends Migration
             $table->date('fechaInicio');
             $table->boolean('conDetenido')->default(false);
             $table->boolean('esRelevante')->default(false);
-            $table->string('estadoCarpeta',50);
-            $table->time('horaIntervencion');
+            $table->string('estadoCarpeta',50)->default("INICIO");
+            $table->time('horaIntervencion')->nullable();
             $table->string('descripcionHechos',500);
-            $table->string('npd',50);
-            $table->string('numIph',50);
-            $table->date('fechaIph');
-            $table->string('narracionIph',2000);
-            $table->integer('idTipoDeterminacion')->unsigned();
-            $table->date('fechaDeterminacion');
+            $table->string('npd',50)->default("SIN INFORMACION");
+            $table->string('numIph',50)->default("SIN INFORMACION");
+            $table->date('fechaIph')->nullable();
+            $table->string('narracionIph',2000)->default("SIN INFORMACION");
+            $table->integer('idTipoDeterminacion')->unsigned()->default(5);
+            $table->date('fechaDeterminacion')->nullable();
             $table->timestamps();
             $table->softDeletes();
             

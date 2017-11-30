@@ -27,6 +27,7 @@ class CreateExtraDenunciadosTable extends Migration
             $table->integer('personasBajoSuGuarda');
             $table->boolean('perseguidoPenalmente')->default(false);
             $table->string('vestimenta', 150);
+            $table->string('narracion',2000);
 
             $table->foreign('idVariablesPersona')->references('id')->on('variables_persona')->onDelete('cascade');
             $table->foreign('idNotificacion')->references('id')->on('notificacion')->onDelete('cascade');

@@ -52,29 +52,29 @@ class RegistroController extends Controller
 {
     public function showRegisterForm()
     {
-        $aseguradoras = CatAseguradora::orderBy('id', 'ASC')->pluck('id', 'nombre');
-        $clasesveh = CatClaseVehiculo::orderBy('id', 'ASC')->pluck('id', 'nombre');
-        $colores = CatColor::orderBy('id', 'ASC')->pluck('id', 'nombre');
-        $delitos = CatDelito::orderBy('id', 'ASC')->pluck('id', 'nombre');
-        $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('id', 'nombre');
-        $estados = CatEstado::orderBy('id', 'ASC')->pluck('id', 'nombre');
-        $estadoscivil = CatEstadoCivil::orderBy('id', 'ASC')->pluck('id', 'nombre');
-        $etnias = CatEtnia::orderBy('id', 'ASC')->pluck('id', 'nombre');
-        $lenguas = CatLengua::orderBy('id', 'ASC')->pluck('id', 'nombre');
-        $lugares = CatLugar::orderBy('id', 'ASC')->pluck('id', 'nombre');
-        $marcas = CatMarca::orderBy('id', 'ASC')->pluck('id', 'nombre');
-        $modalidades = CatModalidad::orderBy('id', 'ASC')->pluck('id', 'nombre');
-        $nacionalidades = CatNacionalidad::orderBy('id', 'ASC')->pluck('id', 'nombre');
-        $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('id', 'nombre');
-        $procedencias = CatProcedencia::orderBy('id', 'ASC')->pluck('id', 'nombre');
-        $puestos = CatPuesto::orderBy('id', 'ASC')->pluck('id', 'nombre');
-        $religiones = CatReligion::orderBy('id', 'ASC')->pluck('id', 'nombre');
-        $tiposarma = CatTipoArma::orderBy('id', 'ASC')->pluck('id', 'nombre');
-        $tiposdet = CatTipoDeterminacion::orderBy('id', 'ASC')->pluck('id', 'nombre');
-        $tiposuso = CatTipoUso::orderBy('id', 'ASC')->pluck('id', 'nombre');
-        $zonas = CatZona::orderBy('id', 'ASC')->pluck('id', 'nombre');
+        $aseguradoras = CatAseguradora::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $clasesveh = CatClaseVehiculo::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $colores = CatColor::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $delitos = CatDelito::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $estados = CatEstado::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $estadoscivil = CatEstadoCivil::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $etnias = CatEtnia::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $lenguas = CatLengua::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $lugares = CatLugar::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $marcas = CatMarca::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $modalidades = CatModalidad::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $nacionalidades = CatNacionalidad::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $procedencias = CatProcedencia::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $puestos = CatPuesto::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $religiones = CatReligion::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $tiposarma = CatTipoArma::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $tiposdet = CatTipoDeterminacion::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $tiposuso = CatTipoUso::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $zonas = CatZona::orderBy('id', 'ASC')->pluck('nombre', 'id');
         //$municipios = CatMunicipio::where('id', '<', 10)->orderBy('id', 'ASC')->pluck('id', 'nombre');
-        //->select('name', 'email as user_email')
+        //->select('id', 'nombre')->
         return view('registro')->with('aseguradoras', $aseguradoras)
                                 ->with('clasesveh', $clasesveh)
                                 ->with('colores', $colores)
@@ -177,14 +177,33 @@ class RegistroController extends Controller
     /*-----Métodos de guardado-----*/
     public function storeCarpeta(Request $request){
         //dd($request->all());
-        $carpeta = new Carpeta($request->all());
+        $carpeta = new Carpeta();
+        $carpeta->idUnidad = Auth::user()->idUnidad;
+        $carpeta->idFiscal = Auth::user()->id;
+        $carpeta->numCarpeta = $request->numCarpeta;
+        $carpeta->fechaInicio = $request->fechaInicio;
         if ($request->conDetenido==="on"){
             $carpeta->conDetenido = 1;
         }
         if ($request->esRelevante==="on"){
             $carpeta->esRelevante = 1;
         }
-        $carpeta->idFiscal = Auth::user()->id;
+        $carpeta->estadoCarpeta = "INICIO";
+        $carpeta->horaIntervencion = $request->horaIntervencion;
+        $carpeta->descripcionHechos = $request->descripcionHechos;
+        if ($request->npd===null){
+            $carpeta->npd = "SIN INFORMACION";
+        }
+        if ($request->numIph===null){
+            $carpeta->numIph = "SIN INFORMACION";
+        }
+        $carpeta->fechaIph = $request->fechaIph;
+
+        if ($request->narracionIph===null){
+            $carpeta->narracionIph = "SIN INFORMACION";
+        }
+        $carpeta->fechaDeterminacion = $request->fechaDeterminacion;
+        $carpeta->idTipoDeterminacion = 5;
         //dd($carpeta);
         $carpeta->save();
         //$idCarpeta = $carpeta->id;

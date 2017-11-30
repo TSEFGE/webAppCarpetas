@@ -43,7 +43,7 @@
 			@include('tabs.gencarpeta')
 		</div>
 		<div class="tab-pane fade" id="denunciantes" role="tabpanel" aria-labelledby="denunciantes-tab">
-			{{--@include('tabs.denunciantes')--}}
+			@include('tabs.denunciantes')
 		</div>
 		<div class="tab-pane fade" id="denunciados" role="tabpanel" aria-labelledby="denunciados-tab">
 			{{--@include('tabs.denunciados')--}}
