@@ -22,11 +22,11 @@ class CreatePersonasTable extends Migration
              $table->string('rfc', 20);
              $table->string('curp', 20)->unique();
              $table->string('sexo', 20);
-             $table->integer('idNacionalidad')->unsigned();
-             $table->integer('idEtnia')->unsigned();
-             $table->integer('idLengua')->unsigned();
-             $table->integer('idEstadoOrigen')->unsigned();
-             $table->integer('idMunicipioOrigen')->unsigned();
+             $table->integer('idNacionalidad')->unsigned()->default(132);
+             $table->integer('idEtnia')->unsigned()->default(13);
+             $table->integer('idLengua')->unsigned()->default(69);
+             $table->integer('idEstadoOrigen')->unsigned()->default(33);
+             $table->integer('idMunicipioOrigen')->unsigned()->default(2497);
              $table->boolean('esEmpresa')->default(false);
 
              $table->foreign('idNacionalidad')->references('id')->on('cat_nacionalidad')->onDelete('cascade');
