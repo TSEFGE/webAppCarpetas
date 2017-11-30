@@ -1,9 +1,9 @@
+{!! Form::open(['route' => 'store.vehiculo', 'method' => 'POST'])  !!}
 <div class="row no-gutters">
 	<div class="col-10">
 		<div class="boxtwo">
 			<h6>Datos generales de la unidad</h6>
 			<div class="row">
-			{{--{!! Form::open(['route' => 'users.store', 'method' => 'POST'])  !!}--}}
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('status', 'Status', ['class' => 'col-form-label-sm']) !!}
@@ -43,7 +43,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('idColor', 'Color', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idColor', ['' => 'Seleccione un color'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
+					{!! Form::select('idColor', $colores, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un color', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-6">
@@ -54,14 +54,14 @@
 			</div>
 			<div class="col-6">
 				<div class="form-group">
-					{!! Form::label('numMotor', 'Núm. Motor', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('numMotor', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de motor', 'required']) !!}
+					{!! Form::label('numSerie', 'Núm. Serie', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('numSerie', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de serie', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-6">
 				<div class="form-group">
-					{!! Form::label('numSerie', 'Núm. Serie', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('numSerie', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de serie', 'required']) !!}
+					{!! Form::label('numMotor', 'Núm. Motor', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('numMotor', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de motor', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-6">
@@ -106,7 +106,11 @@
 					{!! Form::textarea('senasPartic', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3', 'required']) !!}
 				</div>
 			</div>
-			{{--{!! Form::close() !!}--}}
+			<div class="col-12">
+				<div class="form-group">
+					{!! Form::submit('Guardar', ['class' => 'btn btn-dark']) !!}
+				</div>
+			</div>
 			</div>
 		</div>
 	</div>
@@ -115,6 +119,7 @@
 		@include('fields.botones')
 	</div>
 </div>
+{!! Form::close() !!}
 
 <div class="row">
 	<div class="col-12">

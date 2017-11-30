@@ -1,9 +1,9 @@
+{!! Form::open(['route' => 'store.delito', 'method' => 'POST'])  !!}
 <div class="row no-gutters">
 	<div class="col-10">
 		<div class="boxtwo">
 			<h6>Información sobre la comisión del delito</h6>
 			<div class="row">
-			{{--{!! Form::open(['route' => 'users.store', 'method' => 'POST'])  !!}--}}
 			<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('idDelito', 'Delito', ['class' => 'col-form-label-sm']) !!}
@@ -57,8 +57,8 @@
 			</div>
 			<div class="col-4">
 				<div class="form-group">
-					{!! Form::label('arma', 'Arma', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('arma', ['' => 'Seleccione el arma'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
+					{!! Form::label('idArma', 'Arma', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idArma', ['' => 'Seleccione el arma', '1' => 'Pistola'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-4">
@@ -76,10 +76,9 @@
 			<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('consumacion', 'Consumación', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('consumacion', ['Instantánea' => 'Instantánea', 'Permanente' => 'Permanente'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una forma de consumación', 'required']) !!}
+					{!! Form::select('consumacion', ['INSTANTÁNEA' => 'INSTANTÁNEA', 'PERMANENTE' => 'PERMANENTE'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una forma de consumación', 'required']) !!}
 				</div>
 			</div>
-			{{--{!! Form::close() !!}--}}
 			</div>
 		</div>
 	</div>
@@ -114,8 +113,8 @@
 		</div>
 		<div class="col-4">
 			<div class="form-group">
-				{!! Form::label('zonaubic', 'Zona de ubicación', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('zonaubic', $zonas, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una zona de ubicación', 'required']) !!}
+				{!! Form::label('idZona', 'Zona de ubicación', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('idZona', $zonas, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una zona de ubicación', 'required']) !!}
 			</div>
 		</div>
 		<div class="col-4">
@@ -130,8 +129,14 @@
 				{!! Form::text('puntoReferencia', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese un punto de referencia', 'required']) !!}
 			</div>
 		</div>
+		<div class="col-12">
+			<div class="form-group">
+				{!! Form::submit('Guardar', ['class' => 'btn btn-dark']) !!}
+			</div>
+		</div>
 	</div>
 </div>
+{!! Form::close() !!}
 	
 <div class="row">
 	<div class="col-12">
