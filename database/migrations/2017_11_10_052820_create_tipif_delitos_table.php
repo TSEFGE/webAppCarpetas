@@ -18,21 +18,21 @@ class CreateTipifDelitosTable extends Migration
             $table->integer('idCarpeta')->unsigned();
             $table->integer('idDelito')->unsigned();
             $table->boolean('conViolencia')->default(false);
-            $table->integer('idTipoArma')->unsigned();
+            $table->integer('idTipoArma')->unsigned()->default(4);
             $table->integer('idArma')->unsigned();
-            $table->integer('idPosibleCausa')->default(0);
+            $table->integer('idPosibleCausa')->unsigned()->default(1);
             $table->integer('idModalidad')->unsigned();
             $table->string('formaComision',50);
             $table->string('consumacion',50);
             $table->date('fecha');
             $table->time('hora');
             $table->integer('idZona')->unsigned();
-            $table->integer('idLugar')->unsigned();
-            $table->integer('idDomicilio')->unsigned();
+            $table->integer('idLugar')->unsigned()->default(24);
+            $table->integer('idDomicilio')->unsigned()->default(1);
             $table->string('entreCalle',100);
             $table->string('yCalle',100);
             $table->string('calleTrasera',100);
-            $table->string('puntaReferencia',100);
+            $table->string('puntoReferencia',100);
             $table->timestamps();
             $table->softDeletes();
 

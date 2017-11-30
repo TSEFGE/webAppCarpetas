@@ -49,28 +49,29 @@ class RegistroController extends Controller
 {
     public function showRegisterForm()
     {
-        $aseguradoras = CatAseguradora::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $clasesveh = CatClaseVehiculo::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $colores = CatColor::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $delitos = CatDelito::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $estados = CatEstado::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $estadoscivil = CatEstadoCivil::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $etnias = CatEtnia::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $lenguas = CatLengua::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $lugares = CatLugar::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $marcas = CatMarca::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $modalidades = CatModalidad::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $nacionalidades = CatNacionalidad::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        $procedencias = CatProcedencia::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $puestos = CatPuesto::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $religiones = CatReligion::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $tiposarma = CatTipoArma::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $tiposdet = CatTipoDeterminacion::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $tiposuso = CatTipoUso::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $zonas = CatZona::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        //$municipios = CatMunicipio::where('id', '<', 10)->orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $aseguradoras = CatAseguradora::orderBy('id', 'ASC')->pluck('id', 'nombre');
+        $clasesveh = CatClaseVehiculo::orderBy('id', 'ASC')->pluck('id', 'nombre');
+        $colores = CatColor::orderBy('id', 'ASC')->pluck('id', 'nombre');
+        $delitos = CatDelito::orderBy('id', 'ASC')->pluck('id', 'nombre');
+        $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('id', 'nombre');
+        $estados = CatEstado::orderBy('id', 'ASC')->pluck('id', 'nombre');
+        $estadoscivil = CatEstadoCivil::orderBy('id', 'ASC')->pluck('id', 'nombre');
+        $etnias = CatEtnia::orderBy('id', 'ASC')->pluck('id', 'nombre');
+        $lenguas = CatLengua::orderBy('id', 'ASC')->pluck('id', 'nombre');
+        $lugares = CatLugar::orderBy('id', 'ASC')->pluck('id', 'nombre');
+        $marcas = CatMarca::orderBy('id', 'ASC')->pluck('id', 'nombre');
+        $modalidades = CatModalidad::orderBy('id', 'ASC')->pluck('id', 'nombre');
+        $nacionalidades = CatNacionalidad::orderBy('id', 'ASC')->pluck('id', 'nombre');
+        $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('id', 'nombre');
+        $procedencias = CatProcedencia::orderBy('id', 'ASC')->pluck('id', 'nombre');
+        $puestos = CatPuesto::orderBy('id', 'ASC')->pluck('id', 'nombre');
+        $religiones = CatReligion::orderBy('id', 'ASC')->pluck('id', 'nombre');
+        $tiposarma = CatTipoArma::orderBy('id', 'ASC')->pluck('id', 'nombre');
+        $tiposdet = CatTipoDeterminacion::orderBy('id', 'ASC')->pluck('id', 'nombre');
+        $tiposuso = CatTipoUso::orderBy('id', 'ASC')->pluck('id', 'nombre');
+        $zonas = CatZona::orderBy('id', 'ASC')->pluck('id', 'nombre');
+        //$municipios = CatMunicipio::where('id', '<', 10)->orderBy('id', 'ASC')->pluck('id', 'nombre');
+        //->select('name', 'email as user_email')
         return view('registro')->with('aseguradoras', $aseguradoras)
                                 ->with('clasesveh', $clasesveh)
                                 ->with('colores', $colores)
