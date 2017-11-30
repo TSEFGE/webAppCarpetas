@@ -1,5 +1,9 @@
 @extends('template.main')
 
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/select2/select2.css') }}">
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-md-center">
@@ -15,7 +19,7 @@
                             {!! Form::label('idUnidad', 'Unidad', ['class' => 'col-md-4 col-form-label text-right']) !!}
                             <div class="col-md-6">
                                 {{--<input id="idUnidad" type="number" class="form-control" name="idUnidad" value="{{ old('idUnidad') }}" required autofocus>--}}
-                                {!! Form::select('idUnidad', $unidades, null, ['class' => 'form-control', 'required']) !!}
+                                {!! Form::select('idUnidad', $unidades, null, ['class' => 'form-control select2', 'required']) !!}
                                 @if ($errors->has('idUnidad'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('idUnidad') }}</strong>
@@ -116,4 +120,13 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
 @endsection

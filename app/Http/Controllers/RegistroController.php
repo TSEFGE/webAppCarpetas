@@ -44,6 +44,9 @@ use App\Models\ExtraDenunciante;
 use App\Models\ExtraDenunciado;
 use App\Models\ExtraAutoridad;
 use App\Models\ExtraAbogado;
+use App\Models\Narracion;
+use App\Models\TipifDelito;
+use App\Models\Vehiculo;
 
 class RegistroController extends Controller
 {
@@ -546,6 +549,113 @@ class RegistroController extends Controller
         $ExtraAbogado->sector = $request->sector;
         $ExtraAbogado->correo = $request->correo;
         $ExtraAbogado->save();
+        /*
+        Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
+        //Para mostrar modal
+        //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
+        */
+        return redirect()->route('registro');
+    }
+
+    public function storeFamiliar(Request $request){
+        //dd($request->all());
+        $familiar = new Familiar($request->all());
+        $familiar->save();
+        /*
+        Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
+        //Para mostrar modal
+        //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
+        */
+        return redirect()->route('registro');
+    }
+
+    public function storeNarracion(Request $request){
+        //dd($request->all());
+        $narracion = new Narracion($request->all());
+        $narracion->save();
+        /*
+        Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
+        //Para mostrar modal
+        //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
+        */
+        return redirect()->route('registro');
+    }
+
+    public function storeDelito(Request $request){
+        //dd($request->all());
+        $carpeta = Carpeta::where('idFiscal', Auth::user()->id)->where('idUnidad', Auth::user()->idUnidad)->orderBy('id','DESC')->take(1)->pluck('id');
+        $idCarpeta = $carpeta[0];
+        //dd($idCarpeta);
+        $domicilio = new Domicilio();
+        $domicilio->idEstado = $request->idEstado;
+        $domicilio->idMunicipio = $request->idMunicipio;
+        $domicilio->idLocalidad = $request->idLocalidad;
+        $domicilio->idColonia = $request->idColonia;
+        $domicilio->calle = $request->calle;
+        $domicilio->numExterno = $request->numExterno;
+        $domicilio->numInterno = $request->numInterno;
+        $domicilio->save();
+        $idD1 = $domicilio->id;
+
+        $tipifDelito = new TipifDelito();
+        $tipifDelito->idCarpeta = $idCarpeta;
+        $tipifDelito->idDelito = $request->idDelito;
+        if ($request->conViolencia==="on"){
+            $tipifDelito->conViolencia = 1;
+        }
+        $tipifDelito->idTipoArma = $request->idTipoArma;
+        $tipifDelito->idArma = $request->idArma;
+        $tipifDelito->idPosibleCausa = 0;
+        $tipifDelito->idModalidad = $request->idModalidad;
+        $tipifDelito->formaComision = $request->formaComision;
+        $tipifDelito->consumacion = $request->consumacion;
+        $tipifDelito->fecha = $request->fecha;
+        $tipifDelito->hora = $request->hora;
+        $tipifDelito->idLugar = $request->idLugar;
+        $tipifDelito->idZona = $request->idZona;
+        $tipifDelito->idDomicilio = $idD1;
+        $tipifDelito->entreCalle = $request->entreCalle;
+        $tipifDelito->yCalle = $request->yCalle;
+        $tipifDelito->calleTrasera = $request->calleTrasera;
+        $tipifDelito->puntoReferencia = $request->puntoReferencia;
+        $tipifDelito->save();
+
+        /*
+        Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
+        //Para mostrar modal
+        //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
+        */
+        return redirect()->route('registro');
+    }
+
+    public function storeVehiculo(Request $request){
+        //dd($request->all());
+        //$tipifDelito = TipifDelito::where('idFiscal', Auth::user()->id)->where('idUnidad', Auth::user()->idUnidad)->orderBy('id','DESC')->take(1)->pluck('id');
+        //$idTipifDelito = $tipifDelito[0];
+        $idTipifDelito = 1;
+        //dd($idCarpeta);
+        $idTipifDelito = 1;
+        $vehiculo = new Vehiculo();
+        $vehiculo->idTipifDelito = $idTipifDelito;
+        $vehiculo->status = $request->status;
+        $vehiculo->placas = $request->placas;
+        $vehiculo->idEstado = $request->idEstado;
+        $vehiculo->idMarca = $request->idMarca;
+        $vehiculo->idSubmarca = $request->idSubmarca;
+        $vehiculo->modelo = $request->modelo;
+        $vehiculo->nrpv = $request->nrpv;
+        $vehiculo->idColor = $request->idColor;
+        $vehiculo->permiso = $request->permiso;
+        $vehiculo->numSerie = $request->numSerie;
+        $vehiculo->numMotor = $request->numMotor;
+        $vehiculo->idClaseVehiculo = $request->idClaseVehiculo;
+        $vehiculo->idTipoVehiculo = $request->idTipoVehiculo;
+        $vehiculo->idTipoUso = $request->idTipoUso;
+        $vehiculo->senasPartic = $request->senasPartic;
+        $vehiculo->idProcedencia = $request->idProcedencia;
+        $vehiculo->idAseguradora = $request->idAseguradora;
+        $vehiculo->save();
+
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal

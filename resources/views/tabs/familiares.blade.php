@@ -1,13 +1,13 @@
+{!! Form::open(['route' => 'store.familiar', 'method' => 'POST'])  !!}
 <div class="row no-gutters">
 	<div class="col-10">
 		<div class="boxtwo">
 			<h6>Datos del familiar (Denunciante/Denunciado)</h6>
 			<div class="row">
-			{{--{!! Form::open(['route' => 'users.store', 'method' => 'POST'])  !!}--}}
 			<div class="col-4">
 				<div class="form-group">
-					{!! Form::label('famde', 'Familiar de', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('famde', ['1' => 'Román Pérez Escobar', '2' => 'José José'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un involucrado', 'required']) !!}
+					{!! Form::label('idPersona', 'Familiar de', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idPersona', ['1' => 'Román Pérez Escobar', '2' => 'José José'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un involucrado', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-4">
@@ -18,8 +18,8 @@
 			</div>
 			<div class="col-4">
 				<div class="form-group">
-					{!! Form::label('ocupacion', 'Ocupación', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('ocupacion', $ocupaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una ocupación', 'required']) !!}
+					{!! Form::label('idOcupacion', 'Ocupación', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idOcupacion', $ocupaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una ocupación', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-4">
@@ -40,7 +40,11 @@
 					{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'required']) !!}
 				</div>
 			</div>
-			{{--{!! Form::close() !!}--}}
+			<div class="col-12">
+				<div class="form-group">
+					{!! Form::submit('Guardar', ['class' => 'btn btn-dark']) !!}
+				</div>
+			</div>
 			</div>
 		</div>
 	</div>
@@ -49,6 +53,7 @@
 		@include('fields.botones')
 	</div>
 </div>
+{!! Form::close() !!}
 
 <div class="row">
 	<div class="col-12">

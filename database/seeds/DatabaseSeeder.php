@@ -44,5 +44,7 @@ class DatabaseSeeder extends Seeder
          $this->call(LocalidadSeeder2::class);
 
          $this->call(UnidadSeeder::class);
+
+         $this->call(RegistroPersona::class);
     }
 }
