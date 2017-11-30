@@ -44,6 +44,7 @@ use App\Models\ExtraDenunciante;
 use App\Models\ExtraDenunciado;
 use App\Models\ExtraAutoridad;
 use App\Models\ExtraAbogado;
+use App\Models\Familiar;
 
 class RegistroController extends Controller
 {
@@ -545,6 +546,18 @@ class RegistroController extends Controller
         $ExtraAbogado->sector = $request->sector;
         $ExtraAbogado->correo = $request->correo;
         $ExtraAbogado->save();
+        /*
+        Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
+        //Para mostrar modal
+        //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
+        */
+        return redirect()->route('registro');
+    }
+
+    public function storeFamiliar(Request $request){
+        //dd($request->all());
+        $familiar = new Familiar($request->all());
+        $familiar->save();
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal

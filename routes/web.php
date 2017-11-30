@@ -26,7 +26,7 @@ Route::post('storedenunciante', 'RegistroController@storeDenunciante')->name('st
 Route::post('storedenunciado', 'RegistroController@storeDenunciado')->name('store.denunciado');
 Route::post('storeautoridad', 'RegistroController@storeAutoridad')->name('store.autoridad');
 Route::post('storeabogado', 'RegistroController@storeAbogado')->name('store.abogado');
-
+Route::post('storefamiliar', 'RegistroController@storeFamiliar')->name('store.familiar');
 
 /*---------Rutas para los selects dinámicos-------------*/
 Route::get('municipios/{id}', 'RegistroController@getMunicipios');
