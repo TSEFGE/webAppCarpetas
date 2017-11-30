@@ -1,3 +1,4 @@
+{!! Form::open(['route' => 'store.denunciado', 'method' => 'POST'])  !!}
 <div class="card">
 	<div class="card-header">
 		<h5 class="mb-0 text-center">
@@ -83,7 +84,7 @@
 				</div>
 				<div class="col-3">
 					<div class="form-group">
-						{!! Form::label('personasBajoSuGuarda', 'personasguarda', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::label('personasBajoSuGuarda', 'Personas bajo su guarda', ['class' => 'col-form-label-sm']) !!}
 						{!! Form::number('personasBajoSuGuarda', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de personas bajo su guarda', 'required']) !!}
 					</div>
 				</div>
@@ -127,18 +128,22 @@
 						{!! Form::text('vestimenta', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la vestimenta', 'required']) !!}
 					</div>
 				</div>
-				
 				<div class="col-12">
 					<div class="form-group">
 						{!! Form::label('senasPartic', 'Señas particulares', ['class' => 'col-form-label-sm']) !!}
 						{!! Form::textarea('senasPartic', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3', 'required']) !!}
 					</div>
 				</div>
+				<div class="col-12">
+					<div class="form-group">
+						{!! Form::submit('Guardar', ['class' => 'btn btn-dark']) !!}
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
+{!! Form::close() !!}
 {{--<div class="card">
 	<div class="card-header">
 		<h5 class="mb-0 text-center">

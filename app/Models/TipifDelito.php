@@ -21,6 +21,7 @@ class TipifDelito extends Model
         'conViolencia',
         'idTipoArma',
         'idArma',
+        'idPosibleArma',
         'idModalidad',
         'formaComision',
         'fecha',

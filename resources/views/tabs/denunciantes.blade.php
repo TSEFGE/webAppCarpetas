@@ -1,4 +1,4 @@
-{!! Form::open(['route' => 'denunciante.store', 'method' => 'POST'])  !!}
+{!! Form::open(['route' => 'store.denunciante', 'method' => 'POST'])  !!}
 <div class="card">
 	<div class="card-header">
 		<h5 class="mb-0 text-center">
@@ -88,7 +88,7 @@
 				</div>
 				<div class="col-12">
 					<div class="form-group">
-						{!! Form::submit('Iniciar', ['class' => 'btn btn-dark']) !!}
+						{!! Form::submit('Guardar', ['class' => 'btn btn-dark']) !!}
 					</div>
 				</div>
 			</div>

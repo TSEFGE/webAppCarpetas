@@ -1,3 +1,4 @@
+{!! Form::open(['route' => 'store.autoridad', 'method' => 'POST'])  !!}
 <div class="card">
 	<div class="card-header">
 		<h5 class="mb-0 text-center">
@@ -54,6 +55,9 @@
 	<div id="collapseAutoridad" class="collapse show boxcollapse">
 		<div class="boxtwo">
 			<div class="row">
+				@if(!empty($idCarpeta))
+					{!! Form::hidden('idCarpeta', $idCarpeta) !!}
+				@endif
 				<div class="col-4">
 					<div class="form-group">
 						{!! Form::label('antiguedad', 'Antigüedad', ['class' => 'col-form-label-sm']) !!}
@@ -72,10 +76,16 @@
 						{!! Form::number('horarioLaboral', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el horario laboral', 'required']) !!}
 					</div>
 				</div>
+				<div class="col-12">
+					<div class="form-group">
+						{!! Form::submit('Guardar', ['class' => 'btn btn-dark']) !!}
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+{!! Form::close() !!}
 
 <div class="row">
 	<div class="col-12">
