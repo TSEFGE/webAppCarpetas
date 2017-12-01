@@ -44,7 +44,6 @@ use App\Models\ExtraDenunciante;
 use App\Models\ExtraDenunciado;
 use App\Models\ExtraAutoridad;
 use App\Models\ExtraAbogado;
-use App\Models\Narracion;
 use App\Models\TipifDelito;
 use App\Models\Vehiculo;
 
@@ -191,16 +190,15 @@ class RegistroController extends Controller
         $carpeta->estadoCarpeta = "INICIO";
         $carpeta->horaIntervencion = $request->horaIntervencion;
         $carpeta->descripcionHechos = $request->descripcionHechos;
-        if ($request->npd===null){
-            $carpeta->npd = "SIN INFORMACION";
+        if (!is_null($request->npd)){
+            $carpeta->npd = $request->npd;
         }
-        if ($request->numIph===null){
-            $carpeta->numIph = "SIN INFORMACION";
+        if (!is_null($request->numIph)){
+            $carpeta->numIph = $request->numIph;
         }
         $carpeta->fechaIph = $request->fechaIph;
-
-        if ($request->narracionIph===null){
-            $carpeta->narracionIph = "SIN INFORMACION";
+        if (!is_null($request->narracionIph)){
+            $carpeta->narracionIph = $request->narracionIph;
         }
         $carpeta->fechaDeterminacion = $request->fechaDeterminacion;
         $carpeta->idTipoDeterminacion = 5;
@@ -221,7 +219,6 @@ class RegistroController extends Controller
         //dd($request->all());
         //$user = User::create(['name'=>'Cesar','email'=>'codigojava@gmail.com']);
         //print_r($user->id);
-
         $persona = new Persona();
         $persona->nombres = $request->nombres;
         $persona->primerAp = $request->primerAp;
@@ -229,12 +226,21 @@ class RegistroController extends Controller
         $persona->fechaNacimiento = $request->fechaNacimiento;
         $persona->rfc = $request->rfc;
         $persona->curp = $request->curp;
-        $persona->sexo = $request->sexo;
-        $persona->idNacionalidad = $request->idNacionalidad;
-        $persona->idEtnia = $request->idEtnia;
-        $persona->idLengua = $request->idLengua;
-        $persona->idEstadoOrigen = $request->idEstadoOrigen;
-        $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
+        if (!is_null($request->sexo)){
+            $persona->sexo = $request->sexo;
+        }
+        if (!is_null($request->idNacionalidad)){
+            $persona->idNacionalidad = $request->idNacionalidad;
+        }
+        if (!is_null($request->idEtnia)){
+            $persona->idEtnia = $request->idEtnia;
+        }
+        if (!is_null($request->idLengua)){
+            $persona->idLengua = $request->idLengua;
+        }
+        if (!is_null($request->idMunicipioOrigen)){
+            $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
+        }
         if ($request->esEmpresa==="on"){
             $persona->esEmpresa = 1;
         }
@@ -242,35 +248,68 @@ class RegistroController extends Controller
         $idPersona = $persona->id;
 
         $domicilio = new Domicilio();
-        $domicilio->idEstado = $request->idEstado;
-        $domicilio->idMunicipio = $request->idMunicipio;
-        $domicilio->idLocalidad = $request->idLocalidad;
-        $domicilio->idColonia = $request->idColonia;
-        $domicilio->calle = $request->calle;
-        $domicilio->numExterno = $request->numExterno;
-        $domicilio->numInterno = $request->numInterno;
+        if (!is_null($request->idMunicipio)){
+            $domicilio->idMunicipio = $request->idMunicipio;
+        }
+        if (!is_null($request->idLocalidad)){
+            $domicilio->idLocalidad = $request->idLocalidad;
+        }
+        if (!is_null($request->idColonia)){
+            $domicilio->idColonia = $request->idColonia;
+        }
+        if (!is_null($request->calle)){
+            $domicilio->calle = $request->calle;
+        }
+        if (!is_null($request->numExterno)){
+            $domicilio->numExterno = $request->numExterno;
+        }
+        if (!is_null($request->numInterno)){
+            $domicilio->numInterno = $request->numInterno;
+        }
         $domicilio->save();
         $idD1 = $domicilio->id;
 
         $domicilio2 = new Domicilio();
-        $domicilio2->idEstado = $request->idEstado2;
-        $domicilio2->idMunicipio = $request->idMunicipio2;
-        $domicilio2->idLocalidad = $request->idLocalidad2;
-        $domicilio2->idColonia = $request->idColonia2;
-        $domicilio2->calle = $request->calle2;
-        $domicilio2->numExterno = $request->numExterno2;
-        $domicilio2->numInterno = $request->numInterno2;
+        if (!is_null($request->idMunicipio2)){
+            $domicilio2->idMunicipio = $request->idMunicipio2;
+        }
+        if (!is_null($request->idLocalidad2)){
+            $domicilio2->idLocalidad = $request->idLocalidad2;
+        }
+        if (!is_null($request->idColonia2)){
+            $domicilio2->idColonia = $request->idColonia2;
+        }
+        if (!is_null($request->calle2)){
+            $domicilio2->calle = $request->calle2;
+        }
+        if (!is_null($request->numExterno2)){
+            $domicilio2->numExterno = $request->numExterno2;
+        }
+        if (!is_null($request->numInterno2)){
+            $domicilio2->numInterno = $request->numInterno2;
+        }
         $domicilio2->save();
         $idD2 = $domicilio2->id;
 
         $domicilio3 = new Domicilio();
-        $domicilio3->idEstado = $request->idEstado3;
-        $domicilio3->idMunicipio = $request->idMunicipio3;
-        $domicilio3->idLocalidad = $request->idLocalidad3;
-        $domicilio3->idColonia = $request->idColonia3;
-        $domicilio3->calle = $request->calle3;
-        $domicilio3->numExterno = $request->numExterno3;
-        $domicilio3->numInterno = $request->numInterno3;
+        if (!is_null($request->idMunicipio3)){
+            $domicilio3->idMunicipio = $request->idMunicipio3;
+        }
+        if (!is_null($request->idLocalidad3)){
+            $domicilio3->idLocalidad = $request->idLocalidad3;
+        }
+        if (!is_null($request->idColonia3)){
+            $domicilio3->idColonia = $request->idColonia3;
+        }
+        if (!is_null($request->calle3)){
+            $domicilio3->calle = $request->calle3;
+        }
+        if (!is_null($request->numExterno3)){
+            $domicilio3->numExterno = $request->numExterno3;
+        }
+        if (!is_null($request->numInterno3)){
+            $domicilio3->numInterno = $request->numInterno3;
+        }
         $domicilio3->save();
         $idD3 = $domicilio3->id;
 
@@ -285,19 +324,40 @@ class RegistroController extends Controller
         $VariablesPersona = new VariablesPersona();
         $VariablesPersona->idPersona = $idPersona;
         $VariablesPersona->edad = $request->edad;
-        $VariablesPersona->telefono = $request->telefono;
-        $VariablesPersona->motivoEstancia = $request->motivoEstancia;
-        $VariablesPersona->idOcupacion = $request->idOcupacion;
-        $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;
-        $VariablesPersona->idEscolaridad = $request->idEscolaridad;
-        $VariablesPersona->idReligion = $request->idReligion;
+        if (!is_null($request->telefono)){
+            $VariablesPersona->telefono = $request->telefono;
+        }
+        if (!is_null($request->motivoEstancia)){
+            $VariablesPersona->motivoEstancia = $request->motivoEstancia;
+        }
+        if (!is_null($request->idOcupacion)){
+            $VariablesPersona->idOcupacion = $request->idOcupacion;
+        }
+        if (!is_null($request->idEstadoCivil)){
+            $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;
+        }
+        if (!is_null($request->idEscolaridad)){
+            $VariablesPersona->idEscolaridad = $request->idEscolaridad;
+        }
+        if (!is_null($request->idReligion)){
+            $VariablesPersona->idReligion = $request->idReligion;
+        }
         $VariablesPersona->idDomicilio = $idD1;
-        $VariablesPersona->docIdentificacion = $request->docIdentificacion;
-        $VariablesPersona->numDocIdentificacion = $request->numDocIdentificacion;
-        $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
+        if (!is_null($request->docIdentificacion)){
+            $VariablesPersona->docIdentificacion = $request->docIdentificacion;
+        }
+        if (!is_null($request->numDocIdentificacion)){
+            $VariablesPersona->numDocIdentificacion = $request->numDocIdentificacion;
+        }
+        if (!is_null($request->lugarTrabajo)){
+            $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
+        }
         $VariablesPersona->idDomicilioTrabajo = $idD2;
-        $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
+        if (!is_null($request->telefonoTrabajo)){
+            $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
+        }
         if ($request->esEmpresa==="on"){
+            $VariablesPersona->escolaridades = 1;
             $VariablesPersona->representanteLegal = $request->representanteLegal;
         }else{
             $VariablesPersona->representanteLegal = "NO APLICA";
@@ -313,6 +373,7 @@ class RegistroController extends Controller
         if ($request->conoceAlDenunciado==="on"){
             $ExtraDenunciante->conoceAlDenunciado = 1;
         }
+        $ExtraDenunciante->narracion = $request->narracion;
         $ExtraDenunciante->save();
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
@@ -331,12 +392,21 @@ class RegistroController extends Controller
         $persona->fechaNacimiento = $request->fechaNacimiento;
         $persona->rfc = $request->rfc;
         $persona->curp = $request->curp;
-        $persona->sexo = $request->sexo;
-        $persona->idNacionalidad = $request->idNacionalidad;
-        $persona->idEtnia = $request->idEtnia;
-        $persona->idLengua = $request->idLengua;
-        $persona->idEstadoOrigen = $request->idEstadoOrigen;
-        $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
+        if (!is_null($request->sexo)){
+            $persona->sexo = $request->sexo;
+        }
+        if (!is_null($request->idNacionalidad)){
+            $persona->idNacionalidad = $request->idNacionalidad;
+        }
+        if (!is_null($request->idEtnia)){
+            $persona->idEtnia = $request->idEtnia;
+        }
+        if (!is_null($request->idLengua)){
+            $persona->idLengua = $request->idLengua;
+        }
+        if (!is_null($request->idMunicipioOrigen)){
+            $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
+        }
         if ($request->esEmpresa==="on"){
             $persona->esEmpresa = 1;
         }
@@ -344,35 +414,68 @@ class RegistroController extends Controller
         $idPersona = $persona->id;
 
         $domicilio = new Domicilio();
-        $domicilio->idEstado = $request->idEstado;
-        $domicilio->idMunicipio = $request->idMunicipio;
-        $domicilio->idLocalidad = $request->idLocalidad;
-        $domicilio->idColonia = $request->idColonia;
-        $domicilio->calle = $request->calle;
-        $domicilio->numExterno = $request->numExterno;
-        $domicilio->numInterno = $request->numInterno;
+        if (!is_null($request->idMunicipio)){
+            $domicilio->idMunicipio = $request->idMunicipio;
+        }
+        if (!is_null($request->idLocalidad)){
+            $domicilio->idLocalidad = $request->idLocalidad;
+        }
+        if (!is_null($request->idColonia)){
+            $domicilio->idColonia = $request->idColonia;
+        }
+        if (!is_null($request->calle)){
+            $domicilio->calle = $request->calle;
+        }
+        if (!is_null($request->numExterno)){
+            $domicilio->numExterno = $request->numExterno;
+        }
+        if (!is_null($request->numInterno)){
+            $domicilio->numInterno = $request->numInterno;
+        }
         $domicilio->save();
         $idD1 = $domicilio->id;
 
         $domicilio2 = new Domicilio();
-        $domicilio2->idEstado = $request->idEstado2;
-        $domicilio2->idMunicipio = $request->idMunicipio2;
-        $domicilio2->idLocalidad = $request->idLocalidad2;
-        $domicilio2->idColonia = $request->idColonia2;
-        $domicilio2->calle = $request->calle2;
-        $domicilio2->numExterno = $request->numExterno2;
-        $domicilio2->numInterno = $request->numInterno2;
+        if (!is_null($request->idMunicipio2)){
+            $domicilio2->idMunicipio = $request->idMunicipio2;
+        }
+        if (!is_null($request->idLocalidad2)){
+            $domicilio2->idLocalidad = $request->idLocalidad2;
+        }
+        if (!is_null($request->idColonia2)){
+            $domicilio2->idColonia = $request->idColonia2;
+        }
+        if (!is_null($request->calle2)){
+            $domicilio2->calle = $request->calle2;
+        }
+        if (!is_null($request->numExterno2)){
+            $domicilio2->numExterno = $request->numExterno2;
+        }
+        if (!is_null($request->numInterno2)){
+            $domicilio2->numInterno = $request->numInterno2;
+        }
         $domicilio2->save();
         $idD2 = $domicilio2->id;
 
         $domicilio3 = new Domicilio();
-        $domicilio3->idEstado = $request->idEstado3;
-        $domicilio3->idMunicipio = $request->idMunicipio3;
-        $domicilio3->idLocalidad = $request->idLocalidad3;
-        $domicilio3->idColonia = $request->idColonia3;
-        $domicilio3->calle = $request->calle3;
-        $domicilio3->numExterno = $request->numExterno3;
-        $domicilio3->numInterno = $request->numInterno3;
+        if (!is_null($request->idMunicipio3)){
+            $domicilio3->idMunicipio = $request->idMunicipio3;
+        }
+        if (!is_null($request->idLocalidad3)){
+            $domicilio3->idLocalidad = $request->idLocalidad3;
+        }
+        if (!is_null($request->idColonia3)){
+            $domicilio3->idColonia = $request->idColonia3;
+        }
+        if (!is_null($request->calle3)){
+            $domicilio3->calle = $request->calle3;
+        }
+        if (!is_null($request->numExterno3)){
+            $domicilio3->numExterno = $request->numExterno3;
+        }
+        if (!is_null($request->numInterno3)){
+            $domicilio3->numInterno = $request->numInterno3;
+        }
         $domicilio3->save();
         $idD3 = $domicilio3->id;
 
@@ -387,19 +490,40 @@ class RegistroController extends Controller
         $VariablesPersona = new VariablesPersona();
         $VariablesPersona->idPersona = $idPersona;
         $VariablesPersona->edad = $request->edad;
-        $VariablesPersona->telefono = $request->telefono;
-        $VariablesPersona->motivoEstancia = $request->motivoEstancia;
-        $VariablesPersona->idOcupacion = $request->idOcupacion;
-        $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;
-        $VariablesPersona->idEscolaridad = $request->idEscolaridad;
-        $VariablesPersona->idReligion = $request->idReligion;
+        if (!is_null($request->telefono)){
+            $VariablesPersona->telefono = $request->telefono;
+        }
+        if (!is_null($request->motivoEstancia)){
+            $VariablesPersona->motivoEstancia = $request->motivoEstancia;
+        }
+        if (!is_null($request->idOcupacion)){
+            $VariablesPersona->idOcupacion = $request->idOcupacion;
+        }
+        if (!is_null($request->idEstadoCivil)){
+            $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;
+        }
+        if (!is_null($request->idEscolaridad)){
+            $VariablesPersona->idEscolaridad = $request->idEscolaridad;
+        }
+        if (!is_null($request->idReligion)){
+            $VariablesPersona->idReligion = $request->idReligion;
+        }
         $VariablesPersona->idDomicilio = $idD1;
-        $VariablesPersona->docIdentificacion = $request->docIdentificacion;
-        $VariablesPersona->numDocIdentificacion = $request->numDocIdentificacion;
-        $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
+        if (!is_null($request->docIdentificacion)){
+            $VariablesPersona->docIdentificacion = $request->docIdentificacion;
+        }
+        if (!is_null($request->numDocIdentificacion)){
+            $VariablesPersona->numDocIdentificacion = $request->numDocIdentificacion;
+        }
+        if (!is_null($request->lugarTrabajo)){
+            $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
+        }
         $VariablesPersona->idDomicilioTrabajo = $idD2;
-        $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
+        if (!is_null($request->telefonoTrabajo)){
+            $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
+        }
         if ($request->esEmpresa==="on"){
+            $VariablesPersona->escolaridades = 1;
             $VariablesPersona->representanteLegal = $request->representanteLegal;
         }else{
             $VariablesPersona->representanteLegal = "NO APLICA";
@@ -411,18 +535,37 @@ class RegistroController extends Controller
         $ExtraDenunciado = new ExtraDenunciado();
         $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
         $ExtraDenunciado->idNotificacion = $idNotificacion;
-        $ExtraDenunciado->idPuesto = $request->idPuesto;
-        $ExtraDenunciado->alias = $request->alias;
-        $ExtraDenunciado->senasPartic = $request->senasPartic;
-        $ExtraDenunciado->ingreso = $request->ingreso;
-        $ExtraDenunciado->periodoIngreso = $request->periodoIngreso;
-        $ExtraDenunciado->residenciaAnterior = $request->residenciaAnterior;
+        if (!is_null($request->idPuesto)){
+            $ExtraDenunciado->idPuesto = $request->idPuesto;
+        }
+        if (!is_null($request->alias)){
+            $ExtraDenunciado->alias = $request->alias;
+        }
+        if (!is_null($request->senasPartic)){
+            $ExtraDenunciado->senasPartic = $request->senasPartic;
+        }
+        if (!is_null($request->ingreso)){
+            $ExtraDenunciado->ingreso = $request->ingreso;
+        }
+        if (!is_null($request->periodoIngreso)){
+            $ExtraDenunciado->periodoIngreso = $request->periodoIngreso;
+        }
+        if (!is_null($request->residenciaAnterior)){
+            $ExtraDenunciado->residenciaAnterior = $request->residenciaAnterior;
+        }
         $ExtraDenunciado->idAbogado = $idAbogado;
-        $ExtraDenunciado->personasBajoSuGuarda = $request->personasBajoSuGuarda;
+        if (!is_null($request->personasBajoSuGuarda)){
+            $ExtraDenunciado->personasBajoSuGuarda = $request->personasBajoSuGuarda;
+        }
         if ($request->esperseguidoPenalmente==="on"){
             $ExtraDenunciado->perseguidoPenalmente = 1;
         }
-        $ExtraDenunciado->vestimenta = $request->vestimenta;
+        if (!is_null($request->vestimenta)){
+            $ExtraDenunciado->vestimenta = $request->vestimenta;
+        }
+        if (!is_null($request->narracion)){
+            $ExtraDenunciado->narracion = $request->narracion;
+        }
         $ExtraDenunciado->save();
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
@@ -450,7 +593,6 @@ class RegistroController extends Controller
         $persona->idLengua = $request->idLengua;
         $persona->idEstadoOrigen = $request->idEstadoOrigen;
         $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
-        $persona->esEmpresa = 0;
         $persona->save();
         $idPersona = $persona->id;
 
@@ -523,11 +665,7 @@ class RegistroController extends Controller
         $persona->idNacionalidad = 1;
         $persona->idEstadoOrigen = $request->idEstadoOrigen;
         $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
-
         $persona->curp = "SIN INFORMACION";
-        $persona->idEtnia = 13;
-        $persona->idLengua = 69;
-        $persona->esEmpresa = 0;
         $persona->save();
         $idPersona = $persona->id;
 
@@ -549,12 +687,10 @@ class RegistroController extends Controller
         $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
         $VariablesPersona->idDomicilioTrabajo = $idD2;
         $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
-
         $VariablesPersona->edad = 20;//SE DEBE CALCULAR
         $VariablesPersona->motivoEstancia = "NO APLICA";
         $VariablesPersona->idOcupacion = 2469;
         $VariablesPersona->idEscolaridad = 8;
-        $VariablesPersona->idReligion = 29;
         $VariablesPersona->idDomicilio = null;
         $VariablesPersona->docIdentificacion = "NO APLICA";
         $VariablesPersona->numDocIdentificacion = "NO APLICA";
@@ -580,18 +716,6 @@ class RegistroController extends Controller
         //dd($request->all());
         $familiar = new Familiar($request->all());
         $familiar->save();
-        /*
-        Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
-        //Para mostrar modal
-        //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
-        */
-        return redirect()->route('registro');
-    }
-
-    public function storeNarracion(Request $request){
-        //dd($request->all());
-        $narracion = new Narracion($request->all());
-        $narracion->save();
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal

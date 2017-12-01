@@ -27,9 +27,6 @@
 		<a class="nav-link" id="familiares-tab" data-toggle="tab" href="#familiares" role="tab" aria-controls="familiares" aria-selected="false">Familiares</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" id="narraciones-tab" data-toggle="tab" href="#narraciones" role="tab" aria-controls="narraciones" aria-selected="false">Narraciones</a>
-	</li>
-	<li class="nav-item">
 		<a class="nav-link" id="delitos-tab" data-toggle="tab" href="#delitos" role="tab" aria-controls="delitos" aria-selected="false">Delitos</a>
 	</li>
 	<li class="nav-item">
@@ -46,19 +43,16 @@
 			@include('tabs.denunciantes')
 		</div>
 		<div class="tab-pane fade" id="denunciados" role="tabpanel" aria-labelledby="denunciados-tab">
-			{{--@include('tabs.denunciados')--}}
+			@include('tabs.denunciados')
 		</div>
 		<div class="tab-pane fade" id="autoridades" role="tabpanel" aria-labelledby="autoridades-tab">
-			{{--@include('tabs.autoridades')--}}
+			@include('tabs.autoridades')
 		</div>
 		<div class="tab-pane fade" id="abogados" role="tabpanel" aria-labelledby="abogados-tab">
 			@include('tabs.abogados')
 		</div>
 		<div class="tab-pane fade" id="familiares" role="tabpanel" aria-labelledby="familiares-tab">
 			@include('tabs.familiares')
-		</div>
-		<div class="tab-pane fade" id="narraciones" role="tabpanel" aria-labelledby="narraciones-tab">
-			@include('tabs.narraciones')
 		</div>
 		<div class="tab-pane fade" id="delitos" role="tabpanel" aria-labelledby="delitos-tab">
 			@include('tabs.delitos')

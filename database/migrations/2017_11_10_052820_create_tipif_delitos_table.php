@@ -15,7 +15,6 @@ class CreateTipifDelitosTable extends Migration
     {
         Schema::create('tipif_delito', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('idCarpeta')->unsigned();
             $table->integer('idDelito')->unsigned();
             $table->boolean('conViolencia')->default(false);
             $table->integer('idArma')->unsigned();//Default sin información
@@ -35,7 +34,6 @@ class CreateTipifDelitosTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('idCarpeta')->references('id')->on('carpeta')->onDelete('cascade');
             $table->foreign('idDelito')->references('id')->on('cat_delito')->onDelete('cascade');
             $table->foreign('idArma')->references('id')->on('cat_arma')->onDelete('cascade');
             $table->foreign('idPosibleCausa')->references('id')->on('cat_posible_causa')->onDelete('cascade');
