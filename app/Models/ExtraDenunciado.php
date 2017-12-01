@@ -9,9 +9,14 @@ class ExtraDenunciado extends Model
     protected $table = 'extra_denunciado';
 
     protected $fillable = [
-        'id', 'idVariablesPersona', 'idNotificacion', 'idPuesto', 'alias', 'senasPartic', 'ingreso', 'periodoIngreso', 'residenciaAnterior', 'idAbogado', 'personasBajoSuGuarda', 'perseguidoPenalmente', 'vestimenta',
+        'id', 'idCarpeta', 'idVariablesPersona', 'idNotificacion', 'idPuesto', 'alias', 'senasPartic', 'ingreso', 'periodoIngreso', 'residenciaAnterior', 'idAbogado', 'personasBajoSuGuarda', 'perseguidoPenalmente', 'vestimenta',
     ];
 
+    public function carpeta()
+    {
+        return $this->belongsTo('App\Models\Carpeta');
+    }
+    
     public function acusaciones()
     {
         return $this->hasMany('App\Models\Acusacion');

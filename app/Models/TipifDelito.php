@@ -16,6 +16,7 @@ class TipifDelito extends Model
     
     public $fillable = [
         'id',
+        'idCarpeta',
         'idDelito',
         'conViolencia',
         'idArma',
@@ -33,6 +34,11 @@ class TipifDelito extends Model
         'puntoReferencia'
     ];
 
+    public function carpeta()
+    {
+        return $this->belongsTo('App\Models\Carpeta');
+    }
+    
     public function acusacion()
     {
        return $this->belongsTo('app/Models/Acusacion');

@@ -23,7 +23,8 @@ class Unidad extends Model
         'telefono',
         'distrito',
         'region',
-        'nomCompleto'
+        'nomCompleto',
+        'consecutivo'
     ];
 
     public function carpetas(){

@@ -16,11 +16,18 @@ class ExtraDenunciante extends Model
     
     public $fillable = [
         'id',
+        'idCarpeta',
         'idVariablesPersona',
         'idNotificaciones',
         'idAbogado',
         'conoceAlDenunciado'
     ];
+
+    public function carpeta()
+    {
+        return $this->belongsTo('App\Models\Carpeta');
+    }
+    
     public function variablesPersona()
     {
        return $this->belongsTo('app/Models/VariablesPersona');

@@ -29,6 +29,9 @@
 	<li class="nav-item">
 		<a class="nav-link" id="delitos-tab" data-toggle="tab" href="#delitos" role="tab" aria-controls="delitos" aria-selected="false">Delitos</a>
 	</li>
+    <li class="nav-item">
+        <a class="nav-link" id="acusaciones-tab" data-toggle="tab" href="#acusaciones" role="tab" aria-controls="acusaciones" aria-selected="false">Acusaciones</a>
+    </li>
 	<li class="nav-item">
 		<a class="nav-link" id="roboauto-tab" data-toggle="tab" href="#roboauto" role="tab" aria-controls="roboauto" aria-selected="false">Vehículos</a>
 	</li>
@@ -57,6 +60,9 @@
 		<div class="tab-pane fade" id="delitos" role="tabpanel" aria-labelledby="delitos-tab">
 			@include('tabs.delitos')
 		</div>
+        <div class="tab-pane fade" id="acusaciones" role="tabpanel" aria-labelledby="acusaciones-tab">
+            @include('tabs.acusaciones')
+        </div>
 		<div class="tab-pane fade" id="roboauto" role="tabpanel" aria-labelledby="roboauto-tab">
 			@include('tabs.vehiculos')
 		</div>
@@ -76,85 +82,6 @@
     <script src="{{ asset('js/tempusdominus-bootstrap-4.js') }}"></script>
     <script src="{{ asset('plugins/chosen/chosen.jquery.js')}}" ></script>
     <script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
+    <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="{{ asset('js/selects.js') }}"></script>
-
-    <script>
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();  
-
-            $(function () {
-                $('#fechaInicial').datetimepicker({
-                	format: 'YYYY-MM-DD',
-                    defaultDate: moment()
-                });
-            });
-            $(function () {
-                $('#horaInter').datetimepicker({
-                	format: 'LT'
-                });
-            });
-            $(function () {
-                $('#fechaiph2').datetimepicker({
-                	format: 'YYYY-MM-DD',
-                });
-            });
-            $(function () {
-                $('#fechadet').datetimepicker({
-                    format: 'YYYY-MM-DD',
-                    defaultDate: moment()
-                });
-            });
-
-            $(function () {
-                $('#fechanac').datetimepicker({
-                	format: 'YYYY-MM-DD',
-                });
-            });
-
-            $(function () {
-                $('#fechadelit').datetimepicker({
-                	format: 'YYYY-MM-DD'
-                });
-            });
-
-            $(function () {
-                $('#horadelit').datetimepicker({
-                	format: 'LT'
-                });
-            });
-
-            $('#camposdenunciante').show();
-            $('#camposdenunciado').hide();
-            $('#camposautoridad').hide();
-
-            $("#denunciante").click(function () {
-            	$('#camposdenunciante').show();
-            	$('#camposdenunciado').hide();
-            	$('#camposautoridad').hide();
-            });
-
-            $("#denunciado").click(function () {
-            	$('#camposdenunciante').hide();
-            	$('#camposdenunciado').show();
-            	$('#camposautoridad').hide();
-            });
-
-            $("#autoridad").click(function () {
-            	$('#camposdenunciante').hide();
-            	$('#camposdenunciado').hide();
-            	$('#camposautoridad').show();
-            });
-
-            $(".chosen-select").chosen({
-				placeholder_text_siple: 'Seleccione una categoría...',
-				max_selected_options: 3,
-				no_results_text: 'No se han encontrado la categoría'
-			});
-
-            $(document).ready(function() {
-                $('.select2').select2();
-            });
-
-        });
-    </script>
 @endsection

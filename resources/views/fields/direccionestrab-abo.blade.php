@@ -38,13 +38,13 @@
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('numExterno2', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::number('numExterno2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número exterior', 'required']) !!}
+			{!! Form::text('numExterno2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número exterior', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('numInterno2', 'Número interior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::number('numInterno2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior', 'required']) !!}
+			{!! Form::text('numInterno2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior', 'required']) !!}
 		</div>
 	</div>
 </div>

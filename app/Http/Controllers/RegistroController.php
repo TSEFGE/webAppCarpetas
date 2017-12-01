@@ -47,6 +47,7 @@ use App\Models\ExtraAutoridad;
 use App\Models\ExtraAbogado;
 use App\Models\TipifDelito;
 use App\Models\Vehiculo;
+use DB;
 
 class RegistroController extends Controller
 {
@@ -74,8 +75,30 @@ class RegistroController extends Controller
         $tiposuso = CatTipoUso::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $zonas = CatZona::orderBy('id', 'ASC')->pluck('nombre', 'id');
         //$municipios = CatMunicipio::where('id', '<', 10)->orderBy('id', 'ASC')->pluck('id', 'nombre');
-        //->select('id', 'nombre')->
-        return view('registro')->with('aseguradoras', $aseguradoras)
+        /*
+        */
+        $idCarpeta=1;
+        $denunciantes = DB::table('extra_denunciante')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('extra_denunciante.idCarpeta', '=', $idCarpeta)
+            ->get();
+        $denunciados = DB::table('extra_denunciado')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('extra_denunciado.idCarpeta', '=', $idCarpeta)
+            ->get();
+        $tipifdelitos = DB::table('tipif_delito')
+            ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+            ->select('tipif_delito.id','cat_delito.nombre')
+            ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
+            ->get();
+        //dd($tipifdelitos);
+        return view('registro')->with('denunciantes', $denunciantes)
+                                ->with('denunciados', $denunciados)
+                                ->with('aseguradoras', $aseguradoras)
                                 ->with('clasesveh', $clasesveh)
                                 ->with('colores', $colores)
                                 ->with('delitos', $delitos)
@@ -182,11 +205,11 @@ class RegistroController extends Controller
         $carpeta->idFiscal = Auth::user()->id;
         $carpeta->numCarpeta = $request->numCarpeta;
         $carpeta->fechaInicio = $request->fechaInicio;
-        if ($request->conDetenido==="on"){
-            $carpeta->conDetenido = 1;
+        if (isset($request->conDetenido)) {
+            $carpeta->conDetenido = $request->conDetenido;
         }
-        if ($request->esRelevante==="on"){
-            $carpeta->esRelevante = 1;
+        if (isset($request->esRelevante)) {
+            $carpeta->esRelevante = $request->esRelevante;
         }
         $carpeta->estadoCarpeta = "INICIO";
         $carpeta->horaIntervencion = $request->horaIntervencion;
@@ -220,6 +243,9 @@ class RegistroController extends Controller
         //dd($request->all());
         //$user = User::create(['name'=>'Cesar','email'=>'codigojava@gmail.com']);
         //print_r($user->id);
+        $carpeta = Carpeta::where('idFiscal', Auth::user()->id)->where('idUnidad', Auth::user()->idUnidad)->orderBy('id','DESC')->take(1)->pluck('id');
+        $idCarpeta = $carpeta[0];
+        //dd($idCarpeta);
         $persona = new Persona();
         $persona->nombres = $request->nombres;
         $persona->primerAp = $request->primerAp;
@@ -368,6 +394,7 @@ class RegistroController extends Controller
 
         $idAbogado=null;
         $ExtraDenunciante = new ExtraDenunciante();
+        $ExtraDenunciante->idCarpeta = $idCarpeta;
         $ExtraDenunciante->idVariablesPersona = $idVariablesPersona;
         $ExtraDenunciante->idNotificacion = $idNotificacion;
         $ExtraDenunciante->idAbogado = $idAbogado;
@@ -386,6 +413,9 @@ class RegistroController extends Controller
 
     public function storeDenunciado(Request $request){
         //dd($request->all());
+        $carpeta = Carpeta::where('idFiscal', Auth::user()->id)->where('idUnidad', Auth::user()->idUnidad)->orderBy('id','DESC')->take(1)->pluck('id');
+        $idCarpeta = $carpeta[0];
+        //dd($idCarpeta);
         $persona = new Persona();
         $persona->nombres = $request->nombres;
         $persona->primerAp = $request->primerAp;
@@ -534,6 +564,7 @@ class RegistroController extends Controller
 
         $idAbogado=null;
         $ExtraDenunciado = new ExtraDenunciado();
+        $ExtraDenunciado->idCarpeta = $idCarpeta;
         $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
         $ExtraDenunciado->idNotificacion = $idNotificacion;
         if (!is_null($request->idPuesto)){

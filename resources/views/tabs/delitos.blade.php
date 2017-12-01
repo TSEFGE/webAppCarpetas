@@ -136,6 +136,13 @@
 		</div>
 	</div>
 </div>
+
+<div class="boxtwo" id="datosVehiculo">
+	<h6>Información sobre el vehiculo</h6>
+	<div class="row">
+	@include('fields.vehiculo')
+	</div>
+</div>
 {!! Form::close() !!}
 	
 <div class="row">
