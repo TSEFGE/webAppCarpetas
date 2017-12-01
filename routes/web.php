@@ -39,6 +39,7 @@ Route::get('codigos/{id}', 'RegistroController@getCodigos');
 Route::get('colonias/{cp}', 'RegistroController@getColonias');
 Route::get('submarcas/{id}', 'RegistroController@getSubmarcas');
 Route::get('tipoVehiculos/{id}', 'RegistroController@getTipoVehiculos');
+Route::get('armas/{id}', 'RegistroController@getArmas');
 /*
 Route::get('/registrar-carpeta', function () {
 	return view('registro');

@@ -21,4 +21,8 @@ class CatArma extends Model
     {
         return $this->belongsTo('App\Models\CatTipoArma');
     }
+
+    public static function armas($id){
+        return CatArma::where('idTipoArma', '=', $id)->get();
+    }
 }

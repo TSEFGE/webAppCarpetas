@@ -33,6 +33,7 @@ use App\Models\CatLocalidad;
 use App\Models\CatColonia;
 use App\Models\CatSubmarca;
 use App\Models\CatTipoVehiculo;
+use App\Models\CatArma;
 //use App\Models\Unidad;
 
 use App\Models\Carpeta;
@@ -706,5 +707,12 @@ class RegistroController extends Controller
             return response()->json($tipoVehiculos);
 		}
 	}
+
+    public function getArmas(Request $request, $id){
+        if($request->ajax()){
+            $armas = CatArma::armas($id);
+            return response()->json($armas);
+        }
+    }
     
 }
