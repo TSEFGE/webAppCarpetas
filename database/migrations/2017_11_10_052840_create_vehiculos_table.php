@@ -19,15 +19,13 @@ class CreateVehiculosTable extends Migration
             $table->string('status', 20);
             $table->string('placas', 50);
             $table->integer('idEstado')->unsigned()->default(33);
-            $table->integer('idMarca')->unsigned()->default(955);
             $table->integer('idSubmarca')->unsigned()->default(24403);
             $table->integer('modelo');
-            $table->string('nrpv', 50);
+            $table->string('nrpv', 50)->default("SIN INFORMACION");
             $table->integer('idColor')->unsigned()->default(25);
-            $table->string('permiso', 50);
+            $table->string('permiso', 50)->default("SIN INFORMACION");
             $table->string('numSerie', 50);
             $table->string('numMotor', 50);
-            $table->integer('idClaseVehiculo')->unsigned()->default(10);
             $table->integer('idTipoVehiculo')->unsigned()->default(25);
             $table->integer('idTipoUso')->unsigned()->default(22);
             $table->string('senasPartic', 100);
@@ -36,10 +34,8 @@ class CreateVehiculosTable extends Migration
 
             $table->foreign('idTipifDelito')->references('id')->on('tipif_delito')->onDelete('cascade');
             $table->foreign('idEstado')->references('id')->on('cat_estado')->onDelete('cascade');
-            $table->foreign('idMarca')->references('id')->on('cat_marca')->onDelete('cascade');
             $table->foreign('idSubmarca')->references('id')->on('cat_submarca')->onDelete('cascade');
             $table->foreign('idColor')->references('id')->on('cat_color')->onDelete('cascade');
-            $table->foreign('idClaseVehiculo')->references('id')->on('cat_clase_vehiculo')->onDelete('cascade');
             $table->foreign('idTipoVehiculo')->references('id')->on('cat_tipo_vehiculo')->onDelete('cascade');
             $table->foreign('idTipoUso')->references('id')->on('cat_tipo_uso')->onDelete('cascade');
             $table->foreign('idProcedencia')->references('id')->on('cat_procedencia')->onDelete('cascade');

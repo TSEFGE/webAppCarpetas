@@ -9,7 +9,7 @@ class Persona extends Model
     protected $table = 'persona';
 
     protected $fillable = [
-        'id', 'nombres', 'primerAp', 'segundoAp', 'fechaNacimiento', 'rfc', 'curp', 'sexo', 'idNacionalidad', 'idEtnia', 'idLengua', 'idEstadoOrigen', 'idMunicipioOrigen', 'esEmpresa',
+        'id', 'nombres', 'primerAp', 'segundoAp', 'fechaNacimiento', 'rfc', 'curp', 'sexo', 'idNacionalidad', 'idEtnia', 'idLengua', 'idMunicipioOrigen', 'esEmpresa',
     ];
 
     public function familiares(){
@@ -26,10 +26,6 @@ class Persona extends Model
 
     public function lengua(){
     	return $this->belongsTo('App\Models\CatLengua');
-    }
-
-    public function estado(){
-    	return $this->belongsTo('App\Models\CatEstado');
     }
 
     public function municipio(){

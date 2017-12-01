@@ -16,12 +16,10 @@ class TipifDelito extends Model
     
     public $fillable = [
         'id',
-        'idCarpeta',
         'idDelito',
         'conViolencia',
-        'idTipoArma',
         'idArma',
-        'idPosibleArma',
+        'idPosibleCausa',
         'idModalidad',
         'formaComision',
         'fecha',
@@ -34,11 +32,6 @@ class TipifDelito extends Model
         'calleTrasera',
         'puntoReferencia'
     ];
-
-    public function carpeta()
-    {
-        return $this->belongsTo('app/Models/Carpeta');
-    }
 
     public function acusacion()
     {
@@ -55,14 +48,14 @@ class TipifDelito extends Model
         return $this->belongsTo('app/Models/CatDelito');
     }
 
-    public function tipoArma()
-    {
-        return $this->belongsTo('app/Models/CatTipoArma');
-    }
-
     public function arma()
     {
         return $this->belongsTo('app/Models/CatArma');
+    }
+
+    public function posibleCausa()
+    {
+        return $this->belongsTo('app/Models/CatPosibleCausa');
     }
 
     public function modalidad()

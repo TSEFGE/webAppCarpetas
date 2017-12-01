@@ -29,7 +29,7 @@ class CatTipoVehiculo extends Model
     }
 
         public static function tipoVehiculos($id){
-        return CatTipoVehiculo::where('idClaseVehiculo', '=', $id)->get();
+        return CatTipoVehiculo::select('id', 'nombre')->where('idClaseVehiculo', '=', $id)->get();
     }
 
 }

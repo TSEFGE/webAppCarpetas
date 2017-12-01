@@ -58,11 +58,6 @@ class VariablesPersona extends Model
         return $this->hasOne('app/Models/ExtraAbogado');
     }
 
-    public function narracion()
-    {
-        return $this->hasOne('app/Models/Narracion');
-    }
-
     public function ocupacion()
     {
         return $this->belongsTo('app/Models/CatOcupacion');

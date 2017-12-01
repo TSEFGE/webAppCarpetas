@@ -91,7 +91,7 @@
 	</div>
 	<div id="collapseTrab3" class="collapse show boxcollapse">
 		<div class="boxtwo">
-			@include('fields.lugartrabajo')
+			@include('fields.lugartrabajo-abo')
 		</div>
 	</div>
 </div>
@@ -100,7 +100,7 @@
 	<div class="card-header">
 		<h5 class="mb-0 text-center">
 			<a data-toggle="collapse" href="#collapseAutoridad" aria-expanded="false" aria-controls="collapseAutoridad">
-				Información sobre la autoridad
+				Información sobre el abogado
 			</a>
 		</h5>
 	</div>

@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Narracion extends Model
+class CatPosibleCausa extends Model
 {
-    public $table = 'narracion';
+    public $table = 'cat_posible_causa';
 
     /**
      * The attributes that are mass assignable.
@@ -16,12 +16,11 @@ class Narracion extends Model
     
     public $fillable = [
         'id',
-        'idVariablesPersona',
-        'narracion'
+        'nombre'
     ];
 
-    public function variablesPersona()
+    public function tipifDelitos()
     {
-       return $this->belongsTo('app/Models/VariablesPersona');
+        return $this->hasMany('App\Models\TipifDelito');
     }
 }
