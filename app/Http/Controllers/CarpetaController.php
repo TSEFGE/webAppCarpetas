@@ -129,6 +129,66 @@ class CarpetaController extends Controller
             ->with('acusaciones', $acusaciones);
     }
 
+    public function verDetalle($id){
+        $carpeta = Carpeta::where('id', $id)->get();
+        $denunciantes = DB::table('extra_denunciante')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
+            ->where('extra_denunciante.idCarpeta', '=', $id)
+            ->get();
+        $denunciados = DB::table('extra_denunciado')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
+            ->where('extra_denunciado.idCarpeta', '=', $id)
+            ->get();
+
+        $familiaresDenunciado = DB::table('familiar')
+            ->join('cat_ocupacion', 'cat_ocupacion.id', '=', 'familiar.idOcupacion')
+            ->join('persona', 'persona.id', '=', 'familiar.idPersona')
+            ->join('variables_persona', 'variables_persona.idPersona', '=', 'persona.id')
+            ->join('extra_denunciado', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->select('familiar.nombres as familiarNombre','familiar.primerAp as familiarPrimerAp', 'familiar.segundoAp as familiarSegundoAp', 'familiar.parentesco', 'cat_ocupacion.nombre as ocupacion' , 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('extra_denunciado.idCarpeta', '=', $id);
+        $familiares = DB::table('familiar')
+            ->join('cat_ocupacion', 'cat_ocupacion.id', '=', 'familiar.idOcupacion')
+            ->join('persona', 'persona.id', '=', 'familiar.idPersona')
+            ->join('variables_persona', 'variables_persona.idPersona', '=', 'persona.id')
+            ->join('extra_denunciante', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->select('familiar.nombres as familiarNombre','familiar.primerAp as familiarPrimerAp', 'familiar.segundoAp as familiarSegundoAp', 'familiar.parentesco', 'cat_ocupacion.nombre as ocupacion' , 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('extra_denunciante.idCarpeta', '=', $id)
+            ->union($familiaresDenunciado)
+            ->get();
+
+        $delitos = DB::table('tipif_delito')
+            ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+            ->join('cat_modalidad', 'cat_modalidad.id', '=', 'tipif_delito.idModalidad')
+            ->select('tipif_delito.id','cat_delito.nombre as delito', 'cat_modalidad.nombre as modalidad', 'tipif_delito.fecha', 'tipif_delito.hora')
+            ->where('tipif_delito.idCarpeta', '=', $id)
+            ->get();
+
+        $acusaciones = DB::table('acusacion')
+            ->join('extra_denunciante', 'extra_denunciante.id', '=', 'acusacion.idDenunciante')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->join('extra_denunciado', 'extra_denunciado.id', '=', 'acusacion.idDenunciado')
+            ->join('variables_persona as var', 'var.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->join('persona as per', 'per.id', '=', 'var.idPersona')
+            ->join('tipif_delito', 'tipif_delito.id', '=', 'acusacion.idTipifDelito')
+            ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+            ->select('persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'cat_delito.nombre as delito', 'per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
+            ->where('acusacion.idCarpeta', '=', $id)
+            ->get();
+        //dd($acusaciones);
+        return view('detalle')->with('carpeta', $carpeta)
+            ->with('denunciantes', $denunciantes)
+            ->with('denunciados', $denunciados)
+            ->with('familiares', $familiares)
+            ->with('delitos', $delitos)
+            ->with('acusaciones', $acusaciones);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

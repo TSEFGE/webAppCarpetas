@@ -58,7 +58,7 @@ Route::post('storeacusacion', 'AcusacionController@storeAcusacion')->name('store
 
 
 Route::get('carpeta/{id}', [
-	'uses' => 'RegistroController@verDetalle',
+	'uses' => 'CarpetaController@verDetalle',
 	'as' => 'view.carpeta'
 ]);
 /*
