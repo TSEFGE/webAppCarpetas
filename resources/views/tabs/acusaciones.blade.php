@@ -1,10 +1,13 @@
 {!! Form::open(['route' => 'store.acusacion', 'method' => 'POST'])  !!}
 <div class="row no-gutters">
-	<div class="col-10">
+	<div class="col-12">
 		<div class="boxtwo">
 			<h6>Datos sobre la acusación</h6>
 			<div class="row">
 			<div class="col-4">
+				@if(!empty($idCarpeta))
+					{!! Form::hidden('idCarpeta', $idCarpeta) !!}
+				@endif
 				<div class="form-group">
 					{!! Form::label('idDenunciante', 'Denunciante', ['class' => 'col-form-label-sm']) !!}
 					<select name="idDenunciante" id="idDenunciante" class="form-control form-control-sm" required>
@@ -44,10 +47,6 @@
 			</div>
 			</div>
 		</div>
-	</div>
-
-	<div class="col-2">
-		@include('fields.botones')
 	</div>
 </div>
 {!! Form::close() !!}

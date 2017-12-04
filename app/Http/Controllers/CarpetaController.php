@@ -107,12 +107,26 @@ class CarpetaController extends Controller
             ->select('tipif_delito.id','cat_delito.nombre as delito', 'cat_modalidad.nombre as modalidad', 'tipif_delito.fecha', 'tipif_delito.hora')
             ->where('tipif_delito.idCarpeta', '=', $id)
             ->get();
-        //dd($delitos);
+
+        $acusaciones = DB::table('acusacion')
+            ->join('extra_denunciante', 'extra_denunciante.id', '=', 'acusacion.idDenunciante')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->join('extra_denunciado', 'extra_denunciado.id', '=', 'acusacion.idDenunciado')
+            ->join('variables_persona as var', 'var.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->join('persona as per', 'per.id', '=', 'var.idPersona')
+            ->join('tipif_delito', 'tipif_delito.id', '=', 'acusacion.idTipifDelito')
+            ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+            ->select('persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'cat_delito.nombre as delito', 'per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
+            ->where('acusacion.idCarpeta', '=', $id)
+            ->get();
+        //dd($acusaciones);
         return view('carpeta')->with('carpeta', $carpeta)
             ->with('denunciantes', $denunciantes)
             ->with('denunciados', $denunciados)
             ->with('familiares', $familiares)
-            ->with('delitos', $delitos);
+            ->with('delitos', $delitos)
+            ->with('acusaciones', $acusaciones);
     }
 
     /**

@@ -115,6 +115,29 @@
                     <a href="{{ route('delito', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar delito</a><hr>
                 </div>
 
+                <div class="boxtwo">
+                    <h6>Acusaciones</h6>
+                    <div class="table">
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Nombre denunciante</th>
+                                <th>Delito</th>
+                                <th>Nombre denunciado</th>
+                            </thead>
+                            <tbody>
+                                @foreach($acusaciones as $acusacion)
+                                <tr>
+                                    <td>{{ $acusacion->nombres." ".$acusacion->primerAp." ".$acusacion->segundoAp }}</td>
+                                    <td>{{ $acusacion->delito }}</td>
+                                    <td>{{ $acusacion->nombres2." ".$acusacion->primerAp2." ".$acusacion->segundoAp2 }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="{{ route('acusacion', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar delito</a><hr>
+                </div>
+
 
             </div>
         </div>

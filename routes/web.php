@@ -52,6 +52,9 @@ Route::post('storefamiliar', 'FamiliarController@storeFamiliar')->name('store.fa
 Route::get('delito/{idCarpeta}', 'DelitoController@index')->name('delito');
 Route::post('storedelito', 'DelitoController@storeDelito')->name('store.delito');
 
+Route::get('acusacion/{idCarpeta}', 'AcusacionController@index')->name('acusacion');
+Route::post('storeacusacion', 'AcusacionController@storeAcusacion')->name('store.acusacion');
+
 
 
 Route::get('carpeta/{id}', [
