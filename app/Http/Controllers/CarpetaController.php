@@ -100,11 +100,19 @@ class CarpetaController extends Controller
             ->where('extra_denunciante.idCarpeta', '=', $id)
             ->union($familiaresDenunciado)
             ->get();
-        //dd($familiares);
+
+        $delitos = DB::table('tipif_delito')
+            ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+            ->join('cat_modalidad', 'cat_modalidad.id', '=', 'tipif_delito.idModalidad')
+            ->select('tipif_delito.id','cat_delito.nombre as delito', 'cat_modalidad.nombre as modalidad', 'tipif_delito.fecha', 'tipif_delito.hora')
+            ->where('tipif_delito.idCarpeta', '=', $id)
+            ->get();
+        //dd($delitos);
         return view('carpeta')->with('carpeta', $carpeta)
             ->with('denunciantes', $denunciantes)
             ->with('denunciados', $denunciados)
-            ->with('familiares', $familiares);
+            ->with('familiares', $familiares)
+            ->with('delitos', $delitos);
     }
 
     /**

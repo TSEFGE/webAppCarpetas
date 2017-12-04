@@ -90,6 +90,32 @@
                 </div>
 
 
+                <div class="boxtwo">
+                    <h6>Delitos</h6>
+                    <div class="table">
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Delito</th>
+                                <th>Modalidad</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                            </thead>
+                            <tbody>
+                                @foreach($delitos as $delito)
+                                <tr>
+                                    <td>{{ $delito->delito }}</td>
+                                    <td>{{ $delito->modalidad }}</td>
+                                    <td>{{ $delito->fecha }}</td>
+                                    <td>{{ $delito->hora }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="{{ route('delito', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar delito</a><hr>
+                </div>
+
+
             </div>
         </div>
     </div>
