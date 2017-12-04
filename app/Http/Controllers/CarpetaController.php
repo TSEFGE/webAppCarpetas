@@ -83,9 +83,28 @@ class CarpetaController extends Controller
             ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
             ->where('extra_denunciado.idCarpeta', '=', $id)
             ->get();
+
+        $familiaresDenunciado = DB::table('familiar')
+            ->join('cat_ocupacion', 'cat_ocupacion.id', '=', 'familiar.idOcupacion')
+            ->join('persona', 'persona.id', '=', 'familiar.idPersona')
+            ->join('variables_persona', 'variables_persona.idPersona', '=', 'persona.id')
+            ->join('extra_denunciado', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->select('familiar.nombres as familiarNombre','familiar.primerAp as familiarPrimerAp', 'familiar.segundoAp as familiarSegundoAp', 'familiar.parentesco', 'cat_ocupacion.nombre as ocupacion' , 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('extra_denunciado.idCarpeta', '=', $id);
+        $familiares = DB::table('familiar')
+            ->join('cat_ocupacion', 'cat_ocupacion.id', '=', 'familiar.idOcupacion')
+            ->join('persona', 'persona.id', '=', 'familiar.idPersona')
+            ->join('variables_persona', 'variables_persona.idPersona', '=', 'persona.id')
+            ->join('extra_denunciante', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->select('familiar.nombres as familiarNombre','familiar.primerAp as familiarPrimerAp', 'familiar.segundoAp as familiarSegundoAp', 'familiar.parentesco', 'cat_ocupacion.nombre as ocupacion' , 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('extra_denunciante.idCarpeta', '=', $id)
+            ->union($familiaresDenunciado)
+            ->get();
+        //dd($familiares);
         return view('carpeta')->with('carpeta', $carpeta)
             ->with('denunciantes', $denunciantes)
-            ->with('denunciados', $denunciados);
+            ->with('denunciados', $denunciados)
+            ->with('familiares', $familiares);
     }
 
     /**

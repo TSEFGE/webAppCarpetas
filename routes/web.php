@@ -44,6 +44,13 @@ Route::post('storedenunciado', 'DenunciadoController@storeDenunciado')->name('st
 
 
 
+
+
+Route::get('familiar/{idCarpeta}', 'FamiliarController@index')->name('familiar');
+Route::post('storefamiliar', 'FamiliarController@storeFamiliar')->name('store.familiar');
+
+
+
 Route::get('carpeta/{id}', [
 	'uses' => 'RegistroController@verDetalle',
 	'as' => 'view.carpeta'
