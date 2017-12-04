@@ -20,7 +20,7 @@ Route::get('/', function () {
 })->middleware('guest');
 
 Route::get('/registrar-carpeta', 'RegistroController@showRegisterForm')->name('registro')->middleware('auth');
-
+/*
 Route::post('storecarpeta', 'RegistroController@storeCarpeta')->name('store.carpeta');
 Route::post('storedenunciante', 'RegistroController@storeDenunciante')->name('store.denunciante');
 Route::post('storedenunciado', 'RegistroController@storeDenunciado')->name('store.denunciado');
@@ -30,27 +30,31 @@ Route::post('storefamiliar', 'RegistroController@storeFamiliar')->name('store.fa
 Route::post('storedelito', 'RegistroController@storeDelito')->name('store.delito');
 Route::post('storevehiculo', 'RegistroController@storeVehiculo')->name('store.vehiculo');
 Route::post('storeacusacion', 'RegistroController@storeAcusacion')->name('store.acusacion');
+*/
+
+Route::get('/iniciar-carpeta', 'CarpetaController@showRegisterForm')->name('inicio')->middleware('auth');
+Route::post('storecarpeta', 'CarpetaController@storeCarpeta')->name('store.carpeta');
+Route::get('/carpeta-inicial/{id}', 'CarpetaController@index')->name('carpeta')->middleware('auth');
+
+Route::get('denunciante/{idCarpeta}', 'DenuncianteController@index')->name('denunciante');
+Route::post('storedenunciante', 'DenuncianteController@storeDenunciante')->name('store.denunciante');
+
+Route::get('denunciado/{idCarpeta}', 'DenunciadoController@index')->name('denunciado');
+Route::post('storedenunciado', 'DenunciadoController@storeDenunciado')->name('store.denunciado');
+
+
 
 Route::get('carpeta/{id}', [
 	'uses' => 'RegistroController@verDetalle',
 	'as' => 'view.carpeta'
 ]);
-
 /*
-Route::get('/iniciar-carpeta', 'CarpetaController@showRegisterForm')->name('inicio')->middleware('auth');
-Route::get('/carpeta/{id}', 'CarpetaController@index')->name('carpeta')->middleware('auth');
-
-Route::post('storecarpeta', 'CarpetaController@storeCarpeta')->name('store.carpeta');
-Route::post('storedenunciante', 'DenuncianteController@storeDenunciante')->name('store.denunciante');
-
 Route::post('storedenunciado', 'RegistroController@storeDenunciado')->name('store.denunciado');
 Route::post('storeautoridad', 'RegistroController@storeAutoridad')->name('store.autoridad');
 Route::post('storeabogado', 'RegistroController@storeAbogado')->name('store.abogado');
 Route::post('storefamiliar', 'RegistroController@storeFamiliar')->name('store.familiar');
 Route::post('storedelito', 'RegistroController@storeDelito')->name('store.delito');
 Route::post('storevehiculo', 'RegistroController@storeVehiculo')->name('store.vehiculo');
-
-Route::get('denunciante', 'DenuncianteController@index')->name('denunciante');
 */
 
 

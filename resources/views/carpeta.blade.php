@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">Carpeta de Investigación</div>
+            <div class="card-header">Carpeta de Investigación: {{ $carpeta[0]->numCarpeta }}</div>
             <div class="card-body boxone">
                 <div class="boxtwo">
                     <h6>Denunciates</h6>
@@ -33,8 +33,9 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{ route('denunciante') }}" class="btn btn-secondary">Registrar nuevo usuario</a><hr>
+                    <a href="{{ route('denunciante', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
                 </div>
+                
                 <div class="boxtwo">
                     <h6>Denunciados</h6>
                     <div class="table">
@@ -59,6 +60,7 @@
                             </tbody>
                         </table>
                     </div>
+                    <a href="{{ route('denunciado', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
                 </div>
 
 

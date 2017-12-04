@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use DB;
 
 use App\Models\CatEscolaridad;
 use App\Models\CatEstado;
@@ -13,6 +11,7 @@ use App\Models\CatEtnia;
 use App\Models\CatLengua;
 use App\Models\CatNacionalidad;
 use App\Models\CatOcupacion;
+use App\Models\CatPuesto;
 use App\Models\CatReligion;
 
 use App\Models\Carpeta;
@@ -20,9 +19,9 @@ use App\Models\Persona;
 use App\Models\Domicilio;
 use App\Models\VariablesPersona;
 use App\Models\Notificacion;
-use App\Models\ExtraDenunciante;
+use App\Models\ExtraDenunciado;
 
-class DenuncianteController extends Controller
+class DenunciadoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -38,8 +37,9 @@ class DenuncianteController extends Controller
         $lenguas = CatLengua::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $nacionalidades = CatNacionalidad::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $puestos = CatPuesto::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $religiones = CatReligion::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        return view('forms.denunciante')->with('idCarpeta', $idCarpeta)
+        return view('forms.denunciado')->with('idCarpeta', $idCarpeta)
             ->with('escolaridades', $escolaridades)
             ->with('estados', $estados)
             ->with('estadoscivil', $estadoscivil)
@@ -47,10 +47,11 @@ class DenuncianteController extends Controller
             ->with('lenguas', $lenguas)
             ->with('nacionalidades', $nacionalidades)
             ->with('ocupaciones', $ocupaciones)
+            ->with('puestos', $puestos)
             ->with('religiones', $religiones);
     }
 
-    public function storeDenunciante(Request $request){
+    public function storeDenunciado(Request $request){
         //dd($request->all());
         $persona = new Persona();
         $persona->nombres = $request->nombres;
@@ -189,7 +190,7 @@ class DenuncianteController extends Controller
         if (!is_null($request->telefonoTrabajo)){
             $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
         }
-        if ($request->esEmpresa==="1"){
+        if ($request->esEmpresa==="on"){
             $VariablesPersona->escolaridades = 1;
             $VariablesPersona->representanteLegal = $request->representanteLegal;
         }else{
@@ -199,16 +200,42 @@ class DenuncianteController extends Controller
         $idVariablesPersona = $VariablesPersona->id;
 
         $idAbogado=null;
-        $ExtraDenunciante = new ExtraDenunciante();
-        $ExtraDenunciante->idCarpeta = $request->idCarpeta;
-        $ExtraDenunciante->idVariablesPersona = $idVariablesPersona;
-        $ExtraDenunciante->idNotificacion = $idNotificacion;
-        $ExtraDenunciante->idAbogado = $idAbogado;
-        if ($request->conoceAlDenunciado==="on"){
-            $ExtraDenunciante->conoceAlDenunciado = 1;
+        $ExtraDenunciado = new ExtraDenunciado();
+        $ExtraDenunciado->idCarpeta = $request->idCarpeta;
+        $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
+        $ExtraDenunciado->idNotificacion = $idNotificacion;
+        if (!is_null($request->idPuesto)){
+            $ExtraDenunciado->idPuesto = $request->idPuesto;
         }
-        $ExtraDenunciante->narracion = $request->narracion;
-        $ExtraDenunciante->save();
+        if (!is_null($request->alias)){
+            $ExtraDenunciado->alias = $request->alias;
+        }
+        if (!is_null($request->senasPartic)){
+            $ExtraDenunciado->senasPartic = $request->senasPartic;
+        }
+        if (!is_null($request->ingreso)){
+            $ExtraDenunciado->ingreso = $request->ingreso;
+        }
+        if (!is_null($request->periodoIngreso)){
+            $ExtraDenunciado->periodoIngreso = $request->periodoIngreso;
+        }
+        if (!is_null($request->residenciaAnterior)){
+            $ExtraDenunciado->residenciaAnterior = $request->residenciaAnterior;
+        }
+        $ExtraDenunciado->idAbogado = $idAbogado;
+        if (!is_null($request->personasBajoSuGuarda)){
+            $ExtraDenunciado->personasBajoSuGuarda = $request->personasBajoSuGuarda;
+        }
+        if ($request->esperseguidoPenalmente==="on"){
+            $ExtraDenunciado->perseguidoPenalmente = 1;
+        }
+        if (!is_null($request->vestimenta)){
+            $ExtraDenunciado->vestimenta = $request->vestimenta;
+        }
+        if (!is_null($request->narracion)){
+            $ExtraDenunciado->narracion = $request->narracion;
+        }
+        $ExtraDenunciado->save();
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal

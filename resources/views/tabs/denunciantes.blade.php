@@ -71,6 +71,9 @@
 		<div class="boxtwo">
 			<div class="row">
 				<div class="col-6">
+					@if(!empty($idCarpeta))
+						{!! Form::hidden('idCarpeta', $idCarpeta) !!}
+					@endif
 					<div class="form-group">
 						<label class="col-form-label col-form-label-sm" for="conoceAlDenunciado">¿Conoce al denunciado?</label>
 						<div class="clearfix"></div>

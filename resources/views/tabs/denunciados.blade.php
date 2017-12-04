@@ -71,6 +71,9 @@
 		<div class="boxtwo">
 			<div class="row">
 				<div class="col-3">
+					@if(!empty($idCarpeta))
+						{!! Form::hidden('idCarpeta', $idCarpeta) !!}
+					@endif
 					<div class="form-group">
 						{!! Form::label('idPuesto', 'Puesto', ['class' => 'col-form-label-sm']) !!}
 						{!! Form::select('idPuesto', $puestos, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un puesto']) !!}
