@@ -73,7 +73,7 @@
 				<div class="col-4">
 					<div class="form-group">
 						{!! Form::label('horarioLaboral', 'Horario laboral', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::number('horarioLaboral', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el horario laboral', 'required']) !!}
+						{!! Form::text('horarioLaboral', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el horario laboral', 'required']) !!}
 					</div>
 				</div>
 				<div class="col-12">

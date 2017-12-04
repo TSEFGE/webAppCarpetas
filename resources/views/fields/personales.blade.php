@@ -29,12 +29,12 @@
 			<div class="clearfix"></div>
 			<div class="form-check form-check-inline">
 				<label class="form-check-label col-form-label col-form-label-sm">
-					<input class="form-check-input" type="radio" id="esEmpresa1" name="esEmpresa"> Sí
+					<input class="form-check-input" type="radio" id="esEmpresa1" name="esEmpresa" value="1"> Sí
 				</label>
 			</div>
 			<div class="form-check form-check-inline">
 				<label class="form-check-label col-form-label col-form-label-sm">
-					<input class="form-check-input" type="radio" id="esEmpresa2" name="esEmpresa"> No
+					<input class="form-check-input" type="radio" id="esEmpresa2" name="esEmpresa" value="0"> No
 				</label>
 			</div>
 		</div>

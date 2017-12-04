@@ -76,12 +76,12 @@
 						<div class="clearfix"></div>
 						<div class="form-check form-check-inline">
 							<label class="form-check-label col-form-label col-form-label-sm">
-								<input class="form-check-input" type="radio" id="conoceAlDenunciado1" name="conoceAlDenunciado"> Sí
+								<input class="form-check-input" type="radio" id="conoceAlDenunciado1" name="conoceAlDenunciado" value="1"> Sí
 							</label>
 						</div>
 						<div class="form-check form-check-inline">
 							<label class="form-check-label col-form-label col-form-label-sm">
-								<input class="form-check-input" type="radio" id="conoceAlDenunciado2" name="conoceAlDenunciado"> No
+								<input class="form-check-input" type="radio" id="conoceAlDenunciado2" name="conoceAlDenunciado" value="0"> No
 							</label>
 						</div>
 					</div>
@@ -94,14 +94,13 @@
 				</div>
 				<div class="col-12">
 					<div class="form-group">
-						{!! Form::submit('Guardar', ['class' => 'btn btn-dark']) !!}
+						{!! Form::submit('Guardar', ['class' => 'btn btn-dark', 'id' => 'btn-submit']) !!}
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
 {!! Form::close() !!}
 
 {{--

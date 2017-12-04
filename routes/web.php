@@ -29,6 +29,29 @@ Route::post('storeabogado', 'RegistroController@storeAbogado')->name('store.abog
 Route::post('storefamiliar', 'RegistroController@storeFamiliar')->name('store.familiar');
 Route::post('storedelito', 'RegistroController@storeDelito')->name('store.delito');
 Route::post('storevehiculo', 'RegistroController@storeVehiculo')->name('store.vehiculo');
+Route::post('storeacusacion', 'RegistroController@storeAcusacion')->name('store.acusacion');
+
+Route::get('carpeta/{id}', [
+	'uses' => 'RegistroController@verDetalle',
+	'as' => 'view.carpeta'
+]);
+
+/*
+Route::get('/iniciar-carpeta', 'CarpetaController@showRegisterForm')->name('inicio')->middleware('auth');
+Route::get('/carpeta/{id}', 'CarpetaController@index')->name('carpeta')->middleware('auth');
+
+Route::post('storecarpeta', 'CarpetaController@storeCarpeta')->name('store.carpeta');
+Route::post('storedenunciante', 'DenuncianteController@storeDenunciante')->name('store.denunciante');
+
+Route::post('storedenunciado', 'RegistroController@storeDenunciado')->name('store.denunciado');
+Route::post('storeautoridad', 'RegistroController@storeAutoridad')->name('store.autoridad');
+Route::post('storeabogado', 'RegistroController@storeAbogado')->name('store.abogado');
+Route::post('storefamiliar', 'RegistroController@storeFamiliar')->name('store.familiar');
+Route::post('storedelito', 'RegistroController@storeDelito')->name('store.delito');
+Route::post('storevehiculo', 'RegistroController@storeVehiculo')->name('store.vehiculo');
+
+Route::get('denunciante', 'DenuncianteController@index')->name('denunciante');
+*/
 
 
 /*---------Rutas para los selects dinámicos-------------*/

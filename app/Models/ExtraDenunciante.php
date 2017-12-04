@@ -20,7 +20,8 @@ class ExtraDenunciante extends Model
         'idVariablesPersona',
         'idNotificaciones',
         'idAbogado',
-        'conoceAlDenunciado'
+        'conoceAlDenunciado',
+        'narracion'
     ];
 
     public function carpeta()

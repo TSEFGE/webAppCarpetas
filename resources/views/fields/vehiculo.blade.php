@@ -17,7 +17,7 @@
 			{!! Form::select('idEstado', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa']) !!}
 		</div>
 	</div>
-	<div class="col-2">
+	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('idMarca', 'Marca', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::select('idMarca', $marcas, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una marca']) !!}

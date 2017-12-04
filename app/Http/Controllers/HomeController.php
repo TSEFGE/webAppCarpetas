@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $carpetas = DB::table('carpeta')
+            ->join('users', 'users.id', '=', 'carpeta.idFiscal')
+            ->join('unidad', 'unidad.id', '=', 'carpeta.idUnidad')
+            ->select('carpeta.id','unidad.nombre', 'users.nombres', 'users.primerAp', 'users.segundoAp', 'carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.estadoCarpeta')
+            ->where('carpeta.idFiscal', '=', Auth::user()->id)
+            ->get();
+        //dd($carpetas);
+        return view('home')->with('carpetas', $carpetas);
     }
 }

@@ -47,6 +47,7 @@ use App\Models\ExtraAutoridad;
 use App\Models\ExtraAbogado;
 use App\Models\TipifDelito;
 use App\Models\Vehiculo;
+use App\Models\Acusacion;
 use DB;
 
 class RegistroController extends Controller
@@ -82,22 +83,23 @@ class RegistroController extends Controller
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-            ->where('extra_denunciante.idCarpeta', '=', $idCarpeta)
+            //->where('extra_denunciante.idCarpeta', '=', $idCarpeta)
             ->get();
         $denunciados = DB::table('extra_denunciado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-            ->where('extra_denunciado.idCarpeta', '=', $idCarpeta)
+            //->where('extra_denunciado.idCarpeta', '=', $idCarpeta)
             ->get();
         $tipifdelitos = DB::table('tipif_delito')
             ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
             ->select('tipif_delito.id','cat_delito.nombre')
-            ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
+            //->where('tipif_delito.idCarpeta', '=', $idCarpeta)
             ->get();
         //dd($tipifdelitos);
         return view('registro')->with('denunciantes', $denunciantes)
                                 ->with('denunciados', $denunciados)
+                                ->with('tipifdelitos', $tipifdelitos)
                                 ->with('aseguradoras', $aseguradoras)
                                 ->with('clasesveh', $clasesveh)
                                 ->with('colores', $colores)
@@ -119,6 +121,40 @@ class RegistroController extends Controller
                                 ->with('tiposdet', $tiposdet)
                                 ->with('tiposuso', $tiposuso)
                                 ->with('zonas', $zonas);
+    }
+
+    public function verDetalle($id){
+        $carpeta = Carpeta::where('id', $id)->get();
+        $idCarpeta = $carpeta[0]->id;
+        $denunciantes = DB::table('extra_denunciante')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
+            //->where('extra_denunciante.idCarpeta', '=', $idCarpeta)
+            ->get();
+        $denunciados = DB::table('extra_denunciado')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
+            //->where('extra_denunciado.idCarpeta', '=', $idCarpeta)
+            ->get();
+        $tipifdelitos = DB::table('tipif_delito')
+            ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+            ->select('tipif_delito.id','cat_delito.nombre')
+            //->where('tipif_delito.idCarpeta', '=', $idCarpeta)
+            ->get();
+        //dd($denunciantes);
+        /*
+        $article = Article::findBySlugOrFail($slug);
+        $article->category;
+        $article->user;
+        $article->tags;
+        $article->images;
+        */
+        return view('detalle')->with('carpeta', $carpeta)
+            ->with('denunciantes', $denunciantes)
+            ->with('denunciados', $denunciados)
+            ->with('tipifdelitos', $tipifdelitos);
     }
 
     /**
@@ -200,10 +236,17 @@ class RegistroController extends Controller
     /*-----Métodos de guardado-----*/
     public function storeCarpeta(Request $request){
         //dd($request->all());
+        $datos = DB::table('users')
+            ->join('unidad', 'unidad.id', '=', 'users.idUnidad')
+            ->select('unidad.distrito','users.numFiscal', 'unidad.consecutivo')
+            ->where('users.id', '=', Auth::user()->id)
+            ->get();
+        $num = $datos[0]->consecutivo+1;
+
         $carpeta = new Carpeta();
         $carpeta->idUnidad = Auth::user()->idUnidad;
         $carpeta->idFiscal = Auth::user()->id;
-        $carpeta->numCarpeta = $request->numCarpeta;
+        $carpeta->numCarpeta = "UIPJ/D".$datos[0]->distrito."/".$datos[0]->numFiscal."/".$num."/2017";
         $carpeta->fechaInicio = $request->fechaInicio;
         if (isset($request->conDetenido)) {
             $carpeta->conDetenido = $request->conDetenido;
@@ -225,11 +268,11 @@ class RegistroController extends Controller
             $carpeta->narracionIph = $request->narracionIph;
         }
         $carpeta->fechaDeterminacion = $request->fechaDeterminacion;
-        $carpeta->idTipoDeterminacion = 5;
         //dd($carpeta);
         $carpeta->save();
         //$idCarpeta = $carpeta->id;
         //dd($idCarpeta);
+        DB::table('unidad')->where('id', Auth::user()->idUnidad)->update(['consecutivo' => $num]);
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal
@@ -243,9 +286,8 @@ class RegistroController extends Controller
         //dd($request->all());
         //$user = User::create(['name'=>'Cesar','email'=>'codigojava@gmail.com']);
         //print_r($user->id);
-        $carpeta = Carpeta::where('idFiscal', Auth::user()->id)->where('idUnidad', Auth::user()->idUnidad)->orderBy('id','DESC')->take(1)->pluck('id');
+        $carpeta = Carpeta::select('id')->where('idFiscal', Auth::user()->id)->where('idUnidad', Auth::user()->idUnidad)->orderBy('id','DESC')->take(1)->pluck('id');
         $idCarpeta = $carpeta[0];
-        //dd($idCarpeta);
         $persona = new Persona();
         $persona->nombres = $request->nombres;
         $persona->primerAp = $request->primerAp;
@@ -268,7 +310,7 @@ class RegistroController extends Controller
         if (!is_null($request->idMunicipioOrigen)){
             $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
         }
-        if ($request->esEmpresa==="on"){
+        if ($request->esEmpresa==="1"){
             $persona->esEmpresa = 1;
         }
         $persona->save();
@@ -383,7 +425,7 @@ class RegistroController extends Controller
         if (!is_null($request->telefonoTrabajo)){
             $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
         }
-        if ($request->esEmpresa==="on"){
+        if ($request->esEmpresa==="1"){
             $VariablesPersona->escolaridades = 1;
             $VariablesPersona->representanteLegal = $request->representanteLegal;
         }else{
@@ -413,9 +455,8 @@ class RegistroController extends Controller
 
     public function storeDenunciado(Request $request){
         //dd($request->all());
-        $carpeta = Carpeta::where('idFiscal', Auth::user()->id)->where('idUnidad', Auth::user()->idUnidad)->orderBy('id','DESC')->take(1)->pluck('id');
+        $carpeta = Carpeta::select('id')->where('idFiscal', Auth::user()->id)->where('idUnidad', Auth::user()->idUnidad)->orderBy('id','DESC')->take(1)->pluck('id');
         $idCarpeta = $carpeta[0];
-        //dd($idCarpeta);
         $persona = new Persona();
         $persona->nombres = $request->nombres;
         $persona->primerAp = $request->primerAp;
@@ -438,7 +479,7 @@ class RegistroController extends Controller
         if (!is_null($request->idMunicipioOrigen)){
             $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
         }
-        if ($request->esEmpresa==="on"){
+        if ($request->esEmpresa==="1"){
             $persona->esEmpresa = 1;
         }
         $persona->save();
@@ -609,9 +650,8 @@ class RegistroController extends Controller
 
     public function storeAutoridad(Request $request){
         //dd($request->all());
-        $carpeta = Carpeta::where('idFiscal', Auth::user()->id)->where('idUnidad', Auth::user()->idUnidad)->orderBy('id','DESC')->take(1)->pluck('id');
+        $carpeta = Carpeta::select('id')->where('idFiscal', Auth::user()->id)->where('idUnidad', Auth::user()->idUnidad)->orderBy('id','DESC')->take(1)->pluck('id');
         $idCarpeta = $carpeta[0];
-        //dd($idCarpeta);
         $persona = new Persona();
         $persona->nombres = $request->nombres;
         $persona->primerAp = $request->primerAp;
@@ -623,13 +663,11 @@ class RegistroController extends Controller
         $persona->idNacionalidad = $request->idNacionalidad;
         $persona->idEtnia = $request->idEtnia;
         $persona->idLengua = $request->idLengua;
-        $persona->idEstadoOrigen = $request->idEstadoOrigen;
         $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
         $persona->save();
         $idPersona = $persona->id;
 
         $domicilio = new Domicilio();
-        $domicilio->idEstado = $request->idEstado;
         $domicilio->idMunicipio = $request->idMunicipio;
         $domicilio->idLocalidad = $request->idLocalidad;
         $domicilio->idColonia = $request->idColonia;
@@ -640,7 +678,6 @@ class RegistroController extends Controller
         $idD1 = $domicilio->id;
 
         $domicilio2 = new Domicilio();
-        $domicilio2->idEstado = $request->idEstado2;
         $domicilio2->idMunicipio = $request->idMunicipio2;
         $domicilio2->idLocalidad = $request->idLocalidad2;
         $domicilio2->idColonia = $request->idColonia2;
@@ -669,13 +706,13 @@ class RegistroController extends Controller
         $VariablesPersona->save();
         $idVariablesPersona = $VariablesPersona->id;
 
-
         $ExtraAutoridad = new ExtraAutoridad();
         $ExtraAutoridad->idCarpeta = $idCarpeta;
         $ExtraAutoridad->idVariablesPersona = $idVariablesPersona;
         $ExtraAutoridad->antiguedad = $request->antiguedad;
         $ExtraAutoridad->rango = $request->rango;
         $ExtraAutoridad->horarioLaboral = $request->horarioLaboral;
+        $ExtraAutoridad->narracion = $request->narracion;
         $ExtraAutoridad->save();
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
@@ -695,14 +732,12 @@ class RegistroController extends Controller
         $persona->rfc = $request->rfc;
         $persona->sexo = $request->sexo;
         $persona->idNacionalidad = 1;
-        $persona->idEstadoOrigen = $request->idEstadoOrigen;
         $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
         $persona->curp = "SIN INFORMACION";
         $persona->save();
         $idPersona = $persona->id;
 
         $domicilio2 = new Domicilio();
-        $domicilio2->idEstado = $request->idEstado2;
         $domicilio2->idMunicipio = $request->idMunicipio2;
         $domicilio2->idLocalidad = $request->idLocalidad2;
         $domicilio2->idColonia = $request->idColonia2;
@@ -723,7 +758,6 @@ class RegistroController extends Controller
         $VariablesPersona->motivoEstancia = "NO APLICA";
         $VariablesPersona->idOcupacion = 2469;
         $VariablesPersona->idEscolaridad = 8;
-        $VariablesPersona->idDomicilio = null;
         $VariablesPersona->docIdentificacion = "NO APLICA";
         $VariablesPersona->numDocIdentificacion = "NO APLICA";
         $VariablesPersona->representanteLegal = "NO APLICA";
@@ -758,11 +792,9 @@ class RegistroController extends Controller
 
     public function storeDelito(Request $request){
         //dd($request->all());
-        $carpeta = Carpeta::where('idFiscal', Auth::user()->id)->where('idUnidad', Auth::user()->idUnidad)->orderBy('id','DESC')->take(1)->pluck('id');
+        $carpeta = Carpeta::select('id')->where('idFiscal', Auth::user()->id)->where('idUnidad', Auth::user()->idUnidad)->orderBy('id','DESC')->take(1)->pluck('id');
         $idCarpeta = $carpeta[0];
-        //dd($idCarpeta);
         $domicilio = new Domicilio();
-        $domicilio->idEstado = $request->idEstado;
         $domicilio->idMunicipio = $request->idMunicipio;
         $domicilio->idLocalidad = $request->idLocalidad;
         $domicilio->idColonia = $request->idColonia;
@@ -775,12 +807,11 @@ class RegistroController extends Controller
         $tipifDelito = new TipifDelito();
         $tipifDelito->idCarpeta = $idCarpeta;
         $tipifDelito->idDelito = $request->idDelito;
-        if ($request->conViolencia==="on"){
+        if ($request->conViolencia==="1"){
             $tipifDelito->conViolencia = 1;
         }
-        $tipifDelito->idTipoArma = $request->idTipoArma;
         $tipifDelito->idArma = $request->idArma;
-        $tipifDelito->idPosibleCausa = 0;
+        $tipifDelito->idPosibleCausa = null;
         $tipifDelito->idModalidad = $request->idModalidad;
         $tipifDelito->formaComision = $request->formaComision;
         $tipifDelito->consumacion = $request->consumacion;
@@ -807,15 +838,12 @@ class RegistroController extends Controller
         //dd($request->all());
         //$tipifDelito = TipifDelito::where('idFiscal', Auth::user()->id)->where('idUnidad', Auth::user()->idUnidad)->orderBy('id','DESC')->take(1)->pluck('id');
         //$idTipifDelito = $tipifDelito[0];
-        $idTipifDelito = 1;
-        //dd($idCarpeta);
-        $idTipifDelito = 1;
+        $idTipifDelito = 4;
         $vehiculo = new Vehiculo();
         $vehiculo->idTipifDelito = $idTipifDelito;
         $vehiculo->status = $request->status;
         $vehiculo->placas = $request->placas;
         $vehiculo->idEstado = $request->idEstado;
-        $vehiculo->idMarca = $request->idMarca;
         $vehiculo->idSubmarca = $request->idSubmarca;
         $vehiculo->modelo = $request->modelo;
         $vehiculo->nrpv = $request->nrpv;
@@ -823,14 +851,30 @@ class RegistroController extends Controller
         $vehiculo->permiso = $request->permiso;
         $vehiculo->numSerie = $request->numSerie;
         $vehiculo->numMotor = $request->numMotor;
-        $vehiculo->idClaseVehiculo = $request->idClaseVehiculo;
         $vehiculo->idTipoVehiculo = $request->idTipoVehiculo;
         $vehiculo->idTipoUso = $request->idTipoUso;
         $vehiculo->senasPartic = $request->senasPartic;
         $vehiculo->idProcedencia = $request->idProcedencia;
         $vehiculo->idAseguradora = $request->idAseguradora;
         $vehiculo->save();
+        /*
+        Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
+        //Para mostrar modal
+        //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
+        */
+        return redirect()->route('registro');
+    }
 
+    public function storeAcusacion(Request $request){
+        //dd($request->all());
+        $carpeta = Carpeta::select('id')->where('idFiscal', Auth::user()->id)->where('idUnidad', Auth::user()->idUnidad)->orderBy('id','DESC')->take(1)->pluck('id');
+        $idCarpeta = $carpeta[0];
+        $acusacion = new Acusacion();
+        $acusacion->idCarpeta = $idCarpeta;
+        $acusacion->idDenunciante = $request->idDenunciante;
+        $acusacion->idTipifDelito = $request->idTipifDelito;
+        $acusacion->idDenunciado = $request->idDenunciado;
+        $acusacion->save();
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal

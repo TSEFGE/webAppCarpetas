@@ -14,6 +14,9 @@
 					<li class="nav-item">
 						<a class="nav-link" href="{{ url('/registrar-carpeta') }}">Registrar nueva Carpeta</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ url('/iniciar-carpeta') }}">Registrar nueva Carpeta2</a>
+					</li>
 				@endauth
 			</ul>
 

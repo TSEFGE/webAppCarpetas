@@ -1,4 +1,4 @@
-{{--{!! Form::open(['route' => 'store.familiar', 'method' => 'POST'])  !!}--}}
+{!! Form::open(['route' => 'store.acusacion', 'method' => 'POST'])  !!}
 <div class="row no-gutters">
 	<div class="col-10">
 		<div class="boxtwo">
@@ -18,7 +18,12 @@
 			<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('idTipifDelito', 'Delito', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idTipifDelito', $delitos, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un delito', 'required']) !!}
+					<select name="idTipifDelito" id="idTipifDelito" class="form-control form-control-sm" required>
+						<option value="">Seleccione un delito</option>
+						@foreach($tipifdelitos as $tipifdelito)
+							<option value="{{ $tipifdelito->id }}">{{ $tipifdelito->nombre }}</option>
+						@endforeach
+					</select>
 				</div>
 			</div>
 			<div class="col-4">
@@ -45,7 +50,7 @@
 		@include('fields.botones')
 	</div>
 </div>
-{{--{!! Form::close() !!}--}}
+{!! Form::close() !!}
 
 <div class="row">
 	<div class="col-12">

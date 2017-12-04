@@ -13,16 +13,19 @@ $(document).ready(function(){
     $("#esEmpresa2").prop("checked", false);
     $('#personaFisica').css('display', 'none');
     $('#personaMoral').css('display', 'none');
+    $('#btn-submit').css('display', 'none');
     $("#esEmpresa1").change(function(event){
         if ($('#esEmpresa1').is(':checked') ) {
             $('#personaMoral').css('display', 'block');
             $('#personaFisica').css('display', 'none');
+            $('#btn-submit').css('display', 'block');
         }
     });
     $("#esEmpresa2").change(function(event){
         if ($('#esEmpresa2').is(':checked') ) {
             $('#personaMoral').css('display', 'none');
             $('#personaFisica').css('display', 'block');
+            $('#btn-submit').css('display', 'block');
         }
     });
 
