@@ -1,10 +1,13 @@
 {!! Form::open(['route' => 'store.delito', 'method' => 'POST'])  !!}
 <div class="row no-gutters">
-	<div class="col-10">
+	<div class="col-12">
 		<div class="boxtwo">
 			<h6>Información sobre la comisión del delito</h6>
 			<div class="row">
 			<div class="col-4">
+				@if(!empty($idCarpeta))
+					{!! Form::hidden('idCarpeta', $idCarpeta) !!}
+				@endif
 				<div class="form-group">
 					{!! Form::label('idDelito', 'Delito', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::select('idDelito', $delitos, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un delito', 'required']) !!}
@@ -81,10 +84,6 @@
 			</div>
 			</div>
 		</div>
-	</div>
-
-	<div class="col-2">
-		@include('fields.botones')
 	</div>
 </div>
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use App\Models\Acusacion;
 
 class AcusacionController extends Controller
 {
@@ -11,9 +13,45 @@ class AcusacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($idCarpeta)
     {
-        //
+        $denunciantes = DB::table('extra_denunciante')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('extra_denunciante.idCarpeta', '=', $idCarpeta)
+            ->get();
+        $denunciados = DB::table('extra_denunciado')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('extra_denunciado.idCarpeta', '=', $idCarpeta)
+            ->get();
+        $tipifdelitos = DB::table('tipif_delito')
+            ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+            ->select('tipif_delito.id','cat_delito.nombre')
+            ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
+            ->get();
+        return view('forms.acusacion')->with('idCarpeta', $idCarpeta)
+            ->with('denunciantes', $denunciantes)
+            ->with('denunciados', $denunciados)
+            ->with('tipifdelitos', $tipifdelitos);
+    }
+
+    public function storeAcusacion(Request $request){
+        //dd($request->all());
+        $acusacion = new Acusacion();
+        $acusacion->idCarpeta = $request->idCarpeta;
+        $acusacion->idDenunciante = $request->idDenunciante;
+        $acusacion->idTipifDelito = $request->idTipifDelito;
+        $acusacion->idDenunciado = $request->idDenunciado;
+        $acusacion->save();
+        /*
+        Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
+        //Para mostrar modal
+        //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
+        */
+        return redirect()->route('carpeta', $request->idCarpeta);
     }
 
     /**

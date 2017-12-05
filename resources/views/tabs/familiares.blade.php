@@ -1,13 +1,21 @@
 {!! Form::open(['route' => 'store.familiar', 'method' => 'POST'])  !!}
 <div class="row no-gutters">
-	<div class="col-10">
+	<div class="col-12">
 		<div class="boxtwo">
 			<h6>Datos del familiar (Denunciante/Denunciado)</h6>
 			<div class="row">
 			<div class="col-4">
+				@if(!empty($idCarpeta))
+					{!! Form::hidden('idCarpeta', $idCarpeta) !!}
+				@endif
 				<div class="form-group">
 					{!! Form::label('idPersona', 'Familiar de', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idPersona', ['1' => 'Román Pérez Escobar', '2' => 'José José'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un involucrado', 'required']) !!}
+					<select name="idPersona" id="idPersona" class="form-control form-control-sm" required>
+						<option value="">Seleccione un involucrado</option>
+						@foreach($involucrados as $involucrado)
+							<option value="{{ $involucrado->id }}">{{ $involucrado->nombres." ".$involucrado->primerAp." ".$involucrado->segundoAp }}</option>
+						@endforeach
+					</select>
 				</div>
 			</div>
 			<div class="col-4">
@@ -48,46 +56,5 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="col-2">
-		@include('fields.botones')
-	</div>
 </div>
 {!! Form::close() !!}
-
-<div class="row">
-	<div class="col-12">
-		<div class="boxtwo">
-			<table class="table table-striped table-bordered">
-				<thead class="thead-dark">
-					<tr class="table-dark">
-						<th scope="col">Familiar de</th>
-						<th scope="col">Nombre</th>
-						<th scope="col">Primer apellido</th>
-						<th scope="col">Segundo apellido</th>
-						<th scope="col">Parentesco</th>
-						<th scope="col">Ocupación</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Mark</td>
-					    <td>Otto</td>
-					    <td>@mdo</td>
-					    <td>Mark</td>
-					    <td>Otto</td>
-					    <td>@mdo</td>
-					</tr>
-					<tr>
-						<td>Mark</td>
-					    <td>Otto</td>
-					    <td>@mdo</td>
-					    <td>Mark</td>
-					    <td>Otto</td>
-					    <td>@mdo</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-</div>

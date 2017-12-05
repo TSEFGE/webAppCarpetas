@@ -44,9 +44,27 @@ Route::post('storedenunciado', 'DenunciadoController@storeDenunciado')->name('st
 
 Route::get('abogado/{idCarpeta}', 'AbogadoController@index')->name('abogado');
 Route::post('storeabogado', 'AbogadoController@storeAbogado')->name('store.abogado');
+Route::get('autoridad/{idCarpeta}', 'AutoridadController@index')->name('autoridad');
+Route::post('storeautoridad', 'AutoridadController@storeAutoridad')->name('store.autoridad');
+
+
+
+
+
+Route::get('familiar/{idCarpeta}', 'FamiliarController@index')->name('familiar');
+Route::post('storefamiliar', 'FamiliarController@storeFamiliar')->name('store.familiar');
+
+Route::get('delito/{idCarpeta}', 'DelitoController@index')->name('delito');
+Route::post('storedelito', 'DelitoController@storeDelito')->name('store.delito');
+
+Route::get('acusacion/{idCarpeta}', 'AcusacionController@index')->name('acusacion');
+Route::post('storeacusacion', 'AcusacionController@storeAcusacion')->name('store.acusacion');
+
+Route::get('vehiculo/{idCarpeta}', 'VehiculoController@index')->name('vehiculo');
+Route::post('storevehiculo', 'VehiculoController@storeVehiculo')->name('store.vehiculo');
 
 Route::get('carpeta/{id}', [
-	'uses' => 'RegistroController@verDetalle',
+	'uses' => 'CarpetaController@verDetalle',
 	'as' => 'view.carpeta'
 ]);
 /*
