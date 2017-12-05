@@ -63,6 +63,31 @@
                     <a href="{{ route('denunciado', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
                 </div>
 
+                <div class="boxtwo">
+                    <h6>Abogados</h6>
+                    <div class="table">
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Nombre</th>
+                                <th>Cédula</th>
+                                <th>Sector</th>
+                                <th>Correo Electrónico</th>                                
+                            </thead>
+                            <tbody>
+                                @foreach($abogados as $abogado)
+                                <tr>
+                                    <td>{{ $abogado->nombres." ".$abogado->primerAp." ".$abogado->segundoAp }}</td>
+                                    <td>{{ $abogado->cedulaProf }}</td>
+                                    <td>{{ $abogado->sector }}</td>
+                                    <td>{{ $abogado->correo }}</td>                                    
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="{{ route('abogado', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
+                </div>
+
 
             </div>
         </div>

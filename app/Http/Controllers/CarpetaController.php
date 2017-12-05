@@ -83,9 +83,27 @@ class CarpetaController extends Controller
             ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
             ->where('extra_denunciado.idCarpeta', '=', $id)
             ->get();
+
+        $abogados1 = DB::table('extra_abogado')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')            
+            ->join('extra_denunciante', 'extra_denunciante.idAbogado', '=', 'extra_abogado.id')            
+            ->select('extra_abogado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_abogado.cedulaProf', 'extra_abogado.sector', 'extra_abogado.correo')
+            ->where('extra_denunciante.idCarpeta', '=', $id);
+
+        $abogados = DB::table('extra_abogado')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')        
+            ->join('extra_denunciado', 'extra_denunciado.idAbogado', '=', 'extra_abogado.id')          
+            ->select('extra_abogado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_abogado.cedulaProf', 'extra_abogado.sector', 'extra_abogado.correo')
+            ->where('extra_denunciado.idCarpeta', '=', $id)
+            ->union($abogados1)
+            ->get();
+
         return view('carpeta')->with('carpeta', $carpeta)
             ->with('denunciantes', $denunciantes)
-            ->with('denunciados', $denunciados);
+            ->with('denunciados', $denunciados)
+            ->with('abogados', $abogados);
     }
 
     /**

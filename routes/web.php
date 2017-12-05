@@ -42,7 +42,8 @@ Route::post('storedenunciante', 'DenuncianteController@storeDenunciante')->name(
 Route::get('denunciado/{idCarpeta}', 'DenunciadoController@index')->name('denunciado');
 Route::post('storedenunciado', 'DenunciadoController@storeDenunciado')->name('store.denunciado');
 
-
+Route::get('abogado/{idCarpeta}', 'AbogadoController@index')->name('abogado');
+Route::post('storeabogado', 'AbogadoController@storeAbogado')->name('store.abogado');
 
 Route::get('carpeta/{id}', [
 	'uses' => 'RegistroController@verDetalle',

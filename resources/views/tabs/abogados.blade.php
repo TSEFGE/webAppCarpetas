@@ -108,6 +108,9 @@
 		<div class="boxtwo">
 			<div class="row">
 				<div class="col-4">
+					@if(!empty($idCarpeta))
+						{!! Form::hidden('idCarpeta', $idCarpeta) !!}
+					@endif
 					<div class="form-group">
 						{!! Form::label('sector', 'Sector', ['class' => 'col-form-label-sm']) !!}
 						{!! Form::select('sector', ['PÚBLICO' => 'PÚBLICO', 'PARTICULAR' => 'PARTICULAR'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un sector', 'required']) !!}
