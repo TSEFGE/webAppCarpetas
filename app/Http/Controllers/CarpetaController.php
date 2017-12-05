@@ -84,6 +84,14 @@ class CarpetaController extends Controller
             ->where('extra_denunciado.idCarpeta', '=', $id)
             ->get();
 
+
+        $autoridades = DB::table('extra_autoridad')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_autoridad.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_autoridad.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_autoridad.antiguedad', 'extra_autoridad.rango', 'extra_autoridad.horarioLaboral', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion')
+            ->where('extra_autoridad.idCarpeta', '=', $id)
+            ->get();
+
         $familiaresDenunciado = DB::table('familiar')
             ->join('cat_ocupacion', 'cat_ocupacion.id', '=', 'familiar.idOcupacion')
             ->join('persona', 'persona.id', '=', 'familiar.idPersona')
@@ -120,13 +128,26 @@ class CarpetaController extends Controller
             ->select('persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'cat_delito.nombre as delito', 'per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
             ->where('acusacion.idCarpeta', '=', $id)
             ->get();
-        //dd($acusaciones);
+
+        $vehiculos = DB::table('vehiculo')
+            ->join('tipif_delito', 'tipif_delito.id', '=', 'vehiculo.idTipifDelito')
+            ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+            ->join('cat_submarca', 'cat_submarca.id', '=', 'vehiculo.idSubmarca')
+            ->join('cat_marca', 'cat_marca.id', '=', 'cat_submarca.idMarca')
+            ->join('cat_tipo_vehiculo', 'cat_tipo_vehiculo.id', '=', 'vehiculo.idTipoVehiculo')
+            ->join('cat_color', 'cat_color.id', '=', 'vehiculo.idColor')
+            ->select('vehiculo.id','cat_delito.nombre as delito', 'cat_marca.nombre as marca', 'vehiculo.modelo', 'vehiculo.placas', 'cat_tipo_vehiculo.nombre as tipovehiculo', 'cat_color.nombre as color')
+            ->where('tipif_delito.idCarpeta', '=', $id)
+            ->get();
+        //dd($vehiculos);
         return view('carpeta')->with('carpeta', $carpeta)
             ->with('denunciantes', $denunciantes)
             ->with('denunciados', $denunciados)
+            ->with('autoridades', $autoridades)
             ->with('familiares', $familiares)
             ->with('delitos', $delitos)
-            ->with('acusaciones', $acusaciones);
+            ->with('acusaciones', $acusaciones)
+            ->with('vehiculos', $vehiculos);
     }
 
     public function verDetalle($id){
@@ -144,6 +165,14 @@ class CarpetaController extends Controller
             ->where('extra_denunciado.idCarpeta', '=', $id)
             ->get();
 
+
+        $autoridades = DB::table('extra_autoridad')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_autoridad.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_autoridad.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_autoridad.antiguedad', 'extra_autoridad.rango', 'extra_autoridad.horarioLaboral', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion')
+            ->where('extra_autoridad.idCarpeta', '=', $id)
+            ->get();
+
         $familiaresDenunciado = DB::table('familiar')
             ->join('cat_ocupacion', 'cat_ocupacion.id', '=', 'familiar.idOcupacion')
             ->join('persona', 'persona.id', '=', 'familiar.idPersona')
@@ -180,13 +209,26 @@ class CarpetaController extends Controller
             ->select('persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'cat_delito.nombre as delito', 'per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
             ->where('acusacion.idCarpeta', '=', $id)
             ->get();
-        //dd($acusaciones);
+
+        $vehiculos = DB::table('vehiculo')
+            ->join('tipif_delito', 'tipif_delito.id', '=', 'vehiculo.idTipifDelito')
+            ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+            ->join('cat_submarca', 'cat_submarca.id', '=', 'vehiculo.idSubmarca')
+            ->join('cat_marca', 'cat_marca.id', '=', 'cat_submarca.idMarca')
+            ->join('cat_tipo_vehiculo', 'cat_tipo_vehiculo.id', '=', 'vehiculo.idTipoVehiculo')
+            ->join('cat_color', 'cat_color.id', '=', 'vehiculo.idColor')
+            ->select('vehiculo.id','cat_delito.nombre as delito', 'cat_marca.nombre as marca', 'vehiculo.modelo', 'vehiculo.placas', 'cat_tipo_vehiculo.nombre as tipovehiculo', 'cat_color.nombre as color')
+            ->where('tipif_delito.idCarpeta', '=', $id)
+            ->get();
+        //dd($vehiculos);
         return view('detalle')->with('carpeta', $carpeta)
             ->with('denunciantes', $denunciantes)
             ->with('denunciados', $denunciados)
+            ->with('autoridades', $autoridades)
             ->with('familiares', $familiares)
             ->with('delitos', $delitos)
-            ->with('acusaciones', $acusaciones);
+            ->with('acusaciones', $acusaciones)
+            ->with('vehiculos', $vehiculos);
     }
 
     /**

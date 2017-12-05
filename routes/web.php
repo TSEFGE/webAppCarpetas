@@ -42,6 +42,9 @@ Route::post('storedenunciante', 'DenuncianteController@storeDenunciante')->name(
 Route::get('denunciado/{idCarpeta}', 'DenunciadoController@index')->name('denunciado');
 Route::post('storedenunciado', 'DenunciadoController@storeDenunciado')->name('store.denunciado');
 
+Route::get('autoridad/{idCarpeta}', 'AutoridadController@index')->name('autoridad');
+Route::post('storeautoridad', 'AutoridadController@storeAutoridad')->name('store.autoridad');
+
 
 
 
@@ -54,6 +57,9 @@ Route::post('storedelito', 'DelitoController@storeDelito')->name('store.delito')
 
 Route::get('acusacion/{idCarpeta}', 'AcusacionController@index')->name('acusacion');
 Route::post('storeacusacion', 'AcusacionController@storeAcusacion')->name('store.acusacion');
+
+Route::get('vehiculo/{idCarpeta}', 'VehiculoController@index')->name('vehiculo');
+Route::post('storevehiculo', 'VehiculoController@storeVehiculo')->name('store.vehiculo');
 
 
 
