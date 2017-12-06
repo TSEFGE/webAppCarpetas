@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use DB;
 use App\Models\CatAseguradora;
 use App\Models\CatClaseVehiculo;
 use App\Models\CatColor;
@@ -24,6 +25,12 @@ class VehiculoController extends Controller
      */
     public function index($idCarpeta)
     {
+        $tipifdelitos = DB::table('tipif_delito')
+            ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+            ->select('tipif_delito.id', 'cat_delito.id as idDelito', 'cat_delito.nombre as delito')
+            ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
+            ->whereIn('idDelito', [130, 131, 132, 133, 134, 135, 242, 243, 244, 245, 222])
+            ->get();
         $aseguradoras = CatAseguradora::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $clasesveh = CatClaseVehiculo::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $colores = CatColor::orderBy('id', 'ASC')->pluck('nombre', 'id');
@@ -32,6 +39,7 @@ class VehiculoController extends Controller
         $procedencias = CatProcedencia::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $tiposuso = CatTipoUso::orderBy('id', 'ASC')->pluck('nombre', 'id');
         return view('forms.vehiculo')->with('idCarpeta', $idCarpeta)
+            ->with('tipifdelitos', $tipifdelitos)
             ->with('aseguradoras', $aseguradoras)
             ->with('clasesveh', $clasesveh)
             ->with('colores', $colores)
@@ -43,9 +51,8 @@ class VehiculoController extends Controller
 
     public function storeVehiculo(Request $request){
         //dd($request->all());
-        $idTipifDelito = 4;
         $vehiculo = new Vehiculo();
-        $vehiculo->idTipifDelito = $idTipifDelito;
+        $vehiculo->idTipifDelito = $request->idTipifDelito;
         $vehiculo->status = $request->status;
         $vehiculo->placas = $request->placas;
         $vehiculo->idEstado = $request->idEstado;

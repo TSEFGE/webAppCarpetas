@@ -37,6 +37,17 @@
 				</div>
 				<div class="col-3">
 					<div class="form-group">
+						{!! Form::label('idInvolucrado', 'Involucrado', ['class' => 'col-form-label-sm']) !!}
+						<select name="idInvolucrado" id="idInvolucrado" class="form-control form-control-sm" required>
+							<option value="">Seleccione un involucrado</option>
+							@foreach($involucrados as $involucrado)
+								<option value="{{ $involucrado->id }}">{{ $involucrado->nombres." ".$involucrado->primerAp." ".$involucrado->segundoAp }}</option>
+							@endforeach
+						</select>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="form-group">
 						{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 						<div class="input-group date" id="fechanac" data-target-input="nearest">
 			                {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
@@ -138,37 +149,3 @@
 	</div>
 </div>
 {!! Form::close() !!}
-
-<div class="row">
-	<div class="col-12">
-		<div class="boxtwo">
-			<table class="table table-striped table-bordered">
-				<thead class="thead-dark">
-					<tr class="table-dark">
-						<th scope="col">Nombre</th>
-						<th scope="col">Primer apellido</th>
-						<th scope="col">Segundo apellido</th>
-						<th scope="col">Sector</th>
-						<th scope="col">Cédula</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Mark</td>
-						<td>Otto</td>
-						<td>@mdo</td>
-						<td>Mark</td>
-						<td>Otto</td>
-					</tr>
-					<tr>
-						<td>Mark</td>
-						<td>Otto</td>
-						<td>@mdo</td>
-						<td>Mark</td>
-						<td>Otto</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-</div>

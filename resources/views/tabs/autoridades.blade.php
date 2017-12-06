@@ -92,37 +92,3 @@
 	</div>
 </div>
 {!! Form::close() !!}
-
-<div class="row">
-	<div class="col-12">
-		<div class="boxtwo">
-			<table class="table table-striped table-bordered">
-				<thead class="thead-dark">
-					<tr class="table-dark">
-						<th scope="col">Nombre</th>
-						<th scope="col">Primer apellido</th>
-						<th scope="col">Segundo apellido</th>
-						<th scope="col">R.F.C.</th>
-						<th scope="col">Sexo</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Mark</td>
-					    <td>Otto</td>
-					    <td>@mdo</td>
-					    <td>Mark</td>
-					    <td>Otto</td>
-					</tr>
-					<tr>
-						<td>Mark</td>
-					    <td>Otto</td>
-					    <td>@mdo</td>
-					    <td>Mark</td>
-					    <td>Otto</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-</div>

@@ -27,7 +27,20 @@ class AbogadoController extends Controller
     {
         $estados = CatEstado::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
         $estadoscivil = CatEstadoCivil::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $denunciantes = DB::table('extra_denunciante')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('variables_persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('extra_denunciante.idCarpeta', '=', $idCarpeta);
+        $involucrados = DB::table('extra_denunciado')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('variables_persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('extra_denunciado.idCarpeta', '=', $idCarpeta)
+            ->union($denunciantes)
+            ->get();
         return view('forms.abogado')->with('idCarpeta', $idCarpeta)            
+            ->with('involucrados', $involucrados)
             ->with('estados', $estados)
             ->with('estadoscivil', $estadoscivil);
     }
@@ -97,6 +110,18 @@ class AbogadoController extends Controller
         $ExtraAbogado->sector = $request->sector;
         $ExtraAbogado->correo = $request->correo;
         $ExtraAbogado->save();
+        $idAbogado = $ExtraAbogado->id;
+
+        $idInvolucrado = $request->idInvolucrado;
+        $xd = DB::table('extra_denunciante')->select('id')->where('idVariablesPersona', $idInvolucrado)->get();
+        //$xd = DB::table('extra_denunciado')->select('id')->where('idVariablesPersona', $idInvolucrado)->get();
+        //dd($xd);
+        if(count($xd)>0){
+            //dd("Es nulo");
+            DB::table('extra_denunciante')->where('idVariablesPersona', $idInvolucrado)->update(['idAbogado' => $idAbogado]);
+        }else{
+            DB::table('extra_denunciado')->where('idVariablesPersona', $idInvolucrado)->update(['idAbogado' => $idAbogado]);
+        }
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal

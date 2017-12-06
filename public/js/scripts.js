@@ -29,16 +29,6 @@ $(document).ready(function(){
         }
     });
 
-    $('#datosVehiculo').css('display', 'none');
-    $("#idDelito").change(function(event){
-        if((event.target.value>=130 && event.target.value<=135) || (event.target.value>=242 && event.target.value<=245) || event.target.value==227){
-            //alert(event.target.value); 
-            $('#datosVehiculo').css('display', 'block');
-        }else{
-            $('#datosVehiculo').css('display', 'none');
-        }
-    });
-
     $('[data-toggle="tooltip"]').tooltip();  
 
     $(function () {

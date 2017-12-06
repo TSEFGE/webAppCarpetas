@@ -11,11 +11,11 @@
 					<li class="nav-item active">
 						<a class="nav-link" href="{{ url('/home') }}">Inicio <span class="sr-only">(current)</span></a>
 					</li>
-					<li class="nav-item">
+					{{--<li class="nav-item">
 						<a class="nav-link" href="{{ url('/registrar-carpeta') }}">Registrar nueva Carpeta</a>
-					</li>
+					</li>--}}
 					<li class="nav-item">
-						<a class="nav-link" href="{{ url('/iniciar-carpeta') }}">Registrar nueva Carpeta2</a>
+						<a class="nav-link" href="{{ url('/iniciar-carpeta') }}">Registrar nueva Carpeta</a>
 					</li>
 				@endauth
 			</ul>

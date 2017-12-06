@@ -87,7 +87,6 @@
 	</div>
 </div>
 
-
 <div class="boxtwo">
 	<h6>Información sobre el lugar de los hechos</h6>
 	@include('fields.direcciones')
@@ -135,62 +134,4 @@
 		</div>
 	</div>
 </div>
-
-{{--
-<div class="boxtwo" id="datosVehiculo">
-	<h6>Información sobre el vehiculo</h6>
-	<div class="row">
-	@include('fields.vehiculo')
-	</div>
-</div>
---}}
 {!! Form::close() !!}
-	
-<div class="row">
-	<div class="col-12">
-		<div class="boxtwo">
-			<table class="table table-striped table-bordered">
-				<thead class="thead-dark">
-					<tr class="table-dark">
-						<th scope="col">Delito</th>
-						<th scope="col">Lugar</th>
-						<th scope="col">Localidad</th>
-						<th scope="col">Municipio</th>
-						<th scope="col">Zona</th>
-						<th scope="col">Fecha</th>
-						<th scope="col">Hora</th>
-						<th scope="col">C.P.</th>
-						<th scope="col">Colonia</th>
-						<th scope="col">Calle</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Mark</td>
-					    <td>Otto</td>
-					    <td>@mdo</td>
-					    <td>Mark</td>
-					    <td>Otto</td>
-					    <td>@mdo</td>
-					    <td>@mdo</td>
-					    <td>Mark</td>
-					    <td>Otto</td>
-					    <td>@mdo</td>
-					</tr>
-					<tr>
-						<td>Mark</td>
-					    <td>Otto</td>
-					    <td>@mdo</td>
-					    <td>Mark</td>
-					    <td>Otto</td>
-					    <td>@mdo</td>
-					    <td>@mdo</td>
-					    <td>Mark</td>
-					    <td>Otto</td>
-					    <td>@mdo</td>					    
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-</div>

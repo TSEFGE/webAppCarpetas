@@ -1,6 +1,17 @@
 
 	<div class="col-4">
 		<div class="form-group">
+			{!! Form::label('idTipifDelito', 'Delito', ['class' => 'col-form-label-sm']) !!}
+			<select name="idTipifDelito" id="idTipifDelito" class="form-control form-control-sm" required>
+				<option value="">Seleccione un delito</option>
+				@foreach($tipifdelitos as $tipifdelito)
+				<option value="{{ $tipifdelito->id }}">{{ $tipifdelito->delito }}</option>
+				@endforeach
+			</select>
+		</div>
+	</div>
+	<div class="col-4">
+		<div class="form-group">
 			{!! Form::label('status', 'Status', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::select('status', ['INVOLUCRADO' => 'INVOLUCRADO', 'ROBADO' => 'ROBADO'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un status', 'required']) !!}
 		</div>
@@ -17,7 +28,7 @@
 			{!! Form::select('idEstado', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa']) !!}
 		</div>
 	</div>
-	<div class="col-4">
+	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('idMarca', 'Marca', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::select('idMarca', $marcas, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una marca']) !!}
@@ -35,7 +46,7 @@
 			{!! Form::number('modelo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el modelo', 'min' => 2000, 'max' => 2050, 'required']) !!}
 		</div>
 	</div>
-	<div class="col-4">
+	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('idColor', 'Color', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::select('idColor', $colores, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un color']) !!}
