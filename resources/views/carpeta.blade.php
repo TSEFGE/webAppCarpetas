@@ -33,7 +33,9 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{ route('denunciante', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
+                    <div class="text-right"> 
+                        <a href="{{ route('denunciante', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
+                    </div>
                 </div>
 
                 <div class="boxtwo">
@@ -60,7 +62,9 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{ route('denunciado', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
+                    <div class="text-right"> 
+                        <a href="{{ route('denunciado', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
+                    </div>
                 </div>
                 
 
@@ -90,7 +94,9 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{ route('autoridad', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar Autoridad</a><hr>
+                    <div class="text-right"> 
+                        <a href="{{ route('autoridad', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar Autoridad</a><hr>
+                    </div>
                 </div>
 
                 <div class="boxtwo">
@@ -115,7 +121,9 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{ route('abogado', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
+                    <div class="text-right"> 
+                        <a href="{{ route('abogado', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
+                    </div>
                 </div>
 
                 <div class="boxtwo">
@@ -140,7 +148,9 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{ route('familiar', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
+                    <div class="text-right"> 
+                        <a href="{{ route('familiar', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
+                    </div>
                 </div>
 
 
@@ -166,7 +176,9 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{ route('delito', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar delito</a><hr>
+                    <div class="text-right"> 
+                        <a href="{{ route('delito', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar delito</a><hr>
+                    </div>
                 </div>
 
                 <div class="boxtwo">
@@ -189,7 +201,9 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{ route('acusacion', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar Acusación</a><hr>
+                    <div class="text-right"> 
+                        <a href="{{ route('acusacion', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar Acusación</a><hr>
+                    </div>
                 </div>
 
                 @if($delits==true)
@@ -219,7 +233,9 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{ route('vehiculo', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar Vehículo</a><hr>
+                    <div class="text-right"> 
+                        <a href="{{ route('vehiculo', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar Vehículo</a><hr>
+                    </div>
                 </div>
                 @endif
 
