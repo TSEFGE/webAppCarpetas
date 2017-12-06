@@ -40,13 +40,9 @@
 					</select>
 				</div>
 			</div>
-			<div class="col-12">
-				<div class="form-group">
-					{!! Form::submit('Guardar', ['class' => 'btn btn-dark']) !!}
-				</div>
-			</div>
 			</div>
 		</div>
 	</div>
 </div>
+@include('forms.buttons')
 {!! Form::close() !!}

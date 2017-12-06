@@ -9,12 +9,7 @@ use App\Models\CatOcupacion;
 
 class FamiliarController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index($idCarpeta)
+    public function showForm($idCarpeta)
     {
         $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $denunciantes = DB::table('extra_denunciante')
@@ -44,6 +39,16 @@ class FamiliarController extends Controller
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
         */
         return redirect()->route('carpeta', $request->idCarpeta);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
     }
 
     /**

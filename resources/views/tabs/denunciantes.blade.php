@@ -22,7 +22,7 @@
 			</a>
 		</h5>
 	</div>
-	<div id="collapseDir1" class="collapse show boxcollapse">
+	<div id="collapseDir1" class="collapse boxcollapse">
 		<div class="boxtwo">
 			@include('fields.direcciones')
 		</div>
@@ -37,7 +37,7 @@
 			</a>
 		</h5>
 	</div>
-	<div id="collapseTrab1" class="collapse show boxcollapse">
+	<div id="collapseTrab1" class="collapse boxcollapse">
 		<div class="boxtwo">
 			@include('fields.lugartrabajo')
 		</div>
@@ -52,7 +52,7 @@
 			</a>
 		</h5>
 	</div>
-	<div id="collapseNotifs1" class="collapse show boxcollapse">
+	<div id="collapseNotifs1" class="collapse boxcollapse">
 		<div class="boxtwo">
 			@include('fields.notificaciones')
 		</div>
@@ -67,7 +67,7 @@
 			</a>
 		</h5>
 	</div>
-	<div id="collapseDenun" class="collapse show boxcollapse">
+	<div id="collapseDenun" class="collapse boxcollapse">
 		<div class="boxtwo">
 			<div class="row">
 				<div class="col-6">
@@ -95,15 +95,11 @@
 						{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración de los hechos', 'rows' => '5', 'required']) !!}
 					</div>
 				</div>
-				<div class="col-12">
-					<div class="form-group">
-						{!! Form::submit('Guardar', ['class' => 'btn btn-dark', 'id' => 'btn-submit']) !!}
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
 </div>
+@include('forms.buttons')
 {!! Form::close() !!}
 {{--
 <div class="card">

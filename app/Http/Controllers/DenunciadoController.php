@@ -23,12 +23,7 @@ use App\Models\ExtraDenunciado;
 
 class DenunciadoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index($idCarpeta)
+    public function showForm($idCarpeta)
     {
         $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $estados = CatEstado::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
@@ -242,6 +237,16 @@ class DenunciadoController extends Controller
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
         */
         return redirect()->route('carpeta', $request->idCarpeta);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+     public function index()
+    {
+        //
     }
 
     /**

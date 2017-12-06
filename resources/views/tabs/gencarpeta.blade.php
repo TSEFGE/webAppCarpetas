@@ -124,13 +124,9 @@
 				{!! Form::select('idTipoDeterminacion', $tiposdet, null, ['class' => 'form-control form-control-sm chosen-select', 'placeholder' => 'Seleccione un tipo de determinación', 'readonly']) !!}
 			</div>
 		</div>
-		<div class="col-12">
-			<div class="form-group">
-				{!! Form::submit('Iniciar', ['class' => 'btn btn-dark']) !!}
-			</div>
-		</div>
 		{{--
 		--}}
 	</div>
+	@include('forms.buttons')
 	{!! Form::close() !!}
 </div>

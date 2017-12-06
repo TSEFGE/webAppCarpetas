@@ -30,7 +30,8 @@ class HomeController extends Controller
             ->join('unidad', 'unidad.id', '=', 'carpeta.idUnidad')
             ->select('carpeta.id','unidad.nombre', 'users.nombres', 'users.primerAp', 'users.segundoAp', 'carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.estadoCarpeta')
             ->where('carpeta.idFiscal', '=', Auth::user()->id)
-            ->get();
+            ->orderBy('id','DESC')
+            ->paginate(10);
         //dd($carpetas);
         return view('home')->with('carpetas', $carpetas);
     }

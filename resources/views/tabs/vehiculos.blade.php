@@ -12,4 +12,5 @@
 		</div>
 	</div>
 </div>
+@include('forms.buttons')
 {!! Form::close() !!}

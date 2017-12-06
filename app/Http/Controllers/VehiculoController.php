@@ -18,12 +18,7 @@ use App\Models\Vehiculo;
 
 class VehiculoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index($idCarpeta)
+    public function showForm($idCarpeta)
     {
         $tipifdelitos = DB::table('tipif_delito')
             ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
@@ -75,6 +70,16 @@ class VehiculoController extends Controller
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
         */
         return redirect()->route('carpeta', $request->idCarpeta);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
     }
 
     /**

@@ -22,7 +22,7 @@
 			</a>
 		</h5>
 	</div>
-	<div id="collapseDir3" class="collapse show boxcollapse">
+	<div id="collapseDir3" class="collapse boxcollapse">
 		<div class="boxtwo">
 			@include('fields.direcciones-aut')
 		</div>
@@ -37,7 +37,7 @@
 			</a>
 		</h5>
 	</div>
-	<div id="collapseTrab3" class="collapse show boxcollapse">
+	<div id="collapseTrab3" class="collapse boxcollapse">
 		<div class="boxtwo">
 			@include('fields.lugartrabajo-aut')
 		</div>
@@ -52,7 +52,7 @@
 			</a>
 		</h5>
 	</div>
-	<div id="collapseAutoridad" class="collapse show boxcollapse">
+	<div id="collapseAutoridad" class="collapse boxcollapse">
 		<div class="boxtwo">
 			<div class="row">
 				@if(!empty($idCarpeta))
@@ -82,13 +82,9 @@
 						{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración de los hechos', 'rows' => '5', 'required']) !!}
 					</div>
 				</div>
-				<div class="col-12">
-					<div class="form-group">
-						{!! Form::submit('Guardar', ['class' => 'btn btn-dark']) !!}
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
 </div>
+@include('forms.buttons')
 {!! Form::close() !!}

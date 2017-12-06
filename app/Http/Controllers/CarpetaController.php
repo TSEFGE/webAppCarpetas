@@ -10,13 +10,7 @@ use App\Models\CatTipoDeterminacion;
 
 class CarpetaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-    public function showRegisterForm()
+     public function showForm()
     {
         $tiposdet = CatTipoDeterminacion::orderBy('id', 'ASC')->pluck('nombre', 'id');
         return view('forms.inicio')->with('tiposdet', $tiposdet);
@@ -55,7 +49,6 @@ class CarpetaController extends Controller
             $carpeta->narracionIph = $request->narracionIph;
         }
         $carpeta->fechaDeterminacion = $request->fechaDeterminacion;
-        //dd($carpeta);
         $carpeta->save();
         $idCarpeta = $carpeta->id;
         //dd($idCarpeta);
@@ -68,6 +61,11 @@ class CarpetaController extends Controller
         return redirect()->route('carpeta', $idCarpeta);
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index($id)
     {
         $carpeta = Carpeta::where('id', $id)->get();

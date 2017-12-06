@@ -17,12 +17,7 @@ use App\Models\TipifDelito;
 
 class DelitoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index($idCarpeta)
+    public function showForm($idCarpeta)
     {
         $delitos = CatDelito::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
         $estados = CatEstado::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
@@ -80,6 +75,16 @@ class DelitoController extends Controller
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
         */
         return redirect()->route('carpeta', $request->idCarpeta);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
     }
 
     /**

@@ -40,14 +40,14 @@
 				<div class="form-group">
 					<div class="form-check form-check-inline">
 						<label class="form-check-label col-form-label-sm">
-							<input class="form-check-input" type="radio" name="conViolencia" id="si" value="1" checked>
-							Sí
+							<input class="form-check-input" type="radio" name="conViolencia" id="no" value="0" checked required>
+							No
 						</label>
 					</div>
 					<div class="form-check form-check-inline">
 						<label class="form-check-label col-form-label-sm">
-							<input class="form-check-input" type="radio" name="conViolencia" id="no" value="0">
-							No
+							<input class="form-check-input" type="radio" name="conViolencia" id="si" value="1">
+							Sí
 						</label>
 					</div>
 				</div>
@@ -127,11 +127,7 @@
 				{!! Form::text('puntoReferencia', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese un punto de referencia']) !!}
 			</div>
 		</div>
-		<div class="col-12">
-			<div class="form-group">
-				{!! Form::submit('Guardar', ['class' => 'btn btn-dark']) !!}
-			</div>
-		</div>
 	</div>
 </div>
+@include('forms.buttons')
 {!! Form::close() !!}

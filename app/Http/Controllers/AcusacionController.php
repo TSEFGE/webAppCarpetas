@@ -8,12 +8,7 @@ use App\Models\Acusacion;
 
 class AcusacionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index($idCarpeta)
+    public function showForm($idCarpeta)
     {
         $denunciantes = DB::table('extra_denunciante')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
@@ -52,6 +47,15 @@ class AcusacionController extends Controller
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
         */
         return redirect()->route('carpeta', $request->idCarpeta);
+    }
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(){
+        //
     }
 
     /**

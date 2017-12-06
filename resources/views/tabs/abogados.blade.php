@@ -37,13 +37,20 @@
 				</div>
 				<div class="col-3">
 					<div class="form-group">
+						{!! Form::label('tipo', 'Tipo', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::select('tipo', ['1' => 'ASESOR JURÍDICO', '2' => 'ABOGADO DEFENSOR'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un tipo', 'required']) !!}
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="form-group">
 						{!! Form::label('idInvolucrado', 'Involucrado', ['class' => 'col-form-label-sm']) !!}
-						<select name="idInvolucrado" id="idInvolucrado" class="form-control form-control-sm" required>
+						{!! Form::select('idInvolucrado', [''=>'Seleccione un Involucrado'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
+						{{--<select name="idInvolucrado" id="idInvolucrado" class="form-control form-control-sm" required>
 							<option value="">Seleccione un involucrado</option>
 							@foreach($involucrados as $involucrado)
 								<option value="{{ $involucrado->id }}">{{ $involucrado->nombres." ".$involucrado->primerAp." ".$involucrado->segundoAp }}</option>
 							@endforeach
-						</select>
+						</select>--}}
 					</div>
 				</div>
 				<div class="col-3">
@@ -100,7 +107,7 @@
 			</a>
 		</h5>
 	</div>
-	<div id="collapseTrab3" class="collapse show boxcollapse">
+	<div id="collapseTrab3" class="collapse boxcollapse">
 		<div class="boxtwo">
 			@include('fields.lugartrabajo-abo')
 		</div>
@@ -115,12 +122,12 @@
 			</a>
 		</h5>
 	</div>
-	<div id="collapseAutoridad" class="collapse show boxcollapse">
+	<div id="collapseAutoridad" class="collapse boxcollapse">
 		<div class="boxtwo">
 			<div class="row">
 				<div class="col-4">
 					@if(!empty($idCarpeta))
-						{!! Form::hidden('idCarpeta', $idCarpeta) !!}
+						{!! Form::hidden('idCarpeta', $idCarpeta, ['id' => 'idCarpeta']) !!}
 					@endif
 					<div class="form-group">
 						{!! Form::label('sector', 'Sector', ['class' => 'col-form-label-sm']) !!}
@@ -139,13 +146,11 @@
 						{!! Form::email('correo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el correo del abogado', 'required']) !!}
 					</div>
 				</div>
-				<div class="col-12">
-					<div class="form-group">
-						{!! Form::submit('Guardar', ['class' => 'btn btn-dark']) !!}
-					</div>
-				</div>
+		    	
+    
 			</div>
 		</div>
 	</div>
 </div>
+@include('forms.buttons')
 {!! Form::close() !!}

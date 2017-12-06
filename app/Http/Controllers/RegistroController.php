@@ -52,6 +52,82 @@ use DB;
 
 class RegistroController extends Controller
 {
+    /*-----Métodos para obetener catálogos-----*/
+    public function getMunicipios(Request $request, $id){
+        if($request->ajax()){
+            $municipios = CatMunicipio::municipios($id);
+            return response()->json($municipios);
+        }
+    }
+
+    public function getLocalidades(Request $request, $id){
+        if($request->ajax()){
+            $localidades = CatLocalidad::localidades($id);
+            return response()->json($localidades);
+        }
+    }
+
+    public function getCodigos(Request $request, $id){
+        if($request->ajax()){
+            $codigos = CatColonia::codigos($id);
+            return response()->json($codigos);
+        }
+    }
+
+    public function getColonias(Request $request, $cp){
+        if($request->ajax()){
+            $colonias = CatColonia::colonias($cp);
+            return response()->json($colonias);
+        }
+    }
+
+    public function getSubmarcas(Request $request, $id){
+        if($request->ajax()){
+            $submarcas = CatSubmarca::submarcas($id);
+            return response()->json($submarcas);
+        }
+    }
+
+    public function getTipoVehiculos(Request $request, $id){
+        if($request->ajax()){
+            $tipoVehiculos = CatTipoVehiculo::tipoVehiculos($id);
+            return response()->json($tipoVehiculos);
+        }
+    }
+
+    public function getArmas(Request $request, $id){
+        if($request->ajax()){
+            $armas = CatArma::armas($id);
+            return response()->json($armas);
+        }
+    }
+
+    public function getDenunciantes(Request $request, $idCarpeta){
+        if($request->ajax()){
+            $denunciantes = DB::table('extra_denunciante')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('variables_persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('extra_denunciante.idCarpeta', '=', $idCarpeta)
+            ->get();
+            return response()->json($denunciantes);
+        }
+    }
+
+    public function getDenunciados(Request $request, $idCarpeta){
+        if($request->ajax()){
+            $denunciados = DB::table('extra_denunciado')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('variables_persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('extra_denunciado.idCarpeta', '=', $idCarpeta)
+            ->get();
+            return response()->json($denunciados);
+        }
+    }
+
+
+    /*-----Métodos para mostrar ventana de registro-----*/
     public function showRegisterForm()
     {
         $aseguradoras = CatAseguradora::orderBy('id', 'ASC')->pluck('nombre', 'id');
@@ -155,82 +231,6 @@ class RegistroController extends Controller
             ->with('denunciantes', $denunciantes)
             ->with('denunciados', $denunciados)
             ->with('tipifdelitos', $tipifdelitos);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     /*-----Métodos de guardado-----*/
@@ -883,54 +883,80 @@ class RegistroController extends Controller
         return redirect()->route('registro');
     }
 
-    /*-----Métodos para obetener catálogos-----*/
-    public function getMunicipios(Request $request, $id){
-        if($request->ajax()){
-            $municipios = CatMunicipio::municipios($id);
-            return response()->json($municipios);
-        }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
     }
 
-	public function getLocalidades(Request $request, $id){
-        if($request->ajax()){
-            $localidades = CatLocalidad::localidades($id);
-            return response()->json($localidades);
-        }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
-    public function getCodigos(Request $request, $id){
-        if($request->ajax()){
-            $codigos = CatColonia::codigos($id);
-            return response()->json($codigos);
-        }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
     }
 
-    public function getColonias(Request $request, $cp){
-        if($request->ajax()){
-            $colonias = CatColonia::colonias($cp);
-            return response()->json($colonias);
-        }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
     }
 
-    public function getSubmarcas(Request $request, $id){
-        if($request->ajax()){
-            $submarcas = CatSubmarca::submarcas($id);
-            return response()->json($submarcas);
-        }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
-    public function getTipoVehiculos(Request $request, $id){
-        if($request->ajax()){
-            $tipoVehiculos = CatTipoVehiculo::tipoVehiculos($id);
-            return response()->json($tipoVehiculos);
-		}
-	}
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
 
-    public function getArmas(Request $request, $id){
-        if($request->ajax()){
-            $armas = CatArma::armas($id);
-            return response()->json($armas);
-        }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
     
 }

@@ -112,8 +112,3 @@
 			{!! Form::textarea('senasPartic', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3', 'required']) !!}
 		</div>
 	</div>
-	<div class="col-12">
-		<div class="form-group">
-			{!! Form::submit('Guardar', ['class' => 'btn btn-dark']) !!}
-		</div>
-	</div>
