@@ -19,7 +19,8 @@ class ExtraAbogado extends Model
         'idVariablesPersona',
         'cedulaProf',
         'sector',
-        'correo'
+        'correo',
+        'tipo'
     ];
 
     public function variablesPersona()
@@ -29,11 +30,11 @@ class ExtraAbogado extends Model
 
     public function extraDenunciante()
     {
-       return $this->belongsTo('app/Models/ExtraDenunciante');
+       return $this->hasMany('app/Models/ExtraDenunciante');
     }
 
     public function extraDenunciado()
     {
-       return $this->belongsTo('app/Models/ExtraDenunciado');
+       return $this->hasMany('app/Models/ExtraDenunciado');
     }
 }

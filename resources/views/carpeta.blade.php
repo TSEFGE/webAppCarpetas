@@ -34,7 +34,7 @@
                         </table>
                     </div>
                     <div class="text-right"> 
-                        <a href="{{ route('denunciante', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
+                        <a href="{{ route('new.denunciante', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
                     </div>
                 </div>
 
@@ -63,7 +63,7 @@
                         </table>
                     </div>
                     <div class="text-right"> 
-                        <a href="{{ route('denunciado', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
+                        <a href="{{ route('new.denunciado', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
                     </div>
                 </div>
                 
@@ -95,7 +95,7 @@
                         </table>
                     </div>
                     <div class="text-right"> 
-                        <a href="{{ route('autoridad', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar Autoridad</a><hr>
+                        <a href="{{ route('new.autoridad', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar Autoridad</a><hr>
                     </div>
                 </div>
 
@@ -122,7 +122,7 @@
                         </table>
                     </div>
                     <div class="text-right"> 
-                        <a href="{{ route('abogado', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
+                        <a href="{{ route('new.abogado', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
                     </div>
                 </div>
 
@@ -149,7 +149,7 @@
                         </table>
                     </div>
                     <div class="text-right"> 
-                        <a href="{{ route('familiar', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
+                        <a href="{{ route('new.familiar', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
                     </div>
                 </div>
 
@@ -177,7 +177,7 @@
                         </table>
                     </div>
                     <div class="text-right"> 
-                        <a href="{{ route('delito', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar delito</a><hr>
+                        <a href="{{ route('new.delito', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar delito</a><hr>
                     </div>
                 </div>
 
@@ -202,7 +202,7 @@
                         </table>
                     </div>
                     <div class="text-right"> 
-                        <a href="{{ route('acusacion', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar Acusación</a><hr>
+                        <a href="{{ route('new.acusacion', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar Acusación</a><hr>
                     </div>
                 </div>
 
@@ -234,7 +234,7 @@
                         </table>
                     </div>
                     <div class="text-right"> 
-                        <a href="{{ route('vehiculo', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar Vehículo</a><hr>
+                        <a href="{{ route('new.vehiculo', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar Vehículo</a><hr>
                     </div>
                 </div>
                 @endif

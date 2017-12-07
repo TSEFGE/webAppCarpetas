@@ -39,6 +39,6 @@ class ExtraDenunciado extends Model
 
     public function abogado()
     {
-        return $this->hasOne('App\Models\Abogado');
+        return $this->belongsTo('App\Models\Abogado');
     }
 }

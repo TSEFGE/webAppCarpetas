@@ -36,28 +36,28 @@ Route::get('/iniciar-carpeta', 'CarpetaController@showForm')->name('inicio')->mi
 Route::post('storecarpeta', 'CarpetaController@storeCarpeta')->name('store.carpeta');
 Route::get('/carpeta-inicial/{id}', 'CarpetaController@index')->name('carpeta')->middleware('auth');
 
-Route::get('denunciante/{idCarpeta}', 'DenuncianteController@showForm')->name('denunciante');
+Route::get('agregar-denunciante/{idCarpeta}', 'DenuncianteController@showForm')->name('new.denunciante');
 Route::post('storedenunciante', 'DenuncianteController@storeDenunciante')->name('store.denunciante');
 
-Route::get('denunciado/{idCarpeta}', 'DenunciadoController@showForm')->name('denunciado');
+Route::get('agregar-denunciado/{idCarpeta}', 'DenunciadoController@showForm')->name('new.denunciado');
 Route::post('storedenunciado', 'DenunciadoController@storeDenunciado')->name('store.denunciado');
 
-Route::get('abogado/{idCarpeta}', 'AbogadoController@showForm')->name('abogado');
+Route::get('agregar-abogado/{idCarpeta}', 'AbogadoController@showForm')->name('new.abogado');
 Route::post('storeabogado', 'AbogadoController@storeAbogado')->name('store.abogado');
 
-Route::get('autoridad/{idCarpeta}', 'AutoridadController@showForm')->name('autoridad');
+Route::get('agregar-autoridad/{idCarpeta}', 'AutoridadController@showForm')->name('new.autoridad');
 Route::post('storeautoridad', 'AutoridadController@storeAutoridad')->name('store.autoridad');
 
-Route::get('familiar/{idCarpeta}', 'FamiliarController@showForm')->name('familiar');
+Route::get('agregar-familiar/{idCarpeta}', 'FamiliarController@showForm')->name('new.familiar');
 Route::post('storefamiliar', 'FamiliarController@storeFamiliar')->name('store.familiar');
 
-Route::get('delito/{idCarpeta}', 'DelitoController@showForm')->name('delito');
+Route::get('agregar-delito/{idCarpeta}', 'DelitoController@showForm')->name('new.delito');
 Route::post('storedelito', 'DelitoController@storeDelito')->name('store.delito');
 
-Route::get('acusacion/{idCarpeta}', 'AcusacionController@showForm')->name('acusacion');
+Route::get('agregar-acusacion/{idCarpeta}', 'AcusacionController@showForm')->name('new.acusacion');
 Route::post('storeacusacion', 'AcusacionController@storeAcusacion')->name('store.acusacion');
 
-Route::get('vehiculo/{idCarpeta}', 'VehiculoController@showForm')->name('vehiculo');
+Route::get('agregar-vehiculo/{idCarpeta}', 'VehiculoController@showForm')->name('new.vehiculo');
 Route::post('storevehiculo', 'VehiculoController@storeVehiculo')->name('store.vehiculo');
 
 Route::get('carpeta/{id}', [

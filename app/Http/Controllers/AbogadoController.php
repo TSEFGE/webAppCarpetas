@@ -39,7 +39,7 @@ class AbogadoController extends Controller
         $persona->sexo = $request->sexo;
         $persona->idNacionalidad = 1;
         $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
-        $persona->curp = "SIN INFORMACION";
+        //$persona->curp = "SIN INFORMACION";
         $persona->save();
         $idPersona = $persona->id;
 
@@ -79,11 +79,10 @@ class AbogadoController extends Controller
         $idAbogado = $ExtraAbogado->id;
 
         $idInvolucrado = $request->idInvolucrado;
-        $xd = DB::table('extra_denunciante')->select('id')->where('idVariablesPersona', $idInvolucrado)->get();
-        //$xd = DB::table('extra_denunciado')->select('id')->where('idVariablesPersona', $idInvolucrado)->get();
+        //$xd = DB::table('extra_denunciante')->select('id')->where('idVariablesPersona', $idInvolucrado)->get();
         //dd($xd);
-        if(count($xd)>0){
-            //dd("Es nulo");
+        //if(count($xd)>0){
+        if($request->tipo==1){
             DB::table('extra_denunciante')->where('idVariablesPersona', $idInvolucrado)->update(['idAbogado' => $idAbogado]);
         }else{
             DB::table('extra_denunciado')->where('idVariablesPersona', $idInvolucrado)->update(['idAbogado' => $idAbogado]);

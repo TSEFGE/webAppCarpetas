@@ -34,9 +34,9 @@ class ExtraDenunciante extends Model
        return $this->belongsTo('app/Models/VariablesPersona');
     }
 
-    public function extraAbogado()
+    public function abogado()
     {
-       return $this->hasOne('app/Models/ExtraAbogado');
+       return $this->belongsTo('app/Models/ExtraAbogado');
     }
 
     public function notificacion()

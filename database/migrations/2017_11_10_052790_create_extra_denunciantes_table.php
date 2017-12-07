@@ -20,7 +20,7 @@ class CreateExtraDenunciantesTable extends Migration
             $table->integer('idNotificacion')->unsigned()->index()->nullable();
             $table->integer('idAbogado')->unsigned()->index()->nullable();
             $table->boolean('conoceAlDenunciado')->default(false);
-            $table->string('narracion',2000);
+            $table->string('narracion',2000)->default("SIN INFORMACION");
             $table->timestamps();
             $table->softDeletes();
             

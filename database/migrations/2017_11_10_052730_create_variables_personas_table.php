@@ -16,7 +16,7 @@ class CreateVariablesPersonasTable extends Migration
         Schema::create('variables_persona', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idPersona')->unsigned();
-            $table->integer('edad');
+            $table->integer('edad')->nullable();
             $table->string('telefono',15)->default("SIN INFORMACION");
             $table->string('motivoEstancia',200)->default("SIN INFORMACION");
             $table->integer('idOcupacion')->unsigned()->default(2941);

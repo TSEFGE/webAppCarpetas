@@ -5,11 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Carbon\Carbon;
 use App\Models\Carpeta;
 use App\Models\CatTipoDeterminacion;
 
 class CarpetaController extends Controller
 {
+    public function __construct(){
+        Carbon::setLocale('es');
+    }
+
      public function showForm()
     {
         $tiposdet = CatTipoDeterminacion::orderBy('id', 'ASC')->pluck('nombre', 'id');
@@ -27,7 +32,7 @@ class CarpetaController extends Controller
         $carpeta = new Carpeta();
         $carpeta->idUnidad = Auth::user()->idUnidad;
         $carpeta->idFiscal = Auth::user()->id;
-        $carpeta->numCarpeta = "UIPJ/D".$datos[0]->distrito."/".$datos[0]->numFiscal."/".$num."/2017";
+        $carpeta->numCarpeta = "UIPJ/D".$datos[0]->distrito."/".$datos[0]->numFiscal."/".$num."/".Carbon::now()->year;
         $carpeta->fechaInicio = $request->fechaInicio;
         if (isset($request->conDetenido)) {
             $carpeta->conDetenido = $request->conDetenido;
