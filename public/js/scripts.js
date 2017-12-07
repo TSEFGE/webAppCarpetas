@@ -74,6 +74,47 @@ $(document).ready(function(){
             $('#datosTrab').hide();
             $('#datosNotif').show();
             $('#datosExtra').show();
+
+            //Datos personales requeridos de Persona Moral o Empresa
+            $('#nombres2').prop('required', true);
+            $('#rfc2').prop('required', true);
+            $('#representanteLegal').prop('required', true);
+            
+            //Datos personales no requeridos de Persona Física
+            $("#nombres").prop('required',false);   
+            $("#primerAp").prop('required',false);   
+            $("#segundoAp").prop('required',false);   
+            $("#rfc").prop('required',false);   
+            $("#fechaNacimiento").prop('required',false);   
+            $("#edad").prop('required',false);   
+            $("#sexo").prop('required',false);   
+            $("#curp").prop('required',false);   
+            $("#idNacionalidad").prop('required',false);   
+            $("#idEtnia").prop('required',false);   
+            $("#idLengua").prop('required',false);   
+            $("#idEstadoOrigen").prop('required',false);   
+            $("#idMunicipioOrigen").prop('required',false);   
+            $("#telefono").prop('required',false);   
+            $("#motivoEstancia").prop('required',false);   
+            $("#idOcupacion").prop('required',false);   
+            $("#idEstadoCivil").prop('required',false);   
+            $("#idReligion").prop('required',false);   
+            $("#idEscolaridad").prop('required',false);   
+            $("#docIdentificacion").prop('required',false);   
+            $("#numDocIdentificacion").prop('required',false);   
+            
+            //Datos del trabajo no requeridos de Persona Física
+            $("#lugarTrabajo").prop('required',false);   
+            $("#telefonoTrabajo").prop('required',false);   
+            $("#idEstado2").prop('required',false);   
+            $("#idMunicipio2").prop('required',false);   
+            $("#idLocalidad2").prop('required',false);   
+            $("#cp2").prop('required',false);   
+            $("#idColonia2").prop('required',false);   
+            $("#calle2").prop('required',false);   
+            $("#numExterno2").prop('required',false);   
+            $("#numInterno2").prop('required',false);               
+
         }
     });
     //No es empresa
@@ -86,6 +127,46 @@ $(document).ready(function(){
             $('#datosTrab').show();
             $('#datosNotif').show();
             $('#datosExtra').show();
+
+            //Datos personales no requeridos de Persona Moral o Empresa
+            $('#nombres2').prop('required', false);
+            $('#rfc2').prop('required', false);
+            $('#representanteLegal').prop('required', false);
+            
+            //Datos personales requeridos de Persona Física
+            $("#nombres").prop('required',true);   
+            $("#primerAp").prop('required',true);   
+            $("#segundoAp").prop('required',true);   
+            $("#rfc").prop('required',true);   
+            $("#fechaNacimiento").prop('required',true);   
+            $("#edad").prop('required',true);   
+            $("#sexo").prop('required',true);   
+            $("#curp").prop('required',true);   
+            $("#idNacionalidad").prop('required',true);   
+            $("#idEtnia").prop('required',true);   
+            $("#idLengua").prop('required',true);   
+            $("#idEstadoOrigen").prop('required',true);   
+            $("#idMunicipioOrigen").prop('required',true);   
+            $("#telefono").prop('required',true);   
+            $("#motivoEstancia").prop('required',true);   
+            $("#idOcupacion").prop('required',true);   
+            $("#idEstadoCivil").prop('required',true);   
+            $("#idReligion").prop('required',true);   
+            $("#idEscolaridad").prop('required',true);   
+            $("#docIdentificacion").prop('required',true);   
+            $("#numDocIdentificacion").prop('required',true);   
+            
+            //Datos del trabajo requeridos de Persona Física
+            $("#lugarTrabajo").prop('required',true);   
+            $("#telefonoTrabajo").prop('required',true);   
+            $("#idEstado2").prop('required',true);   
+            $("#idMunicipio2").prop('required',true);   
+            $("#idLocalidad2").prop('required',true);   
+            $("#cp2").prop('required',true);   
+            $("#idColonia2").prop('required',true);   
+            $("#calle2").prop('required',true);   
+            $("#numExterno2").prop('required',true);   
+            $("#numInterno2").prop('required',true);   
         }
     });
 
@@ -143,7 +224,7 @@ $(document).ready(function(){
            format: 'YYYY-MM-DD',
            maxDate: moment().subtract(18, 'years').format('YYYY-MM-DD')
        });
-    });
+       });
     $("#fechanac").on("change.datetimepicker", function (e) {
         $('#edad').val(moment().diff(e.date,'years'));
     });

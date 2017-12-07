@@ -198,10 +198,10 @@ class DenuncianteController extends Controller
             $ExtraDenunciante->narracion = $request->narracion;
             $ExtraDenunciante->save();
         }else{
-            if($request->esEmpresa==0){
+            if($request->esEmpresa==1){
                 $persona = new Persona();
                 $persona->nombres = $request->nombres2;
-                $persona->rfc = $request->rfc;
+                $persona->rfc = $request->rfc2;
                 $persona->save();
                 $idPersona = $persona->id;
 
