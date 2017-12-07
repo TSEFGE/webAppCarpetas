@@ -2,7 +2,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('idEstado3', 'Entidad federativa', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idEstado3', $estados, null, ['class' => 'form-control form-control-sm select2', 'placeholder' => 'Seleccione una entidad federativa']) !!}
+			{!! Form::select('idEstado3', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa']) !!}
 		</div>
 	</div>
 	<div class="col-4">

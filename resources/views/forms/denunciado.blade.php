@@ -4,7 +4,9 @@
 
 @section('contenido')
     {!! Form::open(['route' => 'store.denunciado', 'method' => 'POST'])  !!}
-	{{--<div class="boxtwo">
+	{{--
+	--}}
+	<div class="boxtwo">
 		<div class="row">
 			<div class="col-12">
 				<div class="form-group">
@@ -12,12 +14,12 @@
 					<div class="clearfix"></div>
 					<div class="form-check form-check-inline">
 						<label class="form-check-label col-form-label col-form-label-sm">
-							<input class="form-check-input" type="radio" id="tipoDenunciado" name="tipoDenunciado" value="1" required> Q.R.R.
+							<input class="form-check-input" type="radio" id="tipoDenunciado1" name="tipoDenunciado" value="1" required> Q.R.R.
 						</label>
 					</div>
 					<div class="form-check form-check-inline">
 						<label class="form-check-label col-form-label col-form-label-sm">
-							<input class="form-check-input" type="radio" id="tipoDenunciado" name="tipoDenunciado" value="2" required> Conoce al denunciado
+							<input class="form-check-input" type="radio" id="tipoDenunciado2" name="tipoDenunciado" value="2" required> Conoce al denunciado
 						</label>
 					</div>
 					<div class="form-check form-check-inline">
@@ -28,7 +30,7 @@
 				</div>
 			</div>
 		</div>
-	</div>--}}
+	</div>
 
 	<div id="qrr">
 		<div class="boxtwo">
@@ -50,7 +52,12 @@
 	</div>
 
 	<div id="comparecencia">
-		<div class="card">
+		<div class="boxtwo">
+	    	<div class="row">
+	    		@include('fields.tipo-persona')
+	    	</div>
+	    </div>
+		<div class="card" id="datosPer">
 			<div class="card-header">
 				<h5 class="mb-0 text-center">
 					<a data-toggle="collapse" href="#collapsePersonales2" aria-expanded="false" aria-controls="collapsePersonales2">
@@ -65,7 +72,7 @@
 			</div>
 		</div>
 
-		<div class="card">
+		<div class="card" id="datosDir">
 			<div class="card-header">
 				<h5 class="mb-0 text-center">
 					<a data-toggle="collapse" href="#collapseDir2" aria-expanded="false" aria-controls="collapseDir2">
@@ -80,7 +87,7 @@
 			</div>
 		</div>
 
-		<div class="card">
+		<div class="card" id="datosTrab">
 			<div class="card-header">
 				<h5 class="mb-0 text-center">
 					<a data-toggle="collapse" href="#collapseTrab2" aria-expanded="false" aria-controls="collapseTrab2">
@@ -95,7 +102,7 @@
 			</div>
 		</div>
 
-		<div class="card">
+		<div class="card" id="datosNotif">
 			<div class="card-header">
 				<h5 class="mb-0 text-center">
 					<a data-toggle="collapse" href="#collapseNotifs2" aria-expanded="false" aria-controls="collapseNotifs2">
@@ -110,7 +117,7 @@
 			</div>
 		</div>
 
-		<div class="card">
+		<div class="card" id="datosExtra">
 			<div class="card-header">
 				<h5 class="mb-0 text-center">
 					<a data-toggle="collapse" href="#collapseDenun2" aria-expanded="false" aria-controls="collapseDenun2">

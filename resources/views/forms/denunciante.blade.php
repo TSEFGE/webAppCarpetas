@@ -4,7 +4,12 @@
 
 @section('contenido')
     {!! Form::open(['route' => 'store.denunciante', 'method' => 'POST'])  !!}
-	<div class="card">
+    <div class="boxtwo">
+    	<div class="row">
+    		@include('fields.tipo-persona')
+    	</div>
+    </div>
+	<div class="card" id="datosPer">
 		<div class="card-header">
 			<h5 class="mb-0 text-center">
 				<a data-toggle="collapse" href="#collapsePersonales1" aria-expanded="false" aria-controls="collapsePersonales1">
@@ -19,7 +24,7 @@
 		</div>
 	</div>
 
-	<div class="card">
+	<div class="card" id="datosDir">
 		<div class="card-header">
 			<h5 class="mb-0 text-center">
 				<a data-toggle="collapse" href="#collapseDir1" aria-expanded="false" aria-controls="collapseDir1">
@@ -34,7 +39,7 @@
 		</div>
 	</div>
 
-	<div class="card">
+	<div class="card" id="datosTrab">
 		<div class="card-header">
 			<h5 class="mb-0 text-center">
 				<a data-toggle="collapse" href="#collapseTrab1" aria-expanded="false" aria-controls="collapseTrab1">
@@ -49,7 +54,7 @@
 		</div>
 	</div>
 
-	<div class="card">
+	<div class="card" id="datosNotif">
 		<div class="card-header">
 			<h5 class="mb-0 text-center">
 				<a data-toggle="collapse" href="#collapseNotifs1" aria-expanded="false" aria-controls="collapseNotifs1">
@@ -64,7 +69,7 @@
 		</div>
 	</div>
 
-	<div class="card">
+	<div class="card" id="datosExtra">
 		<div class="card-header">
 			<h5 class="mb-0 text-center">
 				<a data-toggle="collapse" href="#collapseDenun" aria-expanded="false" aria-controls="collapseDenun">

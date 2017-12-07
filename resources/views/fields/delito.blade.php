@@ -35,28 +35,32 @@
 		<div class="form-group">
 			<div class="form-check form-check-inline">
 				<label class="form-check-label col-form-label-sm">
-					<input class="form-check-input" type="radio" name="conViolencia" id="no" value="0" checked required>
+					<input class="form-check-input" type="radio" id="conViolencia1" name="conViolencia" id="no" value="0" checked required>
 					No
 				</label>
 			</div>
 			<div class="form-check form-check-inline">
 				<label class="form-check-label col-form-label-sm">
-					<input class="form-check-input" type="radio" name="conViolencia" id="si" value="1">
+					<input class="form-check-input" type="radio" id="conViolencia2" name="conViolencia" id="si" value="1">
 					Sí
 				</label>
 			</div>
 		</div>
 	</div>
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('idTipoArma', 'Tipo de Arma', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idTipoArma', $tiposarma, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un tipo de arma']) !!}
-		</div>
-	</div>
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('idArma', 'Arma', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idArma', ['' => 'Seleccione el arma', '1' => 'Pistola'], null, ['class' => 'form-control form-control-sm']) !!}
+	<div class="col-8">
+		<div class="row" id="violencia">
+			<div class="col-6">
+				<div class="form-group">
+					{!! Form::label('idTipoArma', 'Tipo de Arma', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idTipoArma', $tiposarma, null, ['class' => 'form-control form-control-sm cv', 'placeholder' => 'Seleccione un tipo de arma', 'required']) !!}
+				</div>
+			</div>
+			<div class="col-6">
+				<div class="form-group">
+					{!! Form::label('idArma', 'Arma', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idArma', ['' => 'Seleccione el arma', '1' => 'Pistola'], null, ['class' => 'form-control form-control-sm cv', 'required']) !!}
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="col-4">
