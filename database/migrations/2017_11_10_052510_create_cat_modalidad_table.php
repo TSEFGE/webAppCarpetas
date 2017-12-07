@@ -17,6 +17,7 @@ class CreateCatModalidadTable extends Migration
             $table->increments('id');
             $table->string('nombre',50)->unique();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

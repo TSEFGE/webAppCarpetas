@@ -151,7 +151,7 @@
 			<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('rfc2', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('rfc2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
+					{!! Form::text('rfc2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.']) !!}
 				</div>
 			</div>
 			<div class="col-4">

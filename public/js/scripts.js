@@ -202,12 +202,14 @@ $(document).ready(function(){
     });
     $(function () {
         $('#horaInter').datetimepicker({
-           format: 'LT'
+           format: 'LT',
+           maxDate: moment()
        });
     });
     $(function () {
         $('#fechaiph2').datetimepicker({
            format: 'YYYY-MM-DD',
+           maxDate: moment()
        });
     });
     $(function () {
@@ -220,18 +222,24 @@ $(document).ready(function(){
     $(function () {
         $('#fechanac').datetimepicker({
            format: 'YYYY-MM-DD',
+           maxDate: moment().subtract(18, 'years').format('YYYY-MM-DD')
        });
+       });
+    $("#fechanac").on("change.datetimepicker", function (e) {
+        $('#edad').val(moment().diff(e.date,'years'));
     });
 
     $(function () {
         $('#fechadelit').datetimepicker({
-           format: 'YYYY-MM-DD'
+           format: 'YYYY-MM-DD',
+           maxDate: moment()
        });
     });
 
     $(function () {
         $('#horadelit').datetimepicker({
-           format: 'LT'
+           format: 'LT',
+           maxDate: moment()
        });
     });
 
