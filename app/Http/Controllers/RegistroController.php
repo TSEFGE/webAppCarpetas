@@ -108,7 +108,7 @@ class RegistroController extends Controller
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('variables_persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-            ->where('extra_denunciante.idCarpeta', '=', $idCarpeta)
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
             ->get();
             return response()->json($denunciantes);
         }
@@ -120,7 +120,7 @@ class RegistroController extends Controller
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('variables_persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-            ->where('extra_denunciado.idCarpeta', '=', $idCarpeta)
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
             ->get();
             return response()->json($denunciados);
         }

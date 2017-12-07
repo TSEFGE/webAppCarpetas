@@ -23,7 +23,7 @@
 			{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
 		</div>
 	</div>
-	<div class="col-3">
+	{{--<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('tipo', 'Tipo', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::select('tipo', ['1' => 'ASESOR JURÍDICO', '2' => 'ABOGADO DEFENSOR'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un tipo', 'required']) !!}
@@ -35,7 +35,7 @@
 			{!! Form::select('idInvolucrado', [''=>'Seleccione un Involucrado'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
 			
 		</div>
-	</div>
+	</div>--}}
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}

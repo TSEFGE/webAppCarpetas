@@ -78,13 +78,13 @@ class CarpetaController extends Controller
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
-            ->where('extra_denunciante.idCarpeta', '=', $id)
+            ->where('variables_persona.idCarpeta', '=', $id)
             ->get();
         $denunciados = DB::table('extra_denunciado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
-            ->where('extra_denunciado.idCarpeta', '=', $id)
+            ->where('variables_persona.idCarpeta', '=', $id)
             ->get();
 
         $abogados1 = DB::table('extra_abogado')
@@ -93,8 +93,8 @@ class CarpetaController extends Controller
             ->join('extra_denunciante', 'extra_denunciante.idAbogado', '=', 'extra_abogado.id')
             ->join('variables_persona as var', 'var.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona as per', 'per.id', '=', 'var.idPersona')  
-            ->select('extra_abogado.id','per.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_abogado.cedulaProf', 'extra_abogado.sector','per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
-            ->where('extra_denunciante.idCarpeta', '=', $id);
+            ->select('extra_abogado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_abogado.cedulaProf', 'extra_abogado.sector','per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
+            ->where('variables_persona.idCarpeta', '=', $id);
         $abogados = DB::table('extra_abogado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')            
@@ -102,7 +102,7 @@ class CarpetaController extends Controller
             ->join('variables_persona as var', 'var.id', '=', 'extra_denunciado.idVariablesPersona')
             ->join('persona as per', 'per.id', '=', 'var.idPersona')  
             ->select('extra_abogado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_abogado.cedulaProf', 'extra_abogado.sector','per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
-            ->where('extra_denunciado.idCarpeta', '=', $id)
+            ->where('variables_persona.idCarpeta', '=', $id)
             ->union($abogados1)
             ->get();
 
@@ -110,7 +110,7 @@ class CarpetaController extends Controller
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_autoridad.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('extra_autoridad.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_autoridad.antiguedad', 'extra_autoridad.rango', 'extra_autoridad.horarioLaboral', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion')
-            ->where('extra_autoridad.idCarpeta', '=', $id)
+            ->where('variables_persona.idCarpeta', '=', $id)
             ->get();
 
         $familiaresDenunciado = DB::table('familiar')
@@ -119,14 +119,14 @@ class CarpetaController extends Controller
             ->join('variables_persona', 'variables_persona.idPersona', '=', 'persona.id')
             ->join('extra_denunciado', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
             ->select('familiar.nombres as familiarNombre','familiar.primerAp as familiarPrimerAp', 'familiar.segundoAp as familiarSegundoAp', 'familiar.parentesco', 'cat_ocupacion.nombre as ocupacion' , 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-            ->where('extra_denunciado.idCarpeta', '=', $id);
+            ->where('variables_persona.idCarpeta', '=', $id);
         $familiares = DB::table('familiar')
             ->join('cat_ocupacion', 'cat_ocupacion.id', '=', 'familiar.idOcupacion')
             ->join('persona', 'persona.id', '=', 'familiar.idPersona')
             ->join('variables_persona', 'variables_persona.idPersona', '=', 'persona.id')
             ->join('extra_denunciante', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->select('familiar.nombres as familiarNombre','familiar.primerAp as familiarPrimerAp', 'familiar.segundoAp as familiarSegundoAp', 'familiar.parentesco', 'cat_ocupacion.nombre as ocupacion' , 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-            ->where('extra_denunciante.idCarpeta', '=', $id)
+            ->where('variables_persona.idCarpeta', '=', $id)
             ->union($familiaresDenunciado)
             ->get();
 
@@ -191,13 +191,13 @@ class CarpetaController extends Controller
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
-            ->where('extra_denunciante.idCarpeta', '=', $id)
+            ->where('variables_persona.idCarpeta', '=', $id)
             ->get();
         $denunciados = DB::table('extra_denunciado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
-            ->where('extra_denunciado.idCarpeta', '=', $id)
+            ->where('variables_persona.idCarpeta', '=', $id)
             ->get();
 
         $abogados1 = DB::table('extra_abogado')
@@ -207,7 +207,7 @@ class CarpetaController extends Controller
             ->join('variables_persona as var', 'var.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona as per', 'per.id', '=', 'var.idPersona')  
             ->select('extra_abogado.id','per.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_abogado.cedulaProf', 'extra_abogado.sector','per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
-            ->where('extra_denunciante.idCarpeta', '=', $id);
+            ->where('variables_persona.idCarpeta', '=', $id);
         $abogados = DB::table('extra_abogado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')            
@@ -215,7 +215,7 @@ class CarpetaController extends Controller
             ->join('variables_persona as var', 'var.id', '=', 'extra_denunciado.idVariablesPersona')
             ->join('persona as per', 'per.id', '=', 'var.idPersona')  
             ->select('extra_abogado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_abogado.cedulaProf', 'extra_abogado.sector','per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
-            ->where('extra_denunciado.idCarpeta', '=', $id)
+            ->where('variables_persona.idCarpeta', '=', $id)
             ->union($abogados1)
             ->get();
 
@@ -223,7 +223,7 @@ class CarpetaController extends Controller
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_autoridad.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('extra_autoridad.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_autoridad.antiguedad', 'extra_autoridad.rango', 'extra_autoridad.horarioLaboral', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion')
-            ->where('extra_autoridad.idCarpeta', '=', $id)
+            ->where('variables_persona.idCarpeta', '=', $id)
             ->get();
 
         $familiaresDenunciado = DB::table('familiar')
@@ -232,14 +232,14 @@ class CarpetaController extends Controller
             ->join('variables_persona', 'variables_persona.idPersona', '=', 'persona.id')
             ->join('extra_denunciado', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
             ->select('familiar.nombres as familiarNombre','familiar.primerAp as familiarPrimerAp', 'familiar.segundoAp as familiarSegundoAp', 'familiar.parentesco', 'cat_ocupacion.nombre as ocupacion' , 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-            ->where('extra_denunciado.idCarpeta', '=', $id);
+            ->where('variables_persona.idCarpeta', '=', $id);
         $familiares = DB::table('familiar')
             ->join('cat_ocupacion', 'cat_ocupacion.id', '=', 'familiar.idOcupacion')
             ->join('persona', 'persona.id', '=', 'familiar.idPersona')
             ->join('variables_persona', 'variables_persona.idPersona', '=', 'persona.id')
             ->join('extra_denunciante', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->select('familiar.nombres as familiarNombre','familiar.primerAp as familiarPrimerAp', 'familiar.segundoAp as familiarSegundoAp', 'familiar.parentesco', 'cat_ocupacion.nombre as ocupacion' , 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-            ->where('extra_denunciante.idCarpeta', '=', $id)
+            ->where('variables_persona.idCarpeta', '=', $id)
             ->union($familiaresDenunciado)
             ->get();
 

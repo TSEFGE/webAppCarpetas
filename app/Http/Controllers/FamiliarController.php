@@ -16,12 +16,12 @@ class FamiliarController extends Controller
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-            ->where('extra_denunciante.idCarpeta', '=', $idCarpeta);
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta);
         $involucrados = DB::table('extra_denunciado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-            ->where('extra_denunciado.idCarpeta', '=', $idCarpeta)
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
             ->union($denunciantes)
             ->get();
         return view('forms.familiar')->with('idCarpeta', $idCarpeta)

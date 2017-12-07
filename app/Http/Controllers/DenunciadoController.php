@@ -151,6 +151,7 @@ class DenunciadoController extends Controller
         $idNotificacion = $notificacion->id;
 
         $VariablesPersona = new VariablesPersona();
+        $VariablesPersona->idCarpeta = $request->idCarpeta;
         $VariablesPersona->idPersona = $idPersona;
         $VariablesPersona->edad = $request->edad;
         if (!is_null($request->telefono)){
@@ -196,7 +197,6 @@ class DenunciadoController extends Controller
 
         $idAbogado=null;
         $ExtraDenunciado = new ExtraDenunciado();
-        $ExtraDenunciado->idCarpeta = $request->idCarpeta;
         $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
         $ExtraDenunciado->idNotificacion = $idNotificacion;
         if (!is_null($request->idPuesto)){

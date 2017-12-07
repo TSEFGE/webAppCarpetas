@@ -16,6 +16,7 @@ class VariablesPersona extends Model
     
     public $fillable = [
         'id',
+        'idCarpeta',
         'idPersona',
         'edad',
         'telefono',
@@ -32,6 +33,11 @@ class VariablesPersona extends Model
         'telefonoTrabajo',
         'representanteLegal',
     ];
+
+    public function carpeta()
+    {
+        return $this->belongsTo('App\Models\Carpeta');
+    }
 
     public function persona()
     {

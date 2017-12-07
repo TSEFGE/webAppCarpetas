@@ -15,6 +15,7 @@ class CreateVariablesPersonasTable extends Migration
     {
         Schema::create('variables_persona', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('idCarpeta')->unsigned();
             $table->integer('idPersona')->unsigned();
             $table->integer('edad')->nullable();
             $table->string('telefono',15)->default("SIN INFORMACION");
@@ -33,6 +34,7 @@ class CreateVariablesPersonasTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             
+            $table->foreign('idCarpeta')->references('id')->on('carpeta')->onDelete('cascade');
             $table->foreign('idPersona')->references('id')->on('persona')->onDelete('cascade');
             $table->foreign('idOcupacion')->references('id')->on('cat_ocupacion')->onDelete('cascade');
             $table->foreign('idEstadoCivil')->references('id')->on('cat_estado_civil')->onDelete('cascade');

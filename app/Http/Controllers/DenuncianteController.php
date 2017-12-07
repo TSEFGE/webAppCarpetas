@@ -148,6 +148,7 @@ class DenuncianteController extends Controller
             $idNotificacion = $notificacion->id;
 
             $VariablesPersona = new VariablesPersona();
+            $VariablesPersona->idCarpeta = $request->idCarpeta;
             $VariablesPersona->idPersona = $idPersona;
             $VariablesPersona->edad = $request->edad;
             if (!is_null($request->telefono)){
@@ -188,7 +189,6 @@ class DenuncianteController extends Controller
 
             $idAbogado=null;
             $ExtraDenunciante = new ExtraDenunciante();
-            $ExtraDenunciante->idCarpeta = $request->idCarpeta;
             $ExtraDenunciante->idVariablesPersona = $idVariablesPersona;
             $ExtraDenunciante->idNotificacion = $idNotificacion;
             $ExtraDenunciante->idAbogado = $idAbogado;
@@ -258,13 +258,13 @@ class DenuncianteController extends Controller
                 $idNotificacion = $notificacion->id;
 
                 $VariablesPersona = new VariablesPersona();
+                $VariablesPersona->idCarpeta = $request->idCarpeta;
                 $VariablesPersona->idPersona = $idPersona;
                 $VariablesPersona->representanteLegal = $request->representanteLegal;
                 $VariablesPersona->save();
                 $idVariablesPersona = $VariablesPersona->id;
 
                 $ExtraDenunciante = new ExtraDenunciante();
-                $ExtraDenunciante->idCarpeta = $request->idCarpeta;
                 $ExtraDenunciante->idVariablesPersona = $idVariablesPersona;
                 $ExtraDenunciante->idNotificacion = $idNotificacion;
                 $ExtraDenunciante->idAbogado = null;

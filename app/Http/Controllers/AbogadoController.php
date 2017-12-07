@@ -54,6 +54,7 @@ class AbogadoController extends Controller
         $idD2 = $domicilio2->id;
 
         $VariablesPersona = new VariablesPersona();
+        $VariablesPersona->idPersona = $request->idCarpeta;
         $VariablesPersona->idPersona = $idPersona;
         $VariablesPersona->telefono = $request->telefono;
         $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;
@@ -78,7 +79,7 @@ class AbogadoController extends Controller
         $ExtraAbogado->tipo = $request->tipo;
         $ExtraAbogado->save();
         $idAbogado = $ExtraAbogado->id;
-
+/*
         $idInvolucrado = $request->idInvolucrado;
         //$xd = DB::table('extra_denunciante')->select('id')->where('idVariablesPersona', $idInvolucrado)->get();
         //dd($xd);
@@ -94,7 +95,37 @@ class AbogadoController extends Controller
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
         */
         return redirect()->route('carpeta', $request->idCarpeta);
-        //return redirect()->route('registro');
+    }
+
+    public function showForm2($idCarpeta)
+    {
+        $abogados = DB::table('extra_abogado')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_abogado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('variables_persona.idCarpeta', '=', $id)
+            ->get();
+        return view('forms.defensa')->with('idCarpeta', $idCarpeta)
+            ->with('abogados', $abogados);
+    }
+
+    public function storeDefensa(Request $request)
+    {
+        //dd($request->all());
+        $idAbogado = $request->idAbogado;
+        $tipo = $request->tipo;
+        $idInvolucrado = $request->idInvolucrado;
+        if($tipo==1){
+            DB::table('extra_denunciante')->where('idVariablesPersona', $idInvolucrado)->update(['idAbogado' => $idAbogado]);
+        }else{
+            DB::table('extra_denunciado')->where('idVariablesPersona', $idInvolucrado)->update(['idAbogado' => $idAbogado]);
+        }
+        /*
+        Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
+        //Para mostrar modal
+        //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
+        */
+        return redirect()->route('carpeta', $request->idCarpeta);
     }
 
     /**
