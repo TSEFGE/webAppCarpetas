@@ -28,6 +28,6 @@ class CreateCatPosibleCausaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('narracion');
+        Schema::dropIfExists('cat_posible_causa');
     }
 }
