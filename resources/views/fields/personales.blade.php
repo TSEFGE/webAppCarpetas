@@ -30,7 +30,7 @@
 				<div class="form-group">
 					{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 					<div class="input-group date" id="fechanac" data-target-input="nearest">
-		                {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'placeholder' => 'DD/MM/AAAA']) !!}
+		                {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'placeholder' => 'DD/MM/AAAA', 'required']) !!}
 		                <span class="input-group-addon" data-target="#fechanac" data-toggle="datetimepicker">
 		                    <i class="fa fa-calendar" aria-hidden="true"></i>
 		                </span>
@@ -42,7 +42,7 @@
 					<div class="col-6">
 						<div class="form-group">
 							{!! Form::label('edad', 'Edad', ['class' => 'col-form-label-sm']) !!}
-							{!! Form::number('edad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'min' => 0, 'max' => 150]) !!}
+							{!! Form::number('edad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'min' => 0, 'max' => 150, 'required']) !!}
 						</div>
 					</div>
 					<div class="col-6">
