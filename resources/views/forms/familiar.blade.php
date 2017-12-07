@@ -3,5 +3,15 @@
 @section('title', 'Agregar Familiar')
 
 @section('contenido')
-    @include('tabs.familiares')
+    {!! Form::open(['route' => 'store.familiar', 'method' => 'POST'])  !!}
+	<div class="row no-gutters">
+		<div class="col-12">
+			<div class="boxtwo">
+				<h6>Datos del familiar (Denunciante/Denunciado)</h6>
+				@include('fields.familiar')
+			</div>
+		</div>
+	</div>
+	@include('forms.buttons')
+	{!! Form::close() !!}
 @endsection

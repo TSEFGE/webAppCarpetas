@@ -46,7 +46,7 @@
 			<div class="form-group">
 				{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 				<div class="input-group date" id="fechanac" data-target-input="nearest">
-	                {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+	                {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'placeholder' => 'DD/MM/AAAA']) !!}
 	                <span class="input-group-addon" data-target="#fechanac" data-toggle="datetimepicker">
 	                    <i class="fa fa-calendar" aria-hidden="true"></i>
 	                </span>
@@ -58,7 +58,7 @@
 				<div class="col-6">
 					<div class="form-group">
 						{!! Form::label('edad', 'Edad', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::number('edad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'min' => 0, 'max' => 150, 'required']) !!}
+						{!! Form::number('edad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'min' => 0, 'max' => 150]) !!}
 					</div>
 				</div>
 				<div class="col-6">
@@ -72,7 +72,7 @@
 		<div class="col-3">
 			<div class="form-group">
 				{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.', 'required']) !!}
+				{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.']) !!}
 			</div>
 		</div>
 		<div class="col-3">

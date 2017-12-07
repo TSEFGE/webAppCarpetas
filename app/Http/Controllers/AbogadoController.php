@@ -75,6 +75,7 @@ class AbogadoController extends Controller
         $ExtraAbogado->cedulaProf = $request->cedulaProf;
         $ExtraAbogado->sector = $request->sector;
         $ExtraAbogado->correo = $request->correo;
+        $ExtraAbogado->tipo = $request->tipo;
         $ExtraAbogado->save();
         $idAbogado = $ExtraAbogado->id;
 
