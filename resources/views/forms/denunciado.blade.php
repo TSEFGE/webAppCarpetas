@@ -37,8 +37,8 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="form-group">
-						{!! Form::label('nombres', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::text('nombres', "QUIEN RESULTE RESPONSABLE", ['class' => 'form-control form-control-sm', 'readonly']) !!}
+						{!! Form::label('nombresQ', 'Nombre', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::text('nombresQ', "QUIEN RESULTE RESPONSABLE", ['class' => 'form-control form-control-sm', 'readonly']) !!}
 					</div>
 				</div>
 			</div>

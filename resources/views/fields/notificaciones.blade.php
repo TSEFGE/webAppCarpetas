@@ -8,8 +8,8 @@
 	</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('telefono', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'required']) !!}
+			{!! Form::label('telefonoN', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('telefonoN', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">
