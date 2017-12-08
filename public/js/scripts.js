@@ -37,6 +37,7 @@ $(document).ready(function(){
     $('#qrr').hide();
     $('#conocido').hide();
     $('#comparecencia').hide();
+    //Si es QRR
     $("#tipoDenunciado1").change(function(event){
         if ($('#tipoDenunciado1').is(':checked') ) {
             $('#qrr').show();
@@ -123,9 +124,22 @@ $(document).ready(function(){
             $("#numInterno3").prop('required',false);   
             $("#correo").prop('required',false);   
             $("#telefonoN").prop('required',false);  
-            $("#fax").prop('required',false);  
+            $("#fax").prop('required',false);
+
+            //Datos no requeridos de extra denunciado
+            $("#idPuesto").prop('required',false);
+            $("#alias").prop('required',false);
+            $("#personasBajoSuGuarda").prop('required',false);
+            $("#ingreso").prop('required',false);
+            $("#periodoIngreso").prop('required',false);
+            $("#residenciaAnterior").prop('required',false);
+            $("#perseguidoPenalmente1").prop('required',false);
+            $("#vestimenta").prop('required',false);
+            $("#senasPartic").prop('required',false);
+            $("#narracion").prop('required',false);
         }
     });
+    //Si lo conoce el denunciante
     $("#tipoDenunciado2").change(function(event){
         if ($('#tipoDenunciado2').is(':checked') ) {
             $('#qrr').hide();
@@ -212,10 +226,23 @@ $(document).ready(function(){
             $("#numInterno3").prop('required',false);   
             $("#correo").prop('required',false);   
             $("#telefonoN").prop('required',false);  
-            $("#fax").prop('required',false);  
+            $("#fax").prop('required',false);
+
+            //Datos no requeridos de extra denunciado
+            $("#idPuesto").prop('required',false);
+            $("#alias").prop('required',false);
+            $("#personasBajoSuGuarda").prop('required',false);
+            $("#ingreso").prop('required',false);
+            $("#periodoIngreso").prop('required',false);
+            $("#residenciaAnterior").prop('required',false);
+            $("#perseguidoPenalmente1").prop('required',false);
+            $("#vestimenta").prop('required',false);
+            $("#senasPartic").prop('required',false);
+            $("#narracion").prop('required',false);
 
         }
     });
+    //Si es por comparecencia
     $("#tipoDenunciado3").change(function(event){
         if ($('#tipoDenunciado3').is(':checked') ) {
             $('#qrr').hide();
@@ -302,7 +329,19 @@ $(document).ready(function(){
             $("#numInterno3").prop('required',true);   
             $("#correo").prop('required',true);   
             $("#telefonoN").prop('required',true);  
-            $("#fax").prop('required',true);  
+            $("#fax").prop('required',true);
+
+            //Datos requeridos de extra denunciado
+            $("#idPuesto").prop('required',true);
+            $("#alias").prop('required',true);
+            $("#personasBajoSuGuarda").prop('required',true);
+            $("#ingreso").prop('required',false);
+            $("#periodoIngreso").prop('required',true);
+            $("#residenciaAnterior").prop('required',true);
+            $("#perseguidoPenalmente1").prop('required',true);
+            $("#vestimenta").prop('required',true);
+            $("#senasPartic").prop('required',true);
+            $("#narracion").prop('required',true);
         }
     });
 
@@ -316,6 +355,7 @@ $(document).ready(function(){
     $('#datosTrab').hide();
     $('#datosNotif').hide();
     $('#datosExtra').hide();
+    $('#extra-fis').hide();
     //Si es empresa
     $("#esEmpresa1").change(function(event){
         if ($('#esEmpresa1').is(':checked') ) {
@@ -326,11 +366,14 @@ $(document).ready(function(){
             $('#datosTrab').hide();
             $('#datosNotif').show();
             $('#datosExtra').show();
+            $('#extra-fis').hide();
 
             //Datos personales requeridos de Persona Moral o Empresa
             $('#nombres2').prop('required', true);
             $('#rfc2').prop('required', true);
             $('#representanteLegal').prop('required', true);
+            $("#senasPartic").prop('required',true);
+            $("#narracion").prop('required',true);
             
             //Datos personales no requeridos de Persona Física
             $("#nombres").prop('required',false);   
@@ -365,8 +408,17 @@ $(document).ready(function(){
             $("#idColonia2").prop('required',false);   
             $("#calle2").prop('required',false);   
             $("#numExterno2").prop('required',false);   
-            $("#numInterno2").prop('required',false);               
+            $("#numInterno2").prop('required',false);
 
+            //Datos no requeridos de extra denunciado
+            $("#idPuesto").prop('required',false);
+            $("#alias").prop('required',false);
+            $("#personasBajoSuGuarda").prop('required',false);
+            $("#ingreso").prop('required',false);
+            $("#periodoIngreso").prop('required',false);
+            $("#residenciaAnterior").prop('required',false);
+            $("#perseguidoPenalmente1").prop('required',false);
+            $("#vestimenta").prop('required',false);
         }
     });
     //No es empresa
@@ -379,6 +431,7 @@ $(document).ready(function(){
             $('#datosTrab').show();
             $('#datosNotif').show();
             $('#datosExtra').show();
+            $('#extra-fis').show();
 
             //Datos personales no requeridos de Persona Moral o Empresa
             $('#nombres2').prop('required', false);
@@ -418,7 +471,19 @@ $(document).ready(function(){
             $("#idColonia2").prop('required',true);   
             $("#calle2").prop('required',true);   
             $("#numExterno2").prop('required',true);   
-            $("#numInterno2").prop('required',true);   
+            $("#numInterno2").prop('required',true);
+
+            //Datos requeridos de extra denunciado
+            $("#idPuesto").prop('required',true);
+            $("#alias").prop('required',true);
+            $("#personasBajoSuGuarda").prop('required',true);
+            $("#ingreso").prop('required',false);
+            $("#periodoIngreso").prop('required',true);
+            $("#residenciaAnterior").prop('required',true);
+            $("#perseguidoPenalmente1").prop('required',true);
+            $("#vestimenta").prop('required',true);
+            $("#senasPartic").prop('required',true);
+            $("#narracion").prop('required',true);
         }
     });
 

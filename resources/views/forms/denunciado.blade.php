@@ -4,8 +4,6 @@
 
 @section('contenido')
     {!! Form::open(['route' => 'store.denunciado', 'method' => 'POST'])  !!}
-	{{--
-	--}}
 	<div class="boxtwo">
 		<div class="row">
 			<div class="col-12">

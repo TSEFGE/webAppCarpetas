@@ -172,6 +172,43 @@ $("#tipo").change(function(event){
 	}
 });
 
+$("#idEstadoC").change(function(event){
+	$.get("../municipios/"+event.target.value+"", function(response, estado){
+		$("#idMunicipioC").empty();
+		$("#idMunicipioC").append("<option value=''>Seleccione un municipio</option>");
+		for(i=0; i<response.length; i++){
+			$("#idMunicipioC").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+		}
+	});
+});
+
+$("#idMunicipioC").change(function(event){
+	$.get("../localidades/"+event.target.value+"", function(response, municipio){
+		$("#idLocalidadC").empty();
+		$("#idLocalidadC").append("<option value=''>Seleccione una localidad</option>");
+		for(i=0; i<response.length; i++){
+			$("#idLocalidadC").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+		}
+	});
+	$.get("../codigos/"+event.target.value+"", function(response, municipio){
+		$("#cpC").empty();
+		$("#cpC").append("<option value=''>Seleccione un código postal</option>");
+		for(i=0; i<response.length; i++){
+			$("#cpC").append("<option value='"+response[i].id+"'> "+response[i].codigoPostal+"</option>");
+		}
+	});
+});
+
+$("#cpC").change(function(event){
+	$.get("../colonias/"+$('#cpC option:selected').html()+"", function(response, cp){
+		$("#idColoniaC").empty();
+		$("#idColoniaC").append("<option value=''>Seleccione una colonia</option>");
+		for(i=0; i<response.length; i++){
+			$("#idColoniaC").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+		}
+	});
+});
+
 /*
 $("#idEstado").change(event =>{
 	$.get(`municipios/${event.target.value}`, function(res, estado){
