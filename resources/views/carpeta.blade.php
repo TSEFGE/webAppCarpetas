@@ -107,7 +107,7 @@
                                 <th>Nombre</th>
                                 <th>Cédula</th>
                                 <th>Sector</th>
-                                <th>Defiende a</th>                                
+                                <th>Tipo</th>                                
                             </thead>
                             <tbody>
                                 @foreach($abogados as $abogado)
@@ -115,7 +115,7 @@
                                     <td>{{ $abogado->nombres." ".$abogado->primerAp." ".$abogado->segundoAp }}</td>
                                     <td>{{ $abogado->cedulaProf }}</td>
                                     <td>{{ $abogado->sector }}</td>
-                                    <td>{{ $abogado->nombres2." ".$abogado->primerAp2." ".$abogado->segundoAp2 }}</td>                                    
+                                    <td>{{ $abogado->tipo }}</td>                                    
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -123,6 +123,29 @@
                     </div>
                     <div class="text-right"> 
                         <a href="{{ route('new.abogado', $carpeta[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
+                    </div>
+                </div>
+
+                <div class="boxtwo">
+                    <h6>Defensas</h6>
+                    <div class="table">
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Nombre</th>
+                                <th>Defiende a</th>                                
+                            </thead>
+                            <tbody>
+                                @foreach($defensas as $defensa)
+                                <tr>
+                                    <td>{{ $defensa->nombres." ".$defensa->primerAp." ".$defensa->segundoAp }}</td>
+                                    <td>{{ $defensa->nombres2." ".$defensa->primerAp2." ".$defensa->segundoAp2 }}</td>                             
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-right"> 
+                        <a href="{{ route('new.defensa', $carpeta[0]->id) }}" class="btn btn-secondary">Asignar defensa</a><hr>
                     </div>
                 </div>
 

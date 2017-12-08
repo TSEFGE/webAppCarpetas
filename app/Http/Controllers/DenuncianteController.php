@@ -250,7 +250,7 @@ class DenuncianteController extends Controller
             $notificacion = new Notificacion();
             $notificacion->idDomicilio = $idD3;
             $notificacion->correo = $request->correo;
-            $notificacion->telefono = $request->telefono;
+            $notificacion->telefono = $request->telefonoN;
             $notificacion->fax = $request->fax;
             $notificacion->save();
             $idNotificacion = $notificacion->id;

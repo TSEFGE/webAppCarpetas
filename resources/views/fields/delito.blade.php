@@ -5,7 +5,7 @@
 		@endif
 		<div class="form-group">
 			{!! Form::label('idDelito', 'Delito', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idDelito', $delitos, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un delito', 'required']) !!}
+			{!! Form::select('idDelito', $delitos, null, ['class' => 'form-control form-control-sm select2', 'placeholder' => 'Seleccione un delito', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">

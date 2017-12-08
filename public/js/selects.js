@@ -149,10 +149,11 @@ $("#idTipoArma").change(function(event){
 		}
 	});
 });
-
+/*
 $("#tipo").change(function(event){
+	var idCarpeta = $("input[type=hidden][name=idCarpeta]").val();
 	if(event.target.value==1){
-		$.get("../denunciantes/"+$("#idCarpeta").val()+"", function(response, municipio){
+		$.get("../denunciantes/"+idCarpeta+"", function(response, idCarpeta){
 			$("#idInvolucrado").empty();
 			$("#idInvolucrado").append("<option value=''>Seleccione un denunciante</option>");
 			for(i=0; i<response.length; i++){
@@ -161,7 +162,7 @@ $("#tipo").change(function(event){
 		});
 	}else{
 		if(event.target.value==2){
-			$.get("../denunciados/"+$("#idCarpeta").val()+"", function(response, municipio){
+			$.get("../denunciados/"+idCarpeta+"", function(response, idCarpeta){
 				$("#idInvolucrado").empty();
 				$("#idInvolucrado").append("<option value=''>Seleccione un denunciado</option>");
 				for(i=0; i<response.length; i++){
@@ -170,6 +171,17 @@ $("#tipo").change(function(event){
 			});
 		}
 	}
+});
+*/
+$("#idAbogado").change(function(event){
+	var idCarpeta = $("input[type=hidden][name=idCarpeta]").val();
+	$.get("../involucrados/"+idCarpeta+"/"+event.target.value+"", function(response, idCarpeta){
+			$("#idInvolucrado").empty();
+			$("#idInvolucrado").append("<option value=''>Seleccione un denunciante</option>");
+			for(i=0; i<response.length; i++){
+				$("#idInvolucrado").append("<option value='"+response[i].id+"'> "+response[i].nombres+"</option>");
+			}
+		});
 });
 
 $("#idEstadoC").change(function(event){

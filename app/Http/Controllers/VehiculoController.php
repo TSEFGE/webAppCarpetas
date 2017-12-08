@@ -24,7 +24,7 @@ class VehiculoController extends Controller
             ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
             ->select('tipif_delito.id', 'cat_delito.id as idDelito', 'cat_delito.nombre as delito')
             ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
-            ->whereIn('idDelito', [130, 131, 132, 133, 134, 135, 242, 243, 244, 245, 222])
+            ->whereIn('idDelito', [130, 131, 132, 133, 134, 135, 242, 243, 244, 245, 227])
             ->get();
         $aseguradoras = CatAseguradora::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $clasesveh = CatClaseVehiculo::orderBy('id', 'ASC')->pluck('nombre', 'id');

@@ -103,7 +103,6 @@ class AutoridadController extends Controller
         $idVariablesPersona = $VariablesPersona->id;
 
         $ExtraAutoridad = new ExtraAutoridad();
-        $ExtraAutoridad->idCarpeta = $request->idCarpeta;
         $ExtraAutoridad->idVariablesPersona = $idVariablesPersona;
         $ExtraAutoridad->antiguedad = $request->antiguedad;
         $ExtraAutoridad->rango = $request->rango;

@@ -87,23 +87,30 @@ class CarpetaController extends Controller
             ->where('variables_persona.idCarpeta', '=', $id)
             ->get();
 
-        $abogados1 = DB::table('extra_abogado')
+        $abogados = DB::table('extra_abogado')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_abogado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_abogado.cedulaProf', 'extra_abogado.sector', 'extra_abogado.tipo')
+            ->where('variables_persona.idCarpeta', '=', $id)
+            ->get();
+
+        $defensas1 = DB::table('extra_abogado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')            
             ->join('extra_denunciante', 'extra_denunciante.idAbogado', '=', 'extra_abogado.id')
             ->join('variables_persona as var', 'var.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona as per', 'per.id', '=', 'var.idPersona')  
-            ->select('extra_abogado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_abogado.cedulaProf', 'extra_abogado.sector','per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
+            ->select('extra_abogado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
             ->where('variables_persona.idCarpeta', '=', $id);
-        $abogados = DB::table('extra_abogado')
+        $defensas = DB::table('extra_abogado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')            
             ->join('extra_denunciado', 'extra_denunciado.idAbogado', '=', 'extra_abogado.id')
             ->join('variables_persona as var', 'var.id', '=', 'extra_denunciado.idVariablesPersona')
             ->join('persona as per', 'per.id', '=', 'var.idPersona')  
-            ->select('extra_abogado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_abogado.cedulaProf', 'extra_abogado.sector','per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
+            ->select('extra_abogado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
             ->where('variables_persona.idCarpeta', '=', $id)
-            ->union($abogados1)
+            ->union($defensas1)
             ->get();
 
         $autoridades = DB::table('extra_autoridad')
@@ -141,14 +148,14 @@ class CarpetaController extends Controller
             ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
             ->select('tipif_delito.id', 'cat_delito.id as idDelito', 'cat_delito.nombre as delito')
             ->where('tipif_delito.idCarpeta', '=', $id)
-            ->whereIn('idDelito', [130, 131, 132, 133, 134, 135, 242, 243, 244, 245, 222])
+            ->whereIn('idDelito', [130, 131, 132, 133, 134, 135, 242, 243, 244, 245, 227])
             ->get();
-            if(count($delveh)<1){
-                $delits = false;
-            }else{
+            if(count($delveh)>0){
                 $delits = true;
+            }else{
+                $delits = false;
             }
-
+            
         $acusaciones = DB::table('acusacion')
             ->join('extra_denunciante', 'extra_denunciante.id', '=', 'acusacion.idDenunciante')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
@@ -178,6 +185,7 @@ class CarpetaController extends Controller
             ->with('denunciados', $denunciados)
             ->with('autoridades', $autoridades)
             ->with('abogados', $abogados)
+            ->with('defensas', $defensas)
             ->with('familiares', $familiares)
             ->with('delitos', $delitos)
             ->with('acusaciones', $acusaciones)

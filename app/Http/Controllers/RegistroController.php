@@ -102,7 +102,7 @@ class RegistroController extends Controller
         }
     }
 
-    public function getDenunciantes(Request $request, $idCarpeta){
+    /*public function getDenunciantes(Request $request, $idCarpeta){
         if($request->ajax()){
             $denunciantes = DB::table('extra_denunciante')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
@@ -123,6 +123,34 @@ class RegistroController extends Controller
             ->where('variables_persona.idCarpeta', '=', $idCarpeta)
             ->get();
             return response()->json($denunciados);
+        }
+    }
+*/
+    public function getInvolucrados(Request $request, $idCarpeta, $idAbogado){
+        if($request->ajax()){
+            $tipoAbog = DB::table('extra_abogado')
+                ->select('tipo')
+                ->where('id', '=', $idAbogado)
+                ->get();
+            $tipo = $tipoAbog[0]->tipo;
+            if($tipo == "ASESOR JURIDICO"){
+                $involucrados = DB::table('extra_denunciante')
+                    ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+                    ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+                    ->select('variables_persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+                    ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+                    ->whereNull('extra_denunciante.idAbogado')
+                    ->get();
+            }elseif($tipo == "ABOGADO DEFENSOR"){
+                $involucrados = DB::table('extra_denunciado')
+                    ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+                    ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+                    ->select('variables_persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+                    ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+                    ->whereNull('extra_denunciado.idAbogado')
+                    ->get();
+            }
+            return response()->json($involucrados);
         }
     }
 

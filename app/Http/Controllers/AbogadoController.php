@@ -54,7 +54,7 @@ class AbogadoController extends Controller
         $idD2 = $domicilio2->id;
 
         $VariablesPersona = new VariablesPersona();
-        $VariablesPersona->idPersona = $request->idCarpeta;
+        $VariablesPersona->idCarpeta = $request->idCarpeta;
         $VariablesPersona->idPersona = $idPersona;
         $VariablesPersona->telefono = $request->telefono;
         $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;
@@ -79,16 +79,6 @@ class AbogadoController extends Controller
         $ExtraAbogado->tipo = $request->tipo;
         $ExtraAbogado->save();
         $idAbogado = $ExtraAbogado->id;
-/*
-        $idInvolucrado = $request->idInvolucrado;
-        //$xd = DB::table('extra_denunciante')->select('id')->where('idVariablesPersona', $idInvolucrado)->get();
-        //dd($xd);
-        //if(count($xd)>0){
-        if($request->tipo==1){
-            DB::table('extra_denunciante')->where('idVariablesPersona', $idInvolucrado)->update(['idAbogado' => $idAbogado]);
-        }else{
-            DB::table('extra_denunciado')->where('idVariablesPersona', $idInvolucrado)->update(['idAbogado' => $idAbogado]);
-        }
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal
@@ -102,8 +92,8 @@ class AbogadoController extends Controller
         $abogados = DB::table('extra_abogado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_abogado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-            ->where('variables_persona.idCarpeta', '=', $id)
+            ->select('extra_abogado.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
             ->get();
         return view('forms.defensa')->with('idCarpeta', $idCarpeta)
             ->with('abogados', $abogados);
@@ -115,7 +105,9 @@ class AbogadoController extends Controller
         $idAbogado = $request->idAbogado;
         $tipo = $request->tipo;
         $idInvolucrado = $request->idInvolucrado;
-        if($tipo==1){
+        $xd = DB::table('extra_denunciante')->select('id')->where('idVariablesPersona', $idInvolucrado)->get();
+        //dd(count($xd));
+        if(count($xd)>0){
             DB::table('extra_denunciante')->where('idVariablesPersona', $idInvolucrado)->update(['idAbogado' => $idAbogado]);
         }else{
             DB::table('extra_denunciado')->where('idVariablesPersona', $idInvolucrado)->update(['idAbogado' => $idAbogado]);

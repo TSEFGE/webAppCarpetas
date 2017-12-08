@@ -78,8 +78,10 @@ Route::get('submarcas/{id}', 'RegistroController@getSubmarcas');
 Route::get('tipoVehiculos/{id}', 'RegistroController@getTipoVehiculos');
 Route::get('armas/{id}', 'RegistroController@getArmas');
 
-Route::get('denunciantes/{idCarpeta}', 'RegistroController@getDenunciantes');
-Route::get('denunciados/{idCarpeta}', 'RegistroController@getDenunciados');
+/*Route::get('denunciantes/{idCarpeta}', 'RegistroController@getDenunciantes');
+Route::get('denunciados/{idCarpeta}', 'RegistroController@getDenunciados');*/
+Route::get('involucrados/{idCarpeta}/{idAbogado}', 'RegistroController@getInvolucrados');
+
 /*
 Route::get('/registrar-carpeta', function () {
 	return view('registro');
