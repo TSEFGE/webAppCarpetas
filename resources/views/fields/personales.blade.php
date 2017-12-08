@@ -42,7 +42,7 @@
 					<div class="col-6">
 						<div class="form-group">
 							{!! Form::label('edad', 'Edad', ['class' => 'col-form-label-sm']) !!}
-							{!! Form::number('edad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'min' => 0, 'max' => 150, 'required']) !!}
+							{!! Form::number('edad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'min' => 18, 'max' => 150, 'required']) !!}
 						</div>
 					</div>
 					<div class="col-6">

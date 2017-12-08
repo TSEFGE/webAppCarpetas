@@ -83,6 +83,7 @@ class AutoridadController extends Controller
         $idD2 = $domicilio2->id;
 
         $VariablesPersona = new VariablesPersona();
+        $VariablesPersona->idCarpeta = $request->idCarpeta;
         $VariablesPersona->idPersona = $idPersona;
         $VariablesPersona->edad = $request->edad;
         $VariablesPersona->telefono = $request->telefono;

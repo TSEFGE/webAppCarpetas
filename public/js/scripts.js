@@ -1,4 +1,9 @@
 $(document).ready(function(){
+    $(".form-control").keyup(function() {
+        $(this).val($(this).val().toUpperCase());
+    });
+    
+
     //Para el inicio de carpeta
     $("#conDetenido").prop("checked", false);
     $('#conDet1').css('display', 'none');
@@ -468,12 +473,16 @@ $(document).ready(function(){
 
     $(function () {
         $('#fechanac').datetimepicker({
-           format: 'YYYY-MM-DD',
-           maxDate: moment().subtract(18, 'years').format('YYYY-MM-DD')
-       });
-       });
+            format: 'YYYY-MM-DD',
+            maxDate: moment().subtract(18, 'years').format('YYYY-MM-DD')
+        });
+    });
     $("#fechanac").on("change.datetimepicker", function (e) {
         $('#edad').val(moment().diff(e.date,'years'));
+    });
+    $( "#edad" ).change(function() {
+        var anios = $('#edad').val();
+        $('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
     });
 
     $(function () {

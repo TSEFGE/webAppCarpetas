@@ -45,6 +45,9 @@ Route::post('storedenunciado', 'DenunciadoController@storeDenunciado')->name('st
 Route::get('agregar-abogado/{idCarpeta}', 'AbogadoController@showForm')->name('new.abogado');
 Route::post('storeabogado', 'AbogadoController@storeAbogado')->name('store.abogado');
 
+Route::get('agregar-defensa/{idCarpeta}', 'AbogadoController@showForm2')->name('new.defensa');
+Route::post('storedefensa', 'AbogadoController@storeDefensa')->name('store.defensa');
+
 Route::get('agregar-autoridad/{idCarpeta}', 'AutoridadController@showForm')->name('new.autoridad');
 Route::post('storeautoridad', 'AutoridadController@storeAutoridad')->name('store.autoridad');
 

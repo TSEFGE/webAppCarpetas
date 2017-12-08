@@ -14,13 +14,13 @@ class AcusacionController extends Controller
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-            ->where('extra_denunciante.idCarpeta', '=', $idCarpeta)
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
             ->get();
         $denunciados = DB::table('extra_denunciado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-            ->where('extra_denunciado.idCarpeta', '=', $idCarpeta)
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
             ->get();
         $tipifdelitos = DB::table('tipif_delito')
             ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')

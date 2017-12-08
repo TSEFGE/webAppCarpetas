@@ -43,19 +43,9 @@ class Carpeta extends Model
        return $this->hasMany('app/Models/Acumulacion');
     }
 
-    public function extraAutoridades()
+    public function variablesPersona()
     {
-       return $this->hasMany('app/Models/ExtraAutoridad');
-    }
-
-    public function extraDenunciantes()
-    {
-       return $this->hasMany('app/Models/ExtraDenunciante');
-    }
-
-    public function extraDenunciados()
-    {
-       return $this->hasMany('app/Models/ExtraDenunciado');
+       return $this->hasMany('app/Models/VariablesPersona');
     }
 
     public function tipifDelitos()
