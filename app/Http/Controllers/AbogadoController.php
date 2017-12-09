@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Alert;
 
 use App\Models\CatEstado;
 use App\Models\CatEstadoCivil;
@@ -19,10 +21,12 @@ use App\Models\Domicilio;
 class AbogadoController extends Controller
 {
     public function showForm($idCarpeta)
-    {
+    {   
+        $abogados = CarpetaController::getAbogados($idCarpeta);
         $estados = CatEstado::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
         $estadoscivil = CatEstadoCivil::orderBy('id', 'ASC')->pluck('nombre', 'id');
         return view('forms.abogado')->with('idCarpeta', $idCarpeta)
+            ->with('abogados', $abogados)
             ->with('estados', $estados)
             ->with('estadoscivil', $estadoscivil);
     }
@@ -61,7 +65,8 @@ class AbogadoController extends Controller
         $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
         $VariablesPersona->idDomicilioTrabajo = $idD2;
         $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
-        $VariablesPersona->edad = 20;//SE DEBE CALCULAR
+        $fecha = Carbon::parse($request->fechaNacimiento);
+        $VariablesPersona->edad = Carbon::createFromDate($fecha->year, $fecha->month, $fecha->day)->age;
         $VariablesPersona->motivoEstancia = "NO APLICA";
         $VariablesPersona->idOcupacion = 2469;
         $VariablesPersona->idEscolaridad = 8;
@@ -90,6 +95,7 @@ class AbogadoController extends Controller
 
     public function showForm2($idCarpeta)
     {
+        $defensas = CarpetaController::getDefensas($idCarpeta);
         $abogados = DB::table('extra_abogado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
@@ -97,6 +103,7 @@ class AbogadoController extends Controller
             ->where('variables_persona.idCarpeta', '=', $idCarpeta)
             ->get();
         return view('forms.defensa')->with('idCarpeta', $idCarpeta)
+            ->with('defensas', $defensas)
             ->with('abogados', $abogados);
     }
 

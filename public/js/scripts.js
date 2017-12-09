@@ -36,13 +36,13 @@ $(document).ready(function(){
     $("#tipoDenunciado3").prop("checked", false);
     $('#qrr').hide();
     $('#conocido').hide();
-    $('#comparecencia').hide();
+    $('.comparecencia').hide();
     //Si es QRR
     $("#tipoDenunciado1").change(function(event){
         if ($('#tipoDenunciado1').is(':checked') ) {
             $('#qrr').show();
             $('#conocido').hide();
-            $('#comparecencia').hide();
+            $('.comparecencia').hide();
 
             //Datos requeridos de Q.R.R.
             $('#nombresQ').prop('required', true);
@@ -144,7 +144,7 @@ $(document).ready(function(){
         if ($('#tipoDenunciado2').is(':checked') ) {
             $('#qrr').hide();
             $('#conocido').show();
-            $('#comparecencia').hide();
+            $('.comparecencia').hide();
 
             //Datos requeridos de Q.R.R.
             $('#nombresQ').prop('required', false);
@@ -247,7 +247,7 @@ $(document).ready(function(){
         if ($('#tipoDenunciado3').is(':checked') ) {
             $('#qrr').hide();
             $('#conocido').hide();
-            $('#comparecencia').show();
+            $('.comparecencia').show();
 
             //Datos requeridos de Q.R.R.
             $('#nombresQ').prop('required', false);
@@ -543,6 +543,7 @@ $(document).ready(function(){
     $(function () {
         $('#fechanac').datetimepicker({
             format: 'YYYY-MM-DD',
+            minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
             maxDate: moment().subtract(18, 'years').format('YYYY-MM-DD')
         });
     });

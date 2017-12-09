@@ -19,4 +19,7 @@
 	</div>
 	@include('forms.buttons')
 	{!! Form::close() !!}
+	<div class="boxtwo">
+		@include('tables.vehiculos')
+	</div>
 @endsection

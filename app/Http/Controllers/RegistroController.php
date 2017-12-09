@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Alert;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\CatAseguradora;

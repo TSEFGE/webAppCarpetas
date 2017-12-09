@@ -49,4 +49,7 @@
 	</div>
 	@include('forms.buttons')
 	{!! Form::close() !!}
+	<div class="boxtwo">
+		@include('tables.abogados')
+	</div>
 @endsection

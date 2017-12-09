@@ -26,6 +26,7 @@ class DenunciadoController extends Controller
 {
     public function showForm($idCarpeta)
     {
+        $denunciados = CarpetaController::getDenunciados($idCarpeta);
         $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $estados = CatEstado::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
         $estadoscivil = CatEstadoCivil::orderBy('id', 'ASC')->pluck('nombre', 'id');
@@ -36,6 +37,7 @@ class DenunciadoController extends Controller
         $puestos = CatPuesto::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $religiones = CatReligion::orderBy('id', 'ASC')->pluck('nombre', 'id');
         return view('forms.denunciado')->with('idCarpeta', $idCarpeta)
+            ->with('denunciados', $denunciados)
             ->with('escolaridades', $escolaridades)
             ->with('estados', $estados)
             ->with('estadoscivil', $estadoscivil)

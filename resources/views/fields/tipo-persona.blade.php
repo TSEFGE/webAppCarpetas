@@ -1,4 +1,4 @@
-<div class="col-3">
+<div class="col-12">
 	<div class="form-group">
 		<label class="col-form-label col-form-label-sm" for="formGroupExampleInput">¿Es empresa?</label>
 		<div class="clearfix"></div>

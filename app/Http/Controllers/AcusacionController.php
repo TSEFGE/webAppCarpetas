@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Alert;
 use App\Models\Acusacion;
 
 class AcusacionController extends Controller
 {
     public function showForm($idCarpeta)
     {
+        $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
         $denunciantes = DB::table('extra_denunciante')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
@@ -28,6 +30,7 @@ class AcusacionController extends Controller
             ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
             ->get();
         return view('forms.acusacion')->with('idCarpeta', $idCarpeta)
+            ->with('acusaciones', $acusaciones)
             ->with('denunciantes', $denunciantes)
             ->with('denunciados', $denunciados)
             ->with('tipifdelitos', $tipifdelitos);

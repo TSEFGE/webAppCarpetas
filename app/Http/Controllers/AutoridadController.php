@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Alert;
 
 use App\Models\CatEscolaridad;
 use App\Models\CatEstado;
@@ -24,6 +25,7 @@ class AutoridadController extends Controller
 {
     public function showForm($idCarpeta)
     {
+        $autoridades = CarpetaController::getAutoridades($idCarpeta);
         $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $estados = CatEstado::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
         $estadoscivil = CatEstadoCivil::orderBy('id', 'ASC')->pluck('nombre', 'id');
@@ -34,6 +36,7 @@ class AutoridadController extends Controller
         $puestos = CatPuesto::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $religiones = CatReligion::orderBy('id', 'ASC')->pluck('nombre', 'id');
         return view('forms.autoridad')->with('idCarpeta', $idCarpeta)
+            ->with('autoridades', $autoridades)
             ->with('escolaridades', $escolaridades)
             ->with('estados', $estados)
             ->with('estadoscivil', $estadoscivil)

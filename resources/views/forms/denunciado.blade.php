@@ -6,7 +6,7 @@
     {!! Form::open(['route' => 'store.denunciado', 'method' => 'POST'])  !!}
 	<div class="boxtwo">
 		<div class="row">
-			<div class="col-12">
+			<div class="col-6">
 				<div class="form-group">
 					<label class="col-form-label col-form-label-sm" for="formGroupExampleInput">Selecciona una opción</label>
 					<div class="clearfix"></div>
@@ -27,6 +27,11 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-6 comparecencia">
+				<div class="row">
+	    			@include('fields.tipo-persona')
+				</div>
+	    	</div>
 		</div>
 	</div>
 
@@ -49,12 +54,7 @@
 		</div>
 	</div>
 
-	<div id="comparecencia">
-		<div class="boxtwo">
-	    	<div class="row">
-	    		@include('fields.tipo-persona')
-	    	</div>
-	    </div>
+	<div class="comparecencia">
 		<div class="card" id="datosPer">
 			<div class="card-header">
 				<h5 class="mb-0 text-center">
@@ -133,4 +133,7 @@
 
 	@include('forms.buttons')
 	{!! Form::close() !!}
+	<div class="boxtwo">
+		@include('tables.denunciados')
+	</div>
 @endsection

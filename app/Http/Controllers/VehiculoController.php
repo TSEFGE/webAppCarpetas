@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use DB;
+use Alert;
+
 use App\Models\CatAseguradora;
 use App\Models\CatClaseVehiculo;
 use App\Models\CatColor;
@@ -20,6 +21,7 @@ class VehiculoController extends Controller
 {
     public function showForm($idCarpeta)
     {
+        $vehiculos = CarpetaController::getVehiculos($idCarpeta);
         $tipifdelitos = DB::table('tipif_delito')
             ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
             ->select('tipif_delito.id', 'cat_delito.id as idDelito', 'cat_delito.nombre as delito')
@@ -34,6 +36,7 @@ class VehiculoController extends Controller
         $procedencias = CatProcedencia::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $tiposuso = CatTipoUso::orderBy('id', 'ASC')->pluck('nombre', 'id');
         return view('forms.vehiculo')->with('idCarpeta', $idCarpeta)
+            ->with('vehiculos', $vehiculos)
             ->with('tipifdelitos', $tipifdelitos)
             ->with('aseguradoras', $aseguradoras)
             ->with('clasesveh', $clasesveh)

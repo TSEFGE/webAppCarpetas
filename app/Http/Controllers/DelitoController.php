@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Alert;
 
 use App\Models\CatDelito;
 use App\Models\CatEstado;
@@ -19,7 +20,8 @@ class DelitoController extends Controller
 {
     public function showForm($idCarpeta)
     {
-        $delitos = CatDelito::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $delitos = CarpetaController::getDelitos($idCarpeta);
+        $delits = CatDelito::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
         $estados = CatEstado::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
         $lugares = CatLugar::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $marcas = CatMarca::orderBy('id', 'ASC')->pluck('nombre', 'id');
@@ -28,6 +30,7 @@ class DelitoController extends Controller
         $zonas = CatZona::orderBy('id', 'ASC')->pluck('nombre', 'id');
         return view('forms.delito')->with('idCarpeta', $idCarpeta)
             ->with('delitos', $delitos)
+            ->with('delits', $delits)
             ->with('estados', $estados)
             ->with('lugares', $lugares)
             ->with('marcas', $marcas)

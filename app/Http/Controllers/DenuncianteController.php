@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Alert;
 
 use App\Models\CatEscolaridad;
 use App\Models\CatEstado;
@@ -26,6 +27,7 @@ class DenuncianteController extends Controller
 {
     public function showForm($idCarpeta)
     {
+        $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
         $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $estados = CatEstado::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
         $estadoscivil = CatEstadoCivil::orderBy('id', 'ASC')->pluck('nombre', 'id');
@@ -35,6 +37,7 @@ class DenuncianteController extends Controller
         $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $religiones = CatReligion::orderBy('id', 'ASC')->pluck('nombre', 'id');
         return view('forms.denunciante')->with('idCarpeta', $idCarpeta)
+            ->with('denunciantes', $denunciantes)
             ->with('escolaridades', $escolaridades)
             ->with('estados', $estados)
             ->with('estadoscivil', $estadoscivil)

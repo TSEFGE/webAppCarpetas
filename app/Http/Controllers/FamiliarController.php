@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Alert;
+
 use App\Models\Familiar;
 use App\Models\CatOcupacion;
 
@@ -11,6 +13,7 @@ class FamiliarController extends Controller
 {
     public function showForm($idCarpeta)
     {
+        $familiares = CarpetaController::getFamiliares($idCarpeta);
         $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $denunciantes = DB::table('extra_denunciante')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
@@ -25,6 +28,7 @@ class FamiliarController extends Controller
             ->union($denunciantes)
             ->get();
         return view('forms.familiar')->with('idCarpeta', $idCarpeta)
+            ->with('familiares', $familiares)
             ->with('involucrados', $involucrados)
             ->with('ocupaciones', $ocupaciones);
     }
