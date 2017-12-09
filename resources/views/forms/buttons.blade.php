@@ -7,7 +7,7 @@
 		</div>
 		<div class="col">	
 			<div class="text-right">
-				{!! Form::submit('Guardar', ['class' => 'btn btn-dark']) !!}
+				{!! Form::submit('Guardar', ['class' => 'btn btn-dark', 'id' => 'btn-submit']) !!}
 			</div>
 		</div>
 	</div>

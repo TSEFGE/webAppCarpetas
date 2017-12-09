@@ -84,6 +84,7 @@ class AbogadoController extends Controller
         //Para mostrar modal
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
         */
+        Alert::success('Abogado registrado con éxito', 'Hecho')->persistent("Aceptar");
         return redirect()->route('carpeta', $request->idCarpeta);
     }
 
@@ -117,6 +118,7 @@ class AbogadoController extends Controller
         //Para mostrar modal
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
         */
+        Alert::success('Defensa asignada con éxito', 'Hecho')->persistent("Aceptar");
         return redirect()->route('carpeta', $request->idCarpeta);
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Alert;
 
 use App\Models\CatEscolaridad;
 use App\Models\CatEstado;
@@ -389,6 +390,7 @@ class DenunciadoController extends Controller
         //Para mostrar modal
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
         */
+        Alert::success('Denunciado registrado con éxito', 'Hecho')->persistent("Aceptar");
         return redirect()->route('carpeta', $request->idCarpeta);
     }
 

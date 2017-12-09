@@ -487,6 +487,10 @@ $(document).ready(function(){
         }
     });
 
+    $("#btn-submit").click(function() {
+        $('.collapse').collapse('show');
+    });
+
     //Para delito, con o sin violencia
     $('#violencia').hide();
     $(".cv").prop('required',false);

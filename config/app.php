@@ -180,6 +180,7 @@ return [
         //MisProviders
         Collective\Html\HtmlServiceProvider::class,
         Laraveles\Spanish\SpanishServiceProvider::class,
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
 
     ],
 
@@ -233,6 +234,7 @@ return [
         //Misaliases
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
 
     ],
 

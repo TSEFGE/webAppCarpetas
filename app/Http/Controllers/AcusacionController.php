@@ -46,6 +46,7 @@ class AcusacionController extends Controller
         //Para mostrar modal
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
         */
+        Alert::success('Acusación registrado con éxito', 'Hecho')->persistent("Aceptar");
         return redirect()->route('carpeta', $request->idCarpeta);
     }
     
