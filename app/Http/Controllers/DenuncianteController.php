@@ -203,6 +203,7 @@ class DenuncianteController extends Controller
             $persona = new Persona();
             $persona->nombres = $request->nombres2;
             $persona->rfc = $request->rfc2;
+            $persona->esEmpresa = 1;
             $persona->save();
             $idPersona = $persona->id;
 

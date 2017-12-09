@@ -7,10 +7,11 @@
             <th>Edad</th>
             <th>Sexo</th>
             <th>Teléfono</th>
+            <th>Es empresa</th>
         </thead>
         <tbody>
             @if(count($denunciantes)==0)
-                <tr><td colspan="5" class="text-center">Sin registros</td></tr>
+                <tr><td colspan="6" class="text-center">Sin registros</td></tr>
             @else
                 @foreach($denunciantes as $denunciante)
                     <tr>
@@ -19,6 +20,11 @@
                         <td>{{ $denunciante->edad }}</td>
                         <td>{{ $denunciante->sexo }}</td>
                         <td>{{ $denunciante->telefono }}</td>
+                        @if($denunciante->esEmpresa==1)
+                            <td>SI</td>
+                        @else
+                            <td>NO</td>
+                        @endif
                     </tr>
                 @endforeach
             @endif

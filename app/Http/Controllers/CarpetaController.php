@@ -75,7 +75,7 @@ class CarpetaController extends Controller
      */
     public function index($id)
     {
-        $carpeta = Carpeta::where('id', $id)->get();
+        $carpetaNueva = Carpeta::where('id', $id)->get();
         $denunciantes = CarpetaController::getDenunciantes($id);
         $denunciados = CarpetaController::getDenunciados($id);
         $autoridades = CarpetaController::getAutoridades($id);
@@ -87,7 +87,7 @@ class CarpetaController extends Controller
         $vehiculos = CarpetaController::getVehiculos($id);
         $delits = CarpetaController::hayDelitosVeh($id);
         //dd($vehiculos);
-        return view('carpeta')->with('carpeta', $carpeta)
+        return view('carpeta')->with('carpetaNueva', $carpetaNueva)
             ->with('denunciantes', $denunciantes)
             ->with('denunciados', $denunciados)
             ->with('autoridades', $autoridades)
@@ -130,7 +130,7 @@ class CarpetaController extends Controller
         $denunciantes = DB::table('extra_denunciante')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
+            ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'persona.esEmpresa', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
             ->where('variables_persona.idCarpeta', '=', $id)
             ->get();
         return $denunciantes;
@@ -140,7 +140,7 @@ class CarpetaController extends Controller
         $denunciados = DB::table('extra_denunciado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
+            ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'persona.esEmpresa', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
             ->where('variables_persona.idCarpeta', '=', $id)
             ->get();
         return $denunciados;

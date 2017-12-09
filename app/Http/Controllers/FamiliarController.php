@@ -15,17 +15,19 @@ class FamiliarController extends Controller
     {
         $familiares = CarpetaController::getFamiliares($idCarpeta);
         $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        $denunciantes = DB::table('extra_denunciante')
-            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-            ->where('variables_persona.idCarpeta', '=', $idCarpeta);
-        $involucrados = DB::table('extra_denunciado')
+        $involucrados1 = DB::table('extra_denunciado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
             ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-            ->union($denunciantes)
+            ->where('persona.esEmpresa', '=', 0);
+        $involucrados = DB::table('extra_denunciante')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+            ->where('persona.esEmpresa', '=', 0)
+            ->union($involucrados1)
             ->get();
         return view('forms.familiar')->with('idCarpeta', $idCarpeta)
             ->with('familiares', $familiares)

@@ -35,7 +35,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        {{--<div class="form-group row">
                             <div class="col-md-4"></div>
                             <div class="col-md-6">
                                 <div class="checkbox">
@@ -44,7 +44,7 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </div>--}}
 
                         <div class="form-group row">
                             <div class="col-md-4"></div>
@@ -52,9 +52,9 @@
                                 <button type="submit" class="btn btn-secondary">
                                     Iniciar sesión
                                 </button>
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                {{--<a class="btn btn-link" href="{{ route('password.request') }}">
                                     ¿Olvidó su contraseña?
-                                </a>
+                                </a>--}}
                             </div>
                         </div>
                     </form>
