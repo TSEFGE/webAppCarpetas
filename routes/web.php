@@ -82,6 +82,9 @@ Route::get('armas/{id}', 'RegistroController@getArmas');
 Route::get('denunciados/{idCarpeta}', 'RegistroController@getDenunciados');*/
 Route::get('involucrados/{idCarpeta}/{idAbogado}', 'RegistroController@getInvolucrados');
 
+
+Route::get('constancia-hechos/{idCarpeta}', 'DocxMakerController@getConstanciaHechos')->name('constancia.hechos');//Word con plantilla de constancia de hechos
+
 /*
 Route::get('/registrar-carpeta', function () {
 	return view('registro');
