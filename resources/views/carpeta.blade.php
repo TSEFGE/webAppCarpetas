@@ -47,20 +47,23 @@
                     </div>
                 </div>
 
+                @if(count($denunciantes)>0 || count($denunciados)>0 && count($abogados)>0)
                 <div class="boxtwo">
                     @include('tables.defensas')
                     <div class="text-right"> 
                         <a href="{{ route('new.defensa', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Asignar defensa</a><hr>
                     </div>
                 </div>
+                @endif
 
+                @if(count($denunciantes)>0 || count($denunciados)>0)
                 <div class="boxtwo">
                     @include('tables.familiares')
                     <div class="text-right"> 
                         <a href="{{ route('new.familiar', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
                     </div>
                 </div>
-
+                @endif
 
                 <div class="boxtwo">
                     @include('tables.delitos')
@@ -69,12 +72,14 @@
                     </div>
                 </div>
 
+                @if(count($delitos)>0)
                 <div class="boxtwo">
                     @include('tables.acusaciones')
                     <div class="text-right"> 
                         <a href="{{ route('new.acusacion', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Agregar Acusación</a><hr>
                     </div>
                 </div>
+                @endif
 
                 @if($delits==true)
                 <div class="boxtwo">

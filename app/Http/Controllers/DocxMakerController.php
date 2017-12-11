@@ -59,9 +59,173 @@ class DocxMakerController extends Controller
 		$templateProcessor->setValue('direccion', $info->direccion);
 		$templateProcessor->setValue('telefono', $info->telefono);
 
-		
 		$templateProcessor->saveAs('../storage/oficios/ConstanciaDeHechos'.$info->id.'.docx');
 		return response()->download('../storage/oficios/ConstanciaDeHechos'.$info->id.'.docx');
+	}
+
+	public static function getFormatoDenuncia($idAcusacion){
+		$carpeta = DB::table('acusacion')
+			->join('carpeta', 'carpeta.id', '=', 'acusacion.idCarpeta')
+			->join('users', 'users.id', '=', 'carpeta.idFiscal')
+			->join('unidad', 'unidad.id', '=', 'users.idUnidad')
+			->select('carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.conDetenido', 'users.nombres', 'users.primerAp', 'users.segundoAp', 'users.numFiscal', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito')
+			->where('acusacion.id', '=', $idAcusacion)
+			->get();
+
+		$delito = DB::table('acusacion')
+			->join('tipif_delito', 'tipif_delito.id', '=', 'acusacion.idTipifDelito')
+			->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+			->join('cat_modalidad', 'cat_modalidad.id', '=', 'tipif_delito.idModalidad')
+			->join('domicilio', 'domicilio.id', '=', 'tipif_delito.idDomicilio')
+			->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
+			->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
+			->join('cat_localidad', 'cat_localidad.id', '=', 'domicilio.idLocalidad')
+			->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
+			->select('tipif_delito.conViolencia', 'tipif_delito.formaComision', 'tipif_delito.consumacion', 'tipif_delito.fecha', 'tipif_delito.hora', 'tipif_delito.entreCalle', 'tipif_delito.yCalle', 'tipif_delito.puntoReferencia', 'cat_delito.nombre as delito', 'cat_modalidad.nombre as modalidad', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.nombre as municipio', 'cat_estado.nombre as estado', 'cat_localidad.nombre as localidad', 'cat_colonia.nombre as colonia', 'cat_colonia.codigoPostal as cp')
+			->where('acusacion.id', '=', $idAcusacion)
+			->get();
+
+		$denunciante = DB::table('acusacion')
+            ->join('extra_denunciante', 'extra_denunciante.id', '=', 'acusacion.idDenunciante')
+            ->join('notificacion', 'notificacion.id', '=', 'extra_denunciante.idNotificacion')
+            ->join('domicilio as dirN', 'dirN.id', '=', 'notificacion.idDomicilio')
+			->join('cat_municipio as munN', 'munN.id', '=', 'dirN.idMunicipio')
+			->join('cat_estado as estN', 'estN.id', '=', 'munN.idEstado')
+			->join('cat_localidad as locN', 'locN.id', '=', 'dirN.idLocalidad')
+			->join('cat_colonia as colN', 'colN.id', '=', 'dirN.idColonia')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->join('cat_ocupacion', 'cat_ocupacion.id', '=', 'variables_persona.idOcupacion')
+            ->join('cat_estado_civil', 'cat_estado_civil.id', '=', 'variables_persona.idEstadoCivil')
+            ->join('cat_escolaridad', 'cat_escolaridad.id', '=', 'variables_persona.idEscolaridad')
+            ->join('cat_religion', 'cat_religion.id', '=', 'variables_persona.idReligion')
+            ->join('domicilio as dirD', 'dirD.id', '=', 'variables_persona.idDomicilio')
+			->join('cat_municipio as munD', 'munD.id', '=', 'dirD.idMunicipio')
+			->join('cat_estado as estD', 'estD.id', '=', 'munD.idEstado')
+			->join('cat_localidad as locD', 'locD.id', '=', 'dirD.idLocalidad')
+			->join('cat_colonia as colD', 'colD.id', '=', 'dirD.idColonia')
+			->join('domicilio as dirT', 'dirT.id', '=', 'variables_persona.idDomicilioTrabajo')
+			->join('cat_municipio as munT', 'munT.id', '=', 'dirT.idMunicipio')
+			->join('cat_estado as estT', 'estT.id', '=', 'munT.idEstado')
+			->join('cat_localidad as locT', 'locT.id', '=', 'dirT.idLocalidad')
+			->join('cat_colonia as colT', 'colT.id', '=', 'dirT.idColonia')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
+            ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
+            ->select('extra_denunciante.conoceAlDenunciado', 'extra_denunciante.narracion', 'notificacion.correo', 'notificacion.telefono as telefonoN', 'notificacion.fax', 'munN.nombre as municipioN', 'estN.nombre as estadoN', 'locN.nombre as localidadN', 'colN.nombre as coloniaN', 'colN.codigoPostal as cpN', 'dirN.calle as calleN', 'dirN.numExterno as numExternoN', 'dirN.numInterno as numInternoN', 'variables_persona.edad', 'variables_persona.telefono', 'variables_persona.motivoEstancia', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion', 'variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'cat_ocupacion.nombre as ocupacion', 'cat_estado_civil.nombre as estadoCivil', 'cat_escolaridad.nombre as escolaridad', 'cat_religion.nombre as religion', 'munD.nombre as municipioD', 'estD.nombre as estadoD', 'locD.nombre as localidadD', 'colD.nombre as coloniaD', 'colD.codigoPostal as cpD', 'dirD.calle as calleD', 'dirD.numExterno as numExternoD', 'dirD.numInterno as numInternoD', 'munT.nombre as municipioT', 'estT.nombre as estadoT', 'locT.nombre as localidadT', 'colT.nombre as coloniaT', 'colT.codigoPostal as cpT', 'dirT.calle as calleT', 'dirT.numExterno as numExternoT', 'dirT.numInterno as numInternoT', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.fechaNacimiento', 'persona.rfc', 'persona.curp', 'persona.sexo', 'cat_municipio.nombre as municipioOrigen', 'cat_estado.nombre as estadoOrigen', 'persona.esEmpresa')
+            ->where('acusacion.id', '=', $idAcusacion)
+            ->get();
+
+            $denunciado = DB::table('acusacion')
+            ->join('extra_denunciado', 'extra_denunciado.id', '=', 'acusacion.idDenunciado')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->join('domicilio', 'domicilio.id', '=', 'variables_persona.idDomicilio')
+			->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
+			->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
+			->join('cat_localidad', 'cat_localidad.id', '=', 'domicilio.idLocalidad')
+			->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_denunciado.senasPartic', 'extra_denunciado.vestimenta', 'variables_persona.edad', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno',  'cat_municipio.nombre as municipio', 'cat_estado.nombre as estado', 'cat_localidad.nombre as localidad', 'cat_colonia.nombre as colonia', 'cat_colonia.codigoPostal as cp', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('acusacion.id', '=', $idAcusacion)
+            ->get();
+			//dd($denunciado);
+		$carpeta = $carpeta[0];
+		$delito = $delito[0];
+		$denunciante = $denunciante[0];
+		$denunciado = $denunciado[0];
+        
+        $distritoLetra = DocxMakerController::getDistritoLetra($carpeta->distrito);
+		$municipioUnidad = "Xalapa";
+		$municipioUnidadM = strtoupper($municipioUnidad);
+		$fechaInicio = new Carbon($carpeta->fechaInicio);
+		$fechaNacimiento = new Carbon($denunciante->fechaNacimiento);
+		if($denunciante->esEmpresa==0){
+			$esEmpresa = "NO";
+		}else{
+			$esEmpresa = "SI";
+		}
+		if($denunciante->conoceAlDenunciado==0){
+			$conoceAlDenunciado = "NO";
+		}else{
+			$conoceAlDenunciado = "SI";
+		}
+		$dirDenunciante = $denunciante->calleD." #".$denunciante->numExternoD." ".$denunciante->numInternoD.", COLONIA ".$denunciante->coloniaD.", ".$denunciante->municipioD.", ".$denunciante->estadoD;
+		$dirTrabajo = $denunciante->calleT." #".$denunciante->numExternoT." ".$denunciante->numInternoT.", COLONIA ".$denunciante->coloniaT.", ".$denunciante->municipioT.", ".$denunciante->estadoT;
+		$dirNotif = $denunciante->calleN." #".$denunciante->numExternoN." ".$denunciante->numInternoN.", COLONIA ".$denunciante->coloniaN.", ".$denunciante->municipioN.", ".$denunciante->estadoN;
+		$dirDelito = $delito->calle." #".$delito->numExterno." ".$delito->numInterno.", COLONIA ".$delito->colonia.", ".$delito->municipio.", ".$delito->estado;
+		$fechaDelito = new Carbon($delito->fecha);
+		if($delito->conViolencia==0){
+			$conViolencia = "NO";
+		}else{
+			$conViolencia = "SI";
+		}
+		if($carpeta->conDetenido==0){
+			$conDetenido = "NO";
+		}else{
+			$conDetenido = "SI";
+		}
+		$dirDenunciado = $denunciado->calle." #".$denunciado->numExterno." ".$denunciado->numInterno.", COLONIA ".$denunciado->colonia.", ".$denunciado->municipio.", ".$denunciado->estado;
+
+		$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/FormatoDenuncia.docx');
+		
+		$templateProcessor->setValue('nombreFiscal', strtoupper($carpeta->nombres." ".$carpeta->primerAp." ".$carpeta->segundoAp));
+		$templateProcessor->setValue('distrito', $carpeta->distrito);
+		$templateProcessor->setValue('distritoLetra', $distritoLetra);
+		$templateProcessor->setValue('municipioUnidadM', $municipioUnidadM);
+		$templateProcessor->setValue('dirUnidad', $carpeta->direccion);
+		$templateProcessor->setValue('telUnidad', $carpeta->telefono);
+		$templateProcessor->setValue('numCarpeta', $carpeta->numCarpeta);
+		$templateProcessor->setValue('numFiscal', $carpeta->numFiscal);
+		$templateProcessor->setValue('fechaInicio', $fechaInicio->format('d/m/Y'));
+		$templateProcessor->setValue('nombreDenunciante', $denunciante->nombres." ".$denunciante->primerAp." ".$denunciante->segundoAp);
+		$templateProcessor->setValue('calidadJuridica', "DENUNCIANTE");
+		$templateProcessor->setValue('escolaridad', $denunciante->escolaridad);
+		$templateProcessor->setValue('ocupacion', $denunciante->ocupacion);
+		$templateProcessor->setValue('telefono', $denunciante->telefono);
+		$templateProcessor->setValue('domicilio', $dirDenunciante);
+		$templateProcessor->setValue('esEmpresa', $esEmpresa);
+		$templateProcessor->setValue('religion', $denunciante->religion);
+		$templateProcessor->setValue('rfc', $denunciante->rfc);
+		$templateProcessor->setValue('curp', $denunciante->curp);
+		$templateProcessor->setValue('municipioOrigen', $denunciante->municipioOrigen);
+		$templateProcessor->setValue('estadoOrigen', $denunciante->estadoOrigen);
+		$templateProcessor->setValue('fechaNacimiento',  $fechaNacimiento->format('d/m/Y'));
+		$templateProcessor->setValue('edad', $denunciante->edad);
+		$templateProcessor->setValue('sexo', $denunciante->sexo);
+		$templateProcessor->setValue('docIdentificacion', $denunciante->docIdentificacion);
+		$templateProcessor->setValue('numDocIdentificacion', $denunciante->numDocIdentificacion);
+		$templateProcessor->setValue('estadoCivil', $denunciante->estadoCivil);
+		$templateProcessor->setValue('motivoEstancia', $denunciante->motivoEstancia);
+		$templateProcessor->setValue('lugarTrabajo', $denunciante->lugarTrabajo);
+		$templateProcessor->setValue('telefonoTrabajo', $denunciante->telefonoTrabajo);
+		$templateProcessor->setValue('dirTrabajo', $dirTrabajo);
+		$templateProcessor->setValue('dirNotif', $dirNotif);
+		$templateProcessor->setValue('correo', $denunciante->correo);
+		$templateProcessor->setValue('telefonoN', $denunciante->telefonoN);
+		$templateProcessor->setValue('fax', $denunciante->fax);
+		$templateProcessor->setValue('dirDelito', $dirDelito);
+		$templateProcessor->setValue('puntoReferencia', $delito->puntoReferencia);
+		$templateProcessor->setValue('coloniaDelito', $delito->colonia);
+		$templateProcessor->setValue('fecha', $fechaDelito->format('d/m/Y'));
+		$templateProcessor->setValue('hora', $delito->hora);
+		$templateProcessor->setValue('entreCalle', $delito->entreCalle);
+		$templateProcessor->setValue('yCalle', $delito->yCalle);
+		$templateProcessor->setValue('delito', $delito->delito);
+		$templateProcessor->setValue('conViolencia', $conViolencia);
+		$templateProcessor->setValue('conDetenido', $conDetenido);
+		$templateProcessor->setValue('modalidad', $delito->modalidad);
+		$templateProcessor->setValue('formaComision', $delito->formaComision);
+		$templateProcessor->setValue('consumacion', $delito->consumacion);
+		$templateProcessor->setValue('nombreDen', $denunciado->nombres." ".$denunciado->primerAp." ".$denunciado->segundoAp);
+		$templateProcessor->setValue('edadDen', $denunciado->edad);
+		$templateProcessor->setValue('dirDen', $dirDenunciado);
+		$templateProcessor->setValue('vestimenta', $denunciado->vestimenta);
+		$templateProcessor->setValue('conocelAlDen', $conoceAlDenunciado);
+		$templateProcessor->setValue('senasPartic', $denunciado->senasPartic);
+		$templateProcessor->setValue('narracion', $denunciante->narracion);
+
+
+		$templateProcessor->saveAs('../storage/oficios/FormatoDenuncia'.$idAcusacion.'.docx');
+		return response()->download('../storage/oficios/FormatoDenuncia'.$idAcusacion.'.docx');
 
 	}
 

@@ -83,7 +83,16 @@ Route::get('denunciados/{idCarpeta}', 'RegistroController@getDenunciados');*/
 Route::get('involucrados/{idCarpeta}/{idAbogado}', 'RegistroController@getInvolucrados');
 
 
-Route::get('constancia-hechos/{idCarpeta}', 'DocxMakerController@getConstanciaHechos')->name('constancia.hechos');//Word con plantilla de constancia de hechos
+//Route::get('constancia-hechos/{idCarpeta}', 'DocxMakerController@getConstanciaHechos')->name('constancia.hechos');
+//Word con plantilla de constancia de hechos
+Route::get('constancia-hechos/{idCarpeta}', [
+	'as'=>'constancia.hechos',
+	'uses'=>'DocxMakerController@getConstanciaHechos'
+]);
+Route::get('formato-denuncia/{idAcusacion}', [
+	'as'=>'formato.denuncia',
+	'uses'=>'DocxMakerController@getFormatoDenuncia'
+]);
 
 /*
 Route::get('/registrar-carpeta', function () {

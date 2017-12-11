@@ -242,7 +242,7 @@ class CarpetaController extends Controller
             ->join('persona as per', 'per.id', '=', 'var.idPersona')
             ->join('tipif_delito', 'tipif_delito.id', '=', 'acusacion.idTipifDelito')
             ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
-            ->select('persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'cat_delito.nombre as delito', 'per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
+            ->select('acusacion.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'cat_delito.nombre as delito', 'per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
             ->where('acusacion.idCarpeta', '=', $id)
             ->get();
         return $acusaciones;
