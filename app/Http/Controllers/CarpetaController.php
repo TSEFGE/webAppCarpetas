@@ -75,55 +75,63 @@ class CarpetaController extends Controller
      */
     public function index($id)
     {
-        $carpetaNueva = Carpeta::where('id', $id)->get();
-        $denunciantes = CarpetaController::getDenunciantes($id);
-        $denunciados = CarpetaController::getDenunciados($id);
-        $autoridades = CarpetaController::getAutoridades($id);
-        $abogados = CarpetaController::getAbogados($id);
-        $defensas = CarpetaController::getDefensas($id);
-        $familiares = CarpetaController::getFamiliares($id);
-        $delitos = CarpetaController::getDelitos($id);
-        $acusaciones = CarpetaController::getAcusaciones($id);
-        $vehiculos = CarpetaController::getVehiculos($id);
-        $delits = CarpetaController::hayDelitosVeh($id);
-        //dd($vehiculos);
-        return view('carpeta')->with('carpetaNueva', $carpetaNueva)
-            ->with('denunciantes', $denunciantes)
-            ->with('denunciados', $denunciados)
-            ->with('autoridades', $autoridades)
-            ->with('abogados', $abogados)
-            ->with('defensas', $defensas)
-            ->with('familiares', $familiares)
-            ->with('delitos', $delitos)
-            ->with('acusaciones', $acusaciones)
-            ->with('vehiculos', $vehiculos)
-            ->with('delits', $delits);
+        $carpetaNueva = Carpeta::where('id', $id)->where('idFiscal', Auth::user()->id)->get();
+        if(count($carpetaNueva)>0){
+            $denunciantes = CarpetaController::getDenunciantes($id);
+            $denunciados = CarpetaController::getDenunciados($id);
+            $autoridades = CarpetaController::getAutoridades($id);
+            $abogados = CarpetaController::getAbogados($id);
+            $defensas = CarpetaController::getDefensas($id);
+            $familiares = CarpetaController::getFamiliares($id);
+            $delitos = CarpetaController::getDelitos($id);
+            $acusaciones = CarpetaController::getAcusaciones($id);
+            $vehiculos = CarpetaController::getVehiculos($id);
+            $delits = CarpetaController::hayDelitosVeh($id);
+            //dd($vehiculos);
+            return view('carpeta')->with('carpetaNueva', $carpetaNueva)
+                ->with('denunciantes', $denunciantes)
+                ->with('denunciados', $denunciados)
+                ->with('autoridades', $autoridades)
+                ->with('abogados', $abogados)
+                ->with('defensas', $defensas)
+                ->with('familiares', $familiares)
+                ->with('delitos', $delitos)
+                ->with('acusaciones', $acusaciones)
+                ->with('vehiculos', $vehiculos)
+                ->with('delits', $delits);
+        }else{
+            return redirect()->route('home');
+        }
     }
 
     public function verDetalle($id){
-        $carpeta = Carpeta::where('id', $id)->get();
-        $denunciantes = CarpetaController::getDenunciantes($id);
-        $denunciados = CarpetaController::getDenunciados($id);
-        $autoridades = CarpetaController::getAutoridades($id);
-        $abogados = CarpetaController::getAbogados($id);
-        $defensas = CarpetaController::getDefensas($id);
-        $familiares = CarpetaController::getFamiliares($id);
-        $delitos = CarpetaController::getDelitos($id);
-        $acusaciones = CarpetaController::getAcusaciones($id);
-        $vehiculos = CarpetaController::getVehiculos($id);
-        $delits = CarpetaController::hayDelitosVeh($id);
-        //dd($vehiculos);
-        return view('detalle')->with('carpeta', $carpeta)
-            ->with('denunciantes', $denunciantes)
-            ->with('denunciados', $denunciados)
-            ->with('autoridades', $autoridades)
-            ->with('abogados', $abogados)
-            ->with('defensas', $defensas)
-            ->with('familiares', $familiares)
-            ->with('delitos', $delitos)
-            ->with('acusaciones', $acusaciones)
-            ->with('vehiculos', $vehiculos)
-            ->with('delits', $delits);
+        $carpetaNueva = Carpeta::where('id', $id)->where('idFiscal', Auth::user()->id)->get();
+        if(count($carpetaNueva)>0){
+            $denunciantes = CarpetaController::getDenunciantes($id);
+            $denunciados = CarpetaController::getDenunciados($id);
+            $autoridades = CarpetaController::getAutoridades($id);
+            $abogados = CarpetaController::getAbogados($id);
+            $defensas = CarpetaController::getDefensas($id);
+            $familiares = CarpetaController::getFamiliares($id);
+            $delitos = CarpetaController::getDelitos($id);
+            $acusaciones = CarpetaController::getAcusaciones($id);
+            $vehiculos = CarpetaController::getVehiculos($id);
+            $delits = CarpetaController::hayDelitosVeh($id);
+            //dd($vehiculos);
+            return view('detalle')->with('carpetaNueva', $carpetaNueva)
+                ->with('denunciantes', $denunciantes)
+                ->with('denunciados', $denunciados)
+                ->with('autoridades', $autoridades)
+                ->with('abogados', $abogados)
+                ->with('defensas', $defensas)
+                ->with('familiares', $familiares)
+                ->with('delitos', $delitos)
+                ->with('acusaciones', $acusaciones)
+                ->with('vehiculos', $vehiculos)
+                ->with('delits', $delits);
+        }else{
+            return redirect()->route('home');
+        }
     }
 
     public static function getDenunciantes($id){

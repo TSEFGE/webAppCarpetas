@@ -144,9 +144,9 @@ class DocxMakerController extends Controller
 			$esEmpresa = "SI";
 		}
 		if($denunciante->conoceAlDenunciado==0){
-			$conoceAlDenunciado = "NO";
+			$conoceAlDen = "NO";
 		}else{
-			$conoceAlDenunciado = "SI";
+			$conoceAlDen = "SI";
 		}
 		$dirDenunciante = $denunciante->calleD." #".$denunciante->numExternoD." ".$denunciante->numInternoD.", COLONIA ".$denunciante->coloniaD.", ".$denunciante->municipioD.", ".$denunciante->estadoD;
 		$dirTrabajo = $denunciante->calleT." #".$denunciante->numExternoT." ".$denunciante->numInternoT.", COLONIA ".$denunciante->coloniaT.", ".$denunciante->municipioT.", ".$denunciante->estadoT;
@@ -219,7 +219,7 @@ class DocxMakerController extends Controller
 		$templateProcessor->setValue('edadDen', $denunciado->edad);
 		$templateProcessor->setValue('dirDen', $dirDenunciado);
 		$templateProcessor->setValue('vestimenta', $denunciado->vestimenta);
-		$templateProcessor->setValue('conocelAlDen', $conoceAlDenunciado);
+		$templateProcessor->setValue('conocelAlDen', $conoceAlDen);
 		$templateProcessor->setValue('senasPartic', $denunciado->senasPartic);
 		$templateProcessor->setValue('narracion', $denunciante->narracion);
 

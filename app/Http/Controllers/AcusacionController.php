@@ -3,37 +3,44 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use DB;
 use Alert;
+use App\Models\Carpeta;
 use App\Models\Acusacion;
 
 class AcusacionController extends Controller
 {
     public function showForm($idCarpeta)
     {
-        $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
-        $denunciantes = DB::table('extra_denunciante')
-            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-            ->get();
-        $denunciados = DB::table('extra_denunciado')
-            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
-            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-            ->get();
-        $tipifdelitos = DB::table('tipif_delito')
-            ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
-            ->select('tipif_delito.id','cat_delito.nombre')
-            ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
-            ->get();
-        return view('forms.acusacion')->with('idCarpeta', $idCarpeta)
-            ->with('acusaciones', $acusaciones)
-            ->with('denunciantes', $denunciantes)
-            ->with('denunciados', $denunciados)
-            ->with('tipifdelitos', $tipifdelitos);
+        $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
+        if(count($carpetaNueva)>0){ 
+            $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
+            $denunciantes = DB::table('extra_denunciante')
+                ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+                ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+                ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+                ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+                ->get();
+            $denunciados = DB::table('extra_denunciado')
+                ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+                ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+                ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+                ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+                ->get();
+            $tipifdelitos = DB::table('tipif_delito')
+                ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+                ->select('tipif_delito.id','cat_delito.nombre')
+                ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
+                ->get();
+            return view('forms.acusacion')->with('idCarpeta', $idCarpeta)
+                ->with('acusaciones', $acusaciones)
+                ->with('denunciantes', $denunciantes)
+                ->with('denunciados', $denunciados)
+                ->with('tipifdelitos', $tipifdelitos);
+        }else{
+            return redirect()->route('home');
+        }
     }
 
     public function storeAcusacion(Request $request){

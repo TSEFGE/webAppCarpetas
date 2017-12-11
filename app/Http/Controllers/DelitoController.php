@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Alert;
 
+use App\Models\Carpeta;
 use App\Models\CatDelito;
 use App\Models\CatEstado;
 use App\Models\CatLugar;
@@ -20,23 +22,28 @@ class DelitoController extends Controller
 {
     public function showForm($idCarpeta)
     {
-        $delitos = CarpetaController::getDelitos($idCarpeta);
-        $delits = CatDelito::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $estados = CatEstado::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $lugares = CatLugar::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $marcas = CatMarca::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $modalidades = CatModalidad::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $tiposarma = CatTipoArma::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $zonas = CatZona::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        return view('forms.delito')->with('idCarpeta', $idCarpeta)
-            ->with('delitos', $delitos)
-            ->with('delits', $delits)
-            ->with('estados', $estados)
-            ->with('lugares', $lugares)
-            ->with('marcas', $marcas)
-            ->with('modalidades', $modalidades)
-            ->with('tiposarma', $tiposarma)
-            ->with('zonas', $zonas);
+        $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
+        if(count($carpetaNueva)>0){ 
+            $delitos = CarpetaController::getDelitos($idCarpeta);
+            $delits = CatDelito::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
+            $estados = CatEstado::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
+            $lugares = CatLugar::orderBy('id', 'ASC')->pluck('nombre', 'id');
+            $marcas = CatMarca::orderBy('id', 'ASC')->pluck('nombre', 'id');
+            $modalidades = CatModalidad::orderBy('id', 'ASC')->pluck('nombre', 'id');
+            $tiposarma = CatTipoArma::orderBy('id', 'ASC')->pluck('nombre', 'id');
+            $zonas = CatZona::orderBy('id', 'ASC')->pluck('nombre', 'id');
+            return view('forms.delito')->with('idCarpeta', $idCarpeta)
+                ->with('delitos', $delitos)
+                ->with('delits', $delits)
+                ->with('estados', $estados)
+                ->with('lugares', $lugares)
+                ->with('marcas', $marcas)
+                ->with('modalidades', $modalidades)
+                ->with('tiposarma', $tiposarma)
+                ->with('zonas', $zonas);
+        }else{
+            return redirect()->route('home');
+        }
     }
 
     public function storeDelito(Request $request){

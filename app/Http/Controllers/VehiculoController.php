@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use DB;
 use Alert;
 
@@ -14,6 +15,7 @@ use App\Models\CatMarca;
 use App\Models\CatProcedencia;
 use App\Models\CatTipoUso;
 
+use App\Models\Carpeta;
 use App\Models\TipifDelito;
 use App\Models\Vehiculo;
 
@@ -21,30 +23,35 @@ class VehiculoController extends Controller
 {
     public function showForm($idCarpeta)
     {
-        $vehiculos = CarpetaController::getVehiculos($idCarpeta);
-        $tipifdelitos = DB::table('tipif_delito')
-            ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
-            ->select('tipif_delito.id', 'cat_delito.id as idDelito', 'cat_delito.nombre as delito')
-            ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
-            ->whereIn('idDelito', [130, 131, 132, 133, 134, 135, 242, 243, 244, 245, 227])
-            ->get();
-        $aseguradoras = CatAseguradora::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $clasesveh = CatClaseVehiculo::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $colores = CatColor::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $estados = CatEstado::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $marcas = CatMarca::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $procedencias = CatProcedencia::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $tiposuso = CatTipoUso::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        return view('forms.vehiculo')->with('idCarpeta', $idCarpeta)
-            ->with('vehiculos', $vehiculos)
-            ->with('tipifdelitos', $tipifdelitos)
-            ->with('aseguradoras', $aseguradoras)
-            ->with('clasesveh', $clasesveh)
-            ->with('colores', $colores)
-            ->with('estados', $estados)
-            ->with('marcas', $marcas)
-            ->with('procedencias', $procedencias)
-            ->with('tiposuso', $tiposuso);
+        $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
+        if(count($carpetaNueva)>0){ 
+            $vehiculos = CarpetaController::getVehiculos($idCarpeta);
+            $tipifdelitos = DB::table('tipif_delito')
+                ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+                ->select('tipif_delito.id', 'cat_delito.id as idDelito', 'cat_delito.nombre as delito')
+                ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
+                ->whereIn('idDelito', [130, 131, 132, 133, 134, 135, 242, 243, 244, 245, 227])
+                ->get();
+            $aseguradoras = CatAseguradora::orderBy('id', 'ASC')->pluck('nombre', 'id');
+            $clasesveh = CatClaseVehiculo::orderBy('id', 'ASC')->pluck('nombre', 'id');
+            $colores = CatColor::orderBy('id', 'ASC')->pluck('nombre', 'id');
+            $estados = CatEstado::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
+            $marcas = CatMarca::orderBy('id', 'ASC')->pluck('nombre', 'id');
+            $procedencias = CatProcedencia::orderBy('id', 'ASC')->pluck('nombre', 'id');
+            $tiposuso = CatTipoUso::orderBy('id', 'ASC')->pluck('nombre', 'id');
+            return view('forms.vehiculo')->with('idCarpeta', $idCarpeta)
+                ->with('vehiculos', $vehiculos)
+                ->with('tipifdelitos', $tipifdelitos)
+                ->with('aseguradoras', $aseguradoras)
+                ->with('clasesveh', $clasesveh)
+                ->with('colores', $colores)
+                ->with('estados', $estados)
+                ->with('marcas', $marcas)
+                ->with('procedencias', $procedencias)
+                ->with('tiposuso', $tiposuso);
+        }else{
+            return redirect()->route('home');
+        }
     }
 
     public function storeVehiculo(Request $request){

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use DB;
 use Alert;
 
+use App\Models\Carpeta;
 use App\Models\CatEstado;
 use App\Models\CatEstadoCivil;
 
@@ -22,13 +23,18 @@ class AbogadoController extends Controller
 {
     public function showForm($idCarpeta)
     {   
-        $abogados = CarpetaController::getAbogados($idCarpeta);
-        $estados = CatEstado::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $estadoscivil = CatEstadoCivil::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        return view('forms.abogado')->with('idCarpeta', $idCarpeta)
-            ->with('abogados', $abogados)
-            ->with('estados', $estados)
-            ->with('estadoscivil', $estadoscivil);
+        $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
+        if(count($carpetaNueva)>0){ 
+            $abogados = CarpetaController::getAbogados($idCarpeta);
+            $estados = CatEstado::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
+            $estadoscivil = CatEstadoCivil::orderBy('id', 'ASC')->pluck('nombre', 'id');
+            return view('forms.abogado')->with('idCarpeta', $idCarpeta)
+                ->with('abogados', $abogados)
+                ->with('estados', $estados)
+                ->with('estadoscivil', $estadoscivil);
+        }else{
+            return redirect()->route('home');
+        }
     }
 
     public function storeAbogado(Request $request)
@@ -95,16 +101,21 @@ class AbogadoController extends Controller
 
     public function showForm2($idCarpeta)
     {
-        $defensas = CarpetaController::getDefensas($idCarpeta);
-        $abogados = DB::table('extra_abogado')
-            ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
-            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_abogado.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-            ->get();
-        return view('forms.defensa')->with('idCarpeta', $idCarpeta)
-            ->with('defensas', $defensas)
-            ->with('abogados', $abogados);
+        $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
+        if(count($carpetaNueva)>0){ 
+            $defensas = CarpetaController::getDefensas($idCarpeta);
+            $abogados = DB::table('extra_abogado')
+                ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
+                ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+                ->select('extra_abogado.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+                ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+                ->get();
+            return view('forms.defensa')->with('idCarpeta', $idCarpeta)
+                ->with('defensas', $defensas)
+                ->with('abogados', $abogados);
+        }else{
+            return redirect()->route('home');
+        }
     }
 
     public function storeDefensa(Request $request)

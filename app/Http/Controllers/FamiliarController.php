@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use DB;
 use Alert;
 
+use App\Models\Carpeta;
 use App\Models\Familiar;
 use App\Models\CatOcupacion;
 
@@ -13,26 +15,31 @@ class FamiliarController extends Controller
 {
     public function showForm($idCarpeta)
     {
-        $familiares = CarpetaController::getFamiliares($idCarpeta);
-        $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        $involucrados1 = DB::table('extra_denunciado')
-            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
-            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-            ->where('persona.esEmpresa', '=', 0);
-        $involucrados = DB::table('extra_denunciante')
-            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-            ->where('persona.esEmpresa', '=', 0)
-            ->union($involucrados1)
-            ->get();
-        return view('forms.familiar')->with('idCarpeta', $idCarpeta)
-            ->with('familiares', $familiares)
-            ->with('involucrados', $involucrados)
-            ->with('ocupaciones', $ocupaciones);
+        $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
+        if(count($carpetaNueva)>0){ 
+            $familiares = CarpetaController::getFamiliares($idCarpeta);
+            $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $involucrados1 = DB::table('extra_denunciado')
+                ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+                ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+                ->select('persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+                ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+                ->where('persona.esEmpresa', '=', 0);
+            $involucrados = DB::table('extra_denunciante')
+                ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+                ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+                ->select('persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+                ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+                ->where('persona.esEmpresa', '=', 0)
+                ->union($involucrados1)
+                ->get();
+            return view('forms.familiar')->with('idCarpeta', $idCarpeta)
+                ->with('familiares', $familiares)
+                ->with('involucrados', $involucrados)
+                ->with('ocupaciones', $ocupaciones);
+        }else{
+            return redirect()->route('home');
+        }
     }
 
     public function storeFamiliar(Request $request){

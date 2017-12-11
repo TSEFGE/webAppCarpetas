@@ -72,7 +72,7 @@
                     </div>
                 </div>
 
-                @if(count($delitos)>0)
+                @if(count($delitos)>0 && count($denunciantes)>0 && count($denunciados)>0)
                 <div class="boxtwo">
                     @include('tables.acusaciones')
                     <div class="text-right"> 

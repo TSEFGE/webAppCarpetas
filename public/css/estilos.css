@@ -1,6 +1,9 @@
 /*input[type="text"], textarea, select, option, input[type="password"], input[type="search"]{
     text-transform: uppercase;
 }*/
+body{
+	padding-top: 50px;
+}
 
 header{
 	margin-bottom: 10px;
