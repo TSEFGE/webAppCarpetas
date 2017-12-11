@@ -7,26 +7,26 @@ $(document).ready(function(){
     //Para el inicio de carpeta
     $("#conDetenido").prop("checked", false);
     $('#conDet1').css('display', 'none');
-    $("#horaIntervencion").prop('required',false);
-    $("#npd").prop('required',false);
-    $("#numIph").prop('required',false);
-    $("#fechaIph").prop('required',false);
-    $("#narracionIph").prop('required',false);
+    $("#horaIntervencion").prop('disabled', true);
+    $("#npd").prop('disabled', true);
+    $("#numIph").prop('disabled', true);
+    $("#fechaIph").prop('disabled', true);
+    $("#narracionIph").prop('disabled', true);
     $("#conDetenido").change(function(event){
         if ($('#conDetenido').is(':checked') ) {
             $('#conDet1').css('display', 'block');
-            $("#horaIntervencion").prop('required',true);
-            $("#npd").prop('required',true);
-            $("#numIph").prop('required',true);
-            $("#fechaIph").prop('required',true);
-            $("#narracionIph").prop('required',true);
+            $("#horaIntervencion").prop('disabled', false);
+            $("#npd").prop('disabled', false);
+            $("#numIph").prop('disabled', false);
+            $("#fechaIph").prop('disabled', false);
+            $("#narracionIph").prop('disabled', false);
         }else{
             $('#conDet1').css('display', 'none');
-            $("#horaIntervencion").prop('required',false);
-            $("#npd").prop('required',false);
-            $("#numIph").prop('required',false);
-            $("#fechaIph").prop('required',false);
-            $("#narracionIph").prop('required',false);
+            $("#horaIntervencion").prop('disabled', true);
+            $("#npd").prop('disabled', true);
+            $("#numIph").prop('disabled', true);
+            $("#fechaIph").prop('disabled', true);
+            $("#narracionIph").prop('disabled', true);
         }
     });
 
@@ -45,98 +45,100 @@ $(document).ready(function(){
             $('.comparecencia').hide();
 
             //Datos requeridos de Q.R.R.
-            $('#nombresQ').prop('required', true);
+            $('#nombresQ').prop('disabled', false);
 
             //Datos no requeridos de denunciado conocido
-            $('#nombresC').prop('required', false);
-            $('#primerApC').prop('required', false);
-            $('#aliasC').prop('required', false);
-            $('#idEstadoC').prop('required', false);
-            $('#idMunicipioC').prop('required', false);
-            $('#idLocalidadC').prop('required', false);
-            $('#cpC').prop('required', false);
-            $('#idColoniaC').prop('required', false);
-            $('#calleC').prop('required', false);
-            $('#numExternoC').prop('required', false);
-            $('#numInternoC').prop('required', false);
-            $('#senasParticC').prop('required', false);
+            $('#nombresC').prop('disabled', true);
+            $('#primerApC').prop('disabled', true);
+            $('#aliasC').prop('disabled', true);
+            $('#idEstadoC').prop('disabled', true);
+            $('#idMunicipioC').prop('disabled', true);
+            $('#idLocalidadC').prop('disabled', true);
+            $('#cpC').prop('disabled', true);
+            $('#idColoniaC').prop('disabled', true);
+            $('#calleC').prop('disabled', true);
+            $('#numExternoC').prop('disabled', true);
+            $('#numInternoC').prop('disabled', true);
+            $('#senasParticC').prop('disabled', true);
 
             //Datos no requeridos de denunciado comparecencia
-            $('#esEmpresa1').prop('required', false);
-            $('#esEmpresa2').prop('required', false);
+            $('#esEmpresa1').prop('disabled', true);
+            $('#esEmpresa2').prop('disabled', true);
 
             //Datos personales no requeridos de Persona Moral o Empresa
-            $('#nombres2').prop('required', false);
-            $('#rfc2').prop('required', false);
-            $('#representanteLegal').prop('required', false);
-            $('#idEstado').prop('required', false);
-            $('#idMunicipio').prop('required', false);
-            $('#idLocalidad').prop('required', false);
-            $('#cp').prop('required', false);
-            $('#idColonia').prop('required', false);
-            $('#calle').prop('required', false);
-            $('#numExterno').prop('required', false);
-            $('#numInterno').prop('required', false);
+            $('#nombres2').prop('disabled', true);
+            $('#rfc2').prop('disabled', true);
+            $('#representanteLegal').prop('disabled', true);
+            $('#idEstado').prop('disabled', true);
+            $('#idMunicipio').prop('disabled', true);
+            $('#idLocalidad').prop('disabled', true);
+            $('#cp').prop('disabled', true);
+            $('#idColonia').prop('disabled', true);
+            $('#calle').prop('disabled', true);
+            $('#numExterno').prop('disabled', true);
+            $('#numInterno').prop('disabled', true);
 
             //Datos personales no requeridos de Persona Física
-            $("#nombres").prop('required',false);   
-            $("#primerAp").prop('required',false);   
-            $("#segundoAp").prop('required',false);   
-            $("#rfc").prop('required',false);   
-            $("#fechaNacimiento").prop('required',false);   
-            $("#edad").prop('required',false);   
-            $("#sexo").prop('required',false);   
-            $("#curp").prop('required',false);   
-            $("#idNacionalidad").prop('required',false);   
-            $("#idEtnia").prop('required',false);   
-            $("#idLengua").prop('required',false);   
-            $("#idEstadoOrigen").prop('required',false);   
-            $("#idMunicipioOrigen").prop('required',false);   
-            $("#telefono").prop('required',false);   
-            $("#motivoEstancia").prop('required',false);   
-            $("#idOcupacion").prop('required',false);   
-            $("#idEstadoCivil").prop('required',false);   
-            $("#idReligion").prop('required',false);   
-            $("#idEscolaridad").prop('required',false);   
-            $("#docIdentificacion").prop('required',false);   
-            $("#numDocIdentificacion").prop('required',false);  
+            $("#nombres").prop('disabled', true);   
+            $("#primerAp").prop('disabled', true);   
+            $("#segundoAp").prop('disabled', true);   
+            $("#rfc").prop('disabled', true);   
+            $("#fechaNacimiento").prop('disabled', true);   
+            $("#edad").prop('disabled', true);   
+            $("#sexo").prop('disabled', true);   
+            $("#curp").prop('disabled', true);   
+            $("#idNacionalidad").prop('disabled', true);   
+            $("#idEtnia").prop('disabled', true);   
+            $("#idLengua").prop('disabled', true);   
+            $("#idEstadoOrigen").prop('disabled', true);   
+            $("#idMunicipioOrigen").prop('disabled', true);   
+            $("#telefono").prop('disabled', true);   
+            $("#motivoEstancia").prop('disabled', true);   
+            $("#idOcupacion").prop('disabled', true);   
+            $("#idEstadoCivil").prop('disabled', true);   
+            $("#idReligion").prop('disabled', true);   
+            $("#idEscolaridad").prop('disabled', true);   
+            $("#docIdentificacion").prop('disabled', true);   
+            $("#numDocIdentificacion").prop('disabled', true);  
 
             //Datos del trabajo no requeridos de Persona Física
-            $("#lugarTrabajo").prop('required',false);   
-            $("#telefonoTrabajo").prop('required',false);   
-            $("#idEstado2").prop('required',false);   
-            $("#idMunicipio2").prop('required',false);   
-            $("#idLocalidad2").prop('required',false);   
-            $("#cp2").prop('required',false);   
-            $("#idColonia2").prop('required',false);   
-            $("#calle2").prop('required',false);   
-            $("#numExterno2").prop('required',false);   
-            $("#numInterno2").prop('required',false);  
+            $("#lugarTrabajo").prop('disabled', true);   
+            $("#telefonoTrabajo").prop('disabled', true);   
+            $("#idEstado2").prop('disabled', true);   
+            $("#idMunicipio2").prop('disabled', true);   
+            $("#idLocalidad2").prop('disabled', true);   
+            $("#cp2").prop('disabled', true);   
+            $("#idColonia2").prop('disabled', true);   
+            $("#calle2").prop('disabled', true);   
+            $("#numExterno2").prop('disabled', true);   
+            $("#numInterno2").prop('disabled', true);  
 
             //Datos no requeridos de direccion para notificaciones  
-            $("#idEstado3").prop('required',false);   
-            $("#idMunicipio3").prop('required',false);   
-            $("#idLocalidad3").prop('required',false);   
-            $("#cp3").prop('required',false);   
-            $("#idColonia3").prop('required',false);   
-            $("#calle3").prop('required',false);   
-            $("#numExterno3").prop('required',false);   
-            $("#numInterno3").prop('required',false);   
-            $("#correo").prop('required',false);   
-            $("#telefonoN").prop('required',false);  
-            $("#fax").prop('required',false);
+            $("#idEstado3").prop('disabled', true);   
+            $("#idMunicipio3").prop('disabled', true);   
+            $("#idLocalidad3").prop('disabled', true);   
+            $("#cp3").prop('disabled', true);   
+            $("#idColonia3").prop('disabled', true);   
+            $("#calle3").prop('disabled', true);   
+            $("#numExterno3").prop('disabled', true);   
+            $("#numInterno3").prop('disabled', true);   
+            $("#correo").prop('disabled', true);   
+            $("#telefonoN").prop('disabled', true);  
+            $("#fax").prop('disabled', true);
 
             //Datos no requeridos de extra denunciado
-            $("#idPuesto").prop('required',false);
-            $("#alias").prop('required',false);
-            $("#personasBajoSuGuarda").prop('required',false);
-            $("#ingreso").prop('required',false);
-            $("#periodoIngreso").prop('required',false);
-            $("#residenciaAnterior").prop('required',false);
-            $("#perseguidoPenalmente1").prop('required',false);
-            $("#vestimenta").prop('required',false);
-            $("#senasPartic").prop('required',false);
-            $("#narracion").prop('required',false);
+            $("#idPuesto").prop('disabled', true);
+            $("#alias").prop('disabled', true);
+            $("#personasBajoSuGuarda").prop('disabled', true);
+            $("#ingreso").prop('disabled', true);
+            $("#periodoIngreso").prop('disabled', true);
+            $("#residenciaAnterior").prop('disabled', true);
+            $("#perseguidoPenalmente").prop('disabled', true);
+            $("#perseguidoPenalmente1").prop('disabled', true);
+            $("#perseguidoPenalmente2").prop('disabled', true);
+            $("#vestimenta").prop('disabled', true);
+            $("#senasPartic").prop('disabled', true);
+            $("#narracion").prop('disabled', true);
         }
     });
     //Si lo conoce el denunciante
@@ -147,98 +149,100 @@ $(document).ready(function(){
             $('.comparecencia').hide();
 
             //Datos requeridos de Q.R.R.
-            $('#nombresQ').prop('required', false);
+            $('#nombresQ').prop('disabled', true);
 
             //Datos no requeridos de denunciado conocido
-            $('#nombresC').prop('required', true);
-            $('#primerApC').prop('required', true);
-            $('#aliasC').prop('required', true);
-            $('#idEstadoC').prop('required', true);
-            $('#idMunicipioC').prop('required', true);
-            $('#idLocalidadC').prop('required', true);
-            $('#cpC').prop('required', true);
-            $('#idColoniaC').prop('required', true);
-            $('#calleC').prop('required', true);
-            $('#numExternoC').prop('required', true);
-            $('#numInternoC').prop('required', true);
-            $('#senasParticC').prop('required', true);
+            $('#nombresC').prop('disabled', false);
+            $('#primerApC').prop('disabled', false);
+            $('#aliasC').prop('disabled', false);
+            $('#idEstadoC').prop('disabled', false);
+            $('#idMunicipioC').prop('disabled', false);
+            $('#idLocalidadC').prop('disabled', false);
+            $('#cpC').prop('disabled', false);
+            $('#idColoniaC').prop('disabled', false);
+            $('#calleC').prop('disabled', false);
+            $('#numExternoC').prop('disabled', false);
+            $('#numInternoC').prop('disabled', false);
+            $('#senasParticC').prop('disabled', false);
 
             //Datos no requeridos de denunciado comparecencia
-            $('#esEmpresa1').prop('required', false);
-            $('#esEmpresa2').prop('required', false);
+            $('#esEmpresa1').prop('disabled', true);
+            $('#esEmpresa2').prop('disabled', true);
 
             //Datos personales no requeridos de Persona Moral o Empresa
-            $('#nombres2').prop('required', false);
-            $('#rfc2').prop('required', false);
-            $('#representanteLegal').prop('required', false);
-            $('#idEstado').prop('required', false);
-            $('#idMunicipio').prop('required', false);
-            $('#idLocalidad').prop('required', false);
-            $('#cp').prop('required', false);
-            $('#idColonia').prop('required', false);
-            $('#calle').prop('required', false);
-            $('#numExterno').prop('required', false);
-            $('#numInterno').prop('required', false);
+            $('#nombres2').prop('disabled', true);
+            $('#rfc2').prop('disabled', true);
+            $('#representanteLegal').prop('disabled', true);
+            $('#idEstado').prop('disabled', true);
+            $('#idMunicipio').prop('disabled', true);
+            $('#idLocalidad').prop('disabled', true);
+            $('#cp').prop('disabled', true);
+            $('#idColonia').prop('disabled', true);
+            $('#calle').prop('disabled', true);
+            $('#numExterno').prop('disabled', true);
+            $('#numInterno').prop('disabled', true);
 
             //Datos personales no requeridos de Persona Física
-            $("#nombres").prop('required',false);   
-            $("#primerAp").prop('required',false);   
-            $("#segundoAp").prop('required',false);   
-            $("#rfc").prop('required',false);   
-            $("#fechaNacimiento").prop('required',false);   
-            $("#edad").prop('required',false);   
-            $("#sexo").prop('required',false);   
-            $("#curp").prop('required',false);   
-            $("#idNacionalidad").prop('required',false);   
-            $("#idEtnia").prop('required',false);   
-            $("#idLengua").prop('required',false);   
-            $("#idEstadoOrigen").prop('required',false);   
-            $("#idMunicipioOrigen").prop('required',false);   
-            $("#telefono").prop('required',false);   
-            $("#motivoEstancia").prop('required',false);   
-            $("#idOcupacion").prop('required',false);   
-            $("#idEstadoCivil").prop('required',false);   
-            $("#idReligion").prop('required',false);   
-            $("#idEscolaridad").prop('required',false);   
-            $("#docIdentificacion").prop('required',false);   
-            $("#numDocIdentificacion").prop('required',false);  
+            $("#nombres").prop('disabled', true);   
+            $("#primerAp").prop('disabled', true);   
+            $("#segundoAp").prop('disabled', true);   
+            $("#rfc").prop('disabled', true);   
+            $("#fechaNacimiento").prop('disabled', true);   
+            $("#edad").prop('disabled', true);   
+            $("#sexo").prop('disabled', true);   
+            $("#curp").prop('disabled', true);   
+            $("#idNacionalidad").prop('disabled', true);   
+            $("#idEtnia").prop('disabled', true);   
+            $("#idLengua").prop('disabled', true);   
+            $("#idEstadoOrigen").prop('disabled', true);   
+            $("#idMunicipioOrigen").prop('disabled', true);   
+            $("#telefono").prop('disabled', true);   
+            $("#motivoEstancia").prop('disabled', true);   
+            $("#idOcupacion").prop('disabled', true);   
+            $("#idEstadoCivil").prop('disabled', true);   
+            $("#idReligion").prop('disabled', true);   
+            $("#idEscolaridad").prop('disabled', true);   
+            $("#docIdentificacion").prop('disabled', true);   
+            $("#numDocIdentificacion").prop('disabled', true);  
 
             //Datos del trabajo no requeridos de Persona Física
-            $("#lugarTrabajo").prop('required',false);   
-            $("#telefonoTrabajo").prop('required',false);   
-            $("#idEstado2").prop('required',false);   
-            $("#idMunicipio2").prop('required',false);   
-            $("#idLocalidad2").prop('required',false);   
-            $("#cp2").prop('required',false);   
-            $("#idColonia2").prop('required',false);   
-            $("#calle2").prop('required',false);   
-            $("#numExterno2").prop('required',false);   
-            $("#numInterno2").prop('required',false);  
+            $("#lugarTrabajo").prop('disabled', true);   
+            $("#telefonoTrabajo").prop('disabled', true);   
+            $("#idEstado2").prop('disabled', true);   
+            $("#idMunicipio2").prop('disabled', true);   
+            $("#idLocalidad2").prop('disabled', true);   
+            $("#cp2").prop('disabled', true);   
+            $("#idColonia2").prop('disabled', true);   
+            $("#calle2").prop('disabled', true);   
+            $("#numExterno2").prop('disabled', true);   
+            $("#numInterno2").prop('disabled', true);  
 
             //Datos no requeridos de direccion para notificaciones  
-            $("#idEstado3").prop('required',false);   
-            $("#idMunicipio3").prop('required',false);   
-            $("#idLocalidad3").prop('required',false);   
-            $("#cp3").prop('required',false);   
-            $("#idColonia3").prop('required',false);   
-            $("#calle3").prop('required',false);   
-            $("#numExterno3").prop('required',false);   
-            $("#numInterno3").prop('required',false);   
-            $("#correo").prop('required',false);   
-            $("#telefonoN").prop('required',false);  
-            $("#fax").prop('required',false);
+            $("#idEstado3").prop('disabled', true);   
+            $("#idMunicipio3").prop('disabled', true);   
+            $("#idLocalidad3").prop('disabled', true);   
+            $("#cp3").prop('disabled', true);   
+            $("#idColonia3").prop('disabled', true);   
+            $("#calle3").prop('disabled', true);   
+            $("#numExterno3").prop('disabled', true);   
+            $("#numInterno3").prop('disabled', true);   
+            $("#correo").prop('disabled', true);   
+            $("#telefonoN").prop('disabled', true);  
+            $("#fax").prop('disabled', true);
 
             //Datos no requeridos de extra denunciado
-            $("#idPuesto").prop('required',false);
-            $("#alias").prop('required',false);
-            $("#personasBajoSuGuarda").prop('required',false);
-            $("#ingreso").prop('required',false);
-            $("#periodoIngreso").prop('required',false);
-            $("#residenciaAnterior").prop('required',false);
-            $("#perseguidoPenalmente1").prop('required',false);
-            $("#vestimenta").prop('required',false);
-            $("#senasPartic").prop('required',false);
-            $("#narracion").prop('required',false);
+            $("#idPuesto").prop('disabled', true);
+            $("#alias").prop('disabled', true);
+            $("#personasBajoSuGuarda").prop('disabled', true);
+            $("#ingreso").prop('disabled', true);
+            $("#periodoIngreso").prop('disabled', true);
+            $("#residenciaAnterior").prop('disabled', true);
+            $("#perseguidoPenalmente").prop('disabled', true);
+            $("#perseguidoPenalmente1").prop('disabled', true);
+            $("#perseguidoPenalmente2").prop('disabled', true);
+            $("#vestimenta").prop('disabled', true);
+            $("#senasPartic").prop('disabled', true);
+            $("#narracion").prop('disabled', true);
 
         }
     });
@@ -250,98 +254,100 @@ $(document).ready(function(){
             $('.comparecencia').show();
 
             //Datos requeridos de Q.R.R.
-            $('#nombresQ').prop('required', false);
+            $('#nombresQ').prop('disabled', true);
 
             //Datos no requeridos de denunciado conocido
-            $('#nombresC').prop('required', false);
-            $('#primerApC').prop('required', false);
-            $('#aliasC').prop('required', false);
-            $('#idEstadoC').prop('required', false);
-            $('#idMunicipioC').prop('required', false);
-            $('#idLocalidadC').prop('required', false);
-            $('#cpC').prop('required', false);
-            $('#idColoniaC').prop('required', false);
-            $('#calleC').prop('required', false);
-            $('#numExternoC').prop('required', false);
-            $('#numInternoC').prop('required', false);
-            $('#senasParticC').prop('required', false);
+            $('#nombresC').prop('disabled', true);
+            $('#primerApC').prop('disabled', true);
+            $('#aliasC').prop('disabled', true);
+            $('#idEstadoC').prop('disabled', true);
+            $('#idMunicipioC').prop('disabled', true);
+            $('#idLocalidadC').prop('disabled', true);
+            $('#cpC').prop('disabled', true);
+            $('#idColoniaC').prop('disabled', true);
+            $('#calleC').prop('disabled', true);
+            $('#numExternoC').prop('disabled', true);
+            $('#numInternoC').prop('disabled', true);
+            $('#senasParticC').prop('disabled', true);
 
             //Datos no requeridos de denunciado comparecencia
-            $('#esEmpresa1').prop('required', true);
-            $('#esEmpresa2').prop('required', true);
+            $('#esEmpresa1').prop('disabled', false);
+            $('#esEmpresa2').prop('disabled', false);
 
             //Datos personales no requeridos de Persona Moral o Empresa
-            $('#nombres2').prop('required', true);
-            $('#rfc2').prop('required', true);
-            $('#representanteLegal').prop('required', true);
-            $('#idEstado').prop('required', true);
-            $('#idMunicipio').prop('required', true);
-            $('#idLocalidad').prop('required', true);
-            $('#cp').prop('required', true);
-            $('#idColonia').prop('required', true);
-            $('#calle').prop('required', true);
-            $('#numExterno').prop('required', true);
-            $('#numInterno').prop('required', true);
+            $('#nombres2').prop('disabled', false);
+            $('#rfc2').prop('disabled', false);
+            $('#representanteLegal').prop('disabled', false);
+            $('#idEstado').prop('disabled', false);
+            $('#idMunicipio').prop('disabled', false);
+            $('#idLocalidad').prop('disabled', false);
+            $('#cp').prop('disabled', false);
+            $('#idColonia').prop('disabled', false);
+            $('#calle').prop('disabled', false);
+            $('#numExterno').prop('disabled', false);
+            $('#numInterno').prop('disabled', false);
 
             //Datos personales no requeridos de Persona Física
-            $("#nombres").prop('required',true);   
-            $("#primerAp").prop('required',true);   
-            $("#segundoAp").prop('required',true);   
-            $("#rfc").prop('required',true);   
-            $("#fechaNacimiento").prop('required',true);   
-            $("#edad").prop('required',true);   
-            $("#sexo").prop('required',true);   
-            $("#curp").prop('required',true);   
-            $("#idNacionalidad").prop('required',true);   
-            $("#idEtnia").prop('required',true);   
-            $("#idLengua").prop('required',true);   
-            $("#idEstadoOrigen").prop('required',true);   
-            $("#idMunicipioOrigen").prop('required',true);   
-            $("#telefono").prop('required',true);   
-            $("#motivoEstancia").prop('required',true);   
-            $("#idOcupacion").prop('required',true);   
-            $("#idEstadoCivil").prop('required',true);   
-            $("#idReligion").prop('required',true);   
-            $("#idEscolaridad").prop('required',true);   
-            $("#docIdentificacion").prop('required',true);   
-            $("#numDocIdentificacion").prop('required',true);  
+            $("#nombres").prop('disabled', false);   
+            $("#primerAp").prop('disabled', false);   
+            $("#segundoAp").prop('disabled', false);   
+            $("#rfc").prop('disabled', false);   
+            $("#fechaNacimiento").prop('disabled', false);   
+            $("#edad").prop('disabled', false);   
+            $("#sexo").prop('disabled', false);   
+            $("#curp").prop('disabled', false);   
+            $("#idNacionalidad").prop('disabled', false);   
+            $("#idEtnia").prop('disabled', false);   
+            $("#idLengua").prop('disabled', false);   
+            $("#idEstadoOrigen").prop('disabled', false);   
+            $("#idMunicipioOrigen").prop('disabled', false);   
+            $("#telefono").prop('disabled', false);   
+            $("#motivoEstancia").prop('disabled', false);   
+            $("#idOcupacion").prop('disabled', false);   
+            $("#idEstadoCivil").prop('disabled', false);   
+            $("#idReligion").prop('disabled', false);   
+            $("#idEscolaridad").prop('disabled', false);   
+            $("#docIdentificacion").prop('disabled', false);   
+            $("#numDocIdentificacion").prop('disabled', false);  
 
             //Datos del trabajo no requeridos de Persona Física
-            $("#lugarTrabajo").prop('required',true);   
-            $("#telefonoTrabajo").prop('required',true);   
-            $("#idEstado2").prop('required',true);   
-            $("#idMunicipio2").prop('required',true);   
-            $("#idLocalidad2").prop('required',true);   
-            $("#cp2").prop('required',true);   
-            $("#idColonia2").prop('required',true);   
-            $("#calle2").prop('required',true);   
-            $("#numExterno2").prop('required',true);   
-            $("#numInterno2").prop('required',true);  
+            $("#lugarTrabajo").prop('disabled', false);   
+            $("#telefonoTrabajo").prop('disabled', false);   
+            $("#idEstado2").prop('disabled', false);   
+            $("#idMunicipio2").prop('disabled', false);   
+            $("#idLocalidad2").prop('disabled', false);   
+            $("#cp2").prop('disabled', false);   
+            $("#idColonia2").prop('disabled', false);   
+            $("#calle2").prop('disabled', false);   
+            $("#numExterno2").prop('disabled', false);   
+            $("#numInterno2").prop('disabled', false);  
 
             //Datos no requeridos de direccion para notificaciones  
-            $("#idEstado3").prop('required',true);   
-            $("#idMunicipio3").prop('required',true);   
-            $("#idLocalidad3").prop('required',true);   
-            $("#cp3").prop('required',true);   
-            $("#idColonia3").prop('required',true);   
-            $("#calle3").prop('required',true);   
-            $("#numExterno3").prop('required',true);   
-            $("#numInterno3").prop('required',true);   
-            $("#correo").prop('required',true);   
-            $("#telefonoN").prop('required',true);  
-            $("#fax").prop('required',true);
+            $("#idEstado3").prop('disabled', false);   
+            $("#idMunicipio3").prop('disabled', false);   
+            $("#idLocalidad3").prop('disabled', false);   
+            $("#cp3").prop('disabled', false);   
+            $("#idColonia3").prop('disabled', false);   
+            $("#calle3").prop('disabled', false);   
+            $("#numExterno3").prop('disabled', false);   
+            $("#numInterno3").prop('disabled', false);   
+            $("#correo").prop('disabled', false);   
+            $("#telefonoN").prop('disabled', false);  
+            $("#fax").prop('disabled', false);
 
             //Datos requeridos de extra denunciado
-            $("#idPuesto").prop('required',true);
-            $("#alias").prop('required',true);
-            $("#personasBajoSuGuarda").prop('required',true);
-            $("#ingreso").prop('required',false);
-            $("#periodoIngreso").prop('required',true);
-            $("#residenciaAnterior").prop('required',true);
-            $("#perseguidoPenalmente1").prop('required',true);
-            $("#vestimenta").prop('required',true);
-            $("#senasPartic").prop('required',true);
-            $("#narracion").prop('required',true);
+            $("#idPuesto").prop('disabled', false);
+            $("#alias").prop('disabled', false);
+            $("#personasBajoSuGuarda").prop('disabled', false);
+            $("#ingreso").prop('disabled', true);
+            $("#periodoIngreso").prop('disabled', false);
+            $("#residenciaAnterior").prop('disabled', false);
+            $("#perseguidoPenalmente").prop('disabled', false);
+            $("#perseguidoPenalmente1").prop('disabled', false);
+            $("#perseguidoPenalmente2").prop('disabled', false);
+            $("#vestimenta").prop('disabled', false);
+            $("#senasPartic").prop('disabled', false);
+            $("#narracion").prop('disabled', false);
         }
     });
 
@@ -369,56 +375,58 @@ $(document).ready(function(){
             $('#extra-fis').hide();
 
             //Datos personales requeridos de Persona Moral o Empresa
-            $('#nombres2').prop('required', true);
-            $('#rfc2').prop('required', true);
-            $('#representanteLegal').prop('required', true);
-            $("#senasPartic").prop('required',true);
-            $("#narracion").prop('required',true);
+            $('#nombres2').prop('disabled', false);
+            $('#rfc2').prop('disabled', false);
+            $('#representanteLegal').prop('disabled', false);
+            $("#senasPartic").prop('disabled', false);
+            $("#narracion").prop('disabled', false);
             
             //Datos personales no requeridos de Persona Física
-            $("#nombres").prop('required',false);   
-            $("#primerAp").prop('required',false);   
-            $("#segundoAp").prop('required',false);   
-            $("#rfc").prop('required',false);   
-            $("#fechaNacimiento").prop('required',false);   
-            $("#edad").prop('required',false);   
-            $("#sexo").prop('required',false);   
-            $("#curp").prop('required',false);   
-            $("#idNacionalidad").prop('required',false);   
-            $("#idEtnia").prop('required',false);   
-            $("#idLengua").prop('required',false);   
-            $("#idEstadoOrigen").prop('required',false);   
-            $("#idMunicipioOrigen").prop('required',false);   
-            $("#telefono").prop('required',false);   
-            $("#motivoEstancia").prop('required',false);   
-            $("#idOcupacion").prop('required',false);   
-            $("#idEstadoCivil").prop('required',false);   
-            $("#idReligion").prop('required',false);   
-            $("#idEscolaridad").prop('required',false);   
-            $("#docIdentificacion").prop('required',false);   
-            $("#numDocIdentificacion").prop('required',false);   
+            $("#nombres").prop('disabled', true);   
+            $("#primerAp").prop('disabled', true);   
+            $("#segundoAp").prop('disabled', true);   
+            $("#rfc").prop('disabled', true);   
+            $("#fechaNacimiento").prop('disabled', true);   
+            $("#edad").prop('disabled', true);   
+            $("#sexo").prop('disabled', true);   
+            $("#curp").prop('disabled', true);   
+            $("#idNacionalidad").prop('disabled', true);   
+            $("#idEtnia").prop('disabled', true);   
+            $("#idLengua").prop('disabled', true);   
+            $("#idEstadoOrigen").prop('disabled', true);   
+            $("#idMunicipioOrigen").prop('disabled', true);   
+            $("#telefono").prop('disabled', true);   
+            $("#motivoEstancia").prop('disabled', true);   
+            $("#idOcupacion").prop('disabled', true);   
+            $("#idEstadoCivil").prop('disabled', true);   
+            $("#idReligion").prop('disabled', true);   
+            $("#idEscolaridad").prop('disabled', true);   
+            $("#docIdentificacion").prop('disabled', true);   
+            $("#numDocIdentificacion").prop('disabled', true);   
             
             //Datos del trabajo no requeridos de Persona Física
-            $("#lugarTrabajo").prop('required',false);   
-            $("#telefonoTrabajo").prop('required',false);   
-            $("#idEstado2").prop('required',false);   
-            $("#idMunicipio2").prop('required',false);   
-            $("#idLocalidad2").prop('required',false);   
-            $("#cp2").prop('required',false);   
-            $("#idColonia2").prop('required',false);   
-            $("#calle2").prop('required',false);   
-            $("#numExterno2").prop('required',false);   
-            $("#numInterno2").prop('required',false);
+            $("#lugarTrabajo").prop('disabled', true);   
+            $("#telefonoTrabajo").prop('disabled', true);   
+            $("#idEstado2").prop('disabled', true);   
+            $("#idMunicipio2").prop('disabled', true);   
+            $("#idLocalidad2").prop('disabled', true);   
+            $("#cp2").prop('disabled', true);   
+            $("#idColonia2").prop('disabled', true);   
+            $("#calle2").prop('disabled', true);   
+            $("#numExterno2").prop('disabled', true);   
+            $("#numInterno2").prop('disabled', true);
 
             //Datos no requeridos de extra denunciado
-            $("#idPuesto").prop('required',false);
-            $("#alias").prop('required',false);
-            $("#personasBajoSuGuarda").prop('required',false);
-            $("#ingreso").prop('required',false);
-            $("#periodoIngreso").prop('required',false);
-            $("#residenciaAnterior").prop('required',false);
-            $("#perseguidoPenalmente1").prop('required',false);
-            $("#vestimenta").prop('required',false);
+            $("#idPuesto").prop('disabled', true);
+            $("#alias").prop('disabled', true);
+            $("#personasBajoSuGuarda").prop('disabled', true);
+            $("#ingreso").prop('disabled', true);
+            $("#periodoIngreso").prop('disabled', true);
+            $("#residenciaAnterior").prop('disabled', true);
+            $("#perseguidoPenalmente").prop('disabled', true);
+            $("#perseguidoPenalmente1").prop('disabled', true);
+            $("#perseguidoPenalmente2").prop('disabled', true);
+            $("#vestimenta").prop('disabled', true);
         }
     });
     //No es empresa
@@ -434,56 +442,58 @@ $(document).ready(function(){
             $('#extra-fis').show();
 
             //Datos personales no requeridos de Persona Moral o Empresa
-            $('#nombres2').prop('required', false);
-            $('#rfc2').prop('required', false);
-            $('#representanteLegal').prop('required', false);
+            $('#nombres2').prop('disabled', true);
+            $('#rfc2').prop('disabled', true);
+            $('#representanteLegal').prop('disabled', true);
             
             //Datos personales requeridos de Persona Física
-            $("#nombres").prop('required',true);   
-            $("#primerAp").prop('required',true);   
-            $("#segundoAp").prop('required',true);   
-            $("#rfc").prop('required',true);   
-            $("#fechaNacimiento").prop('required',true);   
-            $("#edad").prop('required',true);   
-            $("#sexo").prop('required',true);   
-            $("#curp").prop('required',true);   
-            $("#idNacionalidad").prop('required',true);   
-            $("#idEtnia").prop('required',true);   
-            $("#idLengua").prop('required',true);   
-            $("#idEstadoOrigen").prop('required',true);   
-            $("#idMunicipioOrigen").prop('required',true);   
-            $("#telefono").prop('required',true);   
-            $("#motivoEstancia").prop('required',true);   
-            $("#idOcupacion").prop('required',true);   
-            $("#idEstadoCivil").prop('required',true);   
-            $("#idReligion").prop('required',true);   
-            $("#idEscolaridad").prop('required',true);   
-            $("#docIdentificacion").prop('required',true);   
-            $("#numDocIdentificacion").prop('required',true);   
+            $("#nombres").prop('disabled', false);   
+            $("#primerAp").prop('disabled', false);   
+            $("#segundoAp").prop('disabled', false);   
+            $("#rfc").prop('disabled', false);   
+            $("#fechaNacimiento").prop('disabled', false);   
+            $("#edad").prop('disabled', false);   
+            $("#sexo").prop('disabled', false);   
+            $("#curp").prop('disabled', false);   
+            $("#idNacionalidad").prop('disabled', false);   
+            $("#idEtnia").prop('disabled', false);   
+            $("#idLengua").prop('disabled', false);   
+            $("#idEstadoOrigen").prop('disabled', false);   
+            $("#idMunicipioOrigen").prop('disabled', false);   
+            $("#telefono").prop('disabled', false);   
+            $("#motivoEstancia").prop('disabled', false);   
+            $("#idOcupacion").prop('disabled', false);   
+            $("#idEstadoCivil").prop('disabled', false);   
+            $("#idReligion").prop('disabled', false);   
+            $("#idEscolaridad").prop('disabled', false);   
+            $("#docIdentificacion").prop('disabled', false);   
+            $("#numDocIdentificacion").prop('disabled', false);   
             
             //Datos del trabajo requeridos de Persona Física
-            $("#lugarTrabajo").prop('required',true);   
-            $("#telefonoTrabajo").prop('required',true);   
-            $("#idEstado2").prop('required',true);   
-            $("#idMunicipio2").prop('required',true);   
-            $("#idLocalidad2").prop('required',true);   
-            $("#cp2").prop('required',true);   
-            $("#idColonia2").prop('required',true);   
-            $("#calle2").prop('required',true);   
-            $("#numExterno2").prop('required',true);   
-            $("#numInterno2").prop('required',true);
+            $("#lugarTrabajo").prop('disabled', false);   
+            $("#telefonoTrabajo").prop('disabled', false);   
+            $("#idEstado2").prop('disabled', false);   
+            $("#idMunicipio2").prop('disabled', false);   
+            $("#idLocalidad2").prop('disabled', false);   
+            $("#cp2").prop('disabled', false);   
+            $("#idColonia2").prop('disabled', false);   
+            $("#calle2").prop('disabled', false);   
+            $("#numExterno2").prop('disabled', false);   
+            $("#numInterno2").prop('disabled', false);
 
             //Datos requeridos de extra denunciado
-            $("#idPuesto").prop('required',true);
-            $("#alias").prop('required',true);
-            $("#personasBajoSuGuarda").prop('required',true);
-            $("#ingreso").prop('required',false);
-            $("#periodoIngreso").prop('required',true);
-            $("#residenciaAnterior").prop('required',true);
-            $("#perseguidoPenalmente1").prop('required',true);
-            $("#vestimenta").prop('required',true);
-            $("#senasPartic").prop('required',true);
-            $("#narracion").prop('required',true);
+            $("#idPuesto").prop('disabled', false);
+            $("#alias").prop('disabled', false);
+            $("#personasBajoSuGuarda").prop('disabled', false);
+            $("#ingreso").prop('disabled', true);
+            $("#periodoIngreso").prop('disabled', false);
+            $("#residenciaAnterior").prop('disabled', false);
+            $("#perseguidoPenalmente").prop('disabled', false);
+            $("#perseguidoPenalmente1").prop('disabled', false);
+            $("#perseguidoPenalmente2").prop('disabled', false);
+            $("#vestimenta").prop('disabled', false);
+            $("#senasPartic").prop('disabled', false);
+            $("#narracion").prop('disabled', false);
         }
     });
 
@@ -493,21 +503,21 @@ $(document).ready(function(){
 
     //Para delito, con o sin violencia
     $('#violencia').hide();
-    $(".cv").prop('required',false);
+    $(".cv").prop('disabled', true);
     $("#conViolencia1").change(function(event){
         if ($('#conViolencia1').is(':checked') ) {
             $('#violencia').hide();
-            $(".cv").prop('required',false);
-            //$("#idTipoArma").prop('required',false);
-            //$("#idArma").prop('required',false);
+            $(".cv").prop('disabled', true);
+            //$("#idTipoArma").prop('disabled', true);
+            //$("#idArma").prop('disabled', true);
         }
     });
     $("#conViolencia2").change(function(event){
         if ($('#conViolencia2').is(':checked') ) {
             $('#violencia').show();
-            $(".cv").prop('required',true);
-            //$("#idTipoArma").prop('required',true);
-            //$("#idArma").prop('required',true);
+            $(".cv").prop('disabled', false);
+            //$("#idTipoArma").prop('disabled', false);
+            //$("#idArma").prop('disabled', false);
         }
     });
 

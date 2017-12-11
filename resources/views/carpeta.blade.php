@@ -10,15 +10,6 @@
             <div class="card-header">Carpeta de Investigación: {{ $carpetaNueva[0]->numCarpeta }}</div>
             <div class="card-body boxone">
                 <div class="boxtwo">
-                    <div class="row">
-                        <div class="col">
-                            <div class="text-left">
-                                <a href="{{ route('constancia.hechos', $carpetaNueva[0]->id) }}" class="btn btn-dark text-center">Descargar constancia de hechos</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="boxtwo">
                     @include('tables.denunciantes')
                     <div class="text-right"> 
                         <a href="{{ route('new.denunciante', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
