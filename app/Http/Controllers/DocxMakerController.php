@@ -22,7 +22,7 @@ class DocxMakerController extends Controller
 			->join('carpeta', 'carpeta.id', '=', 'acusacion.idCarpeta' )
             ->join('unidad', 'unidad.id', '=', 'carpeta.idUnidad')
             ->join('users', 'users.id', '=', 'carpeta.idFiscal')
-            ->select('persona.nombres as nombresD', 'persona.primerAp as primerApD', 'persona.segundoAp as segundoApD', 'carpeta.id', 'carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.descripcionHechos', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'users.nombres', 'users.primerAp', 'users.segundoAp', 'users.numFiscal')
+            ->select('extra_denunciante.narracion', 'persona.nombres as nombresD', 'persona.primerAp as primerApD', 'persona.segundoAp as segundoApD', 'carpeta.id', 'carpeta.numCarpeta', 'carpeta.fechaInicio', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'users.nombres', 'users.primerAp', 'users.segundoAp', 'users.numFiscal')
             ->where('extra_denunciante.id', '=', $idDenunciante)
             ->get();
         //dd($info);
@@ -57,7 +57,7 @@ class DocxMakerController extends Controller
 		$templateProcessor->setValue('mesInicio', $mesLetra);
 		$templateProcessor->setValue('anioInicio', $fechaInicio->year);
 		$templateProcessor->setValue('nombreDenunciante', $info->nombresD." ".$info->primerApD." ".$info->segundoApD);
-		$templateProcessor->setValue('narracion', $info->descripcionHechos);
+		$templateProcessor->setValue('narracion', $info->narracion);
 		$templateProcessor->setValue('diaLetra', $diaLetra);
 		$templateProcessor->setValue('mesLetra', $mesLetra);
 		$templateProcessor->setValue('direccion', $info->direccion);

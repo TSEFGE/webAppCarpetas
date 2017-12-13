@@ -24,7 +24,7 @@ class StoreDenunciado extends FormRequest
     public function rules()
     {
         return [
-            'nombresQ' => 'alpha',
+            //'nombresQ' => 'alpha',
             'nombresC' => 'alpha',
             'primerApC' => 'alpha',
             'aliasC' => 'alpha_num',
@@ -37,7 +37,7 @@ class StoreDenunciado extends FormRequest
     public function messages()
     {
         return [
-            'nombresQ.alpha' => 'El nombre debe ser alfabético',
+            'nombresQ.alpha' => 'El nombre Q.R.R. debe ser alfabético',
         ];
     }
 }
