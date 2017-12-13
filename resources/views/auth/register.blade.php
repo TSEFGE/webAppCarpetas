@@ -126,6 +126,10 @@
     <script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
     <script type="text/javascript">
         $(document).ready(function() {
+            $("input:text").keyup(function() {
+                $(this).val($(this).val().toUpperCase());
+            });
+
             $('.select2').select2();
         });
     </script>

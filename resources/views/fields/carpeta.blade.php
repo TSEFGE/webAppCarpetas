@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-2">
+	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idUnidad', 'Unidad', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::text('idUnidad', Auth::user()->idUnidad, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una unidad', 'readonly', 'required']) !!}
@@ -9,12 +9,6 @@
 		<div class="form-group">
 			{!! Form::label('idFiscal', 'Fiscal', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::text('idFiscal', Auth::user()->nombres." ".Auth::user()->primerAp." ".Auth::user()->segundoAp, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un fiscal', 'readonly', 'required']) !!}
-		</div>
-	</div>
-	<div class="col-2">
-		<div class="form-group">
-			{!! Form::label('numCarpeta', 'Número de carpeta', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::number('numCarpeta', 22, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de carpeta', 'readonly', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
@@ -28,7 +22,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-2">
+	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('estadoCarpeta', 'Estado de la Carpeta', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::text('estadoCarpeta', "INICIO", ['class' => 'form-control form-control-sm select2', 'placeholder' => 'Seleccione un estado', 'readonly', 'required']) !!}

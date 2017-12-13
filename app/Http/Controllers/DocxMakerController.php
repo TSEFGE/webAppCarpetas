@@ -22,7 +22,7 @@ class DocxMakerController extends Controller
 			->join('carpeta', 'carpeta.id', '=', 'acusacion.idCarpeta' )
             ->join('unidad', 'unidad.id', '=', 'carpeta.idUnidad')
             ->join('users', 'users.id', '=', 'carpeta.idFiscal')
-            ->select('extra_denunciante.narracion', 'persona.nombres as nombresD', 'persona.primerAp as primerApD', 'persona.segundoAp as segundoApD', 'carpeta.id', 'carpeta.numCarpeta', 'carpeta.fechaInicio', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'users.nombres', 'users.primerAp', 'users.segundoAp', 'users.numFiscal')
+            ->select('extra_denunciante.narracion', 'persona.nombres as nombresD', 'persona.primerAp as primerApD', 'persona.segundoAp as segundoApD', 'carpeta.id', 'carpeta.numCarpeta', 'carpeta.fechaInicio', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio', 'users.nombres', 'users.primerAp', 'users.segundoAp', 'users.numFiscal')
             ->where('extra_denunciante.id', '=', $idDenunciante)
             ->get();
         //dd($info);
@@ -36,10 +36,6 @@ class DocxMakerController extends Controller
 		$nombreFiscal = strtoupper($info->nombres." ".$info->primerAp." ".$info->segundoAp);
 		$diaLetra = strtolower(DocxMakerController::getDiaLetra($fechaHoy->day));
 		$mesLetra = strtolower($mesLetra);
-		
-		$municipioUnidad = "Xalapa";
-		$municipioUnidadM = strtoupper($municipioUnidad);
-
 
 		$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/ConstanciaDeHechos.docx');
 		$templateProcessor->setValue('distrito', $info->distrito);
@@ -49,8 +45,8 @@ class DocxMakerController extends Controller
 		$templateProcessor->setValue('anio', $fechaHoy->year);
 		$templateProcessor->setValue('numCarpeta', $info->numCarpeta);
 		$templateProcessor->setValue('anioCarpeta', $fechaInicio->year);
-		$templateProcessor->setValue('municipioUnidad', $municipioUnidad);
-		$templateProcessor->setValue('municipioUnidadM', $municipioUnidadM);
+		$templateProcessor->setValue('municipioUnidad', $info->municipio);
+		$templateProcessor->setValue('municipioUnidadM', strtoupper($info->municipio));
 		$templateProcessor->setValue('fechaCompleta', $fechaCompleta);
 		$templateProcessor->setValue('nombreFiscal', $nombreFiscal);
 		$templateProcessor->setValue('diaInicio', $fechaInicio->day);
@@ -72,7 +68,7 @@ class DocxMakerController extends Controller
 			->join('carpeta', 'carpeta.id', '=', 'acusacion.idCarpeta')
 			->join('users', 'users.id', '=', 'carpeta.idFiscal')
 			->join('unidad', 'unidad.id', '=', 'users.idUnidad')
-			->select('carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.conDetenido', 'users.nombres', 'users.primerAp', 'users.segundoAp', 'users.numFiscal', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito')
+			->select('carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.conDetenido', 'users.nombres', 'users.primerAp', 'users.segundoAp', 'users.numFiscal', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio')
 			->where('acusacion.id', '=', $idAcusacion)
 			->get();
 
@@ -138,8 +134,6 @@ class DocxMakerController extends Controller
 		$denunciado = $denunciado[0];
         
         $distritoLetra = DocxMakerController::getDistritoLetra($carpeta->distrito);
-		$municipioUnidad = "Xalapa";
-		$municipioUnidadM = strtoupper($municipioUnidad);
 		$fechaInicio = new Carbon($carpeta->fechaInicio);
 		$fechaNacimiento = new Carbon($denunciante->fechaNacimiento);
 		if($denunciante->esEmpresa==0){
@@ -174,7 +168,7 @@ class DocxMakerController extends Controller
 		$templateProcessor->setValue('nombreFiscal', strtoupper($carpeta->nombres." ".$carpeta->primerAp." ".$carpeta->segundoAp));
 		$templateProcessor->setValue('distrito', $carpeta->distrito);
 		$templateProcessor->setValue('distritoLetra', $distritoLetra);
-		$templateProcessor->setValue('municipioUnidadM', $municipioUnidadM);
+		$templateProcessor->setValue('municipioUnidadM', strtoupper($carpeta->municipio));
 		$templateProcessor->setValue('dirUnidad', $carpeta->direccion);
 		$templateProcessor->setValue('telUnidad', $carpeta->telefono);
 		$templateProcessor->setValue('numCarpeta', $carpeta->numCarpeta);

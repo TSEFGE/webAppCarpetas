@@ -1,5 +1,8 @@
 $(document).ready(function(){
-    $(".form-control").keyup(function() {
+    $("input:text").keyup(function() {
+        $(this).val($(this).val().toUpperCase());
+    });
+    $("textarea").keyup(function() {
         $(this).val($(this).val().toUpperCase());
     });
     
