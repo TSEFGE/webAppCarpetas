@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col">
 			<div class="text-left">
-				<a href="{{ url()->previous() }}" class="btn btn-dark text-center">Volver atrás</a>
+				<a href="{{ route('carpeta', $idCarpeta) }}" class="btn btn-dark text-center">Volver atrás</a>
 			</div>
 		</div>
 		<div class="col">	

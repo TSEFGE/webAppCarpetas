@@ -1,7 +1,4 @@
 <div class="row">
-	{{--<div class="col-12 text-center">
-		<input type="button" class="btn btn-dark" id="copy-dir" value="Copiar desde dirección"></input>
-	</div>--}}
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('idEstado3', 'Entidad federativa', ['class' => 'col-form-label-sm']) !!}

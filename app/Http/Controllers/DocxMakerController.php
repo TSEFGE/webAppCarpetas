@@ -13,14 +13,19 @@ class DocxMakerController extends Controller
         Carbon::setLocale('es');
     }
 
-    public function getConstanciaHechos($idCarpeta)
+    public function getConstanciaHechos($idDenunciante)
 	{
-		$info = DB::table('carpeta')
+		$info = DB::table('extra_denunciante')
+			->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+			->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+			->join('acusacion', 'acusacion.idDenunciante', '=', 'extra_denunciante.id' )
+			->join('carpeta', 'carpeta.id', '=', 'acusacion.idCarpeta' )
             ->join('unidad', 'unidad.id', '=', 'carpeta.idUnidad')
             ->join('users', 'users.id', '=', 'carpeta.idFiscal')
-            ->select('carpeta.id', 'carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.descripcionHechos', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'users.nombres', 'users.primerAp', 'users.segundoAp', 'users.numFiscal')
-            ->where('carpeta.id', '=', $idCarpeta)
+            ->select('extra_denunciante.narracion', 'persona.nombres as nombresD', 'persona.primerAp as primerApD', 'persona.segundoAp as segundoApD', 'carpeta.id', 'carpeta.numCarpeta', 'carpeta.fechaInicio', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'users.nombres', 'users.primerAp', 'users.segundoAp', 'users.numFiscal')
+            ->where('extra_denunciante.id', '=', $idDenunciante)
             ->get();
+        //dd($info);
         $info=$info[0];
 
 		$fechaInicio = new Carbon($info->fechaInicio);
@@ -34,7 +39,6 @@ class DocxMakerController extends Controller
 		
 		$municipioUnidad = "Xalapa";
 		$municipioUnidadM = strtoupper($municipioUnidad);
-		$nombreDenunciante = strtoupper("Romulo Romagnoli");
 
 
 		$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/ConstanciaDeHechos.docx');
@@ -52,8 +56,8 @@ class DocxMakerController extends Controller
 		$templateProcessor->setValue('diaInicio', $fechaInicio->day);
 		$templateProcessor->setValue('mesInicio', $mesLetra);
 		$templateProcessor->setValue('anioInicio', $fechaInicio->year);
-		$templateProcessor->setValue('nombreDenunciante', $nombreDenunciante);
-		$templateProcessor->setValue('narracion', $info->descripcionHechos);
+		$templateProcessor->setValue('nombreDenunciante', $info->nombresD." ".$info->primerApD." ".$info->segundoApD);
+		$templateProcessor->setValue('narracion', $info->narracion);
 		$templateProcessor->setValue('diaLetra', $diaLetra);
 		$templateProcessor->setValue('mesLetra', $mesLetra);
 		$templateProcessor->setValue('direccion', $info->direccion);

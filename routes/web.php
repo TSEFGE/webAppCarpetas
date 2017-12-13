@@ -70,7 +70,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('involucrados/{idCarpeta}/{idAbogado}', 'RegistroController@getInvolucrados');
 
 	/*---------Rutas para generación de documentos-------------*/
-	Route::get('constancia-hechos/{idCarpeta}', [
+	Route::get('constancia-hechos/{idDenunciante}', [
 		'as'=>'constancia.hechos',
 		'uses'=>'DocxMakerController@getConstanciaHechos'
 	]);

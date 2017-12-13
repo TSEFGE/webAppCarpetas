@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Alert;
 
+use App\Http\Requests\StoreDenunciado;
+
 use App\Models\CatEscolaridad;
 use App\Models\CatEstado;
 use App\Models\CatEstadoCivil;
@@ -55,7 +57,7 @@ class DenunciadoController extends Controller
         }
     }
 
-    public function storeDenunciado(Request $request){
+    public function storeDenunciado(StoreDenunciado $request){
         //dd($request->all());
         if ($request->tipoDenunciado==1){
             $persona = new Persona();
@@ -399,7 +401,8 @@ class DenunciadoController extends Controller
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
         */
         Alert::success('Denunciado registrado con éxito', 'Hecho')->persistent("Aceptar");
-        return redirect()->route('carpeta', $request->idCarpeta);
+        //return redirect()->route('carpeta', $request->idCarpeta);
+        return redirect()->route('new.denunciado', $request->idCarpeta);
     }
 
     /**

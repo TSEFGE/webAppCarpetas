@@ -57,7 +57,8 @@ class AcusacionController extends Controller
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
         */
         Alert::success('Acusación registrado con éxito', 'Hecho')->persistent("Aceptar");
-        return redirect()->route('carpeta', $request->idCarpeta);
+        //return redirect()->route('carpeta', $request->idCarpeta);
+        return redirect()->route('new.acusacion', $request->idCarpeta);
     }
     
     /**

@@ -8,10 +8,11 @@
             <th>Sexo</th>
             <th>Teléfono</th>
             <th>Es empresa</th>
+            <th>Opciones</th>
         </thead>
         <tbody>
             @if(count($denunciantes)==0)
-                <tr><td colspan="6" class="text-center">Sin registros</td></tr>
+                <tr><td colspan="7" class="text-center">Sin registros</td></tr>
             @else
                 @foreach($denunciantes as $denunciante)
                     <tr>
@@ -25,6 +26,7 @@
                         @else
                             <td>NO</td>
                         @endif
+                        <td><a href="{{ route('constancia.hechos', $denunciante->id) }}" class="btn btn-secondary text-right">Descargar constancia de hechos</a></td>
                     </tr>
                 @endforeach
             @endif
