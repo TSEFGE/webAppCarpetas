@@ -227,6 +227,10 @@ class DocxMakerController extends Controller
 
 	}
 
+	public static function getFormatoColaboracionPm(Request $request){
+
+	}
+
 	public static function getDistritoLetra($numDistrito){
 		switch ($numDistrito) {
         	case 'I':

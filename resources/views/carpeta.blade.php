@@ -67,6 +67,7 @@
                 <div class="boxtwo">
                     @include('tables.acusaciones')
                     <div class="text-right"> 
+                        <a href="{{ route('new.colaboracionpm', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Colaboración PM</a><hr>
                         <a href="{{ route('new.acusacion', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Agregar Acusación</a><hr>
                     </div>
                 </div>

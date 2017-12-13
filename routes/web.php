@@ -49,6 +49,8 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('agregar-acusacion/{idCarpeta}', 'AcusacionController@showForm')->name('new.acusacion');
 	Route::post('storeacusacion', 'AcusacionController@storeAcusacion')->name('store.acusacion');
 
+	Route::get('generar-colaboracion-pm/{idCarpeta}', 'AcusacionController@showForm2')->name('new.colaboracionpm');
+
 	Route::get('agregar-vehiculo/{idCarpeta}', 'VehiculoController@showForm')->name('new.vehiculo');
 	Route::post('storevehiculo', 'VehiculoController@storeVehiculo')->name('store.vehiculo');
 
@@ -77,6 +79,10 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('formato-denuncia/{idAcusacion}', [
 		'as'=>'formato.denuncia',
 		'uses'=>'DocxMakerController@getFormatoDenuncia'
+	]);
+	Route::post('colaboracion-pm', [
+		'as'=>'colaboracion.pm',
+		'uses'=>'DocxMakerController@getFormatoColaboracionPm'
 	]);
 });
 
