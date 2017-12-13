@@ -19,8 +19,8 @@ class CreateDomiciliosTable extends Migration
             $table->integer('idLocalidad')->unsigned()->default(27592);
             $table->integer('idColonia')->unsigned()->default(8982);
             $table->string('calle', 50)->default("SIN INFORMACION");
-            $table->string('numExterno')->default('S/N');
-            $table->string('numInterno')->default('S/N');
+            $table->string('numExterno', 10)->default('S/N');
+            $table->string('numInterno', 10)->default('S/N');
 
             $table->foreign('idMunicipio')->references('id')->on('cat_municipio')->onDelete('cascade');
             $table->foreign('idLocalidad')->references('id')->on('cat_localidad')->onDelete('cascade');

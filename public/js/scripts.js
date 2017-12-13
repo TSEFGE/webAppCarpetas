@@ -339,7 +339,7 @@ $(document).ready(function(){
             $("#idPuesto").prop('disabled', false);
             $("#alias").prop('disabled', false);
             $("#personasBajoSuGuarda").prop('disabled', false);
-            $("#ingreso").prop('disabled', true);
+            $("#ingreso").prop('disabled', false);
             $("#periodoIngreso").prop('disabled', false);
             $("#residenciaAnterior").prop('disabled', false);
             $("#perseguidoPenalmente").prop('disabled', false);
@@ -485,7 +485,7 @@ $(document).ready(function(){
             $("#idPuesto").prop('disabled', false);
             $("#alias").prop('disabled', false);
             $("#personasBajoSuGuarda").prop('disabled', false);
-            $("#ingreso").prop('disabled', true);
+            $("#ingreso").prop('disabled', false);
             $("#periodoIngreso").prop('disabled', false);
             $("#residenciaAnterior").prop('disabled', false);
             $("#perseguidoPenalmente").prop('disabled', false);
