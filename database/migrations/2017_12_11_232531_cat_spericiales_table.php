@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCatArmaTable extends Migration
+class CatSpericialesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateCatArmaTable extends Migration
      */
     public function up()
     {
-        Schema::create('cat_arma', function (Blueprint $table) {
+        Schema::create('cat_spericiales', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('idTipoArma')->unsigned();
-            $table->string('nombre', 50);
-
-            $table->foreign('idTipoArma')->references('id')->on('cat_tipo_arma')->onDelete('cascade');
-
+            $table->string('nombre', 100);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +28,6 @@ class CreateCatArmaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cat_arma');
+        Schema::dropIfExists('cat_spericiales');
     }
 }

@@ -23,7 +23,7 @@ class LenguaSeeder extends Seeder
 			['id'=>   9,'nombre' => 'CH´OL'],
 			['id'=>   10,'nombre' => 'CHONTAL DE OAXACA'],
 			['id'=>   11,'nombre' => 'CHONTAL DE TABASCO'],
-			['id'=>   12,'nombre' => ' CHUJ'],
+			['id'=>   12,'nombre' => 'CHUJ'],
 			['id'=>   13,'nombre' => 'CORA'],
 			['id'=>   14,'nombre' => 'CUCAPÁ'],
 			['id'=>   15,'nombre' => 'CUICATECO'],
@@ -80,7 +80,8 @@ class LenguaSeeder extends Seeder
 			['id'=>   66,'nombre' => 'YAQUI'],
 			['id'=>   67,'nombre' => 'ZAPOTECO'],
 			['id'=>   68,'nombre' => 'ZOQUE'],
-            ['id'=>   69,'nombre' => 'SIN INFORMACION']
+            ['id'=>   69,'nombre' => 'SIN INFORMACION'],
+            ['id'=>   70,'nombre' => 'NO APLICA']
 
 
         ]);     
