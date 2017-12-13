@@ -92,6 +92,12 @@ $("#cp").focusout(function(event){
 	}
 });
 
+$("#idColonia").focusout(function(event){
+	if(event.target.value!=""){
+		$('#idColonia3').val($('#idColonia').val());
+	}
+});
+
 $("#calle").keyup(function() {
 	$('#calle3').val($('#calle').val());
 });
