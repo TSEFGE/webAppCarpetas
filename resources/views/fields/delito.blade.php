@@ -49,16 +49,22 @@
 	</div>
 	<div class="col-8">
 		<div class="row" id="violencia">
-			<div class="col-6">
+			<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('idTipoArma', 'Tipo de Arma', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::select('idTipoArma', $tiposarma, null, ['class' => 'form-control form-control-sm cv', 'placeholder' => 'Seleccione un tipo de arma', 'required']) !!}
 				</div>
 			</div>
-			<div class="col-6">
+			<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('idArma', 'Arma', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idArma', ['' => 'Seleccione el arma', '1' => 'Pistola'], null, ['class' => 'form-control form-control-sm cv', 'required']) !!}
+					{!! Form::select('idArma', ['' => 'Seleccione el arma'], null, ['class' => 'form-control form-control-sm cv', 'required']) !!}
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="form-group">
+					{!! Form::label('idPosibleCausa', 'Posible causa', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idPosibleCausa', $posiblescausas, null, ['class' => 'form-control form-control-sm cv', 'placeholder' => 'Seleccione una posible causa', 'required']) !!}
 				</div>
 			</div>
 		</div>

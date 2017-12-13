@@ -8,6 +8,7 @@ use Alert;
 
 use App\Models\Carpeta;
 use App\Models\CatDelito;
+use App\Models\CatPosibleCausa;
 use App\Models\CatEstado;
 use App\Models\CatLugar;
 use App\Models\CatMarca;
@@ -26,6 +27,7 @@ class DelitoController extends Controller
         if(count($carpetaNueva)>0){ 
             $delitos = CarpetaController::getDelitos($idCarpeta);
             $delits = CatDelito::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
+            $posiblescausas = CatPosibleCausa::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
             $estados = CatEstado::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
             $lugares = CatLugar::orderBy('id', 'ASC')->pluck('nombre', 'id');
             $marcas = CatMarca::orderBy('id', 'ASC')->pluck('nombre', 'id');
@@ -35,6 +37,7 @@ class DelitoController extends Controller
             return view('forms.delito')->with('idCarpeta', $idCarpeta)
                 ->with('delitos', $delitos)
                 ->with('delits', $delits)
+                ->with('posiblescausas', $posiblescausas)
                 ->with('estados', $estados)
                 ->with('lugares', $lugares)
                 ->with('marcas', $marcas)
@@ -63,9 +66,9 @@ class DelitoController extends Controller
         $tipifDelito->idDelito = $request->idDelito;
         if ($request->conViolencia==="1"){
             $tipifDelito->conViolencia = 1;
+            $tipifDelito->idArma = $request->idArma;
+            $tipifDelito->idPosibleCausa = $request->idPosibleCausa;
         }
-        $tipifDelito->idArma = $request->idArma;
-        $tipifDelito->idPosibleCausa = null;
         $tipifDelito->idModalidad = $request->idModalidad;
         $tipifDelito->formaComision = $request->formaComision;
         $tipifDelito->consumacion = $request->consumacion;

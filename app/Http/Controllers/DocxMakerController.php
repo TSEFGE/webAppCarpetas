@@ -152,10 +152,10 @@ class DocxMakerController extends Controller
 		}else{
 			$conoceAlDen = "SI";
 		}
-		$dirDenunciante = $denunciante->calleD." #".$denunciante->numExternoD." ".$denunciante->numInternoD.", COLONIA ".$denunciante->coloniaD.", ".$denunciante->municipioD.", ".$denunciante->estadoD;
-		$dirTrabajo = $denunciante->calleT." #".$denunciante->numExternoT." ".$denunciante->numInternoT.", COLONIA ".$denunciante->coloniaT.", ".$denunciante->municipioT.", ".$denunciante->estadoT;
-		$dirNotif = $denunciante->calleN." #".$denunciante->numExternoN." ".$denunciante->numInternoN.", COLONIA ".$denunciante->coloniaN.", ".$denunciante->municipioN.", ".$denunciante->estadoN;
-		$dirDelito = $delito->calle." #".$delito->numExterno." ".$delito->numInterno.", COLONIA ".$delito->colonia.", ".$delito->municipio.", ".$delito->estado;
+		$dirDenunciante = $denunciante->calleD." #".$denunciante->numExternoD.", COLONIA ".$denunciante->coloniaD.", ".$denunciante->municipioD.", ".$denunciante->estadoD;
+		$dirTrabajo = $denunciante->calleT." #".$denunciante->numExternoT.", COLONIA ".$denunciante->coloniaT.", ".$denunciante->municipioT.", ".$denunciante->estadoT;
+		$dirNotif = $denunciante->calleN." #".$denunciante->numExternoN.", COLONIA ".$denunciante->coloniaN.", ".$denunciante->municipioN.", ".$denunciante->estadoN;
+		$dirDelito = $delito->calle." #".$delito->numExterno.", COLONIA ".$delito->colonia.", ".$delito->municipio.", ".$delito->estado;
 		$fechaDelito = new Carbon($delito->fecha);
 		if($delito->conViolencia==0){
 			$conViolencia = "NO";
@@ -167,7 +167,7 @@ class DocxMakerController extends Controller
 		}else{
 			$conDetenido = "SI";
 		}
-		$dirDenunciado = $denunciado->calle." #".$denunciado->numExterno." ".$denunciado->numInterno.", COLONIA ".$denunciado->colonia.", ".$denunciado->municipio.", ".$denunciado->estado;
+		$dirDenunciado = $denunciado->calle." #".$denunciado->numExterno.", COLONIA ".$denunciado->colonia.", ".$denunciado->municipio.", ".$denunciado->estado;
 
 		$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/FormatoDenuncia.docx');
 		
@@ -223,7 +223,7 @@ class DocxMakerController extends Controller
 		$templateProcessor->setValue('edadDen', $denunciado->edad);
 		$templateProcessor->setValue('dirDen', $dirDenunciado);
 		$templateProcessor->setValue('vestimenta', $denunciado->vestimenta);
-		$templateProcessor->setValue('conocelAlDen', $conoceAlDen);
+		$templateProcessor->setValue('conoceAlDen', $conoceAlDen);
 		$templateProcessor->setValue('senasPartic', $denunciado->senasPartic);
 		$templateProcessor->setValue('narracion', $denunciante->narracion);
 
