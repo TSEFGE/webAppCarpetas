@@ -46,5 +46,9 @@ class DatabaseSeeder extends Seeder
          $this->call(UnidadSeeder::class);
 
          $this->call(RegistroPersona::class);
+
+         $this->call(SPericialesSeeder::class);
+         $this->call(PMinisterialSeeder::class);
+         $this->call(PosibleCausaSeeder::class);
     }
 }
