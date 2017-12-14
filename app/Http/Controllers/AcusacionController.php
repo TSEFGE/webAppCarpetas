@@ -60,15 +60,6 @@ class AcusacionController extends Controller
         //return redirect()->route('carpeta', $request->idCarpeta);
         return redirect()->route('new.acusacion', $request->idCarpeta);
     }
-
-    public function showForm2($idCarpeta)
-    {
-        $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
-        $servicios = DB::table('cat_pministerial')->select('id', 'nombre')->get();
-        return view('forms.colaboracionpm')->with('idCarpeta', $idCarpeta)
-            ->with('acusaciones', $acusaciones)
-            ->with('servicios', $servicios);
-    }
     
     /**
      * Display a listing of the resource.

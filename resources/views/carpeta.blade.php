@@ -67,10 +67,11 @@
                 <div class="boxtwo">
                     @include('tables.acusaciones')
                     <div class="text-right">
-                        <a href="{{ route('new.acusacion', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Agregar Acusación</a><hr>
                         @if(count($acusaciones)>0)
-                            <a href="{{ route('new.colaboracionpm', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Colaboración PM</a><hr>
+                            <a href="{{ route('new.colaboracionpm', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Colaboración PM</a>
+                            <a href="{{ route('new.colaboracionsp', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Colaboración SP</a>
                         @endif
+                        <a href="{{ route('new.acusacion', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Agregar Acusación</a><hr>
                     </div>
                 </div>
                 @endif

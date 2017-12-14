@@ -1,8 +1,8 @@
 @extends('template.form')
 
-@section('title', 'Generar documento de colaboración con Policia Ministerial')
+@section('title', 'Generar documento de colaboración con Servicios Periciales')
 @section('contenido')
-    {!! Form::open(['route' => 'colaboracion.pm', 'method' => 'POST'])  !!}
+    {!! Form::open(['route' => 'colaboracion.sp', 'method' => 'POST'])  !!}
 	@include('forms.idcarpeta')
 	<div class="row no-gutters">
 		<div class="col-12">
@@ -32,9 +32,13 @@
 				        </tbody>
 				    </table>
 				</div>
+				<div class="form-group">
+					{!! Form::label('termino', 'Término', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('termino', ['8' => '8 horas', '12' => '12 horas', '24' => '24 horas'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el termino', 'required']) !!}
+				</div>
 			</div>
 
-			<div class="boxtwo">
+			<div class="boxtwo barras">
 				<div class="form-group">
 					@foreach($servicios as $servicio)
 						<div class="form-check">

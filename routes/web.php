@@ -49,10 +49,11 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('agregar-acusacion/{idCarpeta}', 'AcusacionController@showForm')->name('new.acusacion');
 	Route::post('storeacusacion', 'AcusacionController@storeAcusacion')->name('store.acusacion');
 
-	Route::get('generar-colaboracion-pm/{idCarpeta}', 'AcusacionController@showForm2')->name('new.colaboracionpm');
-
 	Route::get('agregar-vehiculo/{idCarpeta}', 'VehiculoController@showForm')->name('new.vehiculo');
 	Route::post('storevehiculo', 'VehiculoController@storeVehiculo')->name('store.vehiculo');
+	
+	Route::get('generar-colaboracion-pm/{idCarpeta}', 'ColaboracionController@showForm')->name('new.colaboracionpm');
+	Route::get('generar-colaboracion-sp/{idCarpeta}', 'ColaboracionController@showForm2')->name('new.colaboracionsp');
 
 	Route::get('carpeta/{id}', [
 		'uses' => 'CarpetaController@verDetalle',
@@ -83,6 +84,10 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('colaboracion-pm', [
 		'as'=>'colaboracion.pm',
 		'uses'=>'DocxMakerController@getFormatoColaboracionPm'
+	]);
+	Route::post('colaboracion-sp', [
+		'as'=>'colaboracion.sp',
+		'uses'=>'DocxMakerController@getFormatoColaboracionSp'
 	]);
 });
 
