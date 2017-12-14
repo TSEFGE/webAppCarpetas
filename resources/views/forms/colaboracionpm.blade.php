@@ -22,7 +22,7 @@
 				            @else
 				                @foreach($acusaciones as $acusacion)
 				                    <tr>
-				                    	<td><input type="radio" value="{{ $acusacion->id }}"></td>
+				                    	<td><input type="radio" value="{{ $acusacion->id }}" name="radioAcusacion"></td>
 				                        <td>{{ $acusacion->nombres." ".$acusacion->primerAp." ".$acusacion->segundoAp }}</td>
 				                        <td>{{ $acusacion->delito }}</td>
 				                        <td>{{ $acusacion->nombres2." ".$acusacion->primerAp2." ".$acusacion->segundoAp2 }}</td>
@@ -39,17 +39,28 @@
 					@foreach($servicios as $servicio)
 						<div class="form-check">
 							<label class="form-check-label col-form-label col-form-label-sm">
-								<input class="form-check-input" type="checkbox" name="servicios" value="{{ $servicio->id }}"> {{ $servicio->nombre }}
+								<input class="form-check-input" type="checkbox" name="servicios[]" value="{{ $servicio->id }}" id="servicio{{ $servicio->id }}"> {{ $servicio->nombre }}
 							</label>
 						</div>
 					@endforeach
 				</div>
-				<div class="text-center">
-					<a href="{{ route('colaboracion.pm') }}" class="btn btn-secondary">Generar</a><hr>
+			</div>
+
+			<div class="boxtwo">
+				<div class="row">
+					<div class="col">
+						<div class="text-left">
+							<a href="{{ route('carpeta', $idCarpeta) }}" class="btn btn-dark text-center">Volver atrás</a>
+						</div>
+					</div>
+					<div class="col">	
+						<div class="text-right">
+							{!! Form::submit('Generar', ['class' => 'btn btn-dark', 'id' => 'btn-submit']) !!}
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	@include('forms.buttons')
 	{!! Form::close() !!}
 @endsection
