@@ -224,7 +224,6 @@ $("#idTipoArma").focusout(function(event){
 		$.get("../armas/"+event.target.value+"", function(response, arma){
 			$("#idArma").empty();
 			$("#idArma").append("<option value=''>Seleccione un arma</option>");
-			$("#idArma").append("<option value='1'>Pistola</option>");
 			for(i=0; i<response.length; i++){
 				$("#idArma").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
