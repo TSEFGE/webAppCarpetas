@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use DB;
 use Alert;
 
+use App\Http\Requests\StoreFamiliar;
+
 use App\Models\Carpeta;
 use App\Models\Familiar;
 use App\Models\CatOcupacion;
@@ -44,7 +46,7 @@ class FamiliarController extends Controller
         }
     }
 
-    public function storeFamiliar(Request $request){
+    public function storeFamiliar(StoreFamiliar $request){
         //dd($request->all());
         $familiar = new Familiar($request->all());
         $familiar->save();

@@ -2953,7 +2953,13 @@ class OcupacionSeeder extends Seeder
             ['id'=>   2939,'nombre' => 'DIRECTOR DE CENTROS DOCUMENTACIÓN'],
             ['id'=>   2940,'nombre' => 'DIRECTOR DE MUSEO'],
 
-            ['id'=>   2941,'nombre' => 'SIN INFORMACION']
+            ['id'=>   2941,'nombre' => 'SIN INFORMACION'],
+            
+            ['id'=>   2942,'nombre' => 'OFICIAL DE POLICIA MINISTERIAL'],
+            ['id'=>   2943,'nombre' => 'OFICIAL DE POLICIA ESTATAL'],
+            ['id'=>   2944,'nombre' => 'OFICIAL DE POLICIA FEDERAL'],
+            ['id'=>   2945,'nombre' => 'OFICIAL DE TRANSITO'],
+            ['id'=>   2946,'nombre' => 'MILITAR']
 
 
             

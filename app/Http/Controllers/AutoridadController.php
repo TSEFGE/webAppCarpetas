@@ -17,7 +17,7 @@ use App\Models\CatNacionalidad;
 use App\Models\CatOcupacion;
 use App\Models\CatPuesto;
 use App\Models\CatReligion;
-
+use DB;
 use App\Models\Carpeta;
 use App\Models\Persona;
 use App\Models\Domicilio;
@@ -37,8 +37,9 @@ class AutoridadController extends Controller
             $etnias = CatEtnia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $lenguas = CatLengua::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $ocupaciones=  DB::table('cat_ocupacion')->select('id','nombre')->where('id','>',2941)->pluck('nombre', 'id');
             $religiones = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            //dd($ocupaciones);
             return view('forms.autoridad')->with('idCarpeta', $idCarpeta)
                 ->with('autoridades', $autoridades)
                 ->with('escolaridades', $escolaridades)
