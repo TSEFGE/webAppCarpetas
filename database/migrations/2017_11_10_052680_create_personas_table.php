@@ -15,7 +15,7 @@ class CreatePersonasTable extends Migration
     {
         Schema::create('persona', function (Blueprint $table) {
             $table->increments('id');
-             $table->string('nombres', 50)->nullable();
+             $table->string('nombres', 200)->nullable();
              $table->string('primerAp', 50)->nullable();
              $table->string('segundoAp', 50)->nullable();
              $table->dateTime('fechaNacimiento')->default("1900-01-01");

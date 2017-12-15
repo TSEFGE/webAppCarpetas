@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Alert;
 
+use App\Http\Requests\StoreDelito;
+
 use App\Models\Carpeta;
 use App\Models\CatDelito;
 use App\Models\CatPosibleCausa;
@@ -49,7 +51,7 @@ class DelitoController extends Controller
         }
     }
 
-    public function storeDelito(Request $request){
+    public function storeDelito(StoreDelito $request){
         //dd($request->all());
         $domicilio = new Domicilio();
         $domicilio->idMunicipio = $request->idMunicipio;

@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use DB;
 use Alert;
 
+use App\Http\Requests\StoreAbogado;
+
 use App\Models\Carpeta;
 use App\Models\CatEstado;
 use App\Models\CatEstadoCivil;
@@ -37,7 +39,7 @@ class AbogadoController extends Controller
         }
     }
 
-    public function storeAbogado(Request $request)
+    public function storeAbogado(StoreAbogado $request)
     {
         //dd($request->all());
         $persona = new Persona();

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Alert;
 
+use App\Http\Requests\StoreAutoridad;
+
 use App\Models\CatEscolaridad;
 use App\Models\CatEstado;
 use App\Models\CatEstadoCivil;
@@ -54,7 +56,7 @@ class AutoridadController extends Controller
         }
     }
 
-    public function storeAutoridad(Request $request){
+    public function storeAutoridad(StoreAutoridad $request){
         //dd($request->all());
         $persona = new Persona();
         $persona->nombres = $request->nombres;

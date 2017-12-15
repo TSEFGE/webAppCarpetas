@@ -2,6 +2,15 @@
 
 @section('title', 'Agregar Autoridad')
 @section('contenido')
+	@if ($errors->any())
+		<div class="alert alert-danger">
+	        <ul>
+	            @foreach ($errors->all() as $error)
+	                <li>{{ $error }}</li>
+	            @endforeach
+	        </ul>
+	    </div>
+	@endif
     {!! Form::open(['route' => 'store.autoridad', 'method' => 'POST'])  !!}
 	<div class="card">
 		<div class="card-header">

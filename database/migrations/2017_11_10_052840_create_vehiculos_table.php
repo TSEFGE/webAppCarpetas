@@ -17,14 +17,14 @@ class CreateVehiculosTable extends Migration
             $table->increments('id');
             $table->integer('idTipifDelito')->unsigned();
             $table->string('status', 20);
-            $table->string('placas', 50);
+            $table->string('placas', 9);
             $table->integer('idEstado')->unsigned()->default(33);
             $table->integer('idSubmarca')->unsigned()->default(24403);
             $table->integer('modelo');
             $table->string('nrpv', 50)->default("SIN INFORMACION");
             $table->integer('idColor')->unsigned()->default(25);
             $table->string('permiso', 50)->default("SIN INFORMACION");
-            $table->string('numSerie', 50);
+            $table->string('numSerie', 17);
             $table->string('numMotor', 50);
             $table->integer('idTipoVehiculo')->unsigned()->default(25);
             $table->integer('idTipoUso')->unsigned()->default(22);
