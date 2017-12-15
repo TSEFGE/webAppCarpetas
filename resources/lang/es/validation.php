@@ -88,6 +88,12 @@ return [
     'uploaded'             => 'El elemento :attribute falló al subir.',
     'url'                  => 'El formato de :attribute no corresponde con el de una URL válida.',
 
+    // Custom Validation message.
+    'alpha_spaces'         => 'El campo :attribute sólo puede contener letras y espacios.',
+    'nombre'         => 'El campo :attribute sólo puede contener letras y espacios.',
+    'alias'         => 'El campo :attribute sólo puede contener letras, números y espacios.',
+    'rfc'         => 'El campo :attribute debe cumplir con el formato de un RFC.',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
