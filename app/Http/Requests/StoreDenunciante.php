@@ -39,9 +39,9 @@ class StoreDenunciante extends FormRequest
             'fax' => 'numeric',
             'narracion' => 'string|min:5|max:2000',
 
-            'nombres' => 'string|min:3|max:50',
+            'nombres' => 'string|min:3|max:200',
             'primerAp' => 'alpha|min:3|max:50',
-            'primerAp' => 'alpha|min:3|max:50',
+            'segundoAp' => 'alpha|min:3|max:50',
             'rfc' => 'alpha_num|min:10|max:20',
             'curp' => 'alpha_num|min:15|max:20',
             'telefono' => 'numeric',
