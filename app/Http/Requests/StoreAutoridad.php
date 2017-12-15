@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreDenunciante extends FormRequest
+class StoreAutoridad extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,21 +24,7 @@ class StoreDenunciante extends FormRequest
     public function rules()
     {
         return [
-
-            'nombres2' => 'string|min:3|max:200',
-            'rfc2' => 'alpha_num|min:10|max:20',
-            'representanteLegal' => 'string|min:4|max:100',
-            'calle' => 'string|min:4|max:100',
-            'numExterno' => 'alpha_num|min:1|max:10',
-            'numInterno' => 'alpha_num|min:1|max:10',
-            'calle3' => 'string|min:4|max:100',
-            'numExterno3' => 'alpha_num|min:1|max:10',
-            'numInterno3' => 'alpha_num|min:1|max:10',
-            'correo' => 'email',
-            'telefonoN' => 'numeric',
-            'fax' => 'numeric',
-            'narracion' => 'string|min:5|max:2000',
-
+                
             'nombres' => 'string|min:3|max:50',
             'primerAp' => 'alpha|min:3|max:50',
             'primerAp' => 'alpha|min:3|max:50',
@@ -56,7 +42,8 @@ class StoreDenunciante extends FormRequest
             'calle2' => 'string|min:4|max:100',
             'numExterno2' => 'alpha_num|min:1|max:10',
             'numInterno2' => 'alpha_num|min:1|max:10',
-            
+            'horarioLaboral' => 'string',
+            'narracion' => 'string|min:5|max:2000',
         ];
     }
 

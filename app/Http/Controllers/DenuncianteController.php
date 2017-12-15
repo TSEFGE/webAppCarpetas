@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use DB;
 use Alert;
 
+use App\Http\Requests\StoreDenunciante;
+
 use App\Models\CatEscolaridad;
 use App\Models\CatEstado;
 use App\Models\CatEstadoCivil;
@@ -53,7 +55,7 @@ class DenuncianteController extends Controller
         }
     }
 
-    public function storeDenunciante(Request $request){
+    public function storeDenunciante(StoreDenunciante $request){
         //dd($request->all());
         if($request->esEmpresa==0){
             $persona = new Persona();

@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use DB;
 use Alert;
 
+use App\Http\Requests\StoreVehiculo;
+
 use App\Models\CatAseguradora;
 use App\Models\CatClaseVehiculo;
 use App\Models\CatColor;
@@ -54,7 +56,7 @@ class VehiculoController extends Controller
         }
     }
 
-    public function storeVehiculo(Request $request){
+    public function storeVehiculo(StoreVehiculo $request){
         //dd($request->all());
         $vehiculo = new Vehiculo();
         $vehiculo->idTipifDelito = $request->idTipifDelito;
