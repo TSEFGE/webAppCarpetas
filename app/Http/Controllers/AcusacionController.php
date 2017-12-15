@@ -21,17 +21,20 @@ class AcusacionController extends Controller
                 ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
                 ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
                 ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+                ->orderBy('persona.nombres', 'ASC')
                 ->get();
             $denunciados = DB::table('extra_denunciado')
                 ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
                 ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
                 ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
                 ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+                ->orderBy('persona.nombres', 'ASC')
                 ->get();
             $tipifdelitos = DB::table('tipif_delito')
                 ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
                 ->select('tipif_delito.id','cat_delito.nombre')
                 ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
+                ->orderBy('cat_delito.nombre', 'ASC')
                 ->get();
             return view('forms.acusacion')->with('idCarpeta', $idCarpeta)
                 ->with('acusaciones', $acusaciones)

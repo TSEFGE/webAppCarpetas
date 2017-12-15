@@ -32,15 +32,15 @@ class DenunciadoController extends Controller
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
         if(count($carpetaNueva)>0){ 
             $denunciados = CarpetaController::getDenunciados($idCarpeta);
-            $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
-            $estados = CatEstado::select('id', 'nombre')->orderBy('id', 'ASC')->pluck('nombre', 'id');
-            $estadoscivil = CatEstadoCivil::orderBy('id', 'ASC')->pluck('nombre', 'id');
-            $etnias = CatEtnia::orderBy('id', 'ASC')->pluck('nombre', 'id');
-            $lenguas = CatLengua::orderBy('id', 'ASC')->pluck('nombre', 'id');
-            $nacionalidades = CatNacionalidad::orderBy('id', 'ASC')->pluck('nombre', 'id');
+            $escolaridades = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $etnias = CatEtnia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $lenguas = CatLengua::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $puestos = CatPuesto::orderBy('id', 'ASC')->pluck('nombre', 'id');
-            $religiones = CatReligion::orderBy('id', 'ASC')->pluck('nombre', 'id');
+            $puestos = CatPuesto::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $religiones = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             return view('forms.denunciado')->with('idCarpeta', $idCarpeta)
                 ->with('denunciados', $denunciados)
                 ->with('escolaridades', $escolaridades)

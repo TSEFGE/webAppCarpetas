@@ -140,6 +140,7 @@ class RegistroController extends Controller
                     ->select('variables_persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
                     ->where('variables_persona.idCarpeta', '=', $idCarpeta)
                     ->whereNull('extra_denunciante.idAbogado')
+                    ->orderBy('persona.nombres', 'ASC')
                     ->get();
             }elseif($tipo == "ABOGADO DEFENSOR"){
                 $involucrados = DB::table('extra_denunciado')
@@ -148,6 +149,7 @@ class RegistroController extends Controller
                     ->select('variables_persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
                     ->where('variables_persona.idCarpeta', '=', $idCarpeta)
                     ->whereNull('extra_denunciado.idAbogado')
+                    ->orderBy('persona.nombres', 'ASC')
                     ->get();
             }
             return response()->json($involucrados);

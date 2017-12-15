@@ -27,6 +27,6 @@ class CatColonia extends Model
     }
 
     public static function colonias($cp){
-        return CatColonia::where('codigoPostal', '=', $cp)->get();
+        return CatColonia::where('codigoPostal', '=', $cp)->orderBy('nombre', 'ASC')->get();
     }
 }

@@ -18,7 +18,7 @@ class CarpetaController extends Controller
 
      public function showForm()
     {
-        $tiposdet = CatTipoDeterminacion::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $tiposdet = CatTipoDeterminacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         return view('forms.inicio')->with('tiposdet', $tiposdet);
     }
 

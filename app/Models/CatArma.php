@@ -23,6 +23,6 @@ class CatArma extends Model
     }
 
     public static function armas($id){
-        return CatArma::where('idTipoArma', '=', $id)->get();
+        return CatArma::where('idTipoArma', '=', $id)->orderBy('nombre', 'ASC')->get();
     }
 }
