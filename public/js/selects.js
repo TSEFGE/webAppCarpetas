@@ -99,7 +99,7 @@ $("#idColonia").focusout(function(event){
 });
 
 $("#calle").keyup(function() {
-	$('#calle3').val($('#calle').val());
+	$('#calle3').val($('#calle').val().toUpperCase());
 });
 $("#numExterno").keyup(function() {
 	$('#numExterno3').val($('#numExterno').val());
