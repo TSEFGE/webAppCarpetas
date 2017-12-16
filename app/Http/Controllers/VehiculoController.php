@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use Alert;
-
 use App\Http\Requests\StoreVehiculo;
-
 use App\Models\CatAseguradora;
 use App\Models\CatClaseVehiculo;
 use App\Models\CatColor;
@@ -16,10 +14,9 @@ use App\Models\CatEstado;
 use App\Models\CatMarca;
 use App\Models\CatProcedencia;
 use App\Models\CatTipoUso;
-
 use App\Models\Carpeta;
-use App\Models\TipifDelito;
 use App\Models\Vehiculo;
+use App\Models\TipifDelito;
 
 class VehiculoController extends Controller
 {

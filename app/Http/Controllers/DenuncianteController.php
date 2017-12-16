@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use Alert;
-
 use App\Http\Requests\StoreDenunciante;
-
 use App\Models\CatEscolaridad;
 use App\Models\CatEstado;
 use App\Models\CatEstadoCivil;
@@ -17,13 +15,12 @@ use App\Models\CatLengua;
 use App\Models\CatNacionalidad;
 use App\Models\CatOcupacion;
 use App\Models\CatReligion;
-
 use App\Models\Carpeta;
 use App\Models\Persona;
-use App\Models\Domicilio;
 use App\Models\VariablesPersona;
-use App\Models\Notificacion;
 use App\Models\ExtraDenunciante;
+use App\Models\Notificacion;
+use App\Models\Domicilio;
 
 class DenuncianteController extends Controller
 {

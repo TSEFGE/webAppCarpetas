@@ -3,22 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use Alert;
-
+use Carbon\Carbon;
 use App\Http\Requests\StoreAbogado;
-
 use App\Models\Carpeta;
 use App\Models\CatEstado;
 use App\Models\CatEstadoCivil;
-
-use App\Models\ExtraAbogado;
 use App\Models\ExtraDenunciante;
 use App\Models\ExtraDenunciado;
-use App\Models\VariablesPersona;
 use App\Models\Persona;
+use App\Models\VariablesPersona;
+use App\Models\ExtraAbogado;
 use App\Models\Domicilio;
 
 class AbogadoController extends Controller

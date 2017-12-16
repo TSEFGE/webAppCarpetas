@@ -6,12 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use Alert;
-
 use App\Http\Requests\StoreFamiliar;
-
 use App\Models\Carpeta;
-use App\Models\Familiar;
 use App\Models\CatOcupacion;
+use App\Models\Familiar;
 
 class FamiliarController extends Controller
 {

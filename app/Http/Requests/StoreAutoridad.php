@@ -25,11 +25,11 @@ class StoreAutoridad extends FormRequest
     {
         return [
                 
-            'nombres' => 'string|min:3|max:50',
-            'primerAp' => 'alpha|min:3|max:50',
-            'primerAp' => 'alpha|min:3|max:50',
-            'rfc' => 'alpha_num|min:10|max:20',
-            'curp' => 'alpha_num|min:15|max:20',
+            'nombres' => 'nombre|min:3|max:50',
+            'primerAp' => 'nombre|min:3|max:50',
+            'primerAp' => 'nombre|min:3|max:50',
+            'rfc' => 'rfc|min:10|max:20',
+            'curp' => 'curp|min:15|max:20',
             'telefono' => 'numeric',
             'motivoEstancia' => 'string|min:4|max:200',
             'docIdentificacion' => 'string|min:2|max:50',

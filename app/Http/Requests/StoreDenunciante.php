@@ -25,9 +25,9 @@ class StoreDenunciante extends FormRequest
     {
         return [
 
-            'nombres2' => 'string|min:3|max:200',
-            'rfc2' => 'alpha_num|min:10|max:20',
-            'representanteLegal' => 'string|min:4|max:100',
+            'nombres2' => 'nombre|min:3|max:200',
+            'rfc2' => 'rfc|min:10|max:20',
+            'representanteLegal' => 'nombre|min:4|max:100',
             'calle' => 'string|min:4|max:100',
             'numExterno' => 'alpha_num|min:1|max:10',
             'numInterno' => 'alpha_num|min:1|max:10',
@@ -39,11 +39,11 @@ class StoreDenunciante extends FormRequest
             'fax' => 'numeric',
             'narracion' => 'string|min:5|max:2000',
 
-            'nombres' => 'string|min:3|max:200',
-            'primerAp' => 'alpha|min:3|max:50',
-            'segundoAp' => 'alpha|min:3|max:50',
-            'rfc' => 'alpha_num|min:10|max:20',
-            'curp' => 'alpha_num|min:15|max:20',
+            'nombres' => 'nombre|min:3|max:200',
+            'primerAp' => 'nombre|min:3|max:50',
+            'segundoAp' => 'nombre|min:3|max:50',
+            'rfc' => 'rfc|min:10|max:20',
+            'curp' => 'curp|min:15|max:20',
             'telefono' => 'numeric',
             'motivoEstancia' => 'string|min:4|max:200',
             'docIdentificacion' => 'string|min:2|max:50',

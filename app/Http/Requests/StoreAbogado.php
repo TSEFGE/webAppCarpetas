@@ -25,10 +25,10 @@ class StoreAbogado extends FormRequest
     {
         return [
                       
-            'nombres' => 'string|min:3|max:50',
-            'primerAp' => 'alpha|min:3|max:50',
-            'primerAp' => 'alpha|min:3|max:50',
-            'rfc' => 'alpha_num|min:10|max:20',
+            'nombres' => 'nombre|min:3|max:50',
+            'primerAp' => 'nombre|min:3|max:50',
+            'primerAp' => 'nombre|min:3|max:50',
+            'rfc' => 'rfc|min:10|max:20',
             'telefono' => 'numeric',
             'lugarTrabajo' => 'string',
             'telefonoTrabajo' => 'numeric',

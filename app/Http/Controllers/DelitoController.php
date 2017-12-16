@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Alert;
-
 use App\Http\Requests\StoreDelito;
-
 use App\Models\Carpeta;
 use App\Models\CatDelito;
 use App\Models\CatPosibleCausa;
@@ -17,9 +15,8 @@ use App\Models\CatMarca;
 use App\Models\CatModalidad;
 use App\Models\CatTipoArma;
 use App\Models\CatZona;
-
-use App\Models\Domicilio;
 use App\Models\TipifDelito;
+use App\Models\Domicilio;
 
 class DelitoController extends Controller
 {

@@ -24,9 +24,9 @@ class StoreFamiliar extends FormRequest
     public function rules()
     {
         return [
-            'nombres' => 'string|min:3|max:200',
-            'primerAp' => 'alpha|min:3|max:50',
-            'segundoAp' => 'alpha|min:3|max:50',
+            'nombres' => 'nombre|min:3|max:200',
+            'primerAp' => 'nombre|min:3|max:50',
+            'segundoAp' => 'nombre|min:3|max:50',
             
         ];
     }

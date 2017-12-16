@@ -89,10 +89,11 @@ return [
     'url'                  => 'El formato de :attribute no corresponde con el de una URL válida.',
 
     // Custom Validation message.
-    'alpha_spaces'         => 'El campo :attribute sólo puede contener letras y espacios.',
-    'nombre'         => 'El campo :attribute sólo puede contener letras y espacios.',
+    'alpha_spaces'  => 'El campo :attribute sólo puede contener letras y espacios.',
+    'nombre'        => 'El campo :attribute sólo puede contener letras y espacios.',
     'alias'         => 'El campo :attribute sólo puede contener letras, números y espacios.',
-    'rfc'         => 'El campo :attribute debe cumplir con el formato de un RFC.',
+    'rfc'           => 'El campo :attribute debe cumplir con el formato de un RFC.',
+    'curp'          => 'El campo :attribute debe cumplir con el formato de un CURP.',
 
     /*
     |--------------------------------------------------------------------------

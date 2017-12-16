@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Alert;
-
 use App\Http\Requests\StoreDenunciado;
-
+use App\Models\Carpeta;
 use App\Models\CatEscolaridad;
 use App\Models\CatEstado;
 use App\Models\CatEstadoCivil;
@@ -17,13 +16,11 @@ use App\Models\CatNacionalidad;
 use App\Models\CatOcupacion;
 use App\Models\CatPuesto;
 use App\Models\CatReligion;
-
-use App\Models\Carpeta;
 use App\Models\Persona;
-use App\Models\Domicilio;
 use App\Models\VariablesPersona;
-use App\Models\Notificacion;
 use App\Models\ExtraDenunciado;
+use App\Models\Notificacion;
+use App\Models\Domicilio;
 
 class DenunciadoController extends Controller
 {
