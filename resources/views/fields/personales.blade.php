@@ -26,7 +26,26 @@
 				</div>
 			</div>
 	
-			<div class="col-3">
+			@isset($puestos)
+		    <div class="col-3">
+				<div class="form-group">
+					{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
+					<div class="input-group date" id="fechanac2" data-target-input="nearest">
+		                {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac2', 'placeholder' => 'DD/MM/AAAA', 'required']) !!}
+		                <span class="input-group-addon" data-target="#fechanac2" data-toggle="datetimepicker">
+		                    <i class="fa fa-calendar" aria-hidden="true"></i>
+		                </span>
+		            </div>
+				</div>
+			</div>
+			<div class="col-1">
+				<div class="form-group">
+					{!! Form::label('edad', 'Edad', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::number('edad', null, ['class' => 'form-control form-control-sm edad2', 'placeholder' => 'Ingrese la edad', 'min' => 0, 'max' => 150, 'required']) !!}
+				</div>
+			</div>
+			@else
+		    <div class="col-3">
 				<div class="form-group">
 					{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 					<div class="input-group date" id="fechanac" data-target-input="nearest">
@@ -37,20 +56,18 @@
 		            </div>
 				</div>
 			</div>
-			<div class="col-3">
-				<div class="row">
-					<div class="col-6">
-						<div class="form-group">
-							{!! Form::label('edad', 'Edad', ['class' => 'col-form-label-sm']) !!}
-							{!! Form::number('edad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'min' => 18, 'max' => 150, 'required']) !!}
-						</div>
-					</div>
-					<div class="col-6">
-						<div class="form-group">
-							{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
-							{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo']) !!}
-						</div>
-					</div>
+			<div class="col-1">
+				<div class="form-group">
+					{!! Form::label('edad', 'Edad', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::number('edad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'min' => 18, 'max' => 150, 'required']) !!}
+				</div>
+			</div>
+			@endisset
+				
+			<div class="col-2">
+				<div class="form-group">
+					{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo']) !!}
 				</div>
 			</div>
 			<div class="col-3">

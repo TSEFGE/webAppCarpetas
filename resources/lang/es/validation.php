@@ -94,6 +94,7 @@ return [
     'alias'         => 'El campo :attribute sólo puede contener letras, números y espacios.',
     'rfc'           => 'El campo :attribute debe cumplir con el formato de un RFC.',
     'curp'          => 'El campo :attribute debe cumplir con el formato de un CURP.',
+    'alfanumdiag'          => 'El campo :attribute sólo puede incluir letras, números y diagonal.',
 
     /*
     |--------------------------------------------------------------------------

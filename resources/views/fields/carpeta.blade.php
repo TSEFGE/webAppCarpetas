@@ -2,7 +2,7 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idUnidad', 'Unidad', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('idUnidad', Auth::user()->idUnidad, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una unidad', 'readonly', 'required']) !!}
+			{!! Form::text('idUnidad', $nombreUnidad, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una unidad', 'readonly', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">

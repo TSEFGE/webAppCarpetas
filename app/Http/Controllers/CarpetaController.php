@@ -8,6 +8,7 @@ use DB;
 use Alert;
 use Carbon\Carbon;
 use App\Models\Carpeta;
+use App\Models\Unidad;
 use App\Models\CatTipoDeterminacion;
 
 class CarpetaController extends Controller
@@ -19,7 +20,9 @@ class CarpetaController extends Controller
      public function showForm()
     {
         $tiposdet = CatTipoDeterminacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        return view('forms.inicio')->with('tiposdet', $tiposdet);
+        $nombreUnidad = Unidad::select('nombre')->where('id', Auth::user()->idUnidad)->pluck('nombre');
+        $nombreUnidad = $nombreUnidad[0];
+        return view('forms.inicio')->with('nombreUnidad', $nombreUnidad)->with('tiposdet', $tiposdet);
     }
 
     public function storeCarpeta(Request $request){

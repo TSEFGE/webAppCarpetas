@@ -569,6 +569,21 @@ $(document).ready(function(){
     });
 
     $(function () {
+        $('#fechanac2').datetimepicker({
+            format: 'YYYY-MM-DD',
+            minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
+            maxDate: moment()
+        });
+    });
+    $("#fechanac2").on("change.datetimepicker", function (e) {
+        $('.edad2').val(moment().diff(e.date,'years'));
+    });
+    $( ".edad2" ).change(function() {
+        var anios = $('.edad2').val();
+        $('#fechanac2').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
+    });
+
+    $(function () {
         $('#fechadelit').datetimepicker({
            format: 'YYYY-MM-DD',
            maxDate: moment()
