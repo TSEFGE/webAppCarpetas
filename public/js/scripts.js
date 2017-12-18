@@ -581,36 +581,4 @@ $(document).ready(function(){
            maxDate: moment()
        });
     });
-
-    $('#camposdenunciante').show();
-    $('#camposdenunciado').hide();
-    $('#camposautoridad').hide();
-
-    $("#denunciante").click(function () {
-       $('#camposdenunciante').show();
-       $('#camposdenunciado').hide();
-       $('#camposautoridad').hide();
-   });
-
-    $("#denunciado").click(function () {
-       $('#camposdenunciante').hide();
-       $('#camposdenunciado').show();
-       $('#camposautoridad').hide();
-   });
-
-    $("#autoridad").click(function () {
-       $('#camposdenunciante').hide();
-       $('#camposdenunciado').hide();
-       $('#camposautoridad').show();
-   });
-
-    $(".chosen-select").chosen({
-        placeholder_text_siple: 'Seleccione una categoría...',
-        max_selected_options: 3,
-        no_results_text: 'No se han encontrado la categoría'
-    });
-
-    
-    $('.select2').select2();
-
 });

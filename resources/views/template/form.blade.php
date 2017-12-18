@@ -32,4 +32,5 @@
     <script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="{{ asset('js/selects.js') }}"></script>
+    {{--<script src="{{ asset('js/selectsChoosen.js') }}"></script>--}}
 @endsection
