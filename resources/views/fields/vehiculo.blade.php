@@ -43,7 +43,7 @@
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('modelo', 'Modelo', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::number('modelo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el modelo', 'min' => 2000, 'max' => 2050, 'required']) !!}
+			{!! Form::number('modelo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el modelo', 'min' => 1000, 'max' => 2050, 'required']) !!}
 		</div>
 	</div>
 	<div class="col-2">

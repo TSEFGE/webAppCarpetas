@@ -102,10 +102,10 @@ $("#calle").keyup(function() {
 	$('#calle3').val($('#calle').val().toUpperCase());
 });
 $("#numExterno").keyup(function() {
-	$('#numExterno3').val($('#numExterno').val());
+	$('#numExterno3').val($('#numExterno').val().toUpperCase());
 });
 $("#numInterno").keyup(function() {
-	$('#numInterno3').val($('#numInterno').val());
+	$('#numInterno3').val($('#numInterno').val().toUpperCase());
 });
 
 
