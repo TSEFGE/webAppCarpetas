@@ -7,7 +7,7 @@
             <th>Edad</th>
             <th>Sexo</th>
             <th>Teléfono</th>
-            <th>Es empresa</th>
+            <th>Persona moral</th>
         </thead>
         <tbody>
             @if(count($denunciados)==0)

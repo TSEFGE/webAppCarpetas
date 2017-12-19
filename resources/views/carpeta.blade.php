@@ -38,7 +38,7 @@
                     </div>
                 </div>
 
-                @if(count($denunciantes)>0 || count($denunciados)>0 && count($abogados)>0)
+               @if((count($denunciantes)>0 || count($denunciados)>0) && count($abogados)>0)
                 <div class="boxtwo">
                     @include('tables.defensas')
                     <div class="text-right"> 

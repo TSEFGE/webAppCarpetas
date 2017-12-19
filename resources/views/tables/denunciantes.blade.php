@@ -7,7 +7,7 @@
             <th>Edad</th>
             <th>Sexo</th>
             <th>Teléfono</th>
-            <th>Es empresa</th>
+            <th>Persona moral</th>
             <th>Opciones</th>
         </thead>
         <tbody>

@@ -38,7 +38,7 @@
                     </div>
                 </div>
 
-                @if(count($denunciantes)>0 || count($denunciados)>0 && count($abogados)>0)
+                @if((count($denunciantes)>0 || count($denunciados)>0) && count($abogados)>0)
                 <div class="boxtwo">
                     @include('tables.defensas')
                     <div class="text-right"> 
@@ -63,10 +63,14 @@
                     </div>
                 </div>
 
-                @if(count($delitos)>0)
+                @if(count($delitos)>0 && count($denunciantes)>0 && count($denunciados)>0)
                 <div class="boxtwo">
                     @include('tables.acusaciones')
-                    <div class="text-right"> 
+                    <div class="text-right">
+                        @if(count($acusaciones)>0)
+                            <a href="{{ route('new.colaboracionpm', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Colaboración PM</a>
+                            <a href="{{ route('new.colaboracionsp', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Colaboración SP</a>
+                        @endif
                         <a href="{{ route('new.acusacion', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Agregar Acusación</a><hr>
                     </div>
                 </div>

@@ -53,7 +53,7 @@ class StoreDenunciado extends FormRequest
             'primerAp' => 'nombre|min:3|max:50',
             'primerAp' => 'nombre|min:3|max:50',
             'rfc' => 'rfc|min:10|max:20',
-            'curp' => 'curp|min:15|max:20',
+            'curp' => 'string|min:17|max:18',
             'telefono' => 'numeric',
             'motivoEstancia' => 'string|min:4|max:200',
             'telefonoTrabajo' => 'numeric',

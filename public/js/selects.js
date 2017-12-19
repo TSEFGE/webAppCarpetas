@@ -259,9 +259,9 @@ $("#idAbogado").focusout(function(event){
 		var idCarpeta = $("input[type=hidden][name=idCarpeta]").val();
 		$.get("../involucrados/"+idCarpeta+"/"+event.target.value+"", function(response, idCarpeta){
 			$("#idInvolucrado").empty();
-			$("#idInvolucrado").append("<option value=''>Seleccione un denunciante</option>");
+			$("#idInvolucrado").append("<option value=''>Seleccione un involucrado</option>");
 			for(i=0; i<response.length; i++){
-				$("#idInvolucrado").append("<option value='"+response[i].id+"'> "+response[i].nombres+"</option>");
+				$("#idInvolucrado").append("<option value='"+response[i].id+"'> "+response[i].nombres+" "+response[i].primerAp+" "+response[i].segundoAp+"</option>");
 			}
 		});
 	}
